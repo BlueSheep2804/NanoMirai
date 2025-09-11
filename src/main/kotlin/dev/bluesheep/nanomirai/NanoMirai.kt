@@ -1,7 +1,11 @@
 package dev.bluesheep.nanomirai
 
-import dev.bluesheep.nanomirai.block.ModBlocks
+import dev.bluesheep.nanomirai.registry.NanoMiraiArmorMaterials
+import dev.bluesheep.nanomirai.registry.NanoMiraiBlocks
+import dev.bluesheep.nanomirai.registry.NanoMiraiItems
 import net.minecraft.client.Minecraft
+import net.minecraft.resources.ResourceLocation
+import net.minecraft.world.item.Items
 import net.neoforged.bus.api.SubscribeEvent
 import net.neoforged.fml.common.EventBusSubscriber
 import net.neoforged.fml.common.Mod
@@ -31,8 +35,11 @@ object NanoMirai {
         LOGGER.log(Level.INFO, "Hello world!")
 
         // Register the KDeferredRegister to the mod-specific event bus
-        ModBlocks.REGISTRY.register(MOD_BUS)
+        NanoMiraiBlocks.REGISTRY.register(MOD_BUS)
+        NanoMiraiItems.REGISTRY.register(MOD_BUS)
+        NanoMiraiArmorMaterials.REGISTRY.register(MOD_BUS)
 
+        Items.IRON_HELMET
         val obj = runForDist(clientTarget = {
             MOD_BUS.addListener(::onClientSetup)
             Minecraft.getInstance()
@@ -63,5 +70,9 @@ object NanoMirai {
     @SubscribeEvent
     fun onCommonSetup(event: FMLCommonSetupEvent) {
         LOGGER.log(Level.INFO, "Hello! This is working!")
+    }
+
+    fun rl(path: String): ResourceLocation {
+        return ResourceLocation.fromNamespaceAndPath(ID, path)
     }
 }
