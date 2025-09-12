@@ -1,5 +1,11 @@
 {
   "itemGroup.nanomirai": "Example Mod Tab",
   "block.nanomirai.example_block": "Example Block",
-  "item.nanomirai.goggles": "Goggles"
+  "item.nanomirai.goggles": "Goggles",
+  "item.nanomirai.nano_seed": "Nano Seed",
+  "item.nanomirai.nano_seed_swarm": "Nano Seed Swarm",
+  "item.nanomirai.nano_matrix": "Nano Matrix",
+  "item.nanomirai.nano_matrix_swarm": "Nano Matrix Swarm",
+  "item.nanomirai.nano_singularity": "Nano Singularity",
+  "item.nanomirai.nano_singularity_swarm": "Nano Singularity Swarm"
 }

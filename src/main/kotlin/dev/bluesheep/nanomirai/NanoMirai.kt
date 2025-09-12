@@ -1,6 +1,9 @@
 package dev.bluesheep.nanomirai
 
+import dev.bluesheep.nanomirai.network.ClientPayloadHandler
+import dev.bluesheep.nanomirai.network.PlayerSwarmData
 import dev.bluesheep.nanomirai.registry.NanoMiraiArmorMaterials
+import dev.bluesheep.nanomirai.registry.NanoMiraiAttachmentTypes
 import dev.bluesheep.nanomirai.registry.NanoMiraiBlocks
 import dev.bluesheep.nanomirai.registry.NanoMiraiItems
 import net.minecraft.client.Minecraft
@@ -12,6 +15,7 @@ import net.neoforged.fml.common.Mod
 import net.neoforged.fml.event.lifecycle.FMLClientSetupEvent
 import net.neoforged.fml.event.lifecycle.FMLCommonSetupEvent
 import net.neoforged.fml.event.lifecycle.FMLDedicatedServerSetupEvent
+import net.neoforged.neoforge.network.event.RegisterPayloadHandlersEvent
 import org.apache.logging.log4j.Level
 import org.apache.logging.log4j.LogManager
 import org.apache.logging.log4j.Logger
@@ -38,6 +42,7 @@ object NanoMirai {
         NanoMiraiBlocks.REGISTRY.register(MOD_BUS)
         NanoMiraiItems.REGISTRY.register(MOD_BUS)
         NanoMiraiArmorMaterials.REGISTRY.register(MOD_BUS)
+        NanoMiraiAttachmentTypes.REGISTRY.register(MOD_BUS)
 
         Items.IRON_HELMET
         val obj = runForDist(clientTarget = {
@@ -70,6 +75,16 @@ object NanoMirai {
     @SubscribeEvent
     fun onCommonSetup(event: FMLCommonSetupEvent) {
         LOGGER.log(Level.INFO, "Hello! This is working!")
+    }
+
+    @SubscribeEvent
+    fun registerPayload(event: RegisterPayloadHandlersEvent) {
+        val registrar = event.registrar("1")
+        registrar.playToClient(
+            PlayerSwarmData.TYPE,
+            PlayerSwarmData.STREAM_CODEC,
+            ClientPayloadHandler::handleDataOnMain
+        )
     }
 
     fun rl(path: String): ResourceLocation {
