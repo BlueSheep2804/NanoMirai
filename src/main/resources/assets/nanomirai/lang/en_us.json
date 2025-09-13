@@ -1,5 +1,6 @@
 {
   "itemGroup.nanomirai": "Example Mod Tab",
+  "nanomirai.hud.swarm_count": "%1$s: %2$s",
   "block.nanomirai.example_block": "Example Block",
   "item.nanomirai.goggles": "Goggles",
   "item.nanomirai.nano_seed": "Nano Seed",
