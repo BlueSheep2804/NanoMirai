@@ -1,12 +1,9 @@
 {
   "itemGroup.nanomirai": "Example Mod Tab",
-  "nanomirai.hud.swarm_count": "%1$s: %2$s",
+  "nanomirai.hud.deployed_nanomachine_count": "%1$s: %2$s",
   "block.nanomirai.example_block": "Example Block",
   "item.nanomirai.goggles": "Goggles",
   "item.nanomirai.nano_seed": "Nano Seed",
-  "item.nanomirai.nano_seed_swarm": "Nano Seed Swarm",
   "item.nanomirai.nano_matrix": "Nano Matrix",
-  "item.nanomirai.nano_matrix_swarm": "Nano Matrix Swarm",
-  "item.nanomirai.nano_singularity": "Nano Singularity",
-  "item.nanomirai.nano_singularity_swarm": "Nano Singularity Swarm"
+  "item.nanomirai.nano_singularity": "Nano Singularity"
 }

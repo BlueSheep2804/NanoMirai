@@ -1,7 +1,7 @@
 package dev.bluesheep.nanomirai.event
 
 import dev.bluesheep.nanomirai.NanoMirai
-import dev.bluesheep.nanomirai.network.PlayerSwarmData
+import dev.bluesheep.nanomirai.network.DeployedNanomachineData
 import dev.bluesheep.nanomirai.registry.NanoMiraiAttachmentTypes
 import net.minecraft.server.level.ServerPlayer
 import net.neoforged.bus.api.SubscribeEvent
@@ -15,8 +15,8 @@ object PlayerLoggedInEvent {
     fun onServerPlayerJoin(event: PlayerEvent.PlayerLoggedInEvent) {
         val player = event.entity
         if (player is ServerPlayer) {
-            val swarm = player.getData(NanoMiraiAttachmentTypes.SWARM)
-            intArrayOf(0, 1, 2).forEach { PacketDistributor.sendToPlayer(player, PlayerSwarmData(it, swarm[it])) }
+            val deployed = player.getData(NanoMiraiAttachmentTypes.DEPLOYED_NANOMACHINES)
+            intArrayOf(0, 1, 2).forEach { PacketDistributor.sendToPlayer(player, DeployedNanomachineData(it, deployed[it])) }
         }
     }
 }

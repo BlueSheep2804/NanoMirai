@@ -1,7 +1,7 @@
 package dev.bluesheep.nanomirai
 
 import dev.bluesheep.nanomirai.network.ClientPayloadHandler
-import dev.bluesheep.nanomirai.network.PlayerSwarmData
+import dev.bluesheep.nanomirai.network.DeployedNanomachineData
 import dev.bluesheep.nanomirai.registry.NanoMiraiArmorMaterials
 import dev.bluesheep.nanomirai.registry.NanoMiraiAttachmentTypes
 import dev.bluesheep.nanomirai.registry.NanoMiraiBlocks
@@ -81,8 +81,8 @@ object NanoMirai {
     fun registerPayload(event: RegisterPayloadHandlersEvent) {
         val registrar = event.registrar("1")
         registrar.playToClient(
-            PlayerSwarmData.TYPE,
-            PlayerSwarmData.STREAM_CODEC,
+            DeployedNanomachineData.TYPE,
+            DeployedNanomachineData.STREAM_CODEC,
             ClientPayloadHandler::handleDataOnMain
         )
     }
