@@ -4,8 +4,10 @@ import dev.bluesheep.nanomirai.network.ClientPayloadHandler
 import dev.bluesheep.nanomirai.network.DeployedNanomachineData
 import dev.bluesheep.nanomirai.registry.NanoMiraiArmorMaterials
 import dev.bluesheep.nanomirai.registry.NanoMiraiAttachmentTypes
+import dev.bluesheep.nanomirai.registry.NanoMiraiBlockEntities
 import dev.bluesheep.nanomirai.registry.NanoMiraiBlocks
 import dev.bluesheep.nanomirai.registry.NanoMiraiItems
+import dev.bluesheep.nanomirai.registry.NanoMiraiMenu
 import net.minecraft.client.Minecraft
 import net.minecraft.resources.ResourceLocation
 import net.minecraft.world.item.Items
@@ -15,6 +17,7 @@ import net.neoforged.fml.common.Mod
 import net.neoforged.fml.event.lifecycle.FMLClientSetupEvent
 import net.neoforged.fml.event.lifecycle.FMLCommonSetupEvent
 import net.neoforged.fml.event.lifecycle.FMLDedicatedServerSetupEvent
+import net.neoforged.neoforge.client.event.RegisterMenuScreensEvent
 import net.neoforged.neoforge.network.event.RegisterPayloadHandlersEvent
 import org.apache.logging.log4j.Level
 import org.apache.logging.log4j.LogManager
@@ -41,6 +44,8 @@ object NanoMirai {
         // Register the KDeferredRegister to the mod-specific event bus
         NanoMiraiBlocks.REGISTRY.register(MOD_BUS)
         NanoMiraiItems.REGISTRY.register(MOD_BUS)
+        NanoMiraiBlockEntities.REGISTRY.register(MOD_BUS)
+        NanoMiraiMenu.REGISTRY.register(MOD_BUS)
         NanoMiraiArmorMaterials.REGISTRY.register(MOD_BUS)
         NanoMiraiAttachmentTypes.REGISTRY.register(MOD_BUS)
 

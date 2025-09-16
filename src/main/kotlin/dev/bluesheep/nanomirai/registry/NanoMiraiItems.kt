@@ -3,6 +3,7 @@ package dev.bluesheep.nanomirai.registry
 import dev.bluesheep.nanomirai.NanoMirai
 import dev.bluesheep.nanomirai.item.NanoMachineItem
 import net.minecraft.world.item.ArmorItem
+import net.minecraft.world.item.BlockItem
 import net.minecraft.world.item.Item
 import net.neoforged.neoforge.registries.DeferredRegister
 import thedarkcolour.kotlinforforge.neoforge.forge.getValue
@@ -26,5 +27,9 @@ object NanoMiraiItems {
     }
     val NANO_SINGULARITY: NanoMachineItem by REGISTRY.register("nano_singularity") { ->
         NanoMachineItem(2, Item.Properties())
+    }
+
+    val NANOMACHINE_ASSEMBLER: BlockItem by REGISTRY.registerSimpleBlockItem("nanomachine_assembler") { ->
+        NanoMiraiBlocks.NANOMACHINE_ASSEMBLER
     }
 }
