@@ -1,7 +1,5 @@
 package dev.bluesheep.nanomirai.client.hud
 
-import dev.bluesheep.nanomirai.NanoMirai
-import dev.bluesheep.nanomirai.NanoMirai.rl
 import dev.bluesheep.nanomirai.registry.NanoMiraiAttachmentTypes.DEPLOYED_NANOMACHINES
 import dev.bluesheep.nanomirai.registry.NanoMiraiItems
 import dev.bluesheep.nanomirai.util.NanoTier
@@ -10,19 +8,9 @@ import net.minecraft.client.Minecraft
 import net.minecraft.client.gui.GuiGraphics
 import net.minecraft.network.chat.Component
 import net.minecraft.world.item.ItemStack
-import net.neoforged.api.distmarker.Dist
-import net.neoforged.bus.api.SubscribeEvent
-import net.neoforged.fml.common.EventBusSubscriber
-import net.neoforged.neoforge.client.event.RegisterGuiLayersEvent
 
-@EventBusSubscriber(value = [Dist.CLIENT], modid = NanoMirai.ID)
 object NanoMiraiHud {
     const val DEPLOYED_NANOMACHINES_LANG_KEY = "nanomirai.hud.deployed_nanomachine_count"
-
-    @SubscribeEvent
-    fun hud(event: RegisterGuiLayersEvent) {
-        event.registerAboveAll(rl("goggles_hud"), ::render)
-    }
 
     fun render(guiGraphics: GuiGraphics, deltaTracker: DeltaTracker) {
         val player = Minecraft.getInstance().player

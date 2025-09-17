@@ -47,7 +47,6 @@ object NanoMirai {
     init {
         LOGGER.log(Level.INFO, "Hello world!")
 
-        // Register the KDeferredRegister to the mod-specific event bus
         NanoMiraiBlocks.REGISTRY.register(MOD_BUS)
         NanoMiraiItems.REGISTRY.register(MOD_BUS)
         NanoMiraiBlockEntities.REGISTRY.register(MOD_BUS)
@@ -56,38 +55,6 @@ object NanoMirai {
         NanoMiraiAttachmentTypes.REGISTRY.register(MOD_BUS)
         NanoMiraiRecipeType.REGISTRY.register(MOD_BUS)
         NanoMiraiRecipeSerializer.REGISTRY.register(MOD_BUS)
-
-        Items.IRON_HELMET
-        val obj = runForDist(clientTarget = {
-            MOD_BUS.addListener(::onClientSetup)
-            Minecraft.getInstance()
-        }, serverTarget = {
-            MOD_BUS.addListener(::onServerSetup)
-            "test"
-        })
-
-        println(obj)
-    }
-
-    /**
-     * This is used for initializing client specific
-     * things such as renderers and keymaps
-     * Fired on the mod specific event bus.
-     */
-    private fun onClientSetup(event: FMLClientSetupEvent) {
-        LOGGER.log(Level.INFO, "Initializing client...")
-    }
-
-    /**
-     * Fired on the global Forge bus.
-     */
-    private fun onServerSetup(event: FMLDedicatedServerSetupEvent) {
-        LOGGER.log(Level.INFO, "Server starting...")
-    }
-
-    @SubscribeEvent
-    fun onCommonSetup(event: FMLCommonSetupEvent) {
-        LOGGER.log(Level.INFO, "Hello! This is working!")
     }
 
     @SubscribeEvent
