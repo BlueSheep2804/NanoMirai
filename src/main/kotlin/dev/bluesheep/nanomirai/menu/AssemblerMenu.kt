@@ -3,24 +3,27 @@ package dev.bluesheep.nanomirai.menu
 import dev.bluesheep.nanomirai.block.entity.AssemblerBlockEntity
 import dev.bluesheep.nanomirai.registry.NanoMiraiBlocks
 import dev.bluesheep.nanomirai.registry.NanoMiraiMenu
-import net.minecraft.world.Container
-import net.minecraft.world.SimpleContainer
+import net.minecraft.network.FriendlyByteBuf
 import net.minecraft.world.entity.player.Inventory
 import net.minecraft.world.entity.player.Player
-import net.minecraft.world.inventory.AbstractContainerMenu
-import net.minecraft.world.inventory.ContainerLevelAccess
-import net.minecraft.world.inventory.Slot
+import net.minecraft.world.inventory.*
 import net.minecraft.world.item.ItemStack
 import net.neoforged.neoforge.items.ItemStackHandler
 import net.neoforged.neoforge.items.SlotItemHandler
 
-class AssemblerMenu(containerId: Int, playerInv: Inventory, val access: ContainerLevelAccess, val items: ItemStackHandler) : AbstractContainerMenu(NanoMiraiMenu.NANOMACHINE_ASSEMBLER, containerId) {
-    constructor(containerId: Int, playerInv: Inventory) : this(containerId, playerInv, ContainerLevelAccess.NULL, ItemStackHandler(AssemblerBlockEntity.SIZE))
+class AssemblerMenu(containerId: Int, playerInv: Inventory, val access: ContainerLevelAccess, val blockEntity: AssemblerBlockEntity, val data: ContainerData) : AbstractContainerMenu(NanoMiraiMenu.ASSEMBLER, containerId) {
+    constructor(containerId: Int, playerInv: Inventory, extraData: FriendlyByteBuf) : this(
+        containerId,
+        playerInv,
+        ContainerLevelAccess.NULL,
+        playerInv.player.level().getBlockEntity(extraData.readBlockPos()) as AssemblerBlockEntity,
+        SimpleContainerData(2)
+    )
 
     init {
-        addContainerSlots(items)
+        addContainerSlots(blockEntity.itemHandler)
         addPlayerInventorySlots(playerInv)
-//        this.addSlot(Slot(items, 0, 8, 84))
+        addDataSlots(data)
     }
 
     // 0-9 Output + Input

@@ -1,34 +1,68 @@
 package dev.bluesheep.nanomirai.block.entity
 
+import dev.bluesheep.nanomirai.recipe.AssemblerRecipe
+import dev.bluesheep.nanomirai.recipe.MultipleItemRecipeInput
 import dev.bluesheep.nanomirai.registry.NanoMiraiBlockEntities
+import dev.bluesheep.nanomirai.registry.NanoMiraiRecipeType
 import net.minecraft.core.BlockPos
 import net.minecraft.core.HolderLookup
-import net.minecraft.core.NonNullList
 import net.minecraft.nbt.CompoundTag
 import net.minecraft.network.protocol.Packet
 import net.minecraft.network.protocol.game.ClientGamePacketListener
 import net.minecraft.network.protocol.game.ClientboundBlockEntityDataPacket
 import net.minecraft.world.Containers
 import net.minecraft.world.SimpleContainer
+import net.minecraft.world.inventory.ContainerData
 import net.minecraft.world.item.ItemStack
+import net.minecraft.world.item.crafting.RecipeHolder
 import net.minecraft.world.level.Level
 import net.minecraft.world.level.block.entity.BlockEntity
 import net.minecraft.world.level.block.state.BlockState
 import net.neoforged.neoforge.items.ItemStackHandler
+import java.util.Optional
 
 class AssemblerBlockEntity(pos: BlockPos, blockState: BlockState) : BlockEntity(NanoMiraiBlockEntities.NANOMACHINE_ASSEBLER, pos, blockState) {
     companion object {
         const val SIZE = 10
+        const val OUTPUT_SLOT = 9
     }
-    val inputItem = ItemStackHandler(SIZE)
+    val itemHandler = ItemStackHandler(SIZE)
+    var progress = 0
+    var maxProgress = 100
+    val data: ContainerData = object : ContainerData {
+        override fun get(index: Int): Int {
+            return when (index) {
+                0 -> progress
+                1 -> maxProgress
+                else -> 0
+            }
+        }
+
+        override fun set(index: Int, value: Int) {
+            when (index) {
+                0 -> progress = value
+                1 -> maxProgress = value
+            }
+        }
+
+        override fun getCount(): Int {
+            return 2
+        }
+    }
 
     override fun loadAdditional(tag: CompoundTag, registries: HolderLookup.Provider) {
         super.loadAdditional(tag, registries)
-        inputItem.deserializeNBT(registries, tag.getCompound("items"))
+
+        itemHandler.deserializeNBT(registries, tag.getCompound("items"))
+        progress = tag.getInt("progress")
+        maxProgress = tag.getInt("maxProgress")
     }
 
     override fun saveAdditional(tag: CompoundTag, registries: HolderLookup.Provider) {
-        tag.put("items", inputItem.serializeNBT(registries))
+        tag.put("items", itemHandler.serializeNBT(registries))
+        tag.putInt("progress", progress)
+        tag.putInt("maxProgress", maxProgress)
+
         super.saveAdditional(tag, registries)
     }
 
@@ -41,15 +75,113 @@ class AssemblerBlockEntity(pos: BlockPos, blockState: BlockState) : BlockEntity(
     }
 
     fun drops() {
-        val inventory = SimpleContainer(inputItem.slots)
+        val inventory = SimpleContainer(itemHandler.slots)
         for (i in 0 until inventory.containerSize) {
-            inventory.setItem(i, inputItem.getStackInSlot(i))
+            inventory.setItem(i, itemHandler.getStackInSlot(i))
         }
 
         Containers.dropContents(level, worldPosition, inventory)
     }
 
     fun tick(level: Level, pos: BlockPos, state: BlockState) {
+        if (hasRecipe()) {
+            increaseCraftingProgress()
+            setChanged(level, pos, state)
 
+            if (hasCraftingFinished()) {
+                craftItem()
+                resetProgress()
+            }
+        } else {
+            resetProgress()
+        }
+    }
+
+    private fun resetProgress() {
+        progress = 0
+        maxProgress = 100
+    }
+
+    private fun craftItem() {
+        val recipe = getCurrentRecipe()
+        if (recipe.isEmpty) return
+        val output = recipe.get().value.result
+
+//        itemHandler.extractItem(0, 1, false)
+        recipe.get().value.inputItems.forEach { ingredient ->
+            var toRemove = 1
+            for (i in 0 until SIZE - 1) {
+                val stackInSlot = itemHandler.getStackInSlot(i)
+//                val stack = ingredient.items.find { it.`is`(stackInSlot.item) && it.count <= stackInSlot.count }
+//                if (stack == null || !ingredient.test(stackInSlot)) continue
+//                val extracted = itemHandler.extractItem(i, stack.count, false)
+                if (ingredient.test(stackInSlot) && toRemove > 0) {
+                    val extracted = itemHandler.extractItem(i, toRemove, false)
+                    toRemove -= extracted.count
+                }
+            }
+        }
+        itemHandler.setStackInSlot(
+            9,
+            ItemStack(
+                output.item,
+                itemHandler.getStackInSlot(OUTPUT_SLOT).count + output.count
+            )
+        )
+    }
+
+    private fun hasCraftingFinished(): Boolean {
+        return progress >= maxProgress
+    }
+
+    private fun increaseCraftingProgress() {
+        progress++
+    }
+
+    private fun hasRecipe(): Boolean {
+        val recipe = getCurrentRecipe()
+        if (recipe.isEmpty) return false
+        val output = recipe.get().value.result
+
+        return canInsertAmountIntoOutputSlot(output.count) && canInsertItemIntoOutputSlot(output)
+    }
+
+    private fun getCurrentRecipe(): Optional<RecipeHolder<AssemblerRecipe>> {
+        if (level == null) return Optional.empty()
+
+        return level!!.recipeManager.getRecipeFor(
+            NanoMiraiRecipeType.ASSEMBLER,
+            MultipleItemRecipeInput(inputList()),
+            level!!
+        )
+    }
+
+    private fun inputList(): List<ItemStack> {
+        val list = mutableListOf<ItemStack>()
+        for (i in 0 until SIZE-1) {
+            val stack = itemHandler.getStackInSlot(i)
+            if (stack.isEmpty)
+                continue
+
+            val existsStack = list.find { stack.`is`(it.item) }
+            if (existsStack != null) {
+                existsStack.count += stack.count
+                continue
+            }
+            list.add(itemHandler.getStackInSlot(i).copy())
+        }
+        return list
+    }
+
+    private fun canInsertItemIntoOutputSlot(output: ItemStack): Boolean {
+        return itemHandler.getStackInSlot(OUTPUT_SLOT).isEmpty ||
+                itemHandler.getStackInSlot(OUTPUT_SLOT).item == output.item
+    }
+
+    private fun canInsertAmountIntoOutputSlot(count: Int): Boolean {
+        val maxCount = if (itemHandler.getStackInSlot(OUTPUT_SLOT).isEmpty) 64 else itemHandler.getStackInSlot(OUTPUT_SLOT).maxStackSize
+        val currentCount = itemHandler.getStackInSlot(OUTPUT_SLOT).count
+
+        return maxCount >= currentCount + count
     }
 }

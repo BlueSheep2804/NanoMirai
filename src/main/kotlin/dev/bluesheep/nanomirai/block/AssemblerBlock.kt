@@ -14,8 +14,6 @@ import net.minecraft.world.entity.player.Player
 import net.minecraft.world.inventory.ContainerLevelAccess
 import net.minecraft.world.level.Level
 import net.minecraft.world.level.block.BaseEntityBlock
-import net.minecraft.world.level.block.Block
-import net.minecraft.world.level.block.EntityBlock
 import net.minecraft.world.level.block.RenderShape
 import net.minecraft.world.level.block.entity.BlockEntity
 import net.minecraft.world.level.block.entity.BlockEntityTicker
@@ -32,22 +30,25 @@ class AssemblerBlock(properties: Properties) : BaseEntityBlock(properties) {
         return AssemblerBlockEntity(pos, state)
     }
 
-    override fun codec(): MapCodec<out BaseEntityBlock?> {
+    override fun codec(): MapCodec<out BaseEntityBlock> {
         return CODEC
     }
 
     override fun getMenuProvider(state: BlockState, level: Level, pos: BlockPos): MenuProvider? {
-        val container = level.getBlockEntity(pos)
-        if (container !is AssemblerBlockEntity) return null
+        val blockEntity = level.getBlockEntity(pos)
+        if (blockEntity !is AssemblerBlockEntity) return null
         return SimpleMenuProvider(
-            { id, inv, _ -> AssemblerMenu(id, inv, ContainerLevelAccess.create(level, pos), container.inputItem) },
+            { id, inv, _ -> AssemblerMenu(id, inv, ContainerLevelAccess.create(level, pos), blockEntity, blockEntity.data) },
             Component.translatable("container.nanomirai.nanomachine_assembler")
         )
     }
 
     override fun useWithoutItem(state: BlockState, level: Level, pos: BlockPos, player: Player, hitResult: BlockHitResult): InteractionResult {
         if (!level.isClientSide && player is ServerPlayer) {
-            player.openMenu(state.getMenuProvider(level, pos))
+            player.openMenu(
+                state.getMenuProvider(level, pos)!!,
+                pos
+            )
         }
         return InteractionResult.sidedSuccess(level.isClientSide)
     }

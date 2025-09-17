@@ -8,6 +8,8 @@ import dev.bluesheep.nanomirai.registry.NanoMiraiBlockEntities
 import dev.bluesheep.nanomirai.registry.NanoMiraiBlocks
 import dev.bluesheep.nanomirai.registry.NanoMiraiItems
 import dev.bluesheep.nanomirai.registry.NanoMiraiMenu
+import dev.bluesheep.nanomirai.registry.NanoMiraiRecipeSerializer
+import dev.bluesheep.nanomirai.registry.NanoMiraiRecipeType
 import net.minecraft.client.Minecraft
 import net.minecraft.resources.ResourceLocation
 import net.minecraft.world.item.Items
@@ -48,6 +50,8 @@ object NanoMirai {
         NanoMiraiMenu.REGISTRY.register(MOD_BUS)
         NanoMiraiArmorMaterials.REGISTRY.register(MOD_BUS)
         NanoMiraiAttachmentTypes.REGISTRY.register(MOD_BUS)
+        NanoMiraiRecipeType.REGISTRY.register(MOD_BUS)
+        NanoMiraiRecipeSerializer.REGISTRY.register(MOD_BUS)
 
         Items.IRON_HELMET
         val obj = runForDist(clientTarget = {

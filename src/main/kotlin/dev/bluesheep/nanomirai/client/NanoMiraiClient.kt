@@ -12,6 +12,6 @@ import net.neoforged.neoforge.client.event.RegisterMenuScreensEvent
 object NanoMiraiClient {
     @SubscribeEvent
     fun registerScreens(event: RegisterMenuScreensEvent) {
-        event.register(NanoMiraiMenu.NANOMACHINE_ASSEMBLER, ::AssemblerScreen)
+        event.register(NanoMiraiMenu.ASSEMBLER, ::AssemblerScreen)
     }
 }
