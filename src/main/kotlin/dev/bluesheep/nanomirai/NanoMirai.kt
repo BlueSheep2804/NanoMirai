@@ -1,5 +1,8 @@
 package dev.bluesheep.nanomirai
 
+import dev.bluesheep.nanomirai.data.NanoMiraiBlockProvider
+import dev.bluesheep.nanomirai.data.NanoMiraiItemModelProvider
+import dev.bluesheep.nanomirai.data.NanoMiraiRecipeProvider
 import dev.bluesheep.nanomirai.network.ClientPayloadHandler
 import dev.bluesheep.nanomirai.network.DeployedNanomachineData
 import dev.bluesheep.nanomirai.registry.NanoMiraiArmorMaterials
@@ -20,6 +23,7 @@ import net.neoforged.fml.event.lifecycle.FMLClientSetupEvent
 import net.neoforged.fml.event.lifecycle.FMLCommonSetupEvent
 import net.neoforged.fml.event.lifecycle.FMLDedicatedServerSetupEvent
 import net.neoforged.neoforge.client.event.RegisterMenuScreensEvent
+import net.neoforged.neoforge.data.event.GatherDataEvent
 import net.neoforged.neoforge.network.event.RegisterPayloadHandlersEvent
 import org.apache.logging.log4j.Level
 import org.apache.logging.log4j.LogManager
@@ -94,6 +98,19 @@ object NanoMirai {
             DeployedNanomachineData.STREAM_CODEC,
             ClientPayloadHandler::handleDataOnMain
         )
+    }
+
+    @SubscribeEvent
+    fun gatherData(event: GatherDataEvent) {
+        val generator = event.generator
+        val output = generator.packOutput
+        val lookupProvider = event.lookupProvider
+        val existingFileHelper = event.existingFileHelper
+
+        generator.addProvider(event.includeServer(), NanoMiraiRecipeProvider(output, lookupProvider))
+
+        generator.addProvider(event.includeClient(), NanoMiraiBlockProvider(output, existingFileHelper))
+        generator.addProvider(event.includeClient(), NanoMiraiItemModelProvider(output, existingFileHelper))
     }
 
     fun rl(path: String): ResourceLocation {

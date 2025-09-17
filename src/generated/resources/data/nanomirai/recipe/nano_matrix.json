@@ -1,0 +1,18 @@
+{
+  "type": "nanomirai:assembler",
+  "ingredients": [
+    {
+      "item": "minecraft:redstone"
+    },
+    {
+      "item": "minecraft:coal"
+    },
+    {
+      "item": "minecraft:gold_ingot"
+    }
+  ],
+  "result": {
+    "count": 1,
+    "id": "nanomirai:nano_matrix"
+  }
+}
