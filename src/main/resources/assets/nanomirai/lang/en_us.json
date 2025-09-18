@@ -1,5 +1,5 @@
 {
-  "itemGroup.nanomirai": "Example Mod Tab",
+  "itemGroup.nanomirai": "NanoMirai",
   "nanomirai.hud.deployed_nanomachine_count": "%1$s: %2$s",
   "block.nanomirai.nanomachine_assembler": "Nanomachine Assembler",
   "block.nanomirai.laser_engraver": "Laser Engraver",

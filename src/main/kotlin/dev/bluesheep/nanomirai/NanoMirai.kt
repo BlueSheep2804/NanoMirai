@@ -9,6 +9,7 @@ import dev.bluesheep.nanomirai.registry.NanoMiraiArmorMaterials
 import dev.bluesheep.nanomirai.registry.NanoMiraiAttachmentTypes
 import dev.bluesheep.nanomirai.registry.NanoMiraiBlockEntities
 import dev.bluesheep.nanomirai.registry.NanoMiraiBlocks
+import dev.bluesheep.nanomirai.registry.NanoMiraiCreativeTab
 import dev.bluesheep.nanomirai.registry.NanoMiraiItems
 import dev.bluesheep.nanomirai.registry.NanoMiraiMenu
 import dev.bluesheep.nanomirai.registry.NanoMiraiRecipeSerializer
@@ -55,6 +56,7 @@ object NanoMirai {
         NanoMiraiAttachmentTypes.REGISTRY.register(MOD_BUS)
         NanoMiraiRecipeType.REGISTRY.register(MOD_BUS)
         NanoMiraiRecipeSerializer.REGISTRY.register(MOD_BUS)
+        NanoMiraiCreativeTab.REGISTRY.register(MOD_BUS)
     }
 
     @SubscribeEvent
