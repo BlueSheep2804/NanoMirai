@@ -9,5 +9,6 @@ import net.neoforged.neoforge.common.data.ExistingFileHelper
 class NanoMiraiBlockProvider(output: PackOutput, exFileHelper: ExistingFileHelper) : BlockStateProvider(output, NanoMirai.ID, exFileHelper) {
     override fun registerStatesAndModels() {
         simpleBlock(NanoMiraiBlocks.NANOMACHINE_ASSEMBLER)
+        simpleBlock(NanoMiraiBlocks.LASER_ENGRAVER)
     }
 }

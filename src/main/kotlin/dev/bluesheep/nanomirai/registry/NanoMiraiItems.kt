@@ -32,4 +32,7 @@ object NanoMiraiItems {
     val NANOMACHINE_ASSEMBLER: BlockItem by REGISTRY.registerSimpleBlockItem("nanomachine_assembler") { ->
         NanoMiraiBlocks.NANOMACHINE_ASSEMBLER
     }
+    val LASER_ENGRAVER: BlockItem by REGISTRY.registerSimpleBlockItem("laser_engraver") { ->
+        NanoMiraiBlocks.LASER_ENGRAVER
+    }
 }

@@ -1,6 +1,9 @@
 package dev.bluesheep.nanomirai.data
 
+import dev.bluesheep.nanomirai.NanoMirai.rl
 import dev.bluesheep.nanomirai.recipe.AssemblerRecipeBuilder
+import dev.bluesheep.nanomirai.recipe.LaserRecipeBuilder
+import dev.bluesheep.nanomirai.recipe.LaserRecipeSerializer
 import dev.bluesheep.nanomirai.registry.NanoMiraiItems
 import net.minecraft.core.HolderLookup
 import net.minecraft.core.NonNullList
@@ -83,5 +86,20 @@ class NanoMiraiRecipeProvider(output: PackOutput, registries: CompletableFuture<
             .pattern("III")
             .unlockedBy("has_iron", has(Items.IRON_INGOT))
             .save(recipeOutput)
+
+        LaserRecipeBuilder(
+            ItemStack(NanoMiraiItems.NANO_MATRIX),
+            Ingredient.of(NanoMiraiItems.NANO_SEED)
+        )
+            .unlockedBy("has_nanomachine_assembler", has(NanoMiraiItems.NANOMACHINE_ASSEMBLER))
+            .save(recipeOutput, rl("laser/nano_matrix_from_nano_seed"))
+
+        LaserRecipeBuilder(
+            ItemStack(NanoMiraiItems.NANO_SINGULARITY),
+            Ingredient.of(NanoMiraiItems.NANO_MATRIX),
+            Ingredient.of(Items.ECHO_SHARD)
+        )
+            .unlockedBy("has_nanomachine_assembler", has(NanoMiraiItems.NANOMACHINE_ASSEMBLER))
+            .save(recipeOutput, rl("laser/nano_singularity_from_nano_matrix"))
     }
 }

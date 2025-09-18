@@ -4,6 +4,7 @@ import dev.bluesheep.nanomirai.NanoMirai
 import dev.bluesheep.nanomirai.NanoMirai.rl
 import dev.bluesheep.nanomirai.client.hud.NanoMiraiHud
 import dev.bluesheep.nanomirai.client.screen.AssemblerScreen
+import dev.bluesheep.nanomirai.client.screen.LaserEngraverScreen
 import dev.bluesheep.nanomirai.registry.NanoMiraiMenu
 import net.neoforged.api.distmarker.Dist
 import net.neoforged.bus.api.SubscribeEvent
@@ -21,5 +22,6 @@ object NanoMiraiClient {
     @SubscribeEvent
     fun registerScreens(event: RegisterMenuScreensEvent) {
         event.register(NanoMiraiMenu.ASSEMBLER, ::AssemblerScreen)
+        event.register(NanoMiraiMenu.LASER_ENGRAVER, ::LaserEngraverScreen)
     }
 }

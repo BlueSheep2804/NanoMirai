@@ -1,11 +1,12 @@
 {
   "itemGroup.nanomirai": "Example Mod Tab",
   "nanomirai.hud.deployed_nanomachine_count": "%1$s: %2$s",
-  "block.nanomirai.example_block": "Example Block",
   "block.nanomirai.nanomachine_assembler": "Nanomachine Assembler",
+  "block.nanomirai.laser_engraver": "Laser Engraver",
   "item.nanomirai.goggles": "Goggles",
   "item.nanomirai.nano_seed": "Nano Seed",
   "item.nanomirai.nano_matrix": "Nano Matrix",
   "item.nanomirai.nano_singularity": "Nano Singularity",
-  "container.nanomirai.nanomachine_assembler": "Nanomachine Assembler"
+  "container.nanomirai.nanomachine_assembler": "Nanomachine Assembler",
+  "container.nanomirai.laser_engraver": "Laser Engraver"
 }

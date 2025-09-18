@@ -1,10 +1,14 @@
-// 1.21.1	2025-09-17T20:53:35.5979858	Recipes
+// 1.21.1	2025-09-18T02:41:21.7710519	Recipes
+56dad2ff28efc6d511486a38b5f289cba6ec8037 data/nanomirai/advancement/recipes/laser/nano_matrix_from_nano_seed.json
+9b5fbaf15e3bed9ff8aa114da035d34e9cad1e8a data/nanomirai/advancement/recipes/laser/nano_singularity_from_nano_matrix.json
 76c68fa9ca0c1c7df64fa01337e839a067d9165a data/nanomirai/advancement/recipes/misc/goggles.json
 adc70882fbd63764fc97dceed2f716555b0f19c7 data/nanomirai/advancement/recipes/misc/nanomachine_assembler.json
 90a09067136b8c80c98fd8ef1937e1d8d9868696 data/nanomirai/advancement/recipes/nano_matrix.json
 f53076a915f804b85bc11f99e7dfe1d088d4d6a4 data/nanomirai/advancement/recipes/nano_seed.json
 7a2c2420b4c46b49c35928157c45b8cb23b1af96 data/nanomirai/advancement/recipes/nano_singularity.json
 d07839b27e7c36d9fd73cd42349321117fc256e4 data/nanomirai/recipe/goggles.json
+f6f28fc1b963f16c22f952f1c667b8a472af4ff9 data/nanomirai/recipe/laser/nano_matrix_from_nano_seed.json
+8ca08ac055dcddf8285ea7a2385c69014ec9e10a data/nanomirai/recipe/laser/nano_singularity_from_nano_matrix.json
 d5c42e6c26e000c09059984713aa07029f7e6ccf data/nanomirai/recipe/nanomachine_assembler.json
 c8a1e29bbb2de3327d37bc31d4ccb54232077f2e data/nanomirai/recipe/nano_matrix.json
 d0588b2ae6014c9352136b004ddb90fe797ed35b data/nanomirai/recipe/nano_seed.json

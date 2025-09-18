@@ -1,0 +1,11 @@
+{
+  "type": "nanomirai:laser",
+  "ingredient": {
+    "item": "nanomirai:nano_seed"
+  },
+  "lens": [],
+  "result": {
+    "count": 1,
+    "id": "nanomirai:nano_matrix"
+  }
+}

@@ -17,5 +17,6 @@ class NanoMiraiItemModelProvider(output: PackOutput, existingFileHelper: Existin
         basicItem(NanoMiraiItems.GOGGLES)
 
         simpleBlockItem(NanoMiraiBlocks.NANOMACHINE_ASSEMBLER)
+        simpleBlockItem(NanoMiraiBlocks.LASER_ENGRAVER)
     }
 }

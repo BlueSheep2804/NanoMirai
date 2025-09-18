@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_nanomachine_assembler": {
+      "conditions": {
+        "items": [
+          {
+            "items": "nanomirai:nanomachine_assembler"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "nanomirai:laser/nano_matrix_from_nano_seed"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_the_recipe",
+      "has_nanomachine_assembler"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "nanomirai:laser/nano_matrix_from_nano_seed"
+    ]
+  }
+}

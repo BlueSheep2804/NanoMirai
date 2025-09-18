@@ -1,3 +1,5 @@
-// 1.21.1	2025-09-17T12:28:50.0893459	Block States: nanomirai
+// 1.21.1	2025-09-18T02:20:16.239937	Block States: nanomirai
+f51cb8d4d3bb10b8884acad5c53b074da3aa7f24 assets/nanomirai/blockstates/laser_engraver.json
 4f8eea5319b12210349437030afc7b18ce918563 assets/nanomirai/blockstates/nanomachine_assembler.json
+47bb53134fa355542cfbf3b239c080d1725050c5 assets/nanomirai/models/block/laser_engraver.json
 7b098e8b874444159ed5de237e5421d017972813 assets/nanomirai/models/block/nanomachine_assembler.json

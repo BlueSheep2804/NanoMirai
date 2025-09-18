@@ -1,0 +1,13 @@
+{
+  "type": "nanomirai:laser",
+  "ingredient": {
+    "item": "nanomirai:nano_matrix"
+  },
+  "lens": {
+    "item": "minecraft:echo_shard"
+  },
+  "result": {
+    "count": 1,
+    "id": "nanomirai:nano_singularity"
+  }
+}
