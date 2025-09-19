@@ -1,0 +1,27 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "C": {
+      "item": "minecraft:copper_ingot"
+    },
+    "G": {
+      "item": "nanomirai:graphite"
+    },
+    "M": {
+      "item": "nanomirai:broken_nanomachine"
+    },
+    "R": {
+      "item": "minecraft:redstone"
+    }
+  },
+  "pattern": [
+    "GRG",
+    "CMC",
+    "GRG"
+  ],
+  "result": {
+    "count": 1,
+    "id": "nanomirai:nano_proto"
+  }
+}

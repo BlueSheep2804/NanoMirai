@@ -1,7 +1,13 @@
-// 1.21.1	2025-09-18T02:20:16.2409357	Item Models: nanomirai
+// 1.21.1	2025-09-20T00:34:28.4197017	Item Models: nanomirai
+899b7290cbb64a057afcbc553e31968bfefbb8f5 assets/nanomirai/models/item/amethyst_lens.json
+27ce0c97f5efeb0727ee8d4c2da81238bbc22563 assets/nanomirai/models/item/broken_nanomachine.json
 45446492fcee0151a2d3a42bdc85f42bd563a5c9 assets/nanomirai/models/item/goggles.json
+b33a4533538669212858d166dc8d4ac007e1c46a assets/nanomirai/models/item/graphene_sheet.json
+47e0fb4ea5e2c8019d394f79d4b0ce71af45ce93 assets/nanomirai/models/item/graphite.json
 30dd9d3786fbaa4be6c259f56e22055f9ed10a7d assets/nanomirai/models/item/laser_engraver.json
 e9f06f66d4f58ae9878ba98ef9aed6dbe43e38a8 assets/nanomirai/models/item/nanomachine_assembler.json
+d51c08fe039f2316fd94322f53676a24ccfb46ae assets/nanomirai/models/item/nano_cell.json
 1d27be0085ddc5349397981bb1dc95af227e37b2 assets/nanomirai/models/item/nano_matrix.json
-4e2d25846e212cebd6af5c3fb1e1536442e560e7 assets/nanomirai/models/item/nano_seed.json
+68babcec65e31a309f0a6a2bbfc8c52c9f0381a1 assets/nanomirai/models/item/nano_proto.json
 fd17f8697aa6a494be2a8aa743377e43e6c6fe07 assets/nanomirai/models/item/nano_singularity.json
+aecfc26bced6729d6cfef996c661395f2629ca52 assets/nanomirai/models/item/sculk_lens.json

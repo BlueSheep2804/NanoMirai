@@ -3,7 +3,6 @@ package dev.bluesheep.nanomirai.data
 import dev.bluesheep.nanomirai.NanoMirai.rl
 import dev.bluesheep.nanomirai.recipe.AssemblerRecipeBuilder
 import dev.bluesheep.nanomirai.recipe.LaserRecipeBuilder
-import dev.bluesheep.nanomirai.recipe.LaserRecipeSerializer
 import dev.bluesheep.nanomirai.registry.NanoMiraiItems
 import net.minecraft.core.HolderLookup
 import net.minecraft.core.NonNullList
@@ -12,19 +11,35 @@ import net.minecraft.data.recipes.RecipeCategory
 import net.minecraft.data.recipes.RecipeOutput
 import net.minecraft.data.recipes.RecipeProvider
 import net.minecraft.data.recipes.ShapedRecipeBuilder
+import net.minecraft.data.recipes.ShapelessRecipeBuilder
+import net.minecraft.data.recipes.SimpleCookingRecipeBuilder
 import net.minecraft.tags.ItemTags
 import net.minecraft.world.item.ItemStack
 import net.minecraft.world.item.Items
 import net.minecraft.world.item.crafting.Ingredient
 import net.neoforged.neoforge.common.Tags
-import net.neoforged.neoforge.common.data.internal.NeoForgeItemTagsProvider
 import java.util.concurrent.CompletableFuture
 
 class NanoMiraiRecipeProvider(output: PackOutput, registries: CompletableFuture<HolderLookup.Provider>) : RecipeProvider(output, registries) {
     override fun buildRecipes(recipeOutput: RecipeOutput) {
+        // Nano Proto
+        ShapedRecipeBuilder.shaped(
+            RecipeCategory.MISC,
+            NanoMiraiItems.NANO_PROTO
+        )
+            .define('G', NanoMiraiItems.GRAPHITE)
+            .define('R', Items.REDSTONE)
+            .define('C', Items.COPPER_INGOT)
+            .define('M', NanoMiraiItems.BROKEN_NANOMACHINE)
+            .pattern("GRG")
+            .pattern("CMC")
+            .pattern("GRG")
+            .unlockedBy("has_broken_nanomachine", has(NanoMiraiItems.BROKEN_NANOMACHINE))
+            .save(recipeOutput)
+
         // Nano Seed
         AssemblerRecipeBuilder(
-            ItemStack(NanoMiraiItems.NANO_SEED),
+            ItemStack(NanoMiraiItems.NANO_CELL),
             NonNullList.copyOf(
                 listOf(
                     Items.REDSTONE,
@@ -75,6 +90,27 @@ class NanoMiraiRecipeProvider(output: PackOutput, registries: CompletableFuture<
             .unlockedBy("has_iron", has(Items.IRON_INGOT))
             .save(recipeOutput)
 
+        // Graphene Sheet
+        SimpleCookingRecipeBuilder.smelting(
+            Ingredient.of(Items.COAL),
+            RecipeCategory.MISC,
+            NanoMiraiItems.GRAPHENE_SHEET,
+            0f,
+            200
+        )
+            .unlockedBy("has_coal", has(Items.COAL))
+            .save(recipeOutput, rl("smelting/graphene_sheet_from_graphite")
+        )
+
+        // Graphite
+        ShapelessRecipeBuilder.shapeless(
+            RecipeCategory.MISC,
+            NanoMiraiItems.GRAPHITE
+        )
+            .requires(NanoMiraiItems.GRAPHENE_SHEET, 3)
+            .unlockedBy("has_graphene_sheet", has(NanoMiraiItems.GRAPHENE_SHEET))
+            .save(recipeOutput)
+
         // Nanomachine Assembler
         ShapedRecipeBuilder.shaped(RecipeCategory.MISC, NanoMiraiItems.NANOMACHINE_ASSEMBLER)
             .define('C', Items.CRAFTER)
@@ -89,7 +125,7 @@ class NanoMiraiRecipeProvider(output: PackOutput, registries: CompletableFuture<
 
         LaserRecipeBuilder(
             ItemStack(NanoMiraiItems.NANO_MATRIX),
-            Ingredient.of(NanoMiraiItems.NANO_SEED)
+            Ingredient.of(NanoMiraiItems.NANO_CELL)
         )
             .unlockedBy("has_nanomachine_assembler", has(NanoMiraiItems.NANOMACHINE_ASSEMBLER))
             .save(recipeOutput, rl("laser/nano_matrix_from_nano_seed"))

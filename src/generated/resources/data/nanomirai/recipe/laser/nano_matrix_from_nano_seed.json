@@ -1,7 +1,7 @@
 {
   "type": "nanomirai:laser",
   "ingredient": {
-    "item": "nanomirai:nano_seed"
+    "item": "nanomirai:nano_cell"
   },
   "lens": [],
   "result": {

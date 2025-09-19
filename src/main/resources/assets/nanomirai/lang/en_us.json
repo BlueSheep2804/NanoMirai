@@ -4,9 +4,15 @@
   "block.nanomirai.nanomachine_assembler": "Nanomachine Assembler",
   "block.nanomirai.laser_engraver": "Laser Engraver",
   "item.nanomirai.goggles": "Goggles",
-  "item.nanomirai.nano_seed": "Nano Seed",
+  "item.nanomirai.nano_proto": "Nano Proto",
+  "item.nanomirai.nano_cell": "Nano Cell",
   "item.nanomirai.nano_matrix": "Nano Matrix",
   "item.nanomirai.nano_singularity": "Nano Singularity",
+  "item.nanomirai.broken_nanomachine": "Broken Nanomachine",
+  "item.nanomirai.graphene_sheet": "Graphene Sheet",
+  "item.nanomirai.graphite": "Graphite",
+  "item.nanomirai.amethyst_lens": "Amethyst Lens",
+  "item.nanomirai.sculk_lens": "Sculk Lens",
   "container.nanomirai.nanomachine_assembler": "Nanomachine Assembler",
   "container.nanomirai.laser_engraver": "Laser Engraver"
 }

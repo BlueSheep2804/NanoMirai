@@ -11,6 +11,6 @@ object NanoMiraiAttachmentTypes {
     val REGISTRY: DeferredRegister<AttachmentType<*>> = DeferredRegister.create(NeoForgeRegistries.ATTACHMENT_TYPES, NanoMirai.ID)
 
     val DEPLOYED_NANOMACHINES: AttachmentType<List<Int>> by REGISTRY.register("deployed_nanomachines") { ->
-        AttachmentType.builder { -> listOf(0, 0, 0) }.serialize(Codec.list(Codec.INT, 3, 3)).build()
+        AttachmentType.builder { -> listOf(0, 0, 0, 0) }.serialize(Codec.list(Codec.INT, 4, 4)).build()
     }
 }

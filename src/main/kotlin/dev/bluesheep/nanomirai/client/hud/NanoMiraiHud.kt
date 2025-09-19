@@ -17,9 +17,10 @@ object NanoMiraiHud {
         if (player == null) return
         if (player.inventory.getArmor(3).`is`(NanoMiraiItems.GOGGLES)) {
             val deployed = player.getData(DEPLOYED_NANOMACHINES)
-            drawStringWithBackground(guiGraphics, deployedNanomachineComponent(deployed, NanoTier.SEED), 10, 16)
-            drawStringWithBackground(guiGraphics, deployedNanomachineComponent(deployed, NanoTier.MATRIX), 10, 32)
-            drawStringWithBackground(guiGraphics, deployedNanomachineComponent(deployed, NanoTier.SINGULARITY), 10, 48)
+            drawStringWithBackground(guiGraphics, deployedNanomachineComponent(deployed, NanoTier.PROTO), 10, 16)
+            drawStringWithBackground(guiGraphics, deployedNanomachineComponent(deployed, NanoTier.CELL), 10, 32)
+            drawStringWithBackground(guiGraphics, deployedNanomachineComponent(deployed, NanoTier.MATRIX), 10, 48)
+            drawStringWithBackground(guiGraphics, deployedNanomachineComponent(deployed, NanoTier.SINGULARITY), 10, 64)
         }
     }
 

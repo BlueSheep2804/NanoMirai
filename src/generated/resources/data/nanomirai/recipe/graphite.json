@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    {
+      "item": "nanomirai:graphene_sheet"
+    },
+    {
+      "item": "nanomirai:graphene_sheet"
+    },
+    {
+      "item": "nanomirai:graphene_sheet"
+    }
+  ],
+  "result": {
+    "count": 1,
+    "id": "nanomirai:graphite"
+  }
+}

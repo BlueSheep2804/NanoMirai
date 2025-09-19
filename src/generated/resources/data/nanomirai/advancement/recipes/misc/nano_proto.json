@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_broken_nanomachine": {
+      "conditions": {
+        "items": [
+          {
+            "items": "nanomirai:broken_nanomachine"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "nanomirai:nano_proto"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_the_recipe",
+      "has_broken_nanomachine"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "nanomirai:nano_proto"
+    ]
+  }
+}

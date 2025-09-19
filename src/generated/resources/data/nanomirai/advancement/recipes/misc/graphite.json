@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_graphene_sheet": {
+      "conditions": {
+        "items": [
+          {
+            "items": "nanomirai:graphene_sheet"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "nanomirai:graphite"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_the_recipe",
+      "has_graphene_sheet"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "nanomirai:graphite"
+    ]
+  }
+}

@@ -16,7 +16,7 @@ object PlayerLoggedInEvent {
         val player = event.entity
         if (player is ServerPlayer) {
             val deployed = player.getData(NanoMiraiAttachmentTypes.DEPLOYED_NANOMACHINES)
-            intArrayOf(0, 1, 2).forEach { PacketDistributor.sendToPlayer(player, DeployedNanomachineData(it, deployed[it])) }
+            intArrayOf(0, 1, 2, 3).forEach { PacketDistributor.sendToPlayer(player, DeployedNanomachineData(it, deployed[it])) }
         }
     }
 }

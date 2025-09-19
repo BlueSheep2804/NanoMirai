@@ -19,15 +19,24 @@ object NanoMiraiItems {
         )
     }
 
-    val NANO_SEED: NanoMachineItem by REGISTRY.register("nano_seed") { ->
+    val NANO_PROTO: NanoMachineItem by REGISTRY.register("nano_proto") { ->
         NanoMachineItem(0, Item.Properties())
     }
-    val NANO_MATRIX: NanoMachineItem by REGISTRY.register("nano_matrix") { ->
+    val NANO_CELL: NanoMachineItem by REGISTRY.register("nano_cell") { ->
         NanoMachineItem(1, Item.Properties())
     }
-    val NANO_SINGULARITY: NanoMachineItem by REGISTRY.register("nano_singularity") { ->
+    val NANO_MATRIX: NanoMachineItem by REGISTRY.register("nano_matrix") { ->
         NanoMachineItem(2, Item.Properties())
     }
+    val NANO_SINGULARITY: NanoMachineItem by REGISTRY.register("nano_singularity") { ->
+        NanoMachineItem(3, Item.Properties())
+    }
+
+    val BROKEN_NANOMACHINE: Item by REGISTRY.registerSimpleItem("broken_nanomachine")
+    val GRAPHENE_SHEET: Item by REGISTRY.registerSimpleItem("graphene_sheet")
+    val GRAPHITE: Item by REGISTRY.registerSimpleItem("graphite")
+    val AMETHYST_LENS: Item by REGISTRY.registerSimpleItem("amethyst_lens")
+    val SCULK_LENS: Item by REGISTRY.registerSimpleItem("sculk_lens")
 
     val NANOMACHINE_ASSEMBLER: BlockItem by REGISTRY.registerSimpleBlockItem("nanomachine_assembler") { ->
         NanoMiraiBlocks.NANOMACHINE_ASSEMBLER
