@@ -3,6 +3,7 @@ package dev.bluesheep.nanomirai.registry
 import dev.bluesheep.nanomirai.NanoMirai
 import dev.bluesheep.nanomirai.recipe.assembler.AssemblerRecipe
 import dev.bluesheep.nanomirai.recipe.laser.LaserRecipe
+import dev.bluesheep.nanomirai.recipe.synthesize.SynthesizeRecipe
 import net.minecraft.core.registries.Registries
 import net.minecraft.world.item.crafting.RecipeType
 import net.neoforged.neoforge.registries.DeferredRegister
@@ -16,5 +17,8 @@ object NanoMiraiRecipeType {
     }
     val LASER: RecipeType<LaserRecipe> by REGISTRY.register("laser") { ->
         RecipeType.simple(NanoMirai.rl("laser"))
+    }
+    val SYNTHESIZE: RecipeType<SynthesizeRecipe> by REGISTRY.register("synthesize") { ->
+        RecipeType.simple(NanoMirai.rl("synthesize"))
     }
 }

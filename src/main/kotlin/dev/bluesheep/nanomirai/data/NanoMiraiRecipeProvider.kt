@@ -3,6 +3,7 @@ package dev.bluesheep.nanomirai.data
 import dev.bluesheep.nanomirai.NanoMirai.rl
 import dev.bluesheep.nanomirai.recipe.assembler.AssemblerRecipeBuilder
 import dev.bluesheep.nanomirai.recipe.laser.LaserRecipeBuilder
+import dev.bluesheep.nanomirai.recipe.synthesize.SynthesizeRecipeBuilder
 import dev.bluesheep.nanomirai.registry.NanoMiraiItems
 import net.minecraft.core.HolderLookup
 import net.minecraft.core.NonNullList
@@ -17,6 +18,7 @@ import net.minecraft.tags.ItemTags
 import net.minecraft.world.item.ItemStack
 import net.minecraft.world.item.Items
 import net.minecraft.world.item.crafting.Ingredient
+import net.minecraft.world.level.block.Blocks
 import net.neoforged.neoforge.common.Tags
 import java.util.concurrent.CompletableFuture
 
@@ -137,5 +139,14 @@ class NanoMiraiRecipeProvider(output: PackOutput, registries: CompletableFuture<
         )
             .unlockedBy("has_nanomachine_assembler", has(NanoMiraiItems.NANOMACHINE_ASSEMBLER))
             .save(recipeOutput, rl("laser/nano_singularity_from_nano_matrix"))
+
+        SynthesizeRecipeBuilder(
+            ItemStack(NanoMiraiItems.AMETHYST_LENS),
+            Blocks.TINTED_GLASS.defaultBlockState(),
+            Ingredient.of(Items.AMETHYST_SHARD),
+            3
+        )
+            .unlockedBy("has_amethyst", has(Items.AMETHYST_SHARD))
+            .save(recipeOutput)
     }
 }

@@ -14,5 +14,6 @@
   "item.nanomirai.amethyst_lens": "Amethyst Lens",
   "item.nanomirai.sculk_lens": "Sculk Lens",
   "container.nanomirai.nanomachine_assembler": "Nanomachine Assembler",
-  "container.nanomirai.laser_engraver": "Laser Engraver"
+  "container.nanomirai.laser_engraver": "Laser Engraver",
+  "message.nanomirai.no_synthesize_recipe": "No synthesize recipe found for %s"
 }
