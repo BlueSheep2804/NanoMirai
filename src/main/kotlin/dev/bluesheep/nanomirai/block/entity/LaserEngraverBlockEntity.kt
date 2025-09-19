@@ -1,7 +1,7 @@
 package dev.bluesheep.nanomirai.block.entity
 
 import dev.bluesheep.nanomirai.recipe.DualRecipeInput
-import dev.bluesheep.nanomirai.recipe.LaserRecipe
+import dev.bluesheep.nanomirai.recipe.laser.LaserRecipe
 import dev.bluesheep.nanomirai.registry.NanoMiraiBlockEntities
 import dev.bluesheep.nanomirai.registry.NanoMiraiRecipeType
 import net.minecraft.core.BlockPos

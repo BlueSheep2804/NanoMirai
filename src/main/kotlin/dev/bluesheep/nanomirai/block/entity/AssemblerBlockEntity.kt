@@ -1,6 +1,6 @@
 package dev.bluesheep.nanomirai.block.entity
 
-import dev.bluesheep.nanomirai.recipe.AssemblerRecipe
+import dev.bluesheep.nanomirai.recipe.assembler.AssemblerRecipe
 import dev.bluesheep.nanomirai.recipe.MultipleItemRecipeInput
 import dev.bluesheep.nanomirai.registry.NanoMiraiBlockEntities
 import dev.bluesheep.nanomirai.registry.NanoMiraiRecipeType

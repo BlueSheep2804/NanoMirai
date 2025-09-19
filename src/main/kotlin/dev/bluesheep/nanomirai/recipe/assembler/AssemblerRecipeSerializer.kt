@@ -1,4 +1,4 @@
-package dev.bluesheep.nanomirai.recipe
+package dev.bluesheep.nanomirai.recipe.assembler
 
 import com.mojang.serialization.MapCodec
 import com.mojang.serialization.codecs.RecordCodecBuilder

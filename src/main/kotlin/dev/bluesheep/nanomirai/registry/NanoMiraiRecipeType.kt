@@ -1,8 +1,8 @@
 package dev.bluesheep.nanomirai.registry
 
 import dev.bluesheep.nanomirai.NanoMirai
-import dev.bluesheep.nanomirai.recipe.AssemblerRecipe
-import dev.bluesheep.nanomirai.recipe.LaserRecipe
+import dev.bluesheep.nanomirai.recipe.assembler.AssemblerRecipe
+import dev.bluesheep.nanomirai.recipe.laser.LaserRecipe
 import net.minecraft.core.registries.Registries
 import net.minecraft.world.item.crafting.RecipeType
 import net.neoforged.neoforge.registries.DeferredRegister

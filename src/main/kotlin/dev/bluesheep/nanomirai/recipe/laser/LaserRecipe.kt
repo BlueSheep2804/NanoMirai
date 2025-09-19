@@ -1,5 +1,6 @@
-package dev.bluesheep.nanomirai.recipe
+package dev.bluesheep.nanomirai.recipe.laser
 
+import dev.bluesheep.nanomirai.recipe.DualRecipeInput
 import dev.bluesheep.nanomirai.registry.NanoMiraiRecipeSerializer
 import dev.bluesheep.nanomirai.registry.NanoMiraiRecipeType
 import net.minecraft.core.HolderLookup
@@ -9,7 +10,6 @@ import net.minecraft.world.item.crafting.Ingredient
 import net.minecraft.world.item.crafting.Recipe
 import net.minecraft.world.item.crafting.RecipeSerializer
 import net.minecraft.world.item.crafting.RecipeType
-import net.minecraft.world.item.crafting.SingleRecipeInput
 import net.minecraft.world.level.Level
 
 class LaserRecipe(val ingredient: Ingredient, val result: ItemStack, val lens: Ingredient = Ingredient.EMPTY) : Recipe<DualRecipeInput> {

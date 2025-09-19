@@ -1,8 +1,8 @@
 package dev.bluesheep.nanomirai.data
 
 import dev.bluesheep.nanomirai.NanoMirai.rl
-import dev.bluesheep.nanomirai.recipe.AssemblerRecipeBuilder
-import dev.bluesheep.nanomirai.recipe.LaserRecipeBuilder
+import dev.bluesheep.nanomirai.recipe.assembler.AssemblerRecipeBuilder
+import dev.bluesheep.nanomirai.recipe.laser.LaserRecipeBuilder
 import dev.bluesheep.nanomirai.registry.NanoMiraiItems
 import net.minecraft.core.HolderLookup
 import net.minecraft.core.NonNullList

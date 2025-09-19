@@ -1,6 +1,6 @@
-package dev.bluesheep.nanomirai.recipe
+package dev.bluesheep.nanomirai.recipe.assembler
 
-import net.minecraft.advancements.Advancement
+import dev.bluesheep.nanomirai.recipe.SimpleRecipeBuilder
 import net.minecraft.advancements.AdvancementRequirements
 import net.minecraft.advancements.AdvancementRewards
 import net.minecraft.advancements.critereon.RecipeUnlockedTrigger

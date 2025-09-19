@@ -1,5 +1,6 @@
-package dev.bluesheep.nanomirai.recipe
+package dev.bluesheep.nanomirai.recipe.assembler
 
+import dev.bluesheep.nanomirai.recipe.MultipleItemRecipeInput
 import dev.bluesheep.nanomirai.registry.NanoMiraiRecipeSerializer
 import dev.bluesheep.nanomirai.registry.NanoMiraiRecipeType
 import net.minecraft.core.HolderLookup
