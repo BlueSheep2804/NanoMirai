@@ -1,6 +1,7 @@
 package dev.bluesheep.nanomirai.recipe.assembler
 
 import dev.bluesheep.nanomirai.recipe.MultipleItemRecipeInput
+import dev.bluesheep.nanomirai.recipe.StackedIngredient
 import dev.bluesheep.nanomirai.registry.NanoMiraiRecipeSerializer
 import dev.bluesheep.nanomirai.registry.NanoMiraiRecipeType
 import net.minecraft.core.HolderLookup
@@ -12,9 +13,9 @@ import net.minecraft.world.item.crafting.RecipeSerializer
 import net.minecraft.world.item.crafting.RecipeType
 import net.minecraft.world.level.Level
 
-class AssemblerRecipe(val inputItems: NonNullList<Ingredient>, val result: ItemStack) : Recipe<MultipleItemRecipeInput> {
+class AssemblerRecipe(val inputItems: NonNullList<StackedIngredient>, val result: ItemStack) : Recipe<MultipleItemRecipeInput> {
     override fun getIngredients(): NonNullList<Ingredient> {
-        return inputItems
+        return NonNullList.of(Ingredient.EMPTY, *inputItems.map { it.ingredient }.toTypedArray())
     }
 
     override fun canCraftInDimensions(width: Int, height: Int): Boolean {
@@ -25,7 +26,7 @@ class AssemblerRecipe(val inputItems: NonNullList<Ingredient>, val result: ItemS
         input: MultipleItemRecipeInput,
         level: Level
     ): Boolean {
-        val filteredInputItems = inputItems.filter { !it.isEmpty }
+        val filteredInputItems = inputItems.filter { !it.isEmpty() }
         val filteredInputList = input.list.filter { !it.isEmpty }
 
         return filteredInputItems.all { ingredient ->

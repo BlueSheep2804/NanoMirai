@@ -2,13 +2,22 @@
   "type": "nanomirai:assembler",
   "ingredients": [
     {
-      "item": "minecraft:redstone"
+      "count": 4,
+      "ingredient": {
+        "item": "minecraft:redstone"
+      }
     },
     {
-      "item": "minecraft:coal"
+      "count": 3,
+      "ingredient": {
+        "item": "minecraft:coal"
+      }
     },
     {
-      "item": "minecraft:diamond"
+      "count": 1,
+      "ingredient": {
+        "item": "minecraft:diamond"
+      }
     }
   ],
   "result": {

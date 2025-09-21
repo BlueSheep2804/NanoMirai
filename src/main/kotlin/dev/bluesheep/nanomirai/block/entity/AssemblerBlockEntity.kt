@@ -107,17 +107,14 @@ class AssemblerBlockEntity(pos: BlockPos, blockState: BlockState) : BlockEntity(
         if (recipe.isEmpty) return
         val output = recipe.get().value.result
 
-//        itemHandler.extractItem(0, 1, false)
-        recipe.get().value.inputItems.forEach { ingredient ->
-            var toRemove = 1
+        recipe.get().value.inputItems.forEach { stackedIngredient ->
+            var toRemove = stackedIngredient.count
             for (i in 0 until SIZE - 1) {
                 val stackInSlot = itemHandler.getStackInSlot(i)
-//                val stack = ingredient.items.find { it.`is`(stackInSlot.item) && it.count <= stackInSlot.count }
-//                if (stack == null || !ingredient.test(stackInSlot)) continue
-//                val extracted = itemHandler.extractItem(i, stack.count, false)
-                if (ingredient.test(stackInSlot) && toRemove > 0) {
+                if (stackedIngredient.ingredient.test(stackInSlot) && toRemove > 0) {
                     val extracted = itemHandler.extractItem(i, toRemove, false)
                     toRemove -= extracted.count
+                    if (toRemove <= 0) break
                 }
             }
         }

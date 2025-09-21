@@ -1,6 +1,7 @@
 package dev.bluesheep.nanomirai.data
 
 import dev.bluesheep.nanomirai.NanoMirai.rl
+import dev.bluesheep.nanomirai.recipe.StackedIngredient
 import dev.bluesheep.nanomirai.recipe.assembler.AssemblerRecipeBuilder
 import dev.bluesheep.nanomirai.recipe.laser.LaserRecipeBuilder
 import dev.bluesheep.nanomirai.recipe.synthesize.SynthesizeRecipeBuilder
@@ -42,12 +43,11 @@ class NanoMiraiRecipeProvider(output: PackOutput, registries: CompletableFuture<
         // Nano Seed
         AssemblerRecipeBuilder(
             ItemStack(NanoMiraiItems.NANO_CELL),
-            NonNullList.copyOf(
-                listOf(
-                    Items.REDSTONE,
-                    Items.COAL,
-                    Items.IRON_INGOT
-                ).map { Ingredient.of(it) }
+            NonNullList.of(
+                StackedIngredient.EMPTY,
+                StackedIngredient.of(16, Items.REDSTONE),
+                StackedIngredient.of(3, Items.COAL),
+                StackedIngredient.of(1, Items.IRON_INGOT),
             )
         )
             .unlockedBy("has_nanomachine_assembler", has(NanoMiraiItems.NANOMACHINE_ASSEMBLER))
@@ -56,12 +56,11 @@ class NanoMiraiRecipeProvider(output: PackOutput, registries: CompletableFuture<
         // Nano Matrix
         AssemblerRecipeBuilder(
             ItemStack(NanoMiraiItems.NANO_MATRIX),
-            NonNullList.copyOf(
-                listOf(
-                    Items.REDSTONE,
-                    Items.COAL,
-                    Items.GOLD_INGOT
-                ).map { Ingredient.of(it) }
+            NonNullList.of(
+                StackedIngredient.EMPTY,
+                StackedIngredient.of(16, Items.REDSTONE),
+                StackedIngredient.of(3, Items.COAL),
+                StackedIngredient.of(1, Items.GOLD_INGOT),
             )
         )
             .unlockedBy("has_nanomachine_assembler", has(NanoMiraiItems.NANOMACHINE_ASSEMBLER))
@@ -70,12 +69,11 @@ class NanoMiraiRecipeProvider(output: PackOutput, registries: CompletableFuture<
         // Nano Singularity
         AssemblerRecipeBuilder(
             ItemStack(NanoMiraiItems.NANO_SINGULARITY),
-            NonNullList.copyOf(
-                listOf(
-                    Items.REDSTONE,
-                    Items.COAL,
-                    Items.DIAMOND
-                ).map { Ingredient.of(it) }
+            NonNullList.of(
+                StackedIngredient.EMPTY,
+                StackedIngredient.of(4, Items.REDSTONE),
+                StackedIngredient.of(3, Items.COAL),
+                StackedIngredient.of(1, Items.DIAMOND),
             )
         )
             .unlockedBy("has_nanomachine_assembler", has(NanoMiraiItems.NANOMACHINE_ASSEMBLER))
