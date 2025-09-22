@@ -8,4 +8,10 @@ enum class NanoTier(val tierLevel: Int, val item: NanoMachineItem) {
     CELL(1, NanoMiraiItems.NANO_CELL),
     MATRIX(2, NanoMiraiItems.NANO_MATRIX),
     SINGULARITY(3, NanoMiraiItems.NANO_SINGULARITY);
+
+    companion object {
+        fun fromMinLevel(level: Int): List<NanoTier> {
+            return NanoTier.entries.filter { it.tierLevel >= level }
+        }
+    }
 }

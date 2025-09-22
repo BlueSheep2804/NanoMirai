@@ -20,6 +20,9 @@ import net.minecraft.world.item.ItemStack
 import net.minecraft.world.item.Items
 import net.minecraft.world.item.crafting.Ingredient
 import net.minecraft.world.level.block.Blocks
+import net.minecraft.world.level.block.state.BlockBehaviour
+import net.minecraft.world.level.block.state.BlockState
+import net.minecraft.world.level.block.state.properties.BlockStateProperties
 import net.neoforged.neoforge.common.Tags
 import java.util.concurrent.CompletableFuture
 
@@ -72,8 +75,8 @@ class NanoMiraiRecipeProvider(output: PackOutput, registries: CompletableFuture<
             NonNullList.of(
                 StackedIngredient.EMPTY,
                 StackedIngredient.of(4, Items.REDSTONE),
-                StackedIngredient.of(3, Items.COAL),
-                StackedIngredient.of(1, Items.DIAMOND),
+                StackedIngredient.of(3, Items.COAL, NanoMiraiItems.GRAPHITE),
+                StackedIngredient.of(2, ItemTags.WOOL),
             )
         )
             .unlockedBy("has_nanomachine_assembler", has(NanoMiraiItems.NANOMACHINE_ASSEMBLER))
@@ -142,9 +145,18 @@ class NanoMiraiRecipeProvider(output: PackOutput, registries: CompletableFuture<
             ItemStack(NanoMiraiItems.AMETHYST_LENS),
             Blocks.TINTED_GLASS.defaultBlockState(),
             Ingredient.of(Items.AMETHYST_SHARD),
-            3
+            1
         )
             .unlockedBy("has_amethyst", has(Items.AMETHYST_SHARD))
+            .save(recipeOutput)
+
+        SynthesizeRecipeBuilder(
+            ItemStack(NanoMiraiItems.SCULK_LENS),
+            Blocks.SCULK_SHRIEKER.defaultBlockState().setValue(BlockStateProperties.SHRIEKING, true),
+            Ingredient.of(Items.ECHO_SHARD),
+            3
+        )
+            .unlockedBy("has_echo_shard", has(Items.ECHO_SHARD))
             .save(recipeOutput)
     }
 }

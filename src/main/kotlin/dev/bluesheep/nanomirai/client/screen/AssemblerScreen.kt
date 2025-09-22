@@ -1,5 +1,6 @@
 package dev.bluesheep.nanomirai.client.screen
 
+import dev.bluesheep.nanomirai.NanoMirai.rl
 import dev.bluesheep.nanomirai.menu.AssemblerMenu
 import net.minecraft.client.gui.GuiGraphics
 import net.minecraft.client.gui.screens.inventory.AbstractContainerScreen
@@ -9,8 +10,8 @@ import net.minecraft.world.entity.player.Inventory
 
 class AssemblerScreen(menu: AssemblerMenu, playerInventory: Inventory, title: Component) : AbstractContainerScreen<AssemblerMenu>(menu, playerInventory, title) {
     companion object {
-        val BG_LOCATION: ResourceLocation = ResourceLocation.withDefaultNamespace("textures/gui/container/crafting_table.png")
-        val ARROW_LOCATION: ResourceLocation = ResourceLocation.withDefaultNamespace("textures/gui/sprites/container/furnace/burn_progress.png")
+        val BG_LOCATION: ResourceLocation = rl("textures/gui/container/assembler.png")
+        val ARROW_LOCATION: ResourceLocation = rl("textures/gui/sprites/container/assembler/progress.png")
     }
 
     override fun render(guiGraphics: GuiGraphics, mouseX: Int, mouseY: Int, partialTick: Float) {

@@ -15,5 +15,9 @@
   "item.nanomirai.sculk_lens": "Sculk Lens",
   "container.nanomirai.nanomachine_assembler": "Nanomachine Assembler",
   "container.nanomirai.laser_engraver": "Laser Engraver",
-  "message.nanomirai.no_synthesize_recipe": "No synthesize recipe found for %s"
+  "message.nanomirai.no_synthesize_recipe": "No synthesize recipe found for %s",
+  "recipe.nanomirai.synthesize": "Synthesize",
+  "recipe.nanomirai.synthesize.interact": "Interact with this block to synthesize",
+  "gui.nanomirai.mainhand": "Main Hand",
+  "gui.nanomirai.offhand": "Off Hand"
 }

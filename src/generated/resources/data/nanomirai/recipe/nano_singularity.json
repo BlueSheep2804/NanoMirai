@@ -9,14 +9,19 @@
     },
     {
       "count": 3,
-      "ingredient": {
-        "item": "minecraft:coal"
-      }
+      "ingredient": [
+        {
+          "item": "minecraft:coal"
+        },
+        {
+          "item": "nanomirai:graphite"
+        }
+      ]
     },
     {
-      "count": 1,
+      "count": 2,
       "ingredient": {
-        "item": "minecraft:diamond"
+        "tag": "minecraft:wool"
       }
     }
   ],

@@ -91,7 +91,7 @@ class LaserEngraverMenu(containerId: Int, playerInv: Inventory, val blockEntity:
 
     private fun addContainerSlots(container: ItemStackHandler) {
         this.addSlot(SlotItemHandler(container, 0, 51, 48))
-        this.addSlot(object : SlotItemHandler(container, 1, 80, 21) {
+        this.addSlot(object : SlotItemHandler(container, 1, 80, 22) {
             override fun getMaxStackSize(): Int {
                 return 1
             }
