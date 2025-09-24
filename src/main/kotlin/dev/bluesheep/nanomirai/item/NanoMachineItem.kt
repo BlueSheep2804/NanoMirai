@@ -3,7 +3,6 @@ package dev.bluesheep.nanomirai.item
 import dev.bluesheep.nanomirai.block.entity.SynthesizeDisplayBlockEntity
 import dev.bluesheep.nanomirai.registry.NanoMiraiBlocks
 import net.minecraft.core.dispenser.BlockSource
-import net.minecraft.core.dispenser.DispenseItemBehavior
 import net.minecraft.core.dispenser.OptionalDispenseItemBehavior
 import net.minecraft.world.InteractionHand
 import net.minecraft.world.InteractionResult

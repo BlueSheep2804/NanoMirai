@@ -6,7 +6,6 @@ import dev.bluesheep.nanomirai.registry.NanoMiraiBlocks
 import net.minecraft.data.PackOutput
 import net.neoforged.neoforge.client.model.generators.BlockStateProvider
 import net.neoforged.neoforge.client.model.generators.ConfiguredModel
-import net.neoforged.neoforge.client.model.generators.VariantBlockStateBuilder
 import net.neoforged.neoforge.common.data.ExistingFileHelper
 
 class NanoMiraiBlockProvider(output: PackOutput, exFileHelper: ExistingFileHelper) : BlockStateProvider(output, NanoMirai.ID, exFileHelper) {

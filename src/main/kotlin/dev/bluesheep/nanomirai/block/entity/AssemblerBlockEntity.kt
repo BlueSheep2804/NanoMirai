@@ -21,7 +21,7 @@ import net.minecraft.world.level.block.state.BlockState
 import net.neoforged.neoforge.items.ItemStackHandler
 import java.util.Optional
 
-class AssemblerBlockEntity(pos: BlockPos, blockState: BlockState) : BlockEntity(NanoMiraiBlockEntities.NANOMACHINE_ASSEBLER, pos, blockState) {
+class AssemblerBlockEntity(pos: BlockPos, blockState: BlockState) : BlockEntity(NanoMiraiBlockEntities.NANOMACHINE_ASSEMBLER, pos, blockState) {
     companion object {
         const val SIZE = 10
         const val OUTPUT_SLOT = 9

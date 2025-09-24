@@ -67,7 +67,7 @@ class AssemblerBlock(properties: Properties) : BaseEntityBlock(properties) {
     override fun <T : BlockEntity?> getTicker(level: Level, state: BlockState, blockEntityType: BlockEntityType<T?>): BlockEntityTicker<T?>? {
         if (level.isClientSide) return null
 
-        return createTickerHelper(blockEntityType, NanoMiraiBlockEntities.NANOMACHINE_ASSEBLER) {
+        return createTickerHelper(blockEntityType, NanoMiraiBlockEntities.NANOMACHINE_ASSEMBLER) {
             level, pos, state, blockEntity -> blockEntity.tick(level, pos, state)
         }
     }

@@ -13,7 +13,7 @@ object NanoMiraiRecipeType {
     val REGISTRY: DeferredRegister<RecipeType<*>> = DeferredRegister.create(Registries.RECIPE_TYPE, NanoMirai.ID)
 
     val ASSEMBLER: RecipeType<AssemblerRecipe> by REGISTRY.register("assembler") { ->
-        RecipeType.simple(NanoMirai.rl("assebler"))
+        RecipeType.simple(NanoMirai.rl("assembler"))
     }
     val LASER: RecipeType<LaserRecipe> by REGISTRY.register("laser") { ->
         RecipeType.simple(NanoMirai.rl("laser"))

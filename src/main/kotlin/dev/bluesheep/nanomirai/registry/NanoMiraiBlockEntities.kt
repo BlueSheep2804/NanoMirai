@@ -12,7 +12,7 @@ import thedarkcolour.kotlinforforge.neoforge.forge.getValue
 object NanoMiraiBlockEntities {
     val REGISTRY: DeferredRegister<BlockEntityType<*>> = DeferredRegister.create(Registries.BLOCK_ENTITY_TYPE, NanoMirai.ID)
 
-    val NANOMACHINE_ASSEBLER: BlockEntityType<AssemblerBlockEntity> by REGISTRY.register("nanomachine_assembler") { ->
+    val NANOMACHINE_ASSEMBLER: BlockEntityType<AssemblerBlockEntity> by REGISTRY.register("nanomachine_assembler") { ->
         BlockEntityType.Builder.of(
             ::AssemblerBlockEntity,
             NanoMiraiBlocks.NANOMACHINE_ASSEMBLER

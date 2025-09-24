@@ -174,7 +174,5 @@ class SynthesizeDisplayBlockEntity(pos: BlockPos, blockState: BlockState) : Bloc
         return false
     }
 
-    override fun clearContent() {
-        return
-    }
+    override fun clearContent() {}
 }

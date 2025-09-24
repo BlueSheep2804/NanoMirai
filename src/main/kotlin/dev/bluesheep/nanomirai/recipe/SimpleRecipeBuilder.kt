@@ -14,7 +14,7 @@ abstract class SimpleRecipeBuilder // It is common for constructors to accept th
     (// Make the fields protected so our subclasses can use them.
     protected val result: ItemStack
 ) : RecipeBuilder {
-    protected val criteria: MutableMap<String?, Criterion<*>?> = LinkedHashMap<String?, Criterion<*>?>()
+    protected val criteria: MutableMap<String?, Criterion<*>?> = LinkedHashMap()
 
     protected var group: String? = null
 

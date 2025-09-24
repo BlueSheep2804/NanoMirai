@@ -5,7 +5,6 @@ import dev.bluesheep.nanomirai.block.AssemblerBlock
 import dev.bluesheep.nanomirai.block.LaserEngraverBlock
 import dev.bluesheep.nanomirai.block.SynthesizeDisplayBlock
 import net.minecraft.core.BlockPos
-import net.minecraft.world.entity.EntityType
 import net.minecraft.world.level.BlockGetter
 import net.minecraft.world.level.block.Block
 import net.minecraft.world.level.block.Blocks
@@ -26,6 +25,6 @@ object NanoMiraiBlocks {
     )
 
     private fun never(state: BlockState, blockGetter: BlockGetter, pos: BlockPos): Boolean {
-        return false;
+        return false
     }
 }

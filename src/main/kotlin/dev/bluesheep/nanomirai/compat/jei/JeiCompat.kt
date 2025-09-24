@@ -4,7 +4,6 @@ import dev.bluesheep.nanomirai.client.screen.AssemblerScreen
 import dev.bluesheep.nanomirai.client.screen.LaserEngraverScreen
 import dev.bluesheep.nanomirai.registry.NanoMiraiItems
 import dev.bluesheep.nanomirai.registry.NanoMiraiRecipeType
-import dev.bluesheep.nanomirai.util.NanoTier
 import mezz.jei.api.IModPlugin
 import mezz.jei.api.JeiPlugin
 import mezz.jei.api.registration.IGuiHandlerRegistration

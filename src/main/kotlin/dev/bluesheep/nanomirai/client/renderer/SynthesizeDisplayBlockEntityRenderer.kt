@@ -2,17 +2,11 @@ package dev.bluesheep.nanomirai.client.renderer
 
 import com.mojang.blaze3d.vertex.PoseStack
 import dev.bluesheep.nanomirai.block.entity.SynthesizeDisplayBlockEntity
-import net.minecraft.client.renderer.LightTexture
 import net.minecraft.client.renderer.MultiBufferSource
 import net.minecraft.client.renderer.RenderType
 import net.minecraft.client.renderer.block.BlockRenderDispatcher
-import net.minecraft.client.renderer.blockentity.BlockEntityRenderDispatcher
 import net.minecraft.client.renderer.blockentity.BlockEntityRenderer
 import net.minecraft.client.renderer.blockentity.BlockEntityRendererProvider
-import net.minecraft.client.renderer.entity.ItemRenderer
-import net.minecraft.core.BlockPos
-import net.minecraft.world.level.Level
-import net.minecraft.world.level.LightLayer
 import net.neoforged.neoforge.client.model.data.ModelData
 
 class SynthesizeDisplayBlockEntityRenderer(context: BlockEntityRendererProvider.Context) : BlockEntityRenderer<SynthesizeDisplayBlockEntity> {
