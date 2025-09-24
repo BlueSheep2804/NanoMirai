@@ -1,5 +1,6 @@
 package dev.bluesheep.nanomirai.block.entity
 
+import dev.bluesheep.nanomirai.block.SynthesizeDisplayBlock
 import dev.bluesheep.nanomirai.recipe.BlockWithPairItemInput
 import dev.bluesheep.nanomirai.recipe.synthesize.SynthesizeRecipe
 import dev.bluesheep.nanomirai.registry.NanoMiraiBlockEntities
@@ -88,6 +89,7 @@ class SynthesizeDisplayBlockEntity(pos: BlockPos, blockState: BlockState) : Bloc
     private fun startCrafting() {
         val recipe = getCurrentRecipe()
         maxProgress = if (recipe.isEmpty) 100 else recipe.get().value.duration
+        level!!.setBlock(blockPos, blockState.setValue(SynthesizeDisplayBlock.CRAFTING, true), 3)
         setChanged()
     }
 

@@ -1,7 +1,8 @@
-// 1.21.1	2025-09-24T11:42:45.2962747	Block States: nanomirai
+// 1.21.1	2025-09-25T05:00:04.3084438	Block States: nanomirai
 f51cb8d4d3bb10b8884acad5c53b074da3aa7f24 assets/nanomirai/blockstates/laser_engraver.json
 4f8eea5319b12210349437030afc7b18ce918563 assets/nanomirai/blockstates/nanomachine_assembler.json
-0e3137c8d555193519995aa09629045edef150d4 assets/nanomirai/blockstates/synthesize_display.json
+53d154a406bca5bcc00f34f92704f05a32c7936e assets/nanomirai/blockstates/synthesize_display.json
 47bb53134fa355542cfbf3b239c080d1725050c5 assets/nanomirai/models/block/laser_engraver.json
 7b098e8b874444159ed5de237e5421d017972813 assets/nanomirai/models/block/nanomachine_assembler.json
 ad84996aa2f0b10e1b5d902fd7d69626ae1a7c15 assets/nanomirai/models/block/synthesize_display.json
+3c510f6e27b16d2ba176ef76820bf2d1636ba046 assets/nanomirai/models/block/synthesize_display_crafting.json

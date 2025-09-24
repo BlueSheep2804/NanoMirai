@@ -52,7 +52,7 @@ class NanoMachineItem(properties: Properties) : Item(properties) {
             val inputBlockPos = blockSource.pos.relative(dispenser.getValue(DispenserBlock.FACING))
             val inputBlock = blockSource.level.getBlockState(inputBlockPos)
             if (inputBlock.`is`(NanoMiraiBlocks.SYNTHESIZE_DISPLAY) || inputBlock.`is`(Blocks.AIR)) return itemStack
-            level.setBlock(inputBlockPos, NanoMiraiBlocks.SYNTHESIZE_DISPLAY.defaultBlockState(), 3)
+            level.setBlockAndUpdate(inputBlockPos, NanoMiraiBlocks.SYNTHESIZE_DISPLAY.defaultBlockState())
 
             val blockEntity = level.getBlockEntity(inputBlockPos)
             if (blockEntity is SynthesizeDisplayBlockEntity) {

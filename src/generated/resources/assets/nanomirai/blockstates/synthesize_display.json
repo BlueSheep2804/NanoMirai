@@ -1,7 +1,10 @@
 {
   "variants": {
-    "": {
+    "crafting=false": {
       "model": "nanomirai:block/synthesize_display"
+    },
+    "crafting=true": {
+      "model": "nanomirai:block/synthesize_display_crafting"
     }
   }
 }
