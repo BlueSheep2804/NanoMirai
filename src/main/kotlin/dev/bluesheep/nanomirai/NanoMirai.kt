@@ -3,11 +3,14 @@ package dev.bluesheep.nanomirai
 import dev.bluesheep.nanomirai.data.NanoMiraiBlockProvider
 import dev.bluesheep.nanomirai.data.NanoMiraiItemModelProvider
 import dev.bluesheep.nanomirai.data.NanoMiraiRecipeProvider
+import dev.bluesheep.nanomirai.item.NanoMachineItem
 import dev.bluesheep.nanomirai.registry.*
 import net.minecraft.resources.ResourceLocation
+import net.minecraft.world.level.block.DispenserBlock
 import net.neoforged.bus.api.SubscribeEvent
 import net.neoforged.fml.common.EventBusSubscriber
 import net.neoforged.fml.common.Mod
+import net.neoforged.fml.event.lifecycle.FMLCommonSetupEvent
 import net.neoforged.neoforge.data.event.GatherDataEvent
 import org.apache.logging.log4j.Level
 import org.apache.logging.log4j.LogManager
@@ -38,6 +41,15 @@ object NanoMirai {
         NanoMiraiRecipeType.REGISTRY.register(MOD_BUS)
         NanoMiraiRecipeSerializer.REGISTRY.register(MOD_BUS)
         NanoMiraiCreativeTab.REGISTRY.register(MOD_BUS)
+    }
+
+    @SubscribeEvent
+    fun setup(event: FMLCommonSetupEvent) {
+        LOGGER.info("Hello from server setup")
+        DispenserBlock.registerBehavior(NanoMiraiItems.NANO_PROTO, NanoMachineItem.DispenserBehavior())
+        DispenserBlock.registerBehavior(NanoMiraiItems.NANO_CELL, NanoMachineItem.DispenserBehavior())
+        DispenserBlock.registerBehavior(NanoMiraiItems.NANO_MATRIX, NanoMachineItem.DispenserBehavior())
+        DispenserBlock.registerBehavior(NanoMiraiItems.NANO_SINGULARITY, NanoMachineItem.DispenserBehavior())
     }
 
     @SubscribeEvent
