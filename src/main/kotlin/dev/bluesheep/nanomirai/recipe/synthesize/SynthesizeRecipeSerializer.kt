@@ -16,8 +16,8 @@ class SynthesizeRecipeSerializer : RecipeSerializer<SynthesizeRecipe> {
         val CODEC: MapCodec<SynthesizeRecipe> = RecordCodecBuilder.mapCodec { inst ->
             inst.group(
                 BlockState.CODEC.fieldOf("block").forGetter(SynthesizeRecipe::inputBlock),
-                Ingredient.CODEC_NONEMPTY.fieldOf("catalyst").forGetter(SynthesizeRecipe::inputCatalystItem),
                 Codec.INT.fieldOf("tier").forGetter(SynthesizeRecipe::tier),
+                Ingredient.CODEC_NONEMPTY.fieldOf("catalyst").forGetter(SynthesizeRecipe::inputCatalystItem),
                 ItemStack.CODEC.fieldOf("result").forGetter(SynthesizeRecipe::result)
             ).apply(inst, ::SynthesizeRecipe)
         }

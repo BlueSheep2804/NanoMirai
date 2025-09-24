@@ -10,5 +10,11 @@ class NanoMiraiBlockProvider(output: PackOutput, exFileHelper: ExistingFileHelpe
     override fun registerStatesAndModels() {
         simpleBlock(NanoMiraiBlocks.NANOMACHINE_ASSEMBLER)
         simpleBlock(NanoMiraiBlocks.LASER_ENGRAVER)
+        simpleBlock(
+            NanoMiraiBlocks.SYNTHESIZE_DISPLAY,
+            models().withExistingParent("synthesize_display", mcLoc("block/cube_all"))
+                .texture("all", modLoc("block/synthesize_display"))
+                .renderType(mcLoc("translucent"))
+        )
     }
 }

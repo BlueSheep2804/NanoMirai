@@ -13,10 +13,6 @@ class BlockWithPairItemInput(val block: BlockState, val mainhand: ItemStack, val
         }
     }
 
-    fun getBlockAsItem(): ItemStack {
-        return ItemStack(block.block)
-    }
-
     override fun size(): Int {
         return 2
     }

@@ -17,7 +17,7 @@ class SynthesizeRecipeBuilder(result: ItemStack, val block: BlockState, val cata
             .rewards(AdvancementRewards.Builder.recipe(id))
             .requirements(AdvancementRequirements.Strategy.OR)
         criteria.forEach(advancement::addCriterion)
-        val recipe = SynthesizeRecipe(block, catalyst, tier, result)
+        val recipe = SynthesizeRecipe(block, tier, catalyst, result)
         output.accept(id, recipe, advancement.build(id.withPrefix("recipes/")))
     }
 }

@@ -54,22 +54,15 @@ class SynthesizeRecipeCategory(helper: IGuiHelper): IRecipeCategory<SynthesizeRe
                 )
             )
             .setStandardSlotBackground()
+
         builder.addSlot(RecipeIngredientRole.INPUT, 1, 23)
-            .addItemStacks(
-                setIngredientLore(
-                    recipe.inputCatalystItem,
-                    Component.translatable("gui.nanomirai.offhand").withStyle(ChatFormatting.AQUA, ChatFormatting.UNDERLINE)
-                )
-            )
+            .addIngredients(NanoTier.ingredientFromMinLevel(recipe.tier))
             .setStandardSlotBackground()
+
         builder.addSlot(RecipeIngredientRole.INPUT, 19, 23)
-            .addItemStacks(
-                setIngredientLore(
-                    Ingredient.of(*NanoTier.Companion.fromMinLevel(recipe.tier).map { it.item }.toTypedArray()),
-                    Component.translatable("gui.nanomirai.mainhand").withStyle(ChatFormatting.AQUA, ChatFormatting.UNDERLINE)
-                )
-            )
+            .addIngredients(recipe.inputCatalystItem)
             .setStandardSlotBackground()
+
         builder.addSlot(RecipeIngredientRole.OUTPUT, 107, 23).addItemStack(recipe.result).setOutputSlotBackground()
     }
 
