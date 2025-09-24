@@ -17,5 +17,6 @@
   "container.nanomirai.nanomachine_assembler": "Nanomachine Assembler",
   "container.nanomirai.laser_engraver": "Laser Engraver",
   "recipe.nanomirai.synthesize": "Synthesize",
-  "recipe.nanomirai.synthesize.interact": "Interact with this block to synthesize"
+  "recipe.nanomirai.synthesize.interact": "Interact with this block to synthesize",
+  "recipe.nanomirai.synthesize.duration": "%s ticks"
 }

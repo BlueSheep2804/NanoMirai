@@ -14,7 +14,7 @@ import net.minecraft.world.item.crafting.RecipeType
 import net.minecraft.world.level.Level
 import net.minecraft.world.level.block.state.BlockState
 
-class SynthesizeRecipe(val inputBlock: BlockState, val tier: Int, val inputCatalystItem: Ingredient, val result: ItemStack) : Recipe<BlockWithPairItemInput> {
+class SynthesizeRecipe(val result: ItemStack, val tier: Int, val inputBlock: BlockState, val inputCatalystItem: Ingredient, val duration: Int) : Recipe<BlockWithPairItemInput> {
     val nanoMachineIngredient = NanoTier.ingredientFromMinLevel(tier)
 
     override fun getIngredients(): NonNullList<Ingredient> {

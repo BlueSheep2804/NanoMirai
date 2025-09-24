@@ -14,6 +14,7 @@ import mezz.jei.api.recipe.RecipeIngredientRole
 import mezz.jei.api.recipe.RecipeType
 import mezz.jei.api.recipe.category.IRecipeCategory
 import net.minecraft.ChatFormatting
+import net.minecraft.client.Minecraft
 import net.minecraft.client.gui.GuiGraphics
 import net.minecraft.core.component.DataComponents
 import net.minecraft.network.chat.Component
@@ -74,6 +75,19 @@ class SynthesizeRecipeCategory(helper: IGuiHelper): IRecipeCategory<SynthesizeRe
         mouseY: Double
     ) {
         val pose = guiGraphics.pose()
+        val font = Minecraft.getInstance().font
+        pose.pushPose()
+        val text = Component.translatable("recipe.nanomirai.synthesize.duration", recipe.duration)
+        guiGraphics.drawString(
+            font,
+            text,
+            128 - font.width(text),
+            0,
+            0xFF808080.toInt(),
+            false
+        )
+        pose.popPose()
+
         pose.pushPose()
         pose.scale(2F, 2F, 2F)
         guiGraphics.renderItem(ItemStack(recipe.inputBlock.block), 24, 12)

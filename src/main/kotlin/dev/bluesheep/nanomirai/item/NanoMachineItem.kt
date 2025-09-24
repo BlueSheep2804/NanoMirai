@@ -21,8 +21,10 @@ class NanoMachineItem(properties: Properties) : Item(properties) {
         val blockEntity = level.getBlockEntity(context.clickedPos)
         if (blockEntity is SynthesizeDisplayBlockEntity) {
             blockEntity.block = inputBlock
-            blockEntity.itemHandler.setStackInSlot(0 + context.hand.ordinal, mainhand.copy().apply { this.count = 1 })
-            blockEntity.itemHandler.setStackInSlot(1 - context.hand.ordinal, offhand.copy().apply { this.count = 1 })
+            val primaryItem = (if (context.hand == InteractionHand.MAIN_HAND) mainhand else offhand).copy().apply { this.count = 1 }
+            val secondaryItem = (if (context.hand == InteractionHand.MAIN_HAND) offhand else mainhand).copy().apply { this.count = 1 }
+            blockEntity.setPrimaryItem(primaryItem)
+            blockEntity.setSecondaryItem(secondaryItem)
             if (!player.isCreative) {
                 mainhand.shrink(1)
                 offhand.shrink(1)

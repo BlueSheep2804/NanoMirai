@@ -15,10 +15,11 @@ class SynthesizeRecipeSerializer : RecipeSerializer<SynthesizeRecipe> {
     companion object {
         val CODEC: MapCodec<SynthesizeRecipe> = RecordCodecBuilder.mapCodec { inst ->
             inst.group(
-                BlockState.CODEC.fieldOf("block").forGetter(SynthesizeRecipe::inputBlock),
+                ItemStack.CODEC.fieldOf("result").forGetter(SynthesizeRecipe::result),
                 Codec.INT.fieldOf("tier").forGetter(SynthesizeRecipe::tier),
+                BlockState.CODEC.fieldOf("block").forGetter(SynthesizeRecipe::inputBlock),
                 Ingredient.CODEC_NONEMPTY.fieldOf("catalyst").forGetter(SynthesizeRecipe::inputCatalystItem),
-                ItemStack.CODEC.fieldOf("result").forGetter(SynthesizeRecipe::result)
+                Codec.INT.fieldOf("duration").forGetter(SynthesizeRecipe::duration)
             ).apply(inst, ::SynthesizeRecipe)
         }
         val STREAM_CODEC: StreamCodec<RegistryFriendlyByteBuf, SynthesizeRecipe> = ByteBufCodecs.fromCodecWithRegistries(CODEC.codec())

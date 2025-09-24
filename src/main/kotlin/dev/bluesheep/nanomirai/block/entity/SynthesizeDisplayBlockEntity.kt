@@ -59,6 +59,18 @@ class SynthesizeDisplayBlockEntity(pos: BlockPos, blockState: BlockState) : Bloc
         return ClientboundBlockEntityDataPacket.create(this)
     }
 
+    fun setPrimaryItem(stack: ItemStack) {
+        itemHandler.setStackInSlot(0, stack)
+        setChanged()
+    }
+
+    fun setSecondaryItem(stack: ItemStack) {
+        itemHandler.setStackInSlot(1, stack)
+        val recipe = getCurrentRecipe()
+        maxProgress = if (recipe.isEmpty) 100 else recipe.get().value.duration
+        setChanged()
+    }
+
     fun tick(level: Level, pos: BlockPos, state: BlockState) {
         increaseCraftingProgress()
         setChanged(level, pos, state)
