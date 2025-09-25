@@ -1,7 +1,34 @@
 {
   "variants": {
-    "": {
+    "crafting=false,facing=east": {
+      "model": "nanomirai:block/laser_engraver",
+      "y": 90
+    },
+    "crafting=false,facing=north": {
       "model": "nanomirai:block/laser_engraver"
+    },
+    "crafting=false,facing=south": {
+      "model": "nanomirai:block/laser_engraver",
+      "y": 180
+    },
+    "crafting=false,facing=west": {
+      "model": "nanomirai:block/laser_engraver",
+      "y": 270
+    },
+    "crafting=true,facing=east": {
+      "model": "nanomirai:block/laser_engraver_crafting",
+      "y": 90
+    },
+    "crafting=true,facing=north": {
+      "model": "nanomirai:block/laser_engraver_crafting"
+    },
+    "crafting=true,facing=south": {
+      "model": "nanomirai:block/laser_engraver_crafting",
+      "y": 180
+    },
+    "crafting=true,facing=west": {
+      "model": "nanomirai:block/laser_engraver_crafting",
+      "y": 270
     }
   }
 }

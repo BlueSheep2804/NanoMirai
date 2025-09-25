@@ -1,5 +1,6 @@
 package dev.bluesheep.nanomirai.block.entity
 
+import dev.bluesheep.nanomirai.block.LaserEngraverBlock
 import dev.bluesheep.nanomirai.recipe.DualRecipeInput
 import dev.bluesheep.nanomirai.recipe.laser.LaserRecipe
 import dev.bluesheep.nanomirai.registry.NanoMiraiBlockEntities
@@ -85,6 +86,9 @@ class LaserEngraverBlockEntity(pos: BlockPos, blockState: BlockState) : BlockEnt
 
     fun tick(level: Level, pos: BlockPos, state: BlockState) {
         if (hasRecipe()) {
+            if (!state.getValue(LaserEngraverBlock.CRAFTING)) {
+                level.setBlock(pos, state.setValue(LaserEngraverBlock.CRAFTING, true), 3)
+            }
             increaseCraftingProgress()
             setChanged(level, pos, state)
 
@@ -93,6 +97,9 @@ class LaserEngraverBlockEntity(pos: BlockPos, blockState: BlockState) : BlockEnt
                 resetProgress()
             }
         } else {
+            if (state.getValue(LaserEngraverBlock.CRAFTING)) {
+                level.setBlock(pos, state.setValue(LaserEngraverBlock.CRAFTING, false), 3)
+            }
             resetProgress()
         }
     }

@@ -1,6 +1,8 @@
 {
-  "parent": "minecraft:block/cube_all",
+  "parent": "minecraft:block/orientable",
   "textures": {
-    "all": "nanomirai:block/laser_engraver"
+    "front": "nanomirai:block/laser_engraver",
+    "side": "nanomirai:block/laser_engraver_side",
+    "top": "nanomirai:block/laser_engraver_top"
   }
 }
