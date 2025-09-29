@@ -73,6 +73,11 @@ ordering = "NONE"
 side = "BOTH"
 
 [[dependencies."${mod_id}"]]
+modId = "curios"
+type = "required"
+side = "BOTH"
+
+[[dependencies."${mod_id}"]]
 modId = "jei"
 type = "optional"
 versionRange = "[19.8.4.113,)"

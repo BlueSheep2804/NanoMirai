@@ -1,6 +1,7 @@
 package dev.bluesheep.nanomirai
 
 import dev.bluesheep.nanomirai.data.NanoMiraiBlockProvider
+import dev.bluesheep.nanomirai.data.NanoMiraiCuriosProvider
 import dev.bluesheep.nanomirai.data.NanoMiraiItemModelProvider
 import dev.bluesheep.nanomirai.data.NanoMiraiRecipeProvider
 import dev.bluesheep.nanomirai.item.SynthesizeNanoItem
@@ -57,6 +58,7 @@ object NanoMirai {
         val existingFileHelper = event.existingFileHelper
 
         generator.addProvider(event.includeServer(), NanoMiraiRecipeProvider(output, lookupProvider))
+        generator.addProvider(event.includeServer(), NanoMiraiCuriosProvider(output, existingFileHelper, lookupProvider))
 
         generator.addProvider(event.includeClient(), NanoMiraiBlockProvider(output, existingFileHelper))
         generator.addProvider(event.includeClient(), NanoMiraiItemModelProvider(output, existingFileHelper))
