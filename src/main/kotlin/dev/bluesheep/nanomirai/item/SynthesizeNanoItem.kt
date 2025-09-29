@@ -2,17 +2,47 @@ package dev.bluesheep.nanomirai.item
 
 import dev.bluesheep.nanomirai.block.entity.SynthesizeDisplayBlockEntity
 import dev.bluesheep.nanomirai.registry.NanoMiraiBlocks
+import dev.bluesheep.nanomirai.util.NanoTier
+import net.minecraft.ChatFormatting
+import net.minecraft.core.component.DataComponents
 import net.minecraft.core.dispenser.BlockSource
 import net.minecraft.core.dispenser.OptionalDispenseItemBehavior
+import net.minecraft.network.chat.Component
 import net.minecraft.world.InteractionHand
 import net.minecraft.world.InteractionResult
 import net.minecraft.world.item.Item
 import net.minecraft.world.item.ItemStack
+import net.minecraft.world.item.Rarity
+import net.minecraft.world.item.TooltipFlag
 import net.minecraft.world.item.context.UseOnContext
 import net.minecraft.world.level.block.Blocks
 import net.minecraft.world.level.block.DispenserBlock
 
-class NanoMachineItem(properties: Properties) : Item(properties) {
+class SynthesizeNanoItem(properties: Properties) : Item(properties) {
+    override fun appendHoverText(
+        stack: ItemStack,
+        context: TooltipContext,
+        tooltipComponents: MutableList<Component?>,
+        tooltipFlag: TooltipFlag
+    ) {
+        super.appendHoverText(stack, context, tooltipComponents, tooltipFlag)
+        val rarity = stack.get(DataComponents.RARITY)
+        if (rarity != null) {
+            val tier = NanoTier.fromRarity(rarity)
+            val component = Component.translatable(
+                "item.nanomirai.tooltip.nano_tier",
+                Component.translatable("nanomirai.nano_tier.${tier.name.lowercase()}").withStyle(rarity.styleModifier)
+            )
+            if (tooltipFlag.isAdvanced) {
+                component.append(
+                    Component.translatable("item.nanomirai.tooltip.nano_tier.num", tier.ordinal)
+                        .withStyle(ChatFormatting.GRAY)
+                )
+            }
+            tooltipComponents.add(component)
+        }
+    }
+
     override fun useOn(context: UseOnContext): InteractionResult {
         val level = context.level
         if (level.isClientSide) return InteractionResult.PASS

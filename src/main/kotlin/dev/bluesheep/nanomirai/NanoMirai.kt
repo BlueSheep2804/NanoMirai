@@ -3,7 +3,7 @@ package dev.bluesheep.nanomirai
 import dev.bluesheep.nanomirai.data.NanoMiraiBlockProvider
 import dev.bluesheep.nanomirai.data.NanoMiraiItemModelProvider
 import dev.bluesheep.nanomirai.data.NanoMiraiRecipeProvider
-import dev.bluesheep.nanomirai.item.NanoMachineItem
+import dev.bluesheep.nanomirai.item.SynthesizeNanoItem
 import dev.bluesheep.nanomirai.registry.*
 import net.minecraft.resources.ResourceLocation
 import net.minecraft.world.level.block.DispenserBlock
@@ -46,10 +46,7 @@ object NanoMirai {
     @SubscribeEvent
     fun setup(event: FMLCommonSetupEvent) {
         LOGGER.info("Hello from server setup")
-        DispenserBlock.registerBehavior(NanoMiraiItems.NANO_PROTO, NanoMachineItem.DispenserBehavior())
-        DispenserBlock.registerBehavior(NanoMiraiItems.NANO_CELL, NanoMachineItem.DispenserBehavior())
-        DispenserBlock.registerBehavior(NanoMiraiItems.NANO_MATRIX, NanoMachineItem.DispenserBehavior())
-        DispenserBlock.registerBehavior(NanoMiraiItems.NANO_SINGULARITY, NanoMachineItem.DispenserBehavior())
+        DispenserBlock.registerBehavior(NanoMiraiItems.SYNTHESIZE_NANO, SynthesizeNanoItem.DispenserBehavior())
     }
 
     @SubscribeEvent

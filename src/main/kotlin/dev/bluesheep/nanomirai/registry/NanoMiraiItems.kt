@@ -1,10 +1,12 @@
 package dev.bluesheep.nanomirai.registry
 
 import dev.bluesheep.nanomirai.NanoMirai
-import dev.bluesheep.nanomirai.item.NanoMachineItem
+import dev.bluesheep.nanomirai.item.SynthesizeNanoItem
+import net.minecraft.core.component.DataComponents
 import net.minecraft.world.item.ArmorItem
 import net.minecraft.world.item.BlockItem
 import net.minecraft.world.item.Item
+import net.minecraft.world.item.Rarity
 import net.neoforged.neoforge.registries.DeferredRegister
 import thedarkcolour.kotlinforforge.neoforge.forge.getValue
 
@@ -19,17 +21,12 @@ object NanoMiraiItems {
         )
     }
 
-    val NANO_PROTO: NanoMachineItem by REGISTRY.register("nano_proto") { ->
-        NanoMachineItem(Item.Properties())
-    }
-    val NANO_CELL: NanoMachineItem by REGISTRY.register("nano_cell") { ->
-        NanoMachineItem(Item.Properties())
-    }
-    val NANO_MATRIX: NanoMachineItem by REGISTRY.register("nano_matrix") { ->
-        NanoMachineItem(Item.Properties())
-    }
-    val NANO_SINGULARITY: NanoMachineItem by REGISTRY.register("nano_singularity") { ->
-        NanoMachineItem(Item.Properties())
+    val NANO_PROTO: Item by REGISTRY.registerSimpleItem("nano_proto")
+    val NANO_CELL: Item by REGISTRY.registerSimpleItem("nano_cell")
+    val NANO_MATRIX: Item by REGISTRY.registerSimpleItem("nano_matrix")
+    val NANO_SINGULARITY: Item by REGISTRY.registerSimpleItem("nano_singularity")
+    val SYNTHESIZE_NANO: SynthesizeNanoItem by REGISTRY.register("synthesize_nano") { ->
+        SynthesizeNanoItem(Item.Properties())
     }
 
     val BROKEN_NANOMACHINE: Item by REGISTRY.registerSimpleItem("broken_nanomachine")

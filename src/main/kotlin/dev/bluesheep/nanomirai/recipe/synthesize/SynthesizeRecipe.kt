@@ -1,11 +1,12 @@
 package dev.bluesheep.nanomirai.recipe.synthesize
 
 import dev.bluesheep.nanomirai.recipe.BlockWithPairItemInput
+import dev.bluesheep.nanomirai.registry.NanoMiraiItems
 import dev.bluesheep.nanomirai.registry.NanoMiraiRecipeSerializer
 import dev.bluesheep.nanomirai.registry.NanoMiraiRecipeType
-import dev.bluesheep.nanomirai.util.NanoTier
 import net.minecraft.core.HolderLookup
 import net.minecraft.core.NonNullList
+import net.minecraft.core.component.DataComponents
 import net.minecraft.world.item.ItemStack
 import net.minecraft.world.item.crafting.Ingredient
 import net.minecraft.world.item.crafting.Recipe
@@ -15,15 +16,14 @@ import net.minecraft.world.level.Level
 import net.minecraft.world.level.block.state.BlockState
 
 class SynthesizeRecipe(val result: ItemStack, val tier: Int, val inputBlock: BlockState, val inputCatalystItem: Ingredient, val duration: Int) : Recipe<BlockWithPairItemInput> {
-    val nanoMachineIngredient = NanoTier.ingredientFromMinLevel(tier)
-
     override fun getIngredients(): NonNullList<Ingredient> {
         return NonNullList.of(Ingredient.EMPTY, inputCatalystItem)
     }
 
     override fun matches(input: BlockWithPairItemInput, level: Level): Boolean {
         val isBlockMatch = input.block.`is`(inputBlock.block)
-        return inputCatalystItem.test(input.offhand) && nanoMachineIngredient.test(input.mainhand) && isBlockMatch
+        val isNanomachineTierEnough = (input.mainhand.get(DataComponents.RARITY)?.ordinal ?: -1) >= tier
+        return inputCatalystItem.test(input.offhand) && input.mainhand.`is`(NanoMiraiItems.SYNTHESIZE_NANO) && isNanomachineTierEnough && isBlockMatch
     }
 
     override fun assemble(p0: BlockWithPairItemInput, p1: HolderLookup.Provider): ItemStack {

@@ -6,6 +6,7 @@ import dev.bluesheep.nanomirai.recipe.assembler.AssemblerRecipeBuilder
 import dev.bluesheep.nanomirai.recipe.laser.LaserRecipeBuilder
 import dev.bluesheep.nanomirai.recipe.synthesize.SynthesizeRecipeBuilder
 import dev.bluesheep.nanomirai.registry.NanoMiraiItems
+import dev.bluesheep.nanomirai.util.NanoTier
 import net.minecraft.core.HolderLookup
 import net.minecraft.core.NonNullList
 import net.minecraft.data.PackOutput
@@ -140,7 +141,7 @@ class NanoMiraiRecipeProvider(output: PackOutput, registries: CompletableFuture<
 
         SynthesizeRecipeBuilder(
             ItemStack(NanoMiraiItems.AMETHYST_LENS),
-            1,
+            NanoTier.CELL,
             Blocks.TINTED_GLASS.defaultBlockState(),
             Ingredient.of(Items.AMETHYST_SHARD),
             60
@@ -150,7 +151,7 @@ class NanoMiraiRecipeProvider(output: PackOutput, registries: CompletableFuture<
 
         SynthesizeRecipeBuilder(
             ItemStack(NanoMiraiItems.SCULK_LENS),
-            3,
+            NanoTier.SINGULARITY,
             Blocks.SCULK_SHRIEKER.defaultBlockState(),
             Ingredient.of(Items.ECHO_SHARD),
             200
