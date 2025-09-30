@@ -45,5 +45,7 @@ class NanoMiraiBlockProvider(output: PackOutput, exFileHelper: ExistingFileHelpe
                 )
                 .build()
         }
+
+        simpleBlock(NanoMiraiBlocks.NANO_LAB)
     }
 }

@@ -43,4 +43,7 @@ object NanoMiraiItems {
     val LASER_ENGRAVER: BlockItem by REGISTRY.registerSimpleBlockItem("laser_engraver") { ->
         NanoMiraiBlocks.LASER_ENGRAVER
     }
+    val NANO_LAB: BlockItem by REGISTRY.registerSimpleBlockItem("nano_lab") { ->
+        NanoMiraiBlocks.NANO_LAB
+    }
 }

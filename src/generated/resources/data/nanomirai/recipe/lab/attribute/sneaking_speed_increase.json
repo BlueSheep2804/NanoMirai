@@ -1,0 +1,23 @@
+{
+  "type": "nanomirai:lab_attribute",
+  "attribute": "minecraft:player.sneaking_speed",
+  "catalyst": {
+    "item": "minecraft:sculk_catalyst"
+  },
+  "ingredients": [
+    {
+      "item": "minecraft:sugar"
+    },
+    {
+      "item": "minecraft:sugar"
+    },
+    {
+      "item": "minecraft:sugar"
+    }
+  ],
+  "modifier": {
+    "amount": 2.0,
+    "id": "nanomirai:sneaking_speed_increase",
+    "operation": "add_multiplied_total"
+  }
+}

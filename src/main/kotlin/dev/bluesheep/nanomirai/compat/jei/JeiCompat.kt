@@ -2,6 +2,8 @@ package dev.bluesheep.nanomirai.compat.jei
 
 import dev.bluesheep.nanomirai.client.screen.AssemblerScreen
 import dev.bluesheep.nanomirai.client.screen.LaserEngraverScreen
+import dev.bluesheep.nanomirai.client.screen.NanoLabScreen
+import dev.bluesheep.nanomirai.recipe.lab.LabAttributeRecipe
 import dev.bluesheep.nanomirai.registry.NanoMiraiItems
 import dev.bluesheep.nanomirai.registry.NanoMiraiRecipeType
 import dev.bluesheep.nanomirai.util.NanoTier
@@ -26,6 +28,7 @@ class JeiCompat: IModPlugin {
         registration.addRecipeCategories(AssemblerRecipeCategory(guiHelper))
         registration.addRecipeCategories(LaserRecipeCategory(guiHelper))
         registration.addRecipeCategories(SynthesizeRecipeCategory(guiHelper))
+        registration.addRecipeCategories(LabAttributeRecipeCategory(guiHelper))
     }
 
     override fun registerRecipes(registration: IRecipeRegistration) {
@@ -43,6 +46,10 @@ class JeiCompat: IModPlugin {
                 SynthesizeRecipeCategory.TYPE,
                 recipeManager.getAllRecipesFor(NanoMiraiRecipeType.SYNTHESIZE).map { it.value }
             )
+            registration.addRecipes(
+                LabAttributeRecipeCategory.TYPE,
+                recipeManager.getAllRecipesFor(NanoMiraiRecipeType.LAB_ATTRIBUTE).map { it.value }
+            )
         }
     }
 
@@ -50,11 +57,13 @@ class JeiCompat: IModPlugin {
         registration.addRecipeCatalyst(ItemStack(NanoMiraiItems.NANOMACHINE_ASSEMBLER), AssemblerRecipeCategory.TYPE)
         registration.addRecipeCatalyst(ItemStack(NanoMiraiItems.LASER_ENGRAVER), LaserRecipeCategory.TYPE)
         registration.addRecipeCatalyst(ItemStack(NanoMiraiItems.SYNTHESIZE_NANO).apply { this.remove(DataComponents.RARITY) }, SynthesizeRecipeCategory.TYPE)
+        registration.addRecipeCatalyst(ItemStack(NanoMiraiItems.NANO_LAB), LabAttributeRecipeCategory.TYPE)
     }
 
     override fun registerGuiHandlers(registration: IGuiHandlerRegistration) {
         registration.addRecipeClickArea(AssemblerScreen::class.java, 89, 34, 24, 16, AssemblerRecipeCategory.TYPE)
         registration.addRecipeClickArea(LaserEngraverScreen::class.java, 76, 47, 24, 16, LaserRecipeCategory.TYPE)
+        registration.addRecipeClickArea(NanoLabScreen::class.java, 76, 47, 24, 16, LabAttributeRecipeCategory.TYPE)
     }
 
     override fun registerItemSubtypes(registration: ISubtypeRegistration) {

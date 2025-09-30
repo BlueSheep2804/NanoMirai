@@ -3,6 +3,7 @@ package dev.bluesheep.nanomirai.registry
 import dev.bluesheep.nanomirai.NanoMirai
 import dev.bluesheep.nanomirai.block.entity.AssemblerBlockEntity
 import dev.bluesheep.nanomirai.block.entity.LaserEngraverBlockEntity
+import dev.bluesheep.nanomirai.block.entity.NanoLabBlockEntity
 import dev.bluesheep.nanomirai.block.entity.SynthesizeDisplayBlockEntity
 import net.minecraft.core.registries.Registries
 import net.minecraft.world.level.block.entity.BlockEntityType
@@ -28,6 +29,12 @@ object NanoMiraiBlockEntities {
         BlockEntityType.Builder.of(
             ::SynthesizeDisplayBlockEntity,
             NanoMiraiBlocks.SYNTHESIZE_DISPLAY
+        ).build(null)
+    }
+    val NANO_LAB: BlockEntityType<NanoLabBlockEntity> by REGISTRY.register("nano_lab") { ->
+        BlockEntityType.Builder.of(
+            ::NanoLabBlockEntity,
+            NanoMiraiBlocks.NANO_LAB
         ).build(null)
     }
 }

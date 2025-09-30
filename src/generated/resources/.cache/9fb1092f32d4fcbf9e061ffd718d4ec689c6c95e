@@ -1,5 +1,7 @@
-// 1.21.1	2025-09-24T12:55:54.367717	Recipes
+// 1.21.1	2025-09-30T23:44:17.8718745	Recipes
 fef00c2deed04ecc32fe3255cf5a18da3b88cd7e data/nanomirai/advancement/recipes/amethyst_lens.json
+7a9f3312cea922fc4b26cc31ff81b9526097aaf1 data/nanomirai/advancement/recipes/lab/attribute/scale_increase.json
+4f379e64bb6af2859438933d053efb0eff99e70a data/nanomirai/advancement/recipes/lab/attribute/sneaking_speed_increase.json
 56dad2ff28efc6d511486a38b5f289cba6ec8037 data/nanomirai/advancement/recipes/laser/nano_matrix_from_nano_seed.json
 9b5fbaf15e3bed9ff8aa114da035d34e9cad1e8a data/nanomirai/advancement/recipes/laser/nano_singularity_from_nano_matrix.json
 76c68fa9ca0c1c7df64fa01337e839a067d9165a data/nanomirai/advancement/recipes/misc/goggles.json
@@ -14,6 +16,8 @@ ef45c3362a7d2c6da9b6f4251464f453c1259927 data/nanomirai/advancement/recipes/nano
 0958d84bf1d0dbc4bc0d4dd9e6a088a31bb361f6 data/nanomirai/recipe/amethyst_lens.json
 d07839b27e7c36d9fd73cd42349321117fc256e4 data/nanomirai/recipe/goggles.json
 1b0d1e0c153c9d7341b372d2e895a05970202676 data/nanomirai/recipe/graphite.json
+85a14a2db566781f8c97dd7c8bb3bdd842f13dbd data/nanomirai/recipe/lab/attribute/scale_increase.json
+0d1bc78bb702eb8897f01d37dc544d6a62b70a07 data/nanomirai/recipe/lab/attribute/sneaking_speed_increase.json
 13e90afd1e049bcade072db70d91e9982f474564 data/nanomirai/recipe/laser/nano_matrix_from_nano_seed.json
 8ca08ac055dcddf8285ea7a2385c69014ec9e10a data/nanomirai/recipe/laser/nano_singularity_from_nano_matrix.json
 d5c42e6c26e000c09059984713aa07029f7e6ccf data/nanomirai/recipe/nanomachine_assembler.json

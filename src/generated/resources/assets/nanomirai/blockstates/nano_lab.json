@@ -1,0 +1,7 @@
+{
+  "variants": {
+    "": {
+      "model": "nanomirai:block/nano_lab"
+    }
+  }
+}

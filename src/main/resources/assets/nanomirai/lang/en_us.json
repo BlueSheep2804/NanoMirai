@@ -8,6 +8,7 @@
   "block.nanomirai.nanomachine_assembler": "Nanomachine Assembler",
   "block.nanomirai.laser_engraver": "Laser Engraver",
   "block.nanomirai.synthesize_display": "Synthesizing...",
+  "block.nanomirai.nano_lab": "Nano Lab",
   "curios.identifier.support_nano": "Support Nano",
   "curios.modifiers.support_nano": "When equipped:",
   "item.nanomirai.tooltip.nano_tier": "Tier: %s",
@@ -26,6 +27,7 @@
   "item.nanomirai.sculk_lens": "Sculk Lens",
   "container.nanomirai.nanomachine_assembler": "Nanomachine Assembler",
   "container.nanomirai.laser_engraver": "Laser Engraver",
+  "container.nanomirai.nano_lab": "Nano Lab",
   "recipe.nanomirai.synthesize": "Synthesize",
   "recipe.nanomirai.synthesize.interact": "Interact with this block to synthesize",
   "recipe.nanomirai.synthesize.duration": "%s ticks"

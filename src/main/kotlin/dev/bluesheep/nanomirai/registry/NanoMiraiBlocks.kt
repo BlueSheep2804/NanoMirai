@@ -3,6 +3,7 @@ package dev.bluesheep.nanomirai.registry
 import dev.bluesheep.nanomirai.NanoMirai
 import dev.bluesheep.nanomirai.block.AssemblerBlock
 import dev.bluesheep.nanomirai.block.LaserEngraverBlock
+import dev.bluesheep.nanomirai.block.NanoLabBlock
 import dev.bluesheep.nanomirai.block.SynthesizeDisplayBlock
 import net.minecraft.core.BlockPos
 import net.minecraft.world.level.BlockGetter
@@ -23,6 +24,7 @@ object NanoMiraiBlocks {
         ::SynthesizeDisplayBlock,
         BlockBehaviour.Properties.of().strength(-1F, 3600000F).noLootTable().noOcclusion().isValidSpawn(Blocks::never).isRedstoneConductor(::never).isSuffocating(::never).isViewBlocking(::never)
     )
+    val NANO_LAB: NanoLabBlock by REGISTRY.registerBlock("nano_lab", ::NanoLabBlock)
 
     private fun never(state: BlockState, blockGetter: BlockGetter, pos: BlockPos): Boolean {
         return false

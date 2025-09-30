@@ -14,14 +14,15 @@ import top.theillusivec4.curios.api.type.capability.ICurioItem
 
 class SupportNanoItem() : Item(Properties().stacksTo(1)), INanoTieredItem, ICurioItem {
     companion object {
-        fun setAttributes(stack: ItemStack, attribute: Holder<Attribute>, amount: Double, operation: AttributeModifier.Operation) {
+        fun setAttributes(stack: ItemStack, attribute: Holder<Attribute>, modifier: AttributeModifier) {
             if (!stack.`is`(NanoMiraiItems.SUPPORT_NANO)) return
             CuriosApi.addModifier(
                 stack,
                 attribute,
-                rl("support_${attribute.registeredName.substringAfter(":").replace(".", "_")}"),
-                amount,
-                operation,
+//                rl("support_${attribute.registeredName.substringAfter(":").replace(".", "_")}"),
+                modifier.id,
+                modifier.amount,
+                modifier.operation,
                 "support_nano"
             )
         }

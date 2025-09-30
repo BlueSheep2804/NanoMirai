@@ -3,6 +3,7 @@ package dev.bluesheep.nanomirai.data
 import dev.bluesheep.nanomirai.NanoMirai.rl
 import dev.bluesheep.nanomirai.recipe.StackedIngredient
 import dev.bluesheep.nanomirai.recipe.assembler.AssemblerRecipeBuilder
+import dev.bluesheep.nanomirai.recipe.lab.LabAttributeRecipeBuilder
 import dev.bluesheep.nanomirai.recipe.laser.LaserRecipeBuilder
 import dev.bluesheep.nanomirai.recipe.synthesize.SynthesizeRecipeBuilder
 import dev.bluesheep.nanomirai.registry.NanoMiraiItems
@@ -17,6 +18,8 @@ import net.minecraft.data.recipes.ShapedRecipeBuilder
 import net.minecraft.data.recipes.ShapelessRecipeBuilder
 import net.minecraft.data.recipes.SimpleCookingRecipeBuilder
 import net.minecraft.tags.ItemTags
+import net.minecraft.world.entity.ai.attributes.AttributeModifier
+import net.minecraft.world.entity.ai.attributes.Attributes
 import net.minecraft.world.item.ItemStack
 import net.minecraft.world.item.Items
 import net.minecraft.world.item.crafting.Ingredient
@@ -157,6 +160,32 @@ class NanoMiraiRecipeProvider(output: PackOutput, registries: CompletableFuture<
             200
         )
             .unlockedBy("has_echo_shard", has(Items.ECHO_SHARD))
+            .save(recipeOutput)
+
+        LabAttributeRecipeBuilder(
+            Attributes.SCALE,
+            AttributeModifier(
+                rl("scale_increase"),
+                2.0,
+                AttributeModifier.Operation.ADD_MULTIPLIED_TOTAL
+            ),
+            Ingredient.of(Items.ENDER_EYE),
+            NonNullList.of(Ingredient.EMPTY, Ingredient.of(Items.ENDER_PEARL), Ingredient.of(Items.NETHER_STAR))
+        )
+            .unlockedBy("has_ender_eye", has(Items.ENDER_EYE))
+            .save(recipeOutput)
+
+        LabAttributeRecipeBuilder(
+            Attributes.SNEAKING_SPEED,
+            AttributeModifier(
+                rl("sneaking_speed_increase"),
+                2.0,
+                AttributeModifier.Operation.ADD_MULTIPLIED_TOTAL
+            ),
+            Ingredient.of(Items.SCULK_CATALYST),
+            NonNullList.of(Ingredient.EMPTY, Ingredient.of(Items.SUGAR), Ingredient.of(Items.SUGAR), Ingredient.of(Items.SUGAR))
+        )
+            .unlockedBy("has_sculk_catalyst", has(Items.SCULK_CATALYST))
             .save(recipeOutput)
     }
 }
