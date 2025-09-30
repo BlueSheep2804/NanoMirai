@@ -1,13 +1,10 @@
 package dev.bluesheep.nanomirai.util
 
 import dev.bluesheep.nanomirai.registry.NanoMiraiItems
-import net.minecraft.ChatFormatting
 import net.minecraft.core.component.DataComponents
-import net.minecraft.network.chat.Component
 import net.minecraft.world.item.Item
 import net.minecraft.world.item.ItemStack
 import net.minecraft.world.item.Rarity
-import net.minecraft.world.item.component.ItemLore
 import net.minecraft.world.item.crafting.Ingredient
 
 enum class NanoTier(val rarity: Rarity, val item: Item) {
@@ -17,10 +14,26 @@ enum class NanoTier(val rarity: Rarity, val item: Item) {
     SINGULARITY(Rarity.EPIC, NanoMiraiItems.NANO_SINGULARITY);
 
     companion object {
-        fun getTieredSynthesizeNano(tier: NanoTier): ItemStack {
-            return ItemStack(NanoMiraiItems.SYNTHESIZE_NANO).apply {
+        fun getTieredItem(item: Item, tier: NanoTier): ItemStack {
+            return ItemStack(item).apply {
                 this.set(DataComponents.RARITY, tier.rarity)
             }
+        }
+
+        fun getTieredSynthesizeNano(tier: NanoTier): ItemStack {
+            return getTieredItem(NanoMiraiItems.SYNTHESIZE_NANO, tier)
+        }
+
+        fun synthesizeNanoIngredient(level: Int): Ingredient {
+            return Ingredient.of(*fromMinLevel(level).map(::getTieredSynthesizeNano).toTypedArray())
+        }
+
+        fun getTieredSupportNano(tier: NanoTier): ItemStack {
+            return getTieredItem(NanoMiraiItems.SUPPORT_NANO, tier)
+        }
+
+        fun supportNanoIngredient(level: Int): Ingredient {
+            return Ingredient.of(*fromMinLevel(level).map(::getTieredSupportNano).toTypedArray())
         }
 
         fun fromRarity(rarity: Rarity): NanoTier {
@@ -29,10 +42,6 @@ enum class NanoTier(val rarity: Rarity, val item: Item) {
 
         fun fromMinLevel(level: Int): List<NanoTier> {
             return NanoTier.entries.filter { it.rarity.ordinal >= level }
-        }
-
-        fun ingredientFromMinLevel(level: Int): Ingredient {
-            return Ingredient.of(*fromMinLevel(level).map(::getTieredSynthesizeNano).toTypedArray())
         }
     }
 }

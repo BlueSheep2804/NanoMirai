@@ -57,7 +57,7 @@ class SynthesizeRecipeCategory(helper: IGuiHelper): IRecipeCategory<SynthesizeRe
             .setStandardSlotBackground()
 
         builder.addSlot(RecipeIngredientRole.INPUT, 1, 23)
-            .addIngredients(NanoTier.ingredientFromMinLevel(recipe.tier))
+            .addIngredients(NanoTier.synthesizeNanoIngredient(recipe.tier))
             .setStandardSlotBackground()
 
         builder.addSlot(RecipeIngredientRole.INPUT, 19, 23)

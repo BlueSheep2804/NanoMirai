@@ -14,7 +14,6 @@ import net.minecraft.client.Minecraft
 import net.minecraft.core.component.DataComponents
 import net.minecraft.resources.ResourceLocation
 import net.minecraft.world.item.ItemStack
-import net.minecraft.world.item.component.ItemLore
 
 @JeiPlugin
 class JeiCompat: IModPlugin {
@@ -59,7 +58,7 @@ class JeiCompat: IModPlugin {
     }
 
     override fun registerItemSubtypes(registration: ISubtypeRegistration) {
-        registration.registerSubtypeInterpreter(NanoMiraiItems.SYNTHESIZE_NANO, object: ISubtypeInterpreter<ItemStack> {
+        val nanoTieredSubtypeInterpreter = object: ISubtypeInterpreter<ItemStack> {
             override fun getSubtypeData(ingredient: ItemStack, context: UidContext): Any? {
                 return getLegacyStringSubtypeInfo(ingredient, context)
             }
@@ -71,6 +70,8 @@ class JeiCompat: IModPlugin {
                 }
                 return "recipe_catalyst"
             }
-        })
+        }
+        registration.registerSubtypeInterpreter(NanoMiraiItems.SYNTHESIZE_NANO, nanoTieredSubtypeInterpreter)
+        registration.registerSubtypeInterpreter(NanoMiraiItems.SUPPORT_NANO, nanoTieredSubtypeInterpreter)
     }
 }

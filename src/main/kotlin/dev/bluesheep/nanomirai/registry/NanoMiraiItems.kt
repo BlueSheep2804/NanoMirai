@@ -1,6 +1,7 @@
 package dev.bluesheep.nanomirai.registry
 
 import dev.bluesheep.nanomirai.NanoMirai
+import dev.bluesheep.nanomirai.item.SupportNanoItem
 import dev.bluesheep.nanomirai.item.SynthesizeNanoItem
 import net.minecraft.core.component.DataComponents
 import net.minecraft.world.item.ArmorItem
@@ -28,6 +29,7 @@ object NanoMiraiItems {
     val SYNTHESIZE_NANO: SynthesizeNanoItem by REGISTRY.register("synthesize_nano") { ->
         SynthesizeNanoItem(Item.Properties())
     }
+    val SUPPORT_NANO: SupportNanoItem by REGISTRY.register("support_nano", ::SupportNanoItem)
 
     val BROKEN_NANOMACHINE: Item by REGISTRY.registerSimpleItem("broken_nanomachine")
     val GRAPHENE_SHEET: Item by REGISTRY.registerSimpleItem("graphene_sheet")

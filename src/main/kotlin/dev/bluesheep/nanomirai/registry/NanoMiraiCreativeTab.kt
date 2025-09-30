@@ -1,7 +1,7 @@
 package dev.bluesheep.nanomirai.registry
 
 import dev.bluesheep.nanomirai.NanoMirai
-import dev.bluesheep.nanomirai.item.SynthesizeNanoItem
+import dev.bluesheep.nanomirai.item.INanoTieredItem
 import dev.bluesheep.nanomirai.util.NanoTier
 import net.minecraft.core.registries.Registries
 import net.minecraft.network.chat.Component
@@ -19,9 +19,9 @@ object NanoMiraiCreativeTab {
             .icon { ItemStack(NanoMiraiItems.NANO_CELL) }
             .displayItems { params, output ->
                 NanoMiraiItems.REGISTRY.entries.forEach { item ->
-                    if (item.get() is SynthesizeNanoItem) {
+                    if (item.get() is INanoTieredItem) {
                         NanoTier.entries.forEach {
-                            output.accept(NanoTier.getTieredSynthesizeNano(it))
+                            output.accept(NanoTier.getTieredItem(item.get(), it))
                         }
                     } else {
                         output.accept(item.get())
