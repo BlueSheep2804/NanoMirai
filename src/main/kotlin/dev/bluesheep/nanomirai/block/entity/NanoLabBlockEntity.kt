@@ -26,7 +26,7 @@ import java.util.*
 class NanoLabBlockEntity(pos: BlockPos, blockState: BlockState) : BlockEntity(NanoMiraiBlockEntities.NANO_LAB, pos, blockState) {
     companion object {
         const val SIZE = 8
-        const val OUTPUT_SLOT = 7
+        const val OUTPUT_SLOT = 0
     }
     val itemHandler = ItemStackHandler(SIZE)
     var progress = 0
@@ -112,7 +112,7 @@ class NanoLabBlockEntity(pos: BlockPos, blockState: BlockState) : BlockEntity(Na
 
         recipe.get().value.items.forEach { ingredient ->
             var toRemove = 1
-            for (i in 1 until SIZE - 1) {
+            for (i in 2 until SIZE) {
                 val stackInSlot = itemHandler.getStackInSlot(i)
                 if (ingredient.test(stackInSlot)) {
                     val extracted = itemHandler.extractItem(i, toRemove, false)
@@ -155,7 +155,7 @@ class NanoLabBlockEntity(pos: BlockPos, blockState: BlockState) : BlockEntity(Na
 
     private fun inputList(): List<ItemStack> {
         val list = mutableListOf<ItemStack>()
-        for (i in 0 until SIZE -1) {
+        for (i in 1 until SIZE) {
             val stack = itemHandler.getStackInSlot(i)
             if (stack.isEmpty)
                 continue

@@ -25,7 +25,7 @@ import java.util.*
 class LaserEngraverBlockEntity(pos: BlockPos, blockState: BlockState) : BlockEntity(NanoMiraiBlockEntities.LASER_ENGRAVER, pos, blockState) {
     companion object {
         const val SIZE = 3
-        const val OUTPUT_SLOT = 2
+        const val OUTPUT_SLOT = 0
     }
     val itemHandler = ItemStackHandler(SIZE)
     var progress = 0
@@ -114,7 +114,7 @@ class LaserEngraverBlockEntity(pos: BlockPos, blockState: BlockState) : BlockEnt
         if (recipe.isEmpty) return
         val output = recipe.get().value.result
 
-        itemHandler.extractItem(0, 1, false)
+        itemHandler.extractItem(1, 1, false)
         itemHandler.setStackInSlot(
             OUTPUT_SLOT,
             ItemStack(
@@ -145,7 +145,7 @@ class LaserEngraverBlockEntity(pos: BlockPos, blockState: BlockState) : BlockEnt
 
         return level!!.recipeManager.getRecipeFor(
             NanoMiraiRecipeType.LASER,
-            DualRecipeInput(itemHandler.getStackInSlot(0), itemHandler.getStackInSlot(1)),
+            DualRecipeInput(itemHandler.getStackInSlot(1), itemHandler.getStackInSlot(2)),
             level!!
         )
     }

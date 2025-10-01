@@ -24,7 +24,7 @@ import java.util.Optional
 class AssemblerBlockEntity(pos: BlockPos, blockState: BlockState) : BlockEntity(NanoMiraiBlockEntities.NANOMACHINE_ASSEMBLER, pos, blockState) {
     companion object {
         const val SIZE = 10
-        const val OUTPUT_SLOT = 9
+        const val OUTPUT_SLOT = 0
     }
     val itemHandler = ItemStackHandler(SIZE)
     var progress = 0
@@ -109,7 +109,7 @@ class AssemblerBlockEntity(pos: BlockPos, blockState: BlockState) : BlockEntity(
 
         recipe.get().value.inputItems.forEach { stackedIngredient ->
             var toRemove = stackedIngredient.count
-            for (i in 0 until SIZE - 1) {
+            for (i in 1 until SIZE) {
                 val stackInSlot = itemHandler.getStackInSlot(i)
                 if (stackedIngredient.ingredient.test(stackInSlot) && toRemove > 0) {
                     val extracted = itemHandler.extractItem(i, toRemove, false)
@@ -119,7 +119,7 @@ class AssemblerBlockEntity(pos: BlockPos, blockState: BlockState) : BlockEntity(
             }
         }
         itemHandler.setStackInSlot(
-            9,
+            OUTPUT_SLOT,
             ItemStack(
                 output.item,
                 itemHandler.getStackInSlot(OUTPUT_SLOT).count + output.count
@@ -155,7 +155,7 @@ class AssemblerBlockEntity(pos: BlockPos, blockState: BlockState) : BlockEntity(
 
     private fun inputList(): List<ItemStack> {
         val list = mutableListOf<ItemStack>()
-        for (i in 0 until SIZE-1) {
+        for (i in 1 until SIZE) {
             val stack = itemHandler.getStackInSlot(i)
             if (stack.isEmpty)
                 continue

@@ -23,15 +23,16 @@ class LaserEngraverMenu(containerId: Int, playerInv: Inventory, val blockEntity:
         SimpleContainerData(2)
     )
 
+    val playerInventoryIndex = blockEntity.itemHandler.slots
+    val hotbarIndex = playerInventoryIndex + 27
+    val hotbarIndexEnd = hotbarIndex + 9
+
     init {
         addContainerSlots(blockEntity.itemHandler)
         addPlayerInventorySlots(playerInv)
         addDataSlots(data)
     }
 
-    // 0-2 Input + Lens + Output
-    // 3-29 Player Inventory
-    // 30-38 Hotbar
     override fun quickMoveStack(player: Player, quickMovedSlotIndex: Int): ItemStack {
         var quickMovedStack = ItemStack.EMPTY
         val quickMovedSlot = this.slots[quickMovedSlotIndex]
@@ -41,22 +42,22 @@ class LaserEngraverMenu(containerId: Int, playerInv: Inventory, val blockEntity:
             quickMovedStack = rawStack.copy()
 
             if (quickMovedSlotIndex == 0) {
-                if (!this.moveItemStackTo(rawStack, 3, 39, true)) {
+                if (!this.moveItemStackTo(rawStack, playerInventoryIndex, hotbarIndexEnd, true)) {
                     return ItemStack.EMPTY
                 }
 
                 getSlot(0).onQuickCraft(rawStack, quickMovedStack)
-            } else if (quickMovedSlotIndex in 3..39) {
-                if (!this.moveItemStackTo(rawStack, 0, 3, false)) {
-                    if (quickMovedSlotIndex < 30) {
-                        if (!this.moveItemStackTo(rawStack, 30, 39, false)) {
+            } else if (quickMovedSlotIndex in playerInventoryIndex..hotbarIndexEnd) {
+                if (!this.moveItemStackTo(rawStack, 0, playerInventoryIndex, false)) {
+                    if (quickMovedSlotIndex < hotbarIndex) {
+                        if (!this.moveItemStackTo(rawStack, hotbarIndex, hotbarIndexEnd, false)) {
                             return ItemStack.EMPTY
                         }
-                    } else if (!this.moveItemStackTo(rawStack, 3, 29, false)) {
+                    } else if (!this.moveItemStackTo(rawStack, playerInventoryIndex, hotbarIndex, false)) {
                         return ItemStack.EMPTY
                     }
                 }
-            } else if (!this.moveItemStackTo(rawStack, 3, 39, false)) {
+            } else if (!this.moveItemStackTo(rawStack, playerInventoryIndex, hotbarIndexEnd, false)) {
                 return ItemStack.EMPTY
             }
 
@@ -90,8 +91,9 @@ class LaserEngraverMenu(containerId: Int, playerInv: Inventory, val blockEntity:
     }
 
     private fun addContainerSlots(container: ItemStackHandler) {
-        this.addSlot(SlotItemHandler(container, 0, 51, 48))
-        this.addSlot(object : SlotItemHandler(container, 1, 80, 22) {
+        this.addSlot(OutputSlotItemHandler(container, 0, 113, 48))
+        this.addSlot(SlotItemHandler(container, 1, 51, 48))
+        this.addSlot(object : SlotItemHandler(container, 2, 80, 22) {
             override fun getMaxStackSize(): Int {
                 return 1
             }
@@ -100,6 +102,5 @@ class LaserEngraverMenu(containerId: Int, playerInv: Inventory, val blockEntity:
                 return 1
             }
         })
-        this.addSlot(OutputSlotItemHandler(container, 2, 113, 48))
     }
 }

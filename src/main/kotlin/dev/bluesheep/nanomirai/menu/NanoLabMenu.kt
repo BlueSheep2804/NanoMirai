@@ -23,15 +23,16 @@ class NanoLabMenu(containerId: Int, playerInv: Inventory, val blockEntity: NanoL
         SimpleContainerData(2)
     )
 
+    val playerInventoryIndex = blockEntity.itemHandler.slots
+    val hotbarIndex = playerInventoryIndex + 27
+    val hotbarIndexEnd = hotbarIndex + 9
+
     init {
         addContainerSlots(blockEntity.itemHandler)
         addPlayerInventorySlots(playerInv)
         addDataSlots(data)
     }
 
-    // 0-7 Input + Lens + Output
-    // 8-34 Player Inventory
-    // 35-43 Hotbar
     override fun quickMoveStack(
         player: Player,
         quickMovedSlotIndex: Int
@@ -44,22 +45,22 @@ class NanoLabMenu(containerId: Int, playerInv: Inventory, val blockEntity: NanoL
             quickMovedStack = rawStack.copy()
 
             if (quickMovedSlotIndex == 0) {
-                if (!this.moveItemStackTo(rawStack, 8, 44, true)) {
+                if (!this.moveItemStackTo(rawStack, playerInventoryIndex, hotbarIndexEnd, true)) {
                     return ItemStack.EMPTY
                 }
 
                 getSlot(0).onQuickCraft(rawStack, quickMovedStack)
-            } else if (quickMovedSlotIndex in 8..44) {
-                if (!this.moveItemStackTo(rawStack, 0, 8, false)) {
-                    if (quickMovedSlotIndex < 35) {
-                        if (!this.moveItemStackTo(rawStack, 35, 44, false)) {
+            } else if (quickMovedSlotIndex in playerInventoryIndex..hotbarIndexEnd) {
+                if (!this.moveItemStackTo(rawStack, 0, playerInventoryIndex, false)) {
+                    if (quickMovedSlotIndex < hotbarIndex) {
+                        if (!this.moveItemStackTo(rawStack, hotbarIndex, hotbarIndexEnd, false)) {
                             return ItemStack.EMPTY
                         }
-                    } else if (!this.moveItemStackTo(rawStack, 8, 35, false)) {
+                    } else if (!this.moveItemStackTo(rawStack, playerInventoryIndex, hotbarIndex, false)) {
                         return ItemStack.EMPTY
                     }
                 }
-            } else if (!this.moveItemStackTo(rawStack, 8, 44, false)) {
+            } else if (!this.moveItemStackTo(rawStack, playerInventoryIndex, hotbarIndexEnd, false)) {
                 return ItemStack.EMPTY
             }
 
@@ -93,16 +94,16 @@ class NanoLabMenu(containerId: Int, playerInv: Inventory, val blockEntity: NanoL
     }
 
     private fun addContainerSlots(container: ItemStackHandler) {
-        this.addSlot(SlotItemHandler(container, 0, 53, 63))
+        this.addSlot(SlotItemHandler(container, 0, 143, 63))
 
-        this.addSlot(SlotItemHandler(container, 1, 26, 27))
-        this.addSlot(SlotItemHandler(container, 2, 17, 63))
-        this.addSlot(SlotItemHandler(container, 3, 26, 99))
+        this.addSlot(SlotItemHandler(container, 1, 53, 63))
 
-        this.addSlot(SlotItemHandler(container, 4, 80, 27))
-        this.addSlot(SlotItemHandler(container, 5, 89, 63))
-        this.addSlot(SlotItemHandler(container, 6, 80, 99))
+        this.addSlot(SlotItemHandler(container, 2, 26, 27))
+        this.addSlot(SlotItemHandler(container, 3, 17, 63))
+        this.addSlot(SlotItemHandler(container, 4, 26, 99))
 
-        this.addSlot(SlotItemHandler(container, 7, 143, 63))
+        this.addSlot(SlotItemHandler(container, 5, 80, 27))
+        this.addSlot(SlotItemHandler(container, 6, 89, 63))
+        this.addSlot(SlotItemHandler(container, 7, 80, 99))
     }
 }

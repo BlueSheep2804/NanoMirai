@@ -20,15 +20,16 @@ class AssemblerMenu(containerId: Int, playerInv: Inventory, val access: Containe
         SimpleContainerData(2)
     )
 
+    val playerInventoryIndex = blockEntity.itemHandler.slots
+    val hotbarIndex = playerInventoryIndex + 27
+    val hotbarIndexEnd = hotbarIndex + 9
+
     init {
         addContainerSlots(blockEntity.itemHandler)
         addPlayerInventorySlots(playerInv)
         addDataSlots(data)
     }
 
-    // 0-9 Output + Input
-    // 10-36 Player Inventory
-    // 37-45 Hotbar
     override fun quickMoveStack(player: Player, quickMovedSlotIndex: Int): ItemStack {
         var quickMovedStack = ItemStack.EMPTY
         val quickMovedSlot = this.slots[quickMovedSlotIndex]
@@ -38,22 +39,22 @@ class AssemblerMenu(containerId: Int, playerInv: Inventory, val access: Containe
             quickMovedStack = rawStack.copy()
 
             if (quickMovedSlotIndex == 0) {
-                if (!this.moveItemStackTo(rawStack, 10, 46, true)) {
+                if (!this.moveItemStackTo(rawStack, playerInventoryIndex, hotbarIndexEnd, true)) {
                     return ItemStack.EMPTY
                 }
 
                 getSlot(0).onQuickCraft(rawStack, quickMovedStack)
-            } else if (quickMovedSlotIndex in 10..45) {
-                if (!this.moveItemStackTo(rawStack, 1, 10, false)) {
-                    if (quickMovedSlotIndex < 37) {
-                        if (!this.moveItemStackTo(rawStack, 37, 46, false)) {
+            } else if (quickMovedSlotIndex in playerInventoryIndex..hotbarIndexEnd) {
+                if (!this.moveItemStackTo(rawStack, 0, playerInventoryIndex, false)) {
+                    if (quickMovedSlotIndex < hotbarIndex) {
+                        if (!this.moveItemStackTo(rawStack, hotbarIndex, hotbarIndexEnd, false)) {
                             return ItemStack.EMPTY
                         }
-                    } else if (!this.moveItemStackTo(rawStack, 10, 37, false)) {
+                    } else if (!this.moveItemStackTo(rawStack, playerInventoryIndex, hotbarIndex, false)) {
                         return ItemStack.EMPTY
                     }
                 }
-            } else if (!this.moveItemStackTo(rawStack, 10, 46, false)) {
+            } else if (!this.moveItemStackTo(rawStack, playerInventoryIndex, hotbarIndexEnd, false)) {
                 return ItemStack.EMPTY
             }
 
@@ -87,10 +88,10 @@ class AssemblerMenu(containerId: Int, playerInv: Inventory, val access: Containe
     }
 
     private fun addContainerSlots(container: ItemStackHandler) {
-        this.addSlot(OutputSlotItemHandler(container, 9, 124, 35))
+        this.addSlot(OutputSlotItemHandler(container, 0, 124, 35))
         for (row in 0 until 3) {
             for (col in 0 until 3) {
-                this.addSlot(SlotItemHandler(container, col + row * 3, 30 + col * 18, 17 + row * 18))
+                this.addSlot(SlotItemHandler(container,  1 + col + row * 3, 30 + col * 18, 17 + row * 18))
             }
         }
     }
