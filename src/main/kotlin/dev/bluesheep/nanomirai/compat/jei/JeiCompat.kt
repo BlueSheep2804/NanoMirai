@@ -63,7 +63,7 @@ class JeiCompat: IModPlugin {
     override fun registerGuiHandlers(registration: IGuiHandlerRegistration) {
         registration.addRecipeClickArea(AssemblerScreen::class.java, 89, 34, 24, 16, AssemblerRecipeCategory.TYPE)
         registration.addRecipeClickArea(LaserEngraverScreen::class.java, 76, 47, 24, 16, LaserRecipeCategory.TYPE)
-        registration.addRecipeClickArea(NanoLabScreen::class.java, 76, 47, 24, 16, LabAttributeRecipeCategory.TYPE)
+        registration.addRecipeClickArea(NanoLabScreen::class.java, 110, 63, 24, 16, LabAttributeRecipeCategory.TYPE)
     }
 
     override fun registerItemSubtypes(registration: ISubtypeRegistration) {
