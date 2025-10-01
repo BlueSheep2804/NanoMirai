@@ -1,7 +1,9 @@
 package dev.bluesheep.nanomirai.data
 
 import dev.bluesheep.nanomirai.NanoMirai
+import dev.bluesheep.nanomirai.NanoMirai.rl
 import dev.bluesheep.nanomirai.registry.NanoMiraiItems
+import dev.bluesheep.nanomirai.registry.NanoMiraiTags
 import net.minecraft.core.HolderLookup
 import net.minecraft.core.registries.Registries
 import net.minecraft.data.PackOutput
@@ -20,10 +22,11 @@ class NanoMiraiItemTagsProvider(output: PackOutput, lookupProvider: CompletableF
     existingFileHelper
 ) {
     override fun addTags(lookupProvider: HolderLookup.Provider) {
-        tag(TagKey.create(
-            Registries.ITEM,
-            ResourceLocation.fromNamespaceAndPath("curios", "support_nano")
-        ))
+        tag(NanoMiraiTags.CURIOS_SUPPORT_NANO)
             .add(NanoMiraiItems.SUPPORT_NANO)
+
+        tag(NanoMiraiTags.LENS)
+            .add(NanoMiraiItems.AMETHYST_LENS)
+            .add(NanoMiraiItems.SCULK_LENS)
     }
 }
