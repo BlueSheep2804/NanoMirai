@@ -1,4 +1,4 @@
-// 1.21.1	2025-09-30T19:36:29.0395812	Item Models: nanomirai
+// 1.21.1	2025-10-02T23:06:24.72782	Item Models: nanomirai
 899b7290cbb64a057afcbc553e31968bfefbb8f5 assets/nanomirai/models/item/amethyst_lens.json
 27ce0c97f5efeb0727ee8d4c2da81238bbc22563 assets/nanomirai/models/item/broken_nanomachine.json
 45446492fcee0151a2d3a42bdc85f42bd563a5c9 assets/nanomirai/models/item/goggles.json
@@ -11,6 +11,7 @@ d51c08fe039f2316fd94322f53676a24ccfb46ae assets/nanomirai/models/item/nano_cell.
 1d27be0085ddc5349397981bb1dc95af227e37b2 assets/nanomirai/models/item/nano_matrix.json
 68babcec65e31a309f0a6a2bbfc8c52c9f0381a1 assets/nanomirai/models/item/nano_proto.json
 fd17f8697aa6a494be2a8aa743377e43e6c6fe07 assets/nanomirai/models/item/nano_singularity.json
+df55774cfa1aa7ce1a260d0fcad779f6a772fc7c assets/nanomirai/models/item/nano_swarm_blaster.json
 aecfc26bced6729d6cfef996c661395f2629ca52 assets/nanomirai/models/item/sculk_lens.json
 baae9eeb015dfe058664c55aaf2af9c14d664d47 assets/nanomirai/models/item/support_nano.json
 564b1b4e5afcf30c0cc5124a3151bd9e92233752 assets/nanomirai/models/item/synthesize_nano.json

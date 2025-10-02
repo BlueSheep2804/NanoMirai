@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:item/handheld",
+  "textures": {
+    "layer0": "nanomirai:item/nano_swarm_blaster"
+  }
+}

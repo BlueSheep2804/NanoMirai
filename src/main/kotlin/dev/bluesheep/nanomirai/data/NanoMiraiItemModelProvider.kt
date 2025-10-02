@@ -16,6 +16,7 @@ class NanoMiraiItemModelProvider(output: PackOutput, existingFileHelper: Existin
         basicItem(NanoMiraiItems.NANO_SINGULARITY)
         basicItem(NanoMiraiItems.SYNTHESIZE_NANO)
         basicItem(NanoMiraiItems.SUPPORT_NANO)
+        handheldItem(NanoMiraiItems.NANO_SWARM_BLASTER)
         basicItem(NanoMiraiItems.BROKEN_NANOMACHINE)
         basicItem(NanoMiraiItems.GRAPHENE_SHEET)
         basicItem(NanoMiraiItems.GRAPHITE)

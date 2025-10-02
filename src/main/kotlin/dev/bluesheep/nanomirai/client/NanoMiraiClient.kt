@@ -6,7 +6,9 @@ import dev.bluesheep.nanomirai.client.screen.AssemblerScreen
 import dev.bluesheep.nanomirai.client.screen.LaserEngraverScreen
 import dev.bluesheep.nanomirai.client.screen.NanoLabScreen
 import dev.bluesheep.nanomirai.registry.NanoMiraiBlockEntities
+import dev.bluesheep.nanomirai.registry.NanoMiraiEntities
 import dev.bluesheep.nanomirai.registry.NanoMiraiMenu
+import net.minecraft.client.renderer.entity.NoopRenderer
 import net.neoforged.api.distmarker.Dist
 import net.neoforged.bus.api.SubscribeEvent
 import net.neoforged.fml.common.EventBusSubscriber
@@ -24,6 +26,8 @@ object NanoMiraiClient {
 
     @SubscribeEvent
     fun registerEntityRenderers(event: EntityRenderersEvent.RegisterRenderers) {
+        event.registerEntityRenderer(NanoMiraiEntities.SWARM_BULLET, ::NoopRenderer)
+
         event.registerBlockEntityRenderer(NanoMiraiBlockEntities.SYNTHESIZE_DISPLAY, ::SynthesizeDisplayBlockEntityRenderer)
     }
 }

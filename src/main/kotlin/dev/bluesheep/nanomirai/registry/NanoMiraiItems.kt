@@ -1,13 +1,12 @@
 package dev.bluesheep.nanomirai.registry
 
 import dev.bluesheep.nanomirai.NanoMirai
+import dev.bluesheep.nanomirai.item.NanoSwarmBlasterItem
 import dev.bluesheep.nanomirai.item.SupportNanoItem
 import dev.bluesheep.nanomirai.item.SynthesizeNanoItem
-import net.minecraft.core.component.DataComponents
 import net.minecraft.world.item.ArmorItem
 import net.minecraft.world.item.BlockItem
 import net.minecraft.world.item.Item
-import net.minecraft.world.item.Rarity
 import net.neoforged.neoforge.registries.DeferredRegister
 import thedarkcolour.kotlinforforge.neoforge.forge.getValue
 
@@ -30,6 +29,7 @@ object NanoMiraiItems {
         SynthesizeNanoItem(Item.Properties())
     }
     val SUPPORT_NANO: SupportNanoItem by REGISTRY.register("support_nano", ::SupportNanoItem)
+    val NANO_SWARM_BLASTER: NanoSwarmBlasterItem by REGISTRY.register("nano_swarm_blaster", ::NanoSwarmBlasterItem)
 
     val BROKEN_NANOMACHINE: Item by REGISTRY.registerSimpleItem("broken_nanomachine")
     val GRAPHENE_SHEET: Item by REGISTRY.registerSimpleItem("graphene_sheet")
