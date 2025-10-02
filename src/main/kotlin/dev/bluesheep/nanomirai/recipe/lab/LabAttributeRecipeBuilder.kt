@@ -20,8 +20,12 @@ class LabAttributeRecipeBuilder(val attribute: Holder<Attribute>, val modifier: 
         SupportNanoItem.setAttributes(this, attribute, modifier)
     }
 ) {
+    override fun save(recipeOutput: RecipeOutput) {
+        save(recipeOutput, modifier.id)
+    }
+
     override fun save(output: RecipeOutput, id: ResourceLocation) {
-        val recipeId = modifier.id.withPrefix("lab/attribute/")
+        val recipeId = id.withPrefix("lab/attribute/")
         val advancement = output.advancement()
             .addCriterion("has_the_recipe", RecipeUnlockedTrigger.unlocked(id))
             .rewards(AdvancementRewards.Builder.recipe(recipeId))

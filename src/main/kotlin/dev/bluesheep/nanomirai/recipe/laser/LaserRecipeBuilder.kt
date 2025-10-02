@@ -11,12 +11,13 @@ import net.minecraft.world.item.crafting.Ingredient
 
 class LaserRecipeBuilder(result: ItemStack, val inputIngredient: Ingredient, val lensIngredient: Ingredient = Ingredient.EMPTY) : SimpleRecipeBuilder(result) {
     override fun save(output: RecipeOutput, id: ResourceLocation) {
+        val recipeId = id.withPrefix("laser/")
         val advancement = output.advancement()
-            .addCriterion("has_the_recipe", RecipeUnlockedTrigger.unlocked(id))
-            .rewards(AdvancementRewards.Builder.recipe(id))
+            .addCriterion("has_the_recipe", RecipeUnlockedTrigger.unlocked(recipeId))
+            .rewards(AdvancementRewards.Builder.recipe(recipeId))
             .requirements(AdvancementRequirements.Strategy.OR)
         criteria.forEach(advancement::addCriterion)
         val recipe = LaserRecipe(inputIngredient, result, lensIngredient)
-        output.accept(id, recipe, advancement.build(id.withPrefix("recipes/")))
+        output.accept(recipeId, recipe, advancement.build(recipeId.withPrefix("recipes/")))
     }
 }

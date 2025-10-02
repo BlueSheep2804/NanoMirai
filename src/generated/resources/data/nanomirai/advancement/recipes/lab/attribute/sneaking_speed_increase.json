@@ -13,7 +13,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "nanomirai:support_nano"
+        "recipe": "nanomirai:sneaking_speed_increase"
       },
       "trigger": "minecraft:recipe_unlocked"
     }

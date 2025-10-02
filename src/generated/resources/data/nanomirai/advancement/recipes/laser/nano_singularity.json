@@ -13,7 +13,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "nanomirai:laser/nano_singularity_from_nano_matrix"
+        "recipe": "nanomirai:laser/nano_singularity"
       },
       "trigger": "minecraft:recipe_unlocked"
     }
@@ -26,7 +26,7 @@
   ],
   "rewards": {
     "recipes": [
-      "nanomirai:laser/nano_singularity_from_nano_matrix"
+      "nanomirai:laser/nano_singularity"
     ]
   }
 }

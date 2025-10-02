@@ -132,7 +132,7 @@ class NanoMiraiRecipeProvider(output: PackOutput, registries: CompletableFuture<
             Ingredient.of(NanoMiraiItems.NANO_CELL)
         )
             .unlockedBy("has_nanomachine_assembler", has(NanoMiraiItems.NANOMACHINE_ASSEMBLER))
-            .save(recipeOutput, rl("laser/nano_matrix_from_nano_seed"))
+            .save(recipeOutput)
 
         LaserRecipeBuilder(
             ItemStack(NanoMiraiItems.NANO_SINGULARITY),
@@ -140,7 +140,7 @@ class NanoMiraiRecipeProvider(output: PackOutput, registries: CompletableFuture<
             Ingredient.of(Items.ECHO_SHARD)
         )
             .unlockedBy("has_nanomachine_assembler", has(NanoMiraiItems.NANOMACHINE_ASSEMBLER))
-            .save(recipeOutput, rl("laser/nano_singularity_from_nano_matrix"))
+            .save(recipeOutput)
 
         SynthesizeRecipeBuilder(
             ItemStack(NanoMiraiItems.AMETHYST_LENS),

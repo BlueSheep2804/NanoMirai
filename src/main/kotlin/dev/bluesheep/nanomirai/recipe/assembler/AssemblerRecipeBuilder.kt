@@ -12,12 +12,13 @@ import net.minecraft.world.item.ItemStack
 
 class AssemblerRecipeBuilder(result: ItemStack, val inputItem: NonNullList<StackedIngredient>) : SimpleRecipeBuilder(result) {
     override fun save(output: RecipeOutput, id: ResourceLocation) {
+        val recipeId = id.withPrefix("assembler/")
         val advancement = output.advancement()
-            .addCriterion("has_the_recipe", RecipeUnlockedTrigger.unlocked(id))
-            .rewards(AdvancementRewards.Builder.recipe(id))
+            .addCriterion("has_the_recipe", RecipeUnlockedTrigger.unlocked(recipeId))
+            .rewards(AdvancementRewards.Builder.recipe(recipeId))
             .requirements(AdvancementRequirements.Strategy.OR)
         criteria.forEach(advancement::addCriterion)
         val recipe = AssemblerRecipe(inputItem, result)
-        output.accept(id, recipe, advancement.build(id.withPrefix("recipes/")))
+        output.accept(recipeId, recipe, advancement.build(recipeId.withPrefix("recipes/")))
     }
 }
