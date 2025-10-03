@@ -3,7 +3,6 @@ package dev.bluesheep.nanomirai.compat.jei
 import dev.bluesheep.nanomirai.client.screen.AssemblerScreen
 import dev.bluesheep.nanomirai.client.screen.LaserEngraverScreen
 import dev.bluesheep.nanomirai.client.screen.NanoLabScreen
-import dev.bluesheep.nanomirai.recipe.lab.LabAttributeRecipe
 import dev.bluesheep.nanomirai.registry.NanoMiraiItems
 import dev.bluesheep.nanomirai.registry.NanoMiraiRecipeType
 import dev.bluesheep.nanomirai.util.NanoTier
@@ -82,5 +81,6 @@ class JeiCompat: IModPlugin {
         }
         registration.registerSubtypeInterpreter(NanoMiraiItems.SYNTHESIZE_NANO, nanoTieredSubtypeInterpreter)
         registration.registerSubtypeInterpreter(NanoMiraiItems.SUPPORT_NANO, nanoTieredSubtypeInterpreter)
+        registration.registerSubtypeInterpreter(NanoMiraiItems.NANO_SWARM_BLASTER, nanoTieredSubtypeInterpreter)
     }
 }

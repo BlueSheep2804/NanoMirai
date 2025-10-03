@@ -3,7 +3,8 @@ package dev.bluesheep.nanomirai.data
 import dev.bluesheep.nanomirai.NanoMirai.rl
 import dev.bluesheep.nanomirai.recipe.StackedIngredient
 import dev.bluesheep.nanomirai.recipe.assembler.AssemblerRecipeBuilder
-import dev.bluesheep.nanomirai.recipe.lab.LabAttributeRecipeBuilder
+import dev.bluesheep.nanomirai.recipe.lab.attribute.LabAttributeRecipeBuilder
+import dev.bluesheep.nanomirai.recipe.lab.effect.LabEffectRecipeBuilder
 import dev.bluesheep.nanomirai.recipe.laser.LaserRecipeBuilder
 import dev.bluesheep.nanomirai.recipe.synthesize.SynthesizeRecipeBuilder
 import dev.bluesheep.nanomirai.registry.NanoMiraiItems
@@ -18,6 +19,8 @@ import net.minecraft.data.recipes.ShapedRecipeBuilder
 import net.minecraft.data.recipes.ShapelessRecipeBuilder
 import net.minecraft.data.recipes.SimpleCookingRecipeBuilder
 import net.minecraft.tags.ItemTags
+import net.minecraft.world.effect.MobEffectInstance
+import net.minecraft.world.effect.MobEffects
 import net.minecraft.world.entity.ai.attributes.AttributeModifier
 import net.minecraft.world.entity.ai.attributes.Attributes
 import net.minecraft.world.item.ItemStack
@@ -186,6 +189,28 @@ class NanoMiraiRecipeProvider(output: PackOutput, registries: CompletableFuture<
             NonNullList.of(Ingredient.EMPTY, Ingredient.of(Items.SUGAR), Ingredient.of(Items.SUGAR), Ingredient.of(Items.SUGAR))
         )
             .unlockedBy("has_sculk_catalyst", has(Items.SCULK_CATALYST))
+            .save(recipeOutput)
+
+        LabEffectRecipeBuilder(
+            MobEffectInstance(
+                MobEffects.MOVEMENT_SLOWDOWN,
+                600, 2, false, true, true
+            ),
+            Ingredient.of(Items.BLAZE_POWDER),
+            NonNullList.of(Ingredient.EMPTY, Ingredient.of(Items.SUGAR), Ingredient.of(Items.GLOWSTONE_DUST))
+        )
+            .unlockedBy("has_potion", has(Items.POTION))
+            .save(recipeOutput)
+
+        LabEffectRecipeBuilder(
+            MobEffectInstance(
+                MobEffects.POISON,
+                600, 2, false, true, true
+            ),
+            Ingredient.of(Items.BLAZE_POWDER),
+            NonNullList.of(Ingredient.EMPTY, Ingredient.of(Items.PUFFERFISH), Ingredient.of(Items.SPIDER_EYE))
+        )
+            .unlockedBy("has_potion", has(Items.POTION))
             .save(recipeOutput)
     }
 }

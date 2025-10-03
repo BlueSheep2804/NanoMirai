@@ -1,0 +1,25 @@
+{
+  "type": "nanomirai:lab_effect",
+  "catalyst": {
+    "item": "minecraft:blaze_powder"
+  },
+  "effect": {
+    "amplifier": 2,
+    "duration": 600,
+    "id": "minecraft:poison",
+    "neoforge:cures": [
+      "milk",
+      "honey",
+      "protected_by_totem"
+    ],
+    "show_icon": true
+  },
+  "ingredients": [
+    {
+      "item": "minecraft:pufferfish"
+    },
+    {
+      "item": "minecraft:spider_eye"
+    }
+  ]
+}

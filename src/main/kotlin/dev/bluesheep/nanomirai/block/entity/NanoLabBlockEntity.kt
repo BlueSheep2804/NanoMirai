@@ -1,8 +1,10 @@
 package dev.bluesheep.nanomirai.block.entity
 
+import dev.bluesheep.nanomirai.item.NanoSwarmBlasterItem
 import dev.bluesheep.nanomirai.item.SupportNanoItem
 import dev.bluesheep.nanomirai.recipe.MultipleItemRecipeInput
-import dev.bluesheep.nanomirai.recipe.lab.LabAttributeRecipe
+import dev.bluesheep.nanomirai.recipe.lab.attribute.LabAttributeRecipe
+import dev.bluesheep.nanomirai.recipe.lab.effect.LabEffectRecipe
 import dev.bluesheep.nanomirai.registry.NanoMiraiBlockEntities
 import dev.bluesheep.nanomirai.registry.NanoMiraiItems
 import dev.bluesheep.nanomirai.registry.NanoMiraiRecipeType
@@ -105,27 +107,45 @@ class NanoLabBlockEntity(pos: BlockPos, blockState: BlockState) : BlockEntity(Na
     }
 
     private fun craftItem() {
-        val recipe = getCurrentRecipe()
-        if (recipe.isEmpty) return
-        val attribute = recipe.get().value.attribute
-        val modifier = recipe.get().value.modifier
+        val attributeRecipe = getCurrentAttributeRecipe()
+        if (!attributeRecipe.isEmpty) {
+            val attribute = attributeRecipe.get().value.attribute
+            val modifier = attributeRecipe.get().value.modifier
 
-        recipe.get().value.items.forEach { ingredient ->
-            var toRemove = 1
-            for (i in 2 until SIZE) {
-                val stackInSlot = itemHandler.getStackInSlot(i)
-                if (ingredient.test(stackInSlot)) {
-                    val extracted = itemHandler.extractItem(i, toRemove, false)
-                    toRemove -= extracted.count
-                    if (toRemove <= 0) break
+            attributeRecipe.get().value.items.forEach { ingredient ->
+                var toRemove = 1
+                for (i in 2 until SIZE) {
+                    val stackInSlot = itemHandler.getStackInSlot(i)
+                    if (ingredient.test(stackInSlot)) {
+                        val extracted = itemHandler.extractItem(i, toRemove, false)
+                        toRemove -= extracted.count
+                        if (toRemove <= 0) break
+                    }
                 }
             }
+            SupportNanoItem.setAttributes(
+                itemHandler.getStackInSlot(OUTPUT_SLOT),
+                attribute,
+                modifier
+            )
         }
-        SupportNanoItem.setAttributes(
-            itemHandler.getStackInSlot(OUTPUT_SLOT),
-            attribute,
-            modifier
-        )
+
+        val effectRecipe = getCurrentEffectRecipe()
+        if (!effectRecipe.isEmpty) {
+            effectRecipe.get().value.items.forEach { ingredient ->
+                var toRemove = 1
+                for (i in 2 until SIZE) {
+                    val stackInSlot = itemHandler.getStackInSlot(i)
+                    if (ingredient.test(stackInSlot)) {
+                        val extracted = itemHandler.extractItem(i, toRemove, false)
+                        toRemove -= extracted.count
+                        if (toRemove <= 0) break
+                    }
+                }
+            }
+
+            NanoSwarmBlasterItem.addEffect(itemHandler.getStackInSlot(OUTPUT_SLOT), effectRecipe.get().value.mobEffectInstance)
+        }
     }
 
     private fun hasCraftingFinished(): Boolean {
@@ -137,17 +157,30 @@ class NanoLabBlockEntity(pos: BlockPos, blockState: BlockState) : BlockEntity(Na
     }
 
     private fun hasRecipe(): Boolean {
-        val recipe = getCurrentRecipe()
-        if (recipe.isEmpty) return false
+        val attributeRecipe = getCurrentAttributeRecipe()
+        val effectRecipe = getCurrentEffectRecipe()
 
-        return itemHandler.getStackInSlot(OUTPUT_SLOT).`is`(NanoMiraiItems.SUPPORT_NANO)
+        return (
+                (attributeRecipe.isPresent && itemHandler.getStackInSlot(OUTPUT_SLOT).`is`(NanoMiraiItems.SUPPORT_NANO)) ||
+                (effectRecipe.isPresent && itemHandler.getStackInSlot(OUTPUT_SLOT).`is`(NanoMiraiItems.NANO_SWARM_BLASTER))
+        )
     }
 
-    private fun getCurrentRecipe(): Optional<RecipeHolder<LabAttributeRecipe>> {
+    private fun getCurrentAttributeRecipe(): Optional<RecipeHolder<LabAttributeRecipe>> {
         if (level == null) return Optional.empty()
 
         return level!!.recipeManager.getRecipeFor(
             NanoMiraiRecipeType.LAB_ATTRIBUTE,
+            MultipleItemRecipeInput(inputList()),
+            level!!
+        )
+    }
+
+    private fun getCurrentEffectRecipe(): Optional<RecipeHolder<LabEffectRecipe>> {
+        if (level == null) return Optional.empty()
+
+        return level!!.recipeManager.getRecipeFor(
+            NanoMiraiRecipeType.LAB_EFFECT,
             MultipleItemRecipeInput(inputList()),
             level!!
         )

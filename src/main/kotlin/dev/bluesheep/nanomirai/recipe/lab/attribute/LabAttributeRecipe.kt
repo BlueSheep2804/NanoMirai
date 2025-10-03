@@ -1,4 +1,4 @@
-package dev.bluesheep.nanomirai.recipe.lab
+package dev.bluesheep.nanomirai.recipe.lab.attribute
 
 import dev.bluesheep.nanomirai.item.SupportNanoItem
 import dev.bluesheep.nanomirai.recipe.MultipleItemRecipeInput

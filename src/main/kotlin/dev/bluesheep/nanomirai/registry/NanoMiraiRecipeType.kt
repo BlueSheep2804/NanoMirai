@@ -2,7 +2,8 @@ package dev.bluesheep.nanomirai.registry
 
 import dev.bluesheep.nanomirai.NanoMirai
 import dev.bluesheep.nanomirai.recipe.assembler.AssemblerRecipe
-import dev.bluesheep.nanomirai.recipe.lab.LabAttributeRecipe
+import dev.bluesheep.nanomirai.recipe.lab.attribute.LabAttributeRecipe
+import dev.bluesheep.nanomirai.recipe.lab.effect.LabEffectRecipe
 import dev.bluesheep.nanomirai.recipe.laser.LaserRecipe
 import dev.bluesheep.nanomirai.recipe.synthesize.SynthesizeRecipe
 import net.minecraft.core.registries.Registries
@@ -24,5 +25,8 @@ object NanoMiraiRecipeType {
     }
     val LAB_ATTRIBUTE: RecipeType<LabAttributeRecipe> by REGISTRY.register("lab_attribute") { ->
         RecipeType.simple(NanoMirai.rl("lab_attribute"))
+    }
+    val LAB_EFFECT: RecipeType<LabEffectRecipe> by REGISTRY.register("lab_effect") { ->
+        RecipeType.simple(NanoMirai.rl("lab_effect"))
     }
 }
