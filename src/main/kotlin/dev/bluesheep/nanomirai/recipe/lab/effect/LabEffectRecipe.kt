@@ -1,62 +1,24 @@
 package dev.bluesheep.nanomirai.recipe.lab.effect
 
 import dev.bluesheep.nanomirai.item.NanoSwarmBlasterItem
-import dev.bluesheep.nanomirai.recipe.CatalystWithMultipleItemRecipeInput
+import dev.bluesheep.nanomirai.recipe.lab.AbstractLabRecipe
 import dev.bluesheep.nanomirai.registry.NanoMiraiItems
 import dev.bluesheep.nanomirai.registry.NanoMiraiRecipeSerializer
 import dev.bluesheep.nanomirai.registry.NanoMiraiRecipeType
-import net.minecraft.core.HolderLookup
 import net.minecraft.core.NonNullList
 import net.minecraft.world.effect.MobEffectInstance
 import net.minecraft.world.item.ItemStack
 import net.minecraft.world.item.crafting.Ingredient
-import net.minecraft.world.item.crafting.Recipe
 import net.minecraft.world.item.crafting.RecipeSerializer
 import net.minecraft.world.item.crafting.RecipeType
-import net.minecraft.world.level.Level
 
-class LabEffectRecipe(val mobEffectInstance: MobEffectInstance, val catalyst: Ingredient, val items: NonNullList<Ingredient>) : Recipe<CatalystWithMultipleItemRecipeInput> {
-    val result = ItemStack(NanoMiraiItems.NANO_SWARM_BLASTER).apply {
+class LabEffectRecipe(val mobEffectInstance: MobEffectInstance, catalyst: Ingredient, items: NonNullList<Ingredient>) : AbstractLabRecipe(
+    ItemStack(NanoMiraiItems.NANO_SWARM_BLASTER).apply {
         NanoSwarmBlasterItem.addEffect(this, mobEffectInstance)
-    }
-
-    override fun getIngredients(): NonNullList<Ingredient> {
-        return NonNullList.of(Ingredient.EMPTY, *items.toTypedArray())
-    }
-
-    override fun canCraftInDimensions(width: Int, height: Int): Boolean {
-        return width * height >= items.size
-    }
-
-    override fun matches(
-        input: CatalystWithMultipleItemRecipeInput,
-        level: Level
-    ): Boolean {
-        if (!catalyst.test(input.catalyst)) return false
-        val inputList = input.list.filter { !it.isEmpty }.toMutableList()
-
-        for (ingredient in ingredients.filter { !it.isEmpty }) {
-            val index = inputList.indexOfFirst { ingredient.test(it) }
-            if (index == -1) {
-                return false
-            } else {
-                inputList.removeAt(index)
-            }
-        }
-        return true
-    }
-
-    override fun getResultItem(registries: HolderLookup.Provider): ItemStack {
-        return result
-    }
-
-    override fun assemble(
-        input: CatalystWithMultipleItemRecipeInput,
-        registries: HolderLookup.Provider
-    ): ItemStack {
-        return result.copy()
-    }
-
+    },
+    catalyst,
+    items
+) {
     override fun getSerializer(): RecipeSerializer<*> {
         return NanoMiraiRecipeSerializer.LAB_EFFECT.get()
     }
