@@ -193,13 +193,7 @@ class NanoLabBlockEntity(pos: BlockPos, blockState: BlockState) : BlockEntity(Na
             val stack = itemHandler.getStackInSlot(i)
             if (stack.isEmpty)
                 continue
-
-            val existsStack = list.find { stack.`is`(it.item) }
-            if (existsStack != null) {
-                existsStack.count += stack.count
-                continue
-            }
-            list.add(itemHandler.getStackInSlot(i).copy())
+            list.add(stack)
         }
         return list
     }

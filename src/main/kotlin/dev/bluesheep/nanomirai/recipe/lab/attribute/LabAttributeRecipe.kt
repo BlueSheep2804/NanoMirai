@@ -34,14 +34,18 @@ class LabAttributeRecipe(val attribute: Holder<Attribute>, val modifier: Attribu
         input: CatalystWithMultipleItemRecipeInput,
         level: Level
     ): Boolean {
-        val filteredInputItems = ingredients.filter { !it.isEmpty }
-        val filteredInputList = input.list.filter { !it.isEmpty }
+        if (!catalyst.test(input.catalyst)) return false
+        val inputList = input.list.filter { !it.isEmpty }.toMutableList()
 
-        return filteredInputItems.all { ingredient ->
-            filteredInputList.any {
-                ingredient.test(it)
+        for (ingredient in ingredients.filter { !it.isEmpty }) {
+            val index = inputList.indexOfFirst { ingredient.test(it) }
+            if (index == -1) {
+                return false
+            } else {
+                inputList.removeAt(index)
             }
-        } && catalyst.test(input.catalyst)
+        }
+        return true
     }
 
     override fun getResultItem(registries: HolderLookup.Provider): ItemStack {
