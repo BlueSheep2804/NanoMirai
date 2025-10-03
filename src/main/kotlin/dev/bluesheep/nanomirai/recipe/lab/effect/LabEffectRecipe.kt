@@ -1,7 +1,7 @@
 package dev.bluesheep.nanomirai.recipe.lab.effect
 
 import dev.bluesheep.nanomirai.item.NanoSwarmBlasterItem
-import dev.bluesheep.nanomirai.recipe.MultipleItemRecipeInput
+import dev.bluesheep.nanomirai.recipe.CatalystWithMultipleItemRecipeInput
 import dev.bluesheep.nanomirai.registry.NanoMiraiItems
 import dev.bluesheep.nanomirai.registry.NanoMiraiRecipeSerializer
 import dev.bluesheep.nanomirai.registry.NanoMiraiRecipeType
@@ -15,13 +15,13 @@ import net.minecraft.world.item.crafting.RecipeSerializer
 import net.minecraft.world.item.crafting.RecipeType
 import net.minecraft.world.level.Level
 
-class LabEffectRecipe(val mobEffectInstance: MobEffectInstance, val catalyst: Ingredient, val items: NonNullList<Ingredient>) : Recipe<MultipleItemRecipeInput> {
+class LabEffectRecipe(val mobEffectInstance: MobEffectInstance, val catalyst: Ingredient, val items: NonNullList<Ingredient>) : Recipe<CatalystWithMultipleItemRecipeInput> {
     val result = ItemStack(NanoMiraiItems.NANO_SWARM_BLASTER).apply {
         NanoSwarmBlasterItem.addEffect(this, mobEffectInstance)
     }
 
     override fun getIngredients(): NonNullList<Ingredient> {
-        return NonNullList.of(Ingredient.EMPTY, catalyst, *items.toTypedArray())
+        return NonNullList.of(Ingredient.EMPTY, *items.toTypedArray())
     }
 
     override fun canCraftInDimensions(width: Int, height: Int): Boolean {
@@ -29,7 +29,7 @@ class LabEffectRecipe(val mobEffectInstance: MobEffectInstance, val catalyst: In
     }
 
     override fun matches(
-        input: MultipleItemRecipeInput,
+        input: CatalystWithMultipleItemRecipeInput,
         level: Level
     ): Boolean {
         val filteredInputItems = ingredients.filter { !it.isEmpty }
@@ -39,7 +39,7 @@ class LabEffectRecipe(val mobEffectInstance: MobEffectInstance, val catalyst: In
             filteredInputList.any {
                 ingredient.test(it)
             }
-        }
+        } && catalyst.test(input.catalyst)
     }
 
     override fun getResultItem(registries: HolderLookup.Provider): ItemStack {
@@ -47,7 +47,7 @@ class LabEffectRecipe(val mobEffectInstance: MobEffectInstance, val catalyst: In
     }
 
     override fun assemble(
-        input: MultipleItemRecipeInput,
+        input: CatalystWithMultipleItemRecipeInput,
         registries: HolderLookup.Provider
     ): ItemStack {
         return result.copy()

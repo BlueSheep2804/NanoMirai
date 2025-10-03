@@ -1,7 +1,7 @@
 package dev.bluesheep.nanomirai.recipe.lab.attribute
 
 import dev.bluesheep.nanomirai.item.SupportNanoItem
-import dev.bluesheep.nanomirai.recipe.MultipleItemRecipeInput
+import dev.bluesheep.nanomirai.recipe.CatalystWithMultipleItemRecipeInput
 import dev.bluesheep.nanomirai.registry.NanoMiraiItems
 import dev.bluesheep.nanomirai.registry.NanoMiraiRecipeSerializer
 import dev.bluesheep.nanomirai.registry.NanoMiraiRecipeType
@@ -17,13 +17,13 @@ import net.minecraft.world.item.crafting.RecipeSerializer
 import net.minecraft.world.item.crafting.RecipeType
 import net.minecraft.world.level.Level
 
-class LabAttributeRecipe(val attribute: Holder<Attribute>, val modifier: AttributeModifier, val catalyst: Ingredient, val items: NonNullList<Ingredient>) : Recipe<MultipleItemRecipeInput> {
+class LabAttributeRecipe(val attribute: Holder<Attribute>, val modifier: AttributeModifier, val catalyst: Ingredient, val items: NonNullList<Ingredient>) : Recipe<CatalystWithMultipleItemRecipeInput> {
     val result = ItemStack(NanoMiraiItems.SUPPORT_NANO).apply {
         SupportNanoItem.setAttributes(this, attribute, modifier)
     }
 
     override fun getIngredients(): NonNullList<Ingredient> {
-        return NonNullList.of(Ingredient.EMPTY, catalyst, *items.toTypedArray())
+        return NonNullList.of(Ingredient.EMPTY, *items.toTypedArray())
     }
 
     override fun canCraftInDimensions(width: Int, height: Int): Boolean {
@@ -31,7 +31,7 @@ class LabAttributeRecipe(val attribute: Holder<Attribute>, val modifier: Attribu
     }
 
     override fun matches(
-        input: MultipleItemRecipeInput,
+        input: CatalystWithMultipleItemRecipeInput,
         level: Level
     ): Boolean {
         val filteredInputItems = ingredients.filter { !it.isEmpty }
@@ -41,7 +41,7 @@ class LabAttributeRecipe(val attribute: Holder<Attribute>, val modifier: Attribu
             filteredInputList.any {
                 ingredient.test(it)
             }
-        }
+        } && catalyst.test(input.catalyst)
     }
 
     override fun getResultItem(registries: HolderLookup.Provider): ItemStack {
@@ -49,7 +49,7 @@ class LabAttributeRecipe(val attribute: Holder<Attribute>, val modifier: Attribu
     }
 
     override fun assemble(
-        input: MultipleItemRecipeInput,
+        input: CatalystWithMultipleItemRecipeInput,
         registries: HolderLookup.Provider
     ): ItemStack {
         return result.copy()

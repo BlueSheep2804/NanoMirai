@@ -2,7 +2,7 @@ package dev.bluesheep.nanomirai.block.entity
 
 import dev.bluesheep.nanomirai.item.NanoSwarmBlasterItem
 import dev.bluesheep.nanomirai.item.SupportNanoItem
-import dev.bluesheep.nanomirai.recipe.MultipleItemRecipeInput
+import dev.bluesheep.nanomirai.recipe.CatalystWithMultipleItemRecipeInput
 import dev.bluesheep.nanomirai.recipe.lab.attribute.LabAttributeRecipe
 import dev.bluesheep.nanomirai.recipe.lab.effect.LabEffectRecipe
 import dev.bluesheep.nanomirai.registry.NanoMiraiBlockEntities
@@ -29,6 +29,7 @@ class NanoLabBlockEntity(pos: BlockPos, blockState: BlockState) : BlockEntity(Na
     companion object {
         const val SIZE = 8
         const val OUTPUT_SLOT = 0
+        const val CATALYST_SLOT = 1
     }
     val itemHandler = ItemStackHandler(SIZE)
     var progress = 0
@@ -171,7 +172,7 @@ class NanoLabBlockEntity(pos: BlockPos, blockState: BlockState) : BlockEntity(Na
 
         return level!!.recipeManager.getRecipeFor(
             NanoMiraiRecipeType.LAB_ATTRIBUTE,
-            MultipleItemRecipeInput(inputList()),
+            CatalystWithMultipleItemRecipeInput(itemHandler.getStackInSlot(CATALYST_SLOT), inputList()),
             level!!
         )
     }
@@ -181,14 +182,14 @@ class NanoLabBlockEntity(pos: BlockPos, blockState: BlockState) : BlockEntity(Na
 
         return level!!.recipeManager.getRecipeFor(
             NanoMiraiRecipeType.LAB_EFFECT,
-            MultipleItemRecipeInput(inputList()),
+            CatalystWithMultipleItemRecipeInput(itemHandler.getStackInSlot(CATALYST_SLOT), inputList()),
             level!!
         )
     }
 
     private fun inputList(): List<ItemStack> {
         val list = mutableListOf<ItemStack>()
-        for (i in 1 until SIZE) {
+        for (i in 2 until SIZE) {
             val stack = itemHandler.getStackInSlot(i)
             if (stack.isEmpty)
                 continue
