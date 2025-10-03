@@ -27,7 +27,8 @@ class JeiCompat: IModPlugin {
         registration.addRecipeCategories(AssemblerRecipeCategory(guiHelper))
         registration.addRecipeCategories(LaserRecipeCategory(guiHelper))
         registration.addRecipeCategories(SynthesizeRecipeCategory(guiHelper))
-        registration.addRecipeCategories(LabAttributeRecipeCategory(guiHelper))
+        registration.addRecipeCategories(LabAttributeRecipeCategory())
+        registration.addRecipeCategories(LabEffectRecipeCategory())
     }
 
     override fun registerRecipes(registration: IRecipeRegistration) {
@@ -49,6 +50,10 @@ class JeiCompat: IModPlugin {
                 LabAttributeRecipeCategory.TYPE,
                 recipeManager.getAllRecipesFor(NanoMiraiRecipeType.LAB_ATTRIBUTE).map { it.value }
             )
+            registration.addRecipes(
+                LabEffectRecipeCategory.TYPE,
+                recipeManager.getAllRecipesFor(NanoMiraiRecipeType.LAB_EFFECT).map { it.value }
+            )
         }
     }
 
@@ -56,13 +61,21 @@ class JeiCompat: IModPlugin {
         registration.addRecipeCatalyst(ItemStack(NanoMiraiItems.NANOMACHINE_ASSEMBLER), AssemblerRecipeCategory.TYPE)
         registration.addRecipeCatalyst(ItemStack(NanoMiraiItems.LASER_ENGRAVER), LaserRecipeCategory.TYPE)
         registration.addRecipeCatalyst(ItemStack(NanoMiraiItems.SYNTHESIZE_NANO).apply { this.remove(DataComponents.RARITY) }, SynthesizeRecipeCategory.TYPE)
-        registration.addRecipeCatalyst(ItemStack(NanoMiraiItems.NANO_LAB), LabAttributeRecipeCategory.TYPE)
+        registration.addRecipeCatalyst(ItemStack(NanoMiraiItems.NANO_LAB), LabAttributeRecipeCategory.TYPE, LabEffectRecipeCategory.TYPE)
     }
 
     override fun registerGuiHandlers(registration: IGuiHandlerRegistration) {
         registration.addRecipeClickArea(AssemblerScreen::class.java, 89, 34, 24, 16, AssemblerRecipeCategory.TYPE)
         registration.addRecipeClickArea(LaserEngraverScreen::class.java, 76, 47, 24, 16, LaserRecipeCategory.TYPE)
-        registration.addRecipeClickArea(NanoLabScreen::class.java, 110, 63, 24, 16, LabAttributeRecipeCategory.TYPE)
+        registration.addRecipeClickArea(
+            NanoLabScreen::class.java,
+            110,
+            63,
+            24,
+            16,
+            LabAttributeRecipeCategory.TYPE,
+            LabEffectRecipeCategory.TYPE
+        )
     }
 
     override fun registerItemSubtypes(registration: ISubtypeRegistration) {
