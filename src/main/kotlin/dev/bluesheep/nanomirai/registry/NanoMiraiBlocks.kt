@@ -17,16 +17,19 @@ import thedarkcolour.kotlinforforge.neoforge.forge.getValue
 object NanoMiraiBlocks {
     val REGISTRY: DeferredRegister.Blocks = DeferredRegister.createBlocks(NanoMirai.ID)
 
-    val NANOMACHINE_ASSEMBLER: AssemblerBlock by REGISTRY.registerBlock("nanomachine_assembler", ::AssemblerBlock)
-    val LASER_ENGRAVER: Block by REGISTRY.registerBlock("laser_engraver", ::LaserEngraverBlock)
+    val machineProperties: BlockBehaviour.Properties = BlockBehaviour.Properties.of()
+        .destroyTime(1F)
+        .requiresCorrectToolForDrops()
+        .strength(3F, 5F)
+
+    val NANOMACHINE_ASSEMBLER: AssemblerBlock by REGISTRY.registerBlock("nanomachine_assembler", ::AssemblerBlock, machineProperties)
+    val LASER_ENGRAVER: Block by REGISTRY.registerBlock("laser_engraver", ::LaserEngraverBlock, machineProperties)
     val SYNTHESIZE_DISPLAY: Block by REGISTRY.registerBlock(
         "synthesize_display",
         ::SynthesizeDisplayBlock,
         BlockBehaviour.Properties.of().strength(-1F, 3600000F).noLootTable().noOcclusion().isValidSpawn(Blocks::never).isRedstoneConductor(::never).isSuffocating(::never).isViewBlocking(::never)
     )
-    val NANO_LAB: NanoLabBlock by REGISTRY.registerBlock("nano_lab", ::NanoLabBlock)
+    val NANO_LAB: NanoLabBlock by REGISTRY.registerBlock("nano_lab", ::NanoLabBlock, machineProperties)
 
-    private fun never(state: BlockState, blockGetter: BlockGetter, pos: BlockPos): Boolean {
-        return false
-    }
+    private fun never(state: BlockState, blockGetter: BlockGetter, pos: BlockPos): Boolean = false
 }

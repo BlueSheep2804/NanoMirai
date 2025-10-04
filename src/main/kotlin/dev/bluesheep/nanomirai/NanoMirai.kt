@@ -5,6 +5,7 @@ import dev.bluesheep.nanomirai.data.NanoMiraiBlockTagsProvider
 import dev.bluesheep.nanomirai.data.NanoMiraiCuriosProvider
 import dev.bluesheep.nanomirai.data.NanoMiraiItemModelProvider
 import dev.bluesheep.nanomirai.data.NanoMiraiItemTagsProvider
+import dev.bluesheep.nanomirai.data.NanoMiraiLootTableProvider
 import dev.bluesheep.nanomirai.data.NanoMiraiRecipeProvider
 import dev.bluesheep.nanomirai.item.SynthesizeNanoItem
 import dev.bluesheep.nanomirai.registry.*
@@ -65,6 +66,7 @@ object NanoMirai {
         generator.addProvider(event.includeServer(), blockTags)
         generator.addProvider(event.includeServer(), NanoMiraiItemTagsProvider(output, lookupProvider, blockTags.contentsGetter(), existingFileHelper))
         generator.addProvider(event.includeServer(), NanoMiraiCuriosProvider(output, existingFileHelper, lookupProvider))
+        generator.addProvider(event.includeServer(), NanoMiraiLootTableProvider(output, lookupProvider))
 
         generator.addProvider(event.includeClient(), NanoMiraiBlockProvider(output, existingFileHelper))
         generator.addProvider(event.includeClient(), NanoMiraiItemModelProvider(output, existingFileHelper))
