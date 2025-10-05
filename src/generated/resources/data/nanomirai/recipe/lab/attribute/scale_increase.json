@@ -16,5 +16,6 @@
     "amount": 2.0,
     "id": "nanomirai:scale_increase",
     "operation": "add_multiplied_total"
-  }
+  },
+  "tier": 0
 }

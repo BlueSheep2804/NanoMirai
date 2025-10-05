@@ -14,10 +14,11 @@ import net.minecraft.world.item.crafting.Ingredient
 import net.minecraft.world.item.crafting.RecipeSerializer
 import net.minecraft.world.item.crafting.RecipeType
 
-class LabAttributeRecipe(val attribute: Holder<Attribute>, val modifier: AttributeModifier, catalyst: Ingredient, items: NonNullList<Ingredient>) : AbstractLabRecipe(
+class LabAttributeRecipe(val attribute: Holder<Attribute>, val modifier: AttributeModifier, tier: Int, catalyst: Ingredient, items: NonNullList<Ingredient>) : AbstractLabRecipe(
     ItemStack(NanoMiraiItems.SUPPORT_NANO).apply {
         SupportNanoItem.setAttributes(this, attribute, modifier)
     },
+    tier,
     catalyst,
     items
 ) {

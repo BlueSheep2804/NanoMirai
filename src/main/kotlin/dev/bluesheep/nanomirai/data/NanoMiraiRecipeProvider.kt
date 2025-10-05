@@ -172,6 +172,7 @@ class NanoMiraiRecipeProvider(output: PackOutput, registries: CompletableFuture<
                 2.0,
                 AttributeModifier.Operation.ADD_MULTIPLIED_TOTAL
             ),
+            NanoTier.PROTO,
             Ingredient.of(Items.ENDER_EYE),
             NonNullList.of(Ingredient.EMPTY, Ingredient.of(Items.ENDER_PEARL), Ingredient.of(Items.NETHER_STAR))
         )
@@ -185,6 +186,7 @@ class NanoMiraiRecipeProvider(output: PackOutput, registries: CompletableFuture<
                 2.0,
                 AttributeModifier.Operation.ADD_MULTIPLIED_TOTAL
             ),
+            NanoTier.MATRIX,
             Ingredient.of(Items.SCULK_CATALYST),
             NonNullList.of(Ingredient.EMPTY, Ingredient.of(Items.SUGAR), Ingredient.of(Items.SUGAR), Ingredient.of(Items.SUGAR))
         )
@@ -196,6 +198,7 @@ class NanoMiraiRecipeProvider(output: PackOutput, registries: CompletableFuture<
                 MobEffects.MOVEMENT_SLOWDOWN,
                 600, 2, false, true, true
             ),
+            NanoTier.PROTO,
             Ingredient.of(Items.BLAZE_POWDER),
             NonNullList.of(Ingredient.EMPTY, Ingredient.of(Items.SUGAR), Ingredient.of(Items.GLOWSTONE_DUST))
         )
@@ -207,6 +210,7 @@ class NanoMiraiRecipeProvider(output: PackOutput, registries: CompletableFuture<
                 MobEffects.POISON,
                 600, 2, false, true, true
             ),
+            NanoTier.MATRIX,
             Ingredient.of(Items.BLAZE_POWDER),
             NonNullList.of(Ingredient.EMPTY, Ingredient.of(Items.PUFFERFISH), Ingredient.of(Items.SPIDER_EYE))
         )

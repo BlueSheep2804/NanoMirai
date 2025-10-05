@@ -1,5 +1,6 @@
 package dev.bluesheep.nanomirai.recipe.lab.attribute
 
+import com.mojang.serialization.Codec
 import com.mojang.serialization.MapCodec
 import com.mojang.serialization.codecs.RecordCodecBuilder
 import net.minecraft.core.NonNullList
@@ -17,6 +18,7 @@ class LabAttributeRecipeSerializer : RecipeSerializer<LabAttributeRecipe> {
             inst.group(
                 Attribute.CODEC.fieldOf("attribute").forGetter(LabAttributeRecipe::attribute),
                 AttributeModifier.CODEC.fieldOf("modifier").forGetter(LabAttributeRecipe::modifier),
+                Codec.INT.fieldOf("tier").forGetter(LabAttributeRecipe::tier),
                 Ingredient.CODEC_NONEMPTY.fieldOf("catalyst").forGetter(LabAttributeRecipe::catalyst),
                 Ingredient.LIST_CODEC_NONEMPTY.fieldOf("ingredients").xmap({ list ->
                     NonNullList.of(Ingredient.EMPTY, *list.toTypedArray())

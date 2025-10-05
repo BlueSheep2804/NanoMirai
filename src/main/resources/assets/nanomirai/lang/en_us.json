@@ -34,6 +34,6 @@
   "recipe.nanomirai.synthesize.duration": "%s ticks",
   "recipe.nanomirai.nano_lab.category": "%1$s - %2$s",
   "recipe.nanomirai.nano_lab.attribute": "Attribute",
-  "recipe.nanomirai.nano_lab.effect": "Effect"
-
+  "recipe.nanomirai.nano_lab.effect": "Effect",
+  "recipe.nanomirai.nano_lab.tier": "%s+"
 }

@@ -2,7 +2,7 @@ package dev.bluesheep.nanomirai.block.entity
 
 import dev.bluesheep.nanomirai.item.NanoSwarmBlasterItem
 import dev.bluesheep.nanomirai.item.SupportNanoItem
-import dev.bluesheep.nanomirai.recipe.CatalystWithMultipleItemRecipeInput
+import dev.bluesheep.nanomirai.recipe.lab.NanoLabRecipeInput
 import dev.bluesheep.nanomirai.recipe.lab.attribute.LabAttributeRecipe
 import dev.bluesheep.nanomirai.recipe.lab.effect.LabEffectRecipe
 import dev.bluesheep.nanomirai.registry.NanoMiraiBlockEntities
@@ -172,7 +172,11 @@ class NanoLabBlockEntity(pos: BlockPos, blockState: BlockState) : BlockEntity(Na
 
         return level!!.recipeManager.getRecipeFor(
             NanoMiraiRecipeType.LAB_ATTRIBUTE,
-            CatalystWithMultipleItemRecipeInput(itemHandler.getStackInSlot(CATALYST_SLOT), inputList()),
+            NanoLabRecipeInput(
+                itemHandler.getStackInSlot(OUTPUT_SLOT),
+                itemHandler.getStackInSlot(CATALYST_SLOT),
+                inputList()
+            ),
             level!!
         )
     }
@@ -182,7 +186,11 @@ class NanoLabBlockEntity(pos: BlockPos, blockState: BlockState) : BlockEntity(Na
 
         return level!!.recipeManager.getRecipeFor(
             NanoMiraiRecipeType.LAB_EFFECT,
-            CatalystWithMultipleItemRecipeInput(itemHandler.getStackInSlot(CATALYST_SLOT), inputList()),
+            NanoLabRecipeInput(
+                itemHandler.getStackInSlot(OUTPUT_SLOT),
+                itemHandler.getStackInSlot(CATALYST_SLOT),
+                inputList()
+            ),
             level!!
         )
     }

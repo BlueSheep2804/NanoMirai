@@ -1,5 +1,6 @@
 package dev.bluesheep.nanomirai.recipe.lab.effect
 
+import com.mojang.serialization.Codec
 import com.mojang.serialization.MapCodec
 import com.mojang.serialization.codecs.RecordCodecBuilder
 import net.minecraft.core.NonNullList
@@ -15,6 +16,7 @@ class LabEffectRecipeSerializer : RecipeSerializer<LabEffectRecipe> {
         val CODEC: MapCodec<LabEffectRecipe> = RecordCodecBuilder.mapCodec { inst ->
             inst.group(
                 MobEffectInstance.CODEC.fieldOf("effect").forGetter(LabEffectRecipe::mobEffectInstance),
+                Codec.INT.fieldOf("tier").forGetter(LabEffectRecipe::tier),
                 Ingredient.CODEC_NONEMPTY.fieldOf("catalyst").forGetter(LabEffectRecipe::catalyst),
                 Ingredient.LIST_CODEC_NONEMPTY.fieldOf("ingredients").xmap({ list ->
                     NonNullList.of(Ingredient.EMPTY, *list.toTypedArray())

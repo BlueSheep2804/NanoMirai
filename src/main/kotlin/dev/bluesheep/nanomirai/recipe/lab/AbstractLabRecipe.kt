@@ -1,6 +1,5 @@
 package dev.bluesheep.nanomirai.recipe.lab
 
-import dev.bluesheep.nanomirai.recipe.CatalystWithMultipleItemRecipeInput
 import net.minecraft.core.HolderLookup
 import net.minecraft.core.NonNullList
 import net.minecraft.world.item.ItemStack
@@ -8,16 +7,17 @@ import net.minecraft.world.item.crafting.Ingredient
 import net.minecraft.world.item.crafting.Recipe
 import net.minecraft.world.level.Level
 
-abstract class AbstractLabRecipe(val result: ItemStack, val catalyst: Ingredient, val items: NonNullList<Ingredient>) : Recipe<CatalystWithMultipleItemRecipeInput> {
+abstract class AbstractLabRecipe(val result: ItemStack, val tier: Int, val catalyst: Ingredient, val items: NonNullList<Ingredient>) : Recipe<NanoLabRecipeInput> {
     override fun getIngredients(): NonNullList<Ingredient> {
         return NonNullList.of(Ingredient.EMPTY, *items.toTypedArray())
     }
 
     override fun matches(
-        input: CatalystWithMultipleItemRecipeInput,
+        input: NanoLabRecipeInput,
         level: Level
     ): Boolean {
         if (!catalyst.test(input.catalyst)) return false
+        if (input.nanoItem.rarity.ordinal < tier) return false
         val inputList = input.list.filter { !it.isEmpty }.toMutableList()
 
         for (ingredient in ingredients.filter { !it.isEmpty }) {
@@ -36,7 +36,7 @@ abstract class AbstractLabRecipe(val result: ItemStack, val catalyst: Ingredient
     }
 
     override fun assemble(
-        input: CatalystWithMultipleItemRecipeInput,
+        input: NanoLabRecipeInput,
         registries: HolderLookup.Provider
     ): ItemStack {
         return result.copy()

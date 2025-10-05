@@ -3,6 +3,7 @@ package dev.bluesheep.nanomirai.recipe.lab.attribute
 import dev.bluesheep.nanomirai.item.SupportNanoItem
 import dev.bluesheep.nanomirai.recipe.SimpleRecipeBuilder
 import dev.bluesheep.nanomirai.registry.NanoMiraiItems
+import dev.bluesheep.nanomirai.util.NanoTier
 import net.minecraft.advancements.AdvancementRequirements
 import net.minecraft.advancements.AdvancementRewards
 import net.minecraft.advancements.critereon.RecipeUnlockedTrigger
@@ -15,7 +16,7 @@ import net.minecraft.world.entity.ai.attributes.AttributeModifier
 import net.minecraft.world.item.ItemStack
 import net.minecraft.world.item.crafting.Ingredient
 
-class LabAttributeRecipeBuilder(val attribute: Holder<Attribute>, val modifier: AttributeModifier, val catalyst: Ingredient, val items: NonNullList<Ingredient>) : SimpleRecipeBuilder(
+class LabAttributeRecipeBuilder(val attribute: Holder<Attribute>, val modifier: AttributeModifier, val tier: NanoTier, val catalyst: Ingredient, val items: NonNullList<Ingredient>) : SimpleRecipeBuilder(
     ItemStack(NanoMiraiItems.SUPPORT_NANO).apply {
         SupportNanoItem.setAttributes(this, attribute, modifier)
     }
@@ -31,7 +32,7 @@ class LabAttributeRecipeBuilder(val attribute: Holder<Attribute>, val modifier: 
             .rewards(AdvancementRewards.Builder.recipe(recipeId))
             .requirements(AdvancementRequirements.Strategy.OR)
         criteria.forEach(advancement::addCriterion)
-        val recipe = LabAttributeRecipe(attribute, modifier, catalyst, items)
+        val recipe = LabAttributeRecipe(attribute, modifier, tier.rarity.ordinal, catalyst, items)
         output.accept(
             recipeId,
             recipe,

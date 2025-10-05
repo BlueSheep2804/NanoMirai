@@ -19,5 +19,6 @@
     "amount": 2.0,
     "id": "nanomirai:sneaking_speed_increase",
     "operation": "add_multiplied_total"
-  }
+  },
+  "tier": 2
 }
