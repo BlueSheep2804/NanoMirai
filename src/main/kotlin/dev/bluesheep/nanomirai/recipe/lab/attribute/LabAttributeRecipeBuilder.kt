@@ -27,16 +27,11 @@ class LabAttributeRecipeBuilder(val attribute: Holder<Attribute>, val modifier: 
 
     override fun save(output: RecipeOutput, id: ResourceLocation) {
         val recipeId = id.withPrefix("lab/attribute/")
-        val advancement = output.advancement()
-            .addCriterion("has_the_recipe", RecipeUnlockedTrigger.unlocked(id))
-            .rewards(AdvancementRewards.Builder.recipe(recipeId))
-            .requirements(AdvancementRequirements.Strategy.OR)
-        criteria.forEach(advancement::addCriterion)
         val recipe = LabAttributeRecipe(attribute, modifier, tier.rarity.ordinal, catalyst, items)
         output.accept(
             recipeId,
             recipe,
-            advancement.build(recipeId.withPrefix("recipes/"))
+            null
         )
     }
 }

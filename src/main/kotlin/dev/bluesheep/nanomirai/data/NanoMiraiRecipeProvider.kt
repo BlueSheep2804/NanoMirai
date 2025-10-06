@@ -32,6 +32,12 @@ import java.util.concurrent.CompletableFuture
 
 class NanoMiraiRecipeProvider(output: PackOutput, registries: CompletableFuture<HolderLookup.Provider>) : RecipeProvider(output, registries) {
     override fun buildRecipes(recipeOutput: RecipeOutput) {
+        assemblerRecipes(recipeOutput)
+        labAttributeRecipes(recipeOutput)
+        labEffectRecipes(recipeOutput)
+        laserRecipes(recipeOutput)
+        synthesizeRecipes(recipeOutput)
+
         // Nano Proto
         ShapedRecipeBuilder.shaped(
             RecipeCategory.MISC,
@@ -45,45 +51,6 @@ class NanoMiraiRecipeProvider(output: PackOutput, registries: CompletableFuture<
             .pattern("CMC")
             .pattern("GRG")
             .unlockedBy("has_broken_nanomachine", has(NanoMiraiItems.BROKEN_NANOMACHINE))
-            .save(recipeOutput)
-
-        // Nano Seed
-        AssemblerRecipeBuilder(
-            ItemStack(NanoMiraiItems.NANO_CELL),
-            NonNullList.of(
-                StackedIngredient.EMPTY,
-                StackedIngredient.of(16, Items.REDSTONE),
-                StackedIngredient.of(3, Items.COAL),
-                StackedIngredient.of(1, Items.IRON_INGOT),
-            )
-        )
-            .unlockedBy("has_nanomachine_assembler", has(NanoMiraiItems.NANOMACHINE_ASSEMBLER))
-            .save(recipeOutput)
-
-        // Nano Matrix
-        AssemblerRecipeBuilder(
-            ItemStack(NanoMiraiItems.NANO_MATRIX),
-            NonNullList.of(
-                StackedIngredient.EMPTY,
-                StackedIngredient.of(16, Items.REDSTONE),
-                StackedIngredient.of(3, Items.COAL),
-                StackedIngredient.of(1, Items.GOLD_INGOT),
-            )
-        )
-            .unlockedBy("has_nanomachine_assembler", has(NanoMiraiItems.NANOMACHINE_ASSEMBLER))
-            .save(recipeOutput)
-
-        // Nano Singularity
-        AssemblerRecipeBuilder(
-            ItemStack(NanoMiraiItems.NANO_SINGULARITY),
-            NonNullList.of(
-                StackedIngredient.EMPTY,
-                StackedIngredient.of(4, Items.REDSTONE),
-                StackedIngredient.of(3, Items.COAL, NanoMiraiItems.GRAPHITE),
-                StackedIngredient.of(2, ItemTags.WOOL),
-            )
-        )
-            .unlockedBy("has_nanomachine_assembler", has(NanoMiraiItems.NANOMACHINE_ASSEMBLER))
             .save(recipeOutput)
 
         // Goggles
@@ -129,42 +96,44 @@ class NanoMiraiRecipeProvider(output: PackOutput, registries: CompletableFuture<
             .pattern("III")
             .unlockedBy("has_iron", has(Items.IRON_INGOT))
             .save(recipeOutput)
+    }
 
-        LaserRecipeBuilder(
+    fun assemblerRecipes(recipeOutput: RecipeOutput) {
+        // Nano Cell
+        AssemblerRecipeBuilder(
+            ItemStack(NanoMiraiItems.NANO_CELL),
+            NonNullList.of(
+                StackedIngredient.EMPTY,
+                StackedIngredient.of(16, Items.REDSTONE),
+                StackedIngredient.of(3, Items.COAL),
+                StackedIngredient.of(1, Items.IRON_INGOT),
+            )
+        ).save(recipeOutput)
+
+        // Nano Matrix
+        AssemblerRecipeBuilder(
             ItemStack(NanoMiraiItems.NANO_MATRIX),
-            Ingredient.of(NanoMiraiItems.NANO_CELL)
-        )
-            .unlockedBy("has_nanomachine_assembler", has(NanoMiraiItems.NANOMACHINE_ASSEMBLER))
-            .save(recipeOutput)
+            NonNullList.of(
+                StackedIngredient.EMPTY,
+                StackedIngredient.of(16, Items.REDSTONE),
+                StackedIngredient.of(3, Items.COAL),
+                StackedIngredient.of(1, Items.GOLD_INGOT),
+            )
+        ).save(recipeOutput)
 
-        LaserRecipeBuilder(
+        // Nano Singularity
+        AssemblerRecipeBuilder(
             ItemStack(NanoMiraiItems.NANO_SINGULARITY),
-            Ingredient.of(NanoMiraiItems.NANO_MATRIX),
-            Ingredient.of(Items.ECHO_SHARD)
-        )
-            .unlockedBy("has_nanomachine_assembler", has(NanoMiraiItems.NANOMACHINE_ASSEMBLER))
-            .save(recipeOutput)
+            NonNullList.of(
+                StackedIngredient.EMPTY,
+                StackedIngredient.of(4, Items.REDSTONE),
+                StackedIngredient.of(3, Items.COAL, NanoMiraiItems.GRAPHITE),
+                StackedIngredient.of(2, ItemTags.WOOL),
+            )
+        ).save(recipeOutput)
+    }
 
-        SynthesizeRecipeBuilder(
-            ItemStack(NanoMiraiItems.AMETHYST_LENS),
-            NanoTier.CELL,
-            Blocks.TINTED_GLASS.defaultBlockState(),
-            Ingredient.of(Items.AMETHYST_SHARD),
-            60
-        )
-            .unlockedBy("has_amethyst", has(Items.AMETHYST_SHARD))
-            .save(recipeOutput)
-
-        SynthesizeRecipeBuilder(
-            ItemStack(NanoMiraiItems.SCULK_LENS),
-            NanoTier.SINGULARITY,
-            Blocks.SCULK_SHRIEKER.defaultBlockState(),
-            Ingredient.of(Items.ECHO_SHARD),
-            200
-        )
-            .unlockedBy("has_echo_shard", has(Items.ECHO_SHARD))
-            .save(recipeOutput)
-
+    fun labAttributeRecipes(recipeOutput: RecipeOutput) {
         LabAttributeRecipeBuilder(
             Attributes.SCALE,
             AttributeModifier(
@@ -175,9 +144,7 @@ class NanoMiraiRecipeProvider(output: PackOutput, registries: CompletableFuture<
             NanoTier.PROTO,
             Ingredient.of(Items.ENDER_EYE),
             NonNullList.of(Ingredient.EMPTY, Ingredient.of(Items.ENDER_PEARL), Ingredient.of(Items.NETHER_STAR))
-        )
-            .unlockedBy("has_ender_eye", has(Items.ENDER_EYE))
-            .save(recipeOutput)
+        ).save(recipeOutput)
 
         LabAttributeRecipeBuilder(
             Attributes.SNEAKING_SPEED,
@@ -189,10 +156,10 @@ class NanoMiraiRecipeProvider(output: PackOutput, registries: CompletableFuture<
             NanoTier.MATRIX,
             Ingredient.of(Items.SCULK_CATALYST),
             NonNullList.of(Ingredient.EMPTY, Ingredient.of(Items.SUGAR), Ingredient.of(Items.SUGAR), Ingredient.of(Items.SUGAR))
-        )
-            .unlockedBy("has_sculk_catalyst", has(Items.SCULK_CATALYST))
-            .save(recipeOutput)
+        ).save(recipeOutput)
+    }
 
+    fun labEffectRecipes(recipeOutput: RecipeOutput) {
         LabEffectRecipeBuilder(
             MobEffectInstance(
                 MobEffects.MOVEMENT_SLOWDOWN,
@@ -201,9 +168,7 @@ class NanoMiraiRecipeProvider(output: PackOutput, registries: CompletableFuture<
             NanoTier.PROTO,
             Ingredient.of(Items.BLAZE_POWDER),
             NonNullList.of(Ingredient.EMPTY, Ingredient.of(Items.SUGAR), Ingredient.of(Items.GLOWSTONE_DUST))
-        )
-            .unlockedBy("has_potion", has(Items.POTION))
-            .save(recipeOutput)
+        ).save(recipeOutput)
 
         LabEffectRecipeBuilder(
             MobEffectInstance(
@@ -213,8 +178,37 @@ class NanoMiraiRecipeProvider(output: PackOutput, registries: CompletableFuture<
             NanoTier.MATRIX,
             Ingredient.of(Items.BLAZE_POWDER),
             NonNullList.of(Ingredient.EMPTY, Ingredient.of(Items.PUFFERFISH), Ingredient.of(Items.SPIDER_EYE))
-        )
-            .unlockedBy("has_potion", has(Items.POTION))
-            .save(recipeOutput)
+        ).save(recipeOutput)
+    }
+
+    fun laserRecipes(recipeOutput: RecipeOutput) {
+        LaserRecipeBuilder(
+            ItemStack(NanoMiraiItems.NANO_MATRIX),
+            Ingredient.of(NanoMiraiItems.NANO_CELL)
+        ).save(recipeOutput)
+
+        LaserRecipeBuilder(
+            ItemStack(NanoMiraiItems.NANO_SINGULARITY),
+            Ingredient.of(NanoMiraiItems.NANO_MATRIX),
+            Ingredient.of(Items.ECHO_SHARD)
+        ).save(recipeOutput)
+    }
+
+    fun synthesizeRecipes(recipeOutput: RecipeOutput) {
+        SynthesizeRecipeBuilder(
+            ItemStack(NanoMiraiItems.AMETHYST_LENS),
+            NanoTier.CELL,
+            Blocks.TINTED_GLASS.defaultBlockState(),
+            Ingredient.of(Items.AMETHYST_SHARD),
+            60
+        ).save(recipeOutput)
+
+        SynthesizeRecipeBuilder(
+            ItemStack(NanoMiraiItems.SCULK_LENS),
+            NanoTier.SINGULARITY,
+            Blocks.SCULK_SHRIEKER.defaultBlockState(),
+            Ingredient.of(Items.ECHO_SHARD),
+            200
+        ).save(recipeOutput)
     }
 }
