@@ -1,0 +1,13 @@
+{
+  "type": "nanomirai:laser",
+  "ingredient": {
+    "tag": "nanomirai:sherd_desert_well"
+  },
+  "lens": {
+    "item": "nanomirai:sculk_lens"
+  },
+  "result": {
+    "count": 1,
+    "id": "nanomirai:yellow_research_catalyst"
+  }
+}

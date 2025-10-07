@@ -8,6 +8,7 @@ import dev.bluesheep.nanomirai.recipe.lab.effect.LabEffectRecipeBuilder
 import dev.bluesheep.nanomirai.recipe.laser.LaserRecipeBuilder
 import dev.bluesheep.nanomirai.recipe.synthesize.SynthesizeRecipeBuilder
 import dev.bluesheep.nanomirai.registry.NanoMiraiItems
+import dev.bluesheep.nanomirai.registry.NanoMiraiTags
 import dev.bluesheep.nanomirai.util.NanoTier
 import net.minecraft.core.HolderLookup
 import net.minecraft.core.NonNullList
@@ -696,14 +697,39 @@ class NanoMiraiRecipeProvider(output: PackOutput, registries: CompletableFuture<
 
     fun laserRecipes(recipeOutput: RecipeOutput) {
         LaserRecipeBuilder(
-            ItemStack(NanoMiraiItems.NANO_MATRIX),
-            Ingredient.of(NanoMiraiItems.NANO_CELL)
+            ItemStack(NanoMiraiItems.RED_RESEARCH_CATALYST),
+            Ingredient.of(NanoMiraiTags.SHERD_WARM_OCEAN_RUINS),
+            Ingredient.of(NanoMiraiItems.AMETHYST_LENS)
         ).save(recipeOutput)
 
         LaserRecipeBuilder(
-            ItemStack(NanoMiraiItems.NANO_SINGULARITY),
-            Ingredient.of(NanoMiraiItems.NANO_MATRIX),
-            Ingredient.of(Items.ECHO_SHARD)
+            ItemStack(NanoMiraiItems.GREEN_RESEARCH_CATALYST),
+            Ingredient.of(NanoMiraiTags.SHERD_DESERT_PYRAMID),
+            Ingredient.of(NanoMiraiItems.AMETHYST_LENS)
+        ).save(recipeOutput)
+
+        LaserRecipeBuilder(
+            ItemStack(NanoMiraiItems.BLUE_RESEARCH_CATALYST),
+            Ingredient.of(NanoMiraiTags.SHERD_COLD_OCEAN_RUINS),
+            Ingredient.of(NanoMiraiItems.AMETHYST_LENS)
+        ).save(recipeOutput)
+
+        LaserRecipeBuilder(
+            ItemStack(NanoMiraiItems.CYAN_RESEARCH_CATALYST),
+            Ingredient.of(NanoMiraiTags.SHERD_TRIAL_CHAMBER),
+            Ingredient.of(NanoMiraiItems.SCULK_LENS)
+        ).save(recipeOutput)
+
+        LaserRecipeBuilder(
+            ItemStack(NanoMiraiItems.MAGENTA_RESEARCH_CATALYST),
+            Ingredient.of(NanoMiraiTags.SHERD_TRAIL_RUINS),
+            Ingredient.of(NanoMiraiItems.SCULK_LENS)
+        ).save(recipeOutput)
+
+        LaserRecipeBuilder(
+            ItemStack(NanoMiraiItems.YELLOW_RESEARCH_CATALYST),
+            Ingredient.of(NanoMiraiTags.SHERD_DESERT_WELL),
+            Ingredient.of(NanoMiraiItems.SCULK_LENS)
         ).save(recipeOutput)
     }
 

@@ -1,0 +1,13 @@
+{
+  "type": "nanomirai:laser",
+  "ingredient": {
+    "tag": "nanomirai:sherd_cold_ocean_ruins"
+  },
+  "lens": {
+    "item": "nanomirai:amethyst_lens"
+  },
+  "result": {
+    "count": 1,
+    "id": "nanomirai:blue_research_catalyst"
+  }
+}

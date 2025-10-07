@@ -1,0 +1,13 @@
+{
+  "type": "nanomirai:laser",
+  "ingredient": {
+    "tag": "nanomirai:sherd_desert_pyramid"
+  },
+  "lens": {
+    "item": "nanomirai:amethyst_lens"
+  },
+  "result": {
+    "count": 1,
+    "id": "nanomirai:green_research_catalyst"
+  }
+}

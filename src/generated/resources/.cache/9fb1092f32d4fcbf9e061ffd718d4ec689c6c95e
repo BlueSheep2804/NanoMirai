@@ -1,4 +1,4 @@
-// 1.21.1	2025-10-07T23:15:38.9547232	Recipes
+// 1.21.1	2025-10-07T23:48:57.1030024	Recipes
 76c68fa9ca0c1c7df64fa01337e839a067d9165a data/nanomirai/advancement/recipes/misc/goggles.json
 31880d69020d409fd1f87e8b6676b347a0c8997d data/nanomirai/advancement/recipes/misc/graphite.json
 adc70882fbd63764fc97dceed2f716555b0f19c7 data/nanomirai/advancement/recipes/misc/nanomachine_assembler.json
@@ -38,8 +38,12 @@ ec4de597b89b9b0a62f7cc6d42fca1885aa46a83 data/nanomirai/recipe/lab/effect/slow_f
 87fddf6edbc6609693d0e7ee662322bcc464ab43 data/nanomirai/recipe/lab/effect/weaving.json
 54418d05dcea70d22d653c257b804b84fca0c41c data/nanomirai/recipe/lab/effect/wind_charged.json
 75e825af1b1ca3742cc88bac8d3c42a120afbe35 data/nanomirai/recipe/lab/effect/wither.json
-13e90afd1e049bcade072db70d91e9982f474564 data/nanomirai/recipe/laser/nano_matrix.json
-8ca08ac055dcddf8285ea7a2385c69014ec9e10a data/nanomirai/recipe/laser/nano_singularity.json
+95c6af8135862bd4043bea4a74592414769c9910 data/nanomirai/recipe/laser/blue_research_catalyst.json
+061234b10a5ccb3d3015dc36da785cb3c42917a2 data/nanomirai/recipe/laser/cyan_research_catalyst.json
+89f1b3eabca98bfbfe29c5ea4c9ed59389ba51e2 data/nanomirai/recipe/laser/green_research_catalyst.json
+0fff52ad86096930463f8dad7e30841c248e4f9a data/nanomirai/recipe/laser/magenta_research_catalyst.json
+4199d202cce957f57bf977bb03731aed2af83a39 data/nanomirai/recipe/laser/red_research_catalyst.json
+72cbeb6768eaa5422632f2a847544ef837159789 data/nanomirai/recipe/laser/yellow_research_catalyst.json
 d5c42e6c26e000c09059984713aa07029f7e6ccf data/nanomirai/recipe/nanomachine_assembler.json
 e1fff279fb98551ace5403bb80ae72b3b488d99a data/nanomirai/recipe/nano_proto.json
 4d0926ddd2d174db2c755226dc34ad1ed0168fc7 data/nanomirai/recipe/smelting/graphene_sheet_from_graphite.json
