@@ -1,12 +1,11 @@
 {
   "type": "nanomirai:lab_effect",
   "catalyst": {
-    "item": "nanomirai:blue_research_catalyst"
+    "item": "nanomirai:red_research_catalyst"
   },
   "effect": {
-    "amplifier": 2,
     "duration": 600,
-    "id": "minecraft:slowness",
+    "id": "minecraft:weaving",
     "neoforge:cures": [
       "milk",
       "protected_by_totem"
@@ -15,23 +14,23 @@
   },
   "ingredients": [
     {
+      "item": "minecraft:string"
+    },
+    {
+      "item": "minecraft:string"
+    },
+    {
+      "item": "minecraft:string"
+    },
+    {
       "item": "minecraft:cobweb"
     },
     {
-      "item": "minecraft:fermented_spider_eye"
-    },
-    {
       "item": "minecraft:cobweb"
-    },
-    {
-      "item": "minecraft:cobweb"
-    },
-    {
-      "item": "minecraft:sugar"
     },
     {
       "item": "minecraft:cobweb"
     }
   ],
-  "tier": 1
+  "tier": 0
 }

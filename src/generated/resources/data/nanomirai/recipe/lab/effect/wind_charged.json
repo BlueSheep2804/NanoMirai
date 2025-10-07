@@ -4,9 +4,8 @@
     "item": "nanomirai:blue_research_catalyst"
   },
   "effect": {
-    "amplifier": 2,
     "duration": 600,
-    "id": "minecraft:slowness",
+    "id": "minecraft:wind_charged",
     "neoforge:cures": [
       "milk",
       "protected_by_totem"
@@ -15,23 +14,23 @@
   },
   "ingredients": [
     {
-      "item": "minecraft:cobweb"
+      "item": "minecraft:breeze_rod"
     },
     {
-      "item": "minecraft:fermented_spider_eye"
+      "item": "minecraft:wind_charge"
     },
     {
-      "item": "minecraft:cobweb"
+      "item": "minecraft:wind_charge"
     },
     {
-      "item": "minecraft:cobweb"
+      "item": "minecraft:breeze_rod"
     },
     {
-      "item": "minecraft:sugar"
+      "item": "minecraft:wind_charge"
     },
     {
-      "item": "minecraft:cobweb"
+      "item": "minecraft:wind_charge"
     }
   ],
-  "tier": 1
+  "tier": 0
 }

@@ -1,0 +1,36 @@
+{
+  "type": "nanomirai:lab_effect",
+  "catalyst": {
+    "item": "nanomirai:red_research_catalyst"
+  },
+  "effect": {
+    "duration": 600,
+    "id": "minecraft:infested",
+    "neoforge:cures": [
+      "milk",
+      "protected_by_totem"
+    ],
+    "show_icon": true
+  },
+  "ingredients": [
+    {
+      "item": "minecraft:stone"
+    },
+    {
+      "item": "minecraft:stone"
+    },
+    {
+      "item": "minecraft:stone"
+    },
+    {
+      "item": "minecraft:stone"
+    },
+    {
+      "item": "minecraft:stone"
+    },
+    {
+      "item": "minecraft:stone"
+    }
+  ],
+  "tier": 0
+}

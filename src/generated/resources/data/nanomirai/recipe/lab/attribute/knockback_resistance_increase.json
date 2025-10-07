@@ -1,0 +1,33 @@
+{
+  "type": "nanomirai:lab_attribute",
+  "attribute": "minecraft:generic.knockback_resistance",
+  "catalyst": {
+    "item": "nanomirai:red_research_catalyst"
+  },
+  "ingredients": [
+    {
+      "item": "minecraft:deepslate"
+    },
+    {
+      "item": "minecraft:obsidian"
+    },
+    {
+      "item": "minecraft:pointed_dripstone"
+    },
+    {
+      "item": "minecraft:deepslate"
+    },
+    {
+      "item": "minecraft:obsidian"
+    },
+    {
+      "item": "minecraft:pointed_dripstone"
+    }
+  ],
+  "modifier": {
+    "amount": 2.0,
+    "id": "nanomirai:knockback_resistance_increase",
+    "operation": "add_multiplied_base"
+  },
+  "tier": 1
+}

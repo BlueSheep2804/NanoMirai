@@ -1,0 +1,33 @@
+{
+  "type": "nanomirai:lab_attribute",
+  "attribute": "minecraft:player.submerged_mining_speed",
+  "catalyst": {
+    "item": "nanomirai:cyan_research_catalyst"
+  },
+  "ingredients": [
+    {
+      "item": "minecraft:salmon"
+    },
+    {
+      "item": "minecraft:tropical_fish"
+    },
+    {
+      "item": "minecraft:salmon"
+    },
+    {
+      "item": "minecraft:tropical_fish"
+    },
+    {
+      "item": "minecraft:salmon"
+    },
+    {
+      "item": "minecraft:tropical_fish"
+    }
+  ],
+  "modifier": {
+    "amount": 4.0,
+    "id": "nanomirai:submerged_mining_speed_increase",
+    "operation": "add_multiplied_total"
+  },
+  "tier": 2
+}

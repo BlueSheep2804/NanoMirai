@@ -1,0 +1,33 @@
+{
+  "type": "nanomirai:lab_attribute",
+  "attribute": "minecraft:generic.step_height",
+  "catalyst": {
+    "item": "nanomirai:cyan_research_catalyst"
+  },
+  "ingredients": [
+    {
+      "item": "minecraft:piston"
+    },
+    {
+      "item": "minecraft:leather"
+    },
+    {
+      "item": "minecraft:leather"
+    },
+    {
+      "item": "minecraft:piston"
+    },
+    {
+      "item": "minecraft:leather"
+    },
+    {
+      "item": "minecraft:leather"
+    }
+  ],
+  "modifier": {
+    "amount": 0.4,
+    "id": "nanomirai:step_height_increase",
+    "operation": "add_value"
+  },
+  "tier": 2
+}

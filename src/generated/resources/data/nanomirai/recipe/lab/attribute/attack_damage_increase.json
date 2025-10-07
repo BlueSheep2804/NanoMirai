@@ -1,0 +1,33 @@
+{
+  "type": "nanomirai:lab_attribute",
+  "attribute": "minecraft:generic.attack_damage",
+  "catalyst": {
+    "item": "nanomirai:yellow_research_catalyst"
+  },
+  "ingredients": [
+    {
+      "item": "minecraft:blaze_rod"
+    },
+    {
+      "item": "minecraft:blaze_rod"
+    },
+    {
+      "item": "minecraft:shroomlight"
+    },
+    {
+      "item": "minecraft:glowstone_dust"
+    },
+    {
+      "item": "minecraft:glowstone_dust"
+    },
+    {
+      "item": "minecraft:shroomlight"
+    }
+  ],
+  "modifier": {
+    "amount": 1.0,
+    "id": "nanomirai:attack_damage_increase",
+    "operation": "add_multiplied_total"
+  },
+  "tier": 3
+}

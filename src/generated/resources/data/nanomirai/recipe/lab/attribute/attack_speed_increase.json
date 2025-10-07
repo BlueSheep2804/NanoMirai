@@ -1,18 +1,18 @@
 {
   "type": "nanomirai:lab_attribute",
-  "attribute": "minecraft:player.sneaking_speed",
+  "attribute": "minecraft:generic.attack_speed",
   "catalyst": {
-    "item": "nanomirai:magenta_research_catalyst"
+    "item": "nanomirai:yellow_research_catalyst"
   },
   "ingredients": [
     {
-      "item": "minecraft:sculk"
+      "item": "minecraft:shroomlight"
     },
     {
-      "item": "minecraft:sculk"
+      "item": "minecraft:shroomlight"
     },
     {
-      "item": "minecraft:sculk"
+      "item": "minecraft:shroomlight"
     },
     {
       "item": "minecraft:sugar"
@@ -25,8 +25,8 @@
     }
   ],
   "modifier": {
-    "amount": 2.0,
-    "id": "nanomirai:sneaking_speed_increase",
+    "amount": 0.8,
+    "id": "nanomirai:attack_speed_increase",
     "operation": "add_multiplied_base"
   },
   "tier": 2

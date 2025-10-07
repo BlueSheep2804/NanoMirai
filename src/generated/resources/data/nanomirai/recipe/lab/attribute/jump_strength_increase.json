@@ -1,0 +1,33 @@
+{
+  "type": "nanomirai:lab_attribute",
+  "attribute": "minecraft:generic.jump_strength",
+  "catalyst": {
+    "item": "nanomirai:blue_research_catalyst"
+  },
+  "ingredients": [
+    {
+      "item": "minecraft:redstone"
+    },
+    {
+      "item": "minecraft:leather"
+    },
+    {
+      "item": "minecraft:rabbit_foot"
+    },
+    {
+      "item": "minecraft:redstone"
+    },
+    {
+      "item": "minecraft:leather"
+    },
+    {
+      "item": "minecraft:rabbit_foot"
+    }
+  ],
+  "modifier": {
+    "amount": 2.0,
+    "id": "nanomirai:jump_strength_increase",
+    "operation": "add_multiplied_base"
+  },
+  "tier": 0
+}

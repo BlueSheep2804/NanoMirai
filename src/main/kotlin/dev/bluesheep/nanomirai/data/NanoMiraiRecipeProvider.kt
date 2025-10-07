@@ -12,12 +12,7 @@ import dev.bluesheep.nanomirai.util.NanoTier
 import net.minecraft.core.HolderLookup
 import net.minecraft.core.NonNullList
 import net.minecraft.data.PackOutput
-import net.minecraft.data.recipes.RecipeCategory
-import net.minecraft.data.recipes.RecipeOutput
-import net.minecraft.data.recipes.RecipeProvider
-import net.minecraft.data.recipes.ShapedRecipeBuilder
-import net.minecraft.data.recipes.ShapelessRecipeBuilder
-import net.minecraft.data.recipes.SimpleCookingRecipeBuilder
+import net.minecraft.data.recipes.*
 import net.minecraft.tags.ItemTags
 import net.minecraft.world.effect.MobEffectInstance
 import net.minecraft.world.effect.MobEffects
@@ -134,50 +129,568 @@ class NanoMiraiRecipeProvider(output: PackOutput, registries: CompletableFuture<
     }
 
     fun labAttributeRecipes(recipeOutput: RecipeOutput) {
+        //  ** Proto Tier Attributes **
+        // Scale Increase
         LabAttributeRecipeBuilder(
             Attributes.SCALE,
             AttributeModifier(
                 rl("scale_increase"),
                 2.0,
-                AttributeModifier.Operation.ADD_MULTIPLIED_TOTAL
+                AttributeModifier.Operation.ADD_MULTIPLIED_BASE
             ),
             NanoTier.PROTO,
-            Ingredient.of(Items.ENDER_EYE),
-            NonNullList.of(Ingredient.EMPTY, Ingredient.of(Items.ENDER_PEARL), Ingredient.of(Items.NETHER_STAR))
+            Ingredient.of(NanoMiraiItems.GREEN_RESEARCH_CATALYST),
+            NonNullList.of(Ingredient.EMPTY,
+                Ingredient.of(Items.BAMBOO),
+                Ingredient.of(Items.BAMBOO),
+                Ingredient.of(Items.ENDER_PEARL),
+                Ingredient.of(Items.BAMBOO),
+                Ingredient.of(Items.BAMBOO),
+                Ingredient.of(Items.ENDER_PEARL),
+            )
         ).save(recipeOutput)
 
+        // Jump Boost
+        LabAttributeRecipeBuilder(
+            Attributes.JUMP_STRENGTH,
+            AttributeModifier(
+                rl("jump_strength_increase"),
+                2.0,
+                AttributeModifier.Operation.ADD_MULTIPLIED_BASE
+            ),
+            NanoTier.PROTO,
+            Ingredient.of(NanoMiraiItems.BLUE_RESEARCH_CATALYST),
+            NonNullList.of(Ingredient.EMPTY,
+                Ingredient.of(Items.REDSTONE),
+                Ingredient.of(Items.LEATHER),
+                Ingredient.of(Items.RABBIT_FOOT),
+                Ingredient.of(Items.REDSTONE),
+                Ingredient.of(Items.LEATHER),
+                Ingredient.of(Items.RABBIT_FOOT),
+            )
+        ).save(recipeOutput)
+
+        //  ** Cell Tier Attributes **
+        // Knockback Resistance
+        LabAttributeRecipeBuilder(
+            Attributes.KNOCKBACK_RESISTANCE,
+            AttributeModifier(
+                rl("knockback_resistance_increase"),
+                2.0,
+                AttributeModifier.Operation.ADD_MULTIPLIED_BASE
+            ),
+            NanoTier.CELL,
+            Ingredient.of(NanoMiraiItems.RED_RESEARCH_CATALYST),
+            NonNullList.of(Ingredient.EMPTY,
+                Ingredient.of(Items.DEEPSLATE),
+                Ingredient.of(Items.OBSIDIAN),
+                Ingredient.of(Items.POINTED_DRIPSTONE),
+                Ingredient.of(Items.DEEPSLATE),
+                Ingredient.of(Items.OBSIDIAN),
+                Ingredient.of(Items.POINTED_DRIPSTONE),
+            )
+        ).save(recipeOutput)
+
+        // Scale Decrease
+        LabAttributeRecipeBuilder(
+            Attributes.SCALE,
+            AttributeModifier(
+                rl("scale_decrease"),
+                -0.5,
+                AttributeModifier.Operation.ADD_MULTIPLIED_TOTAL
+            ),
+            NanoTier.CELL,
+            Ingredient.of(NanoMiraiItems.RED_RESEARCH_CATALYST),
+            NonNullList.of(Ingredient.EMPTY,
+                Ingredient.of(Tags.Items.SEEDS),
+                Ingredient.of(Tags.Items.SEEDS),
+                Ingredient.of(Items.STRING),
+                Ingredient.of(Tags.Items.MUSHROOMS),
+                Ingredient.of(Tags.Items.MUSHROOMS),
+                Ingredient.of(Items.STRING),
+            )
+        ).save(recipeOutput)
+
+        // Speed Increase
+        LabAttributeRecipeBuilder(
+            Attributes.MOVEMENT_SPEED,
+            AttributeModifier(
+                rl("speed_increase"),
+                1.0,
+                AttributeModifier.Operation.ADD_MULTIPLIED_TOTAL
+            ),
+            NanoTier.CELL,
+            Ingredient.of(NanoMiraiItems.BLUE_RESEARCH_CATALYST),
+            NonNullList.of(Ingredient.EMPTY,
+                Ingredient.of(Items.SUGAR),
+                Ingredient.of(Items.SUGAR),
+                Ingredient.of(Items.AMETHYST_SHARD),
+                Ingredient.of(Items.SUGAR),
+                Ingredient.of(Items.SUGAR),
+                Ingredient.of(Items.AMETHYST_SHARD),
+            )
+        ).save(recipeOutput)
+
+        // Water Movement Efficiency Increase
+        LabAttributeRecipeBuilder(
+            Attributes.WATER_MOVEMENT_EFFICIENCY,
+            AttributeModifier(
+                rl("water_movement_efficiency_increase"),
+                1.0,
+                AttributeModifier.Operation.ADD_VALUE
+            ),
+            NanoTier.CELL,
+            Ingredient.of(NanoMiraiItems.GREEN_RESEARCH_CATALYST),
+            NonNullList.of(Ingredient.EMPTY,
+                Ingredient.of(Items.COD),
+                Ingredient.of(Items.COD),
+                Ingredient.of(Items.NAUTILUS_SHELL),
+                Ingredient.of(Items.COD),
+                Ingredient.of(Items.COD),
+                Ingredient.of(Items.NAUTILUS_SHELL),
+            )
+        ).save(recipeOutput)
+
+        // Oxygen Bonus Increase
+        LabAttributeRecipeBuilder(
+            Attributes.OXYGEN_BONUS,
+            AttributeModifier(
+                rl("oxygen_bonus_increase"),
+                128.0,
+                AttributeModifier.Operation.ADD_VALUE
+            ),
+            NanoTier.CELL,
+            Ingredient.of(NanoMiraiItems.BLUE_RESEARCH_CATALYST),
+            NonNullList.of(Ingredient.EMPTY,
+                Ingredient.of(Items.PUFFERFISH),
+                Ingredient.of(Items.PUFFERFISH),
+                Ingredient.of(Items.GLASS_BOTTLE),
+                Ingredient.of(Items.PUFFERFISH),
+                Ingredient.of(Items.PUFFERFISH),
+                Ingredient.of(Items.GLASS_BOTTLE),
+            )
+        ).save(recipeOutput)
+
+        //  ** Matrix Tier Attributes **
+        // Sneaking Speed Increase
         LabAttributeRecipeBuilder(
             Attributes.SNEAKING_SPEED,
             AttributeModifier(
                 rl("sneaking_speed_increase"),
                 2.0,
+                AttributeModifier.Operation.ADD_MULTIPLIED_BASE
+            ),
+            NanoTier.MATRIX,
+            Ingredient.of(NanoMiraiItems.MAGENTA_RESEARCH_CATALYST),
+            NonNullList.of(Ingredient.EMPTY,
+                Ingredient.of(Items.SCULK),
+                Ingredient.of(Items.SCULK),
+                Ingredient.of(Items.SCULK),
+                Ingredient.of(Items.SUGAR),
+                Ingredient.of(Items.SUGAR),
+                Ingredient.of(Items.SUGAR),
+            )
+        ).save(recipeOutput)
+
+        // Step Height Increase
+        LabAttributeRecipeBuilder(
+            Attributes.STEP_HEIGHT,
+            AttributeModifier(
+                rl("step_height_increase"),
+                0.4,
+                AttributeModifier.Operation.ADD_VALUE
+            ),
+            NanoTier.MATRIX,
+            Ingredient.of(NanoMiraiItems.CYAN_RESEARCH_CATALYST),
+            NonNullList.of(Ingredient.EMPTY,
+                Ingredient.of(Items.PISTON),
+                Ingredient.of(Items.LEATHER),
+                Ingredient.of(Items.LEATHER),
+                Ingredient.of(Items.PISTON),
+                Ingredient.of(Items.LEATHER),
+                Ingredient.of(Items.LEATHER),
+            )
+        ).save(recipeOutput)
+
+        // Block Interaction Range Increase
+        LabAttributeRecipeBuilder(
+            Attributes.BLOCK_INTERACTION_RANGE,
+            AttributeModifier(
+                rl("block_interaction_range_increase"),
+                2.0,
+                AttributeModifier.Operation.ADD_MULTIPLIED_BASE
+            ),
+            NanoTier.MATRIX,
+            Ingredient.of(NanoMiraiItems.CYAN_RESEARCH_CATALYST),
+            NonNullList.of(Ingredient.EMPTY,
+                Ingredient.of(Items.DROPPER),
+                Ingredient.of(Items.PISTON),
+                Ingredient.of(Items.ARMOR_STAND),
+                Ingredient.of(Items.DROPPER),
+                Ingredient.of(Items.PISTON),
+                Ingredient.of(Items.ARMOR_STAND),
+            )
+        ).save(recipeOutput)
+
+        // Entity Interaction Range Increase
+        LabAttributeRecipeBuilder(
+            Attributes.ENTITY_INTERACTION_RANGE,
+            AttributeModifier(
+                rl("entity_interaction_range_increase"),
+                2.0,
+                AttributeModifier.Operation.ADD_MULTIPLIED_BASE
+            ),
+            NanoTier.MATRIX,
+            Ingredient.of(NanoMiraiItems.CYAN_RESEARCH_CATALYST),
+            NonNullList.of(Ingredient.EMPTY,
+                Ingredient.of(Items.FISHING_ROD),
+                Ingredient.of(Items.PISTON),
+                Ingredient.of(Items.ARMOR_STAND),
+                Ingredient.of(Items.FISHING_ROD),
+                Ingredient.of(Items.PISTON),
+                Ingredient.of(Items.ARMOR_STAND),
+            )
+        ).save(recipeOutput)
+
+        // Attack Speed Increase
+        LabAttributeRecipeBuilder(
+            Attributes.ATTACK_SPEED,
+            AttributeModifier(
+                rl("attack_speed_increase"),
+                0.8,
+                AttributeModifier.Operation.ADD_MULTIPLIED_BASE
+            ),
+            NanoTier.MATRIX,
+            Ingredient.of(NanoMiraiItems.YELLOW_RESEARCH_CATALYST),
+            NonNullList.of(Ingredient.EMPTY,
+                Ingredient.of(Items.SHROOMLIGHT),
+                Ingredient.of(Items.SHROOMLIGHT),
+                Ingredient.of(Items.SHROOMLIGHT),
+                Ingredient.of(Items.SUGAR),
+                Ingredient.of(Items.SUGAR),
+                Ingredient.of(Items.SUGAR),
+            )
+        ).save(recipeOutput)
+
+        // Submerged Mining Speed Increase
+        LabAttributeRecipeBuilder(
+            Attributes.SUBMERGED_MINING_SPEED,
+            AttributeModifier(
+                rl("submerged_mining_speed_increase"),
+                4.0,
                 AttributeModifier.Operation.ADD_MULTIPLIED_TOTAL
             ),
             NanoTier.MATRIX,
-            Ingredient.of(Items.SCULK_CATALYST),
-            NonNullList.of(Ingredient.EMPTY, Ingredient.of(Items.SUGAR), Ingredient.of(Items.SUGAR), Ingredient.of(Items.SUGAR))
+            Ingredient.of(NanoMiraiItems.CYAN_RESEARCH_CATALYST),
+            NonNullList.of(Ingredient.EMPTY,
+                Ingredient.of(Items.SALMON),
+                Ingredient.of(Items.TROPICAL_FISH),
+                Ingredient.of(Items.SALMON),
+                Ingredient.of(Items.TROPICAL_FISH),
+                Ingredient.of(Items.SALMON),
+                Ingredient.of(Items.TROPICAL_FISH),
+            )
+        ).save(recipeOutput)
+
+        //  ** Singularity Tier Attributes **
+        // Health Increase
+        LabAttributeRecipeBuilder(
+            Attributes.MAX_HEALTH,
+            AttributeModifier(
+                rl("max_health_increase"),
+                2.0,
+                AttributeModifier.Operation.ADD_MULTIPLIED_TOTAL
+            ),
+            NanoTier.SINGULARITY,
+            Ingredient.of(NanoMiraiItems.MAGENTA_RESEARCH_CATALYST),
+            NonNullList.of(Ingredient.EMPTY,
+                Ingredient.of(Items.TOTEM_OF_UNDYING),
+                Ingredient.of(Items.GLISTERING_MELON_SLICE),
+                Ingredient.of(Items.GLISTERING_MELON_SLICE),
+                Ingredient.of(Items.TOTEM_OF_UNDYING),
+                Ingredient.of(Items.GOLDEN_APPLE),
+                Ingredient.of(Items.GOLDEN_APPLE),
+            )
+        ).save(recipeOutput)
+
+        // Attack Damage Increase
+        LabAttributeRecipeBuilder(
+            Attributes.ATTACK_DAMAGE,
+            AttributeModifier(
+                rl("attack_damage_increase"),
+                1.0,
+                AttributeModifier.Operation.ADD_MULTIPLIED_TOTAL
+            ),
+            NanoTier.SINGULARITY,
+            Ingredient.of(NanoMiraiItems.YELLOW_RESEARCH_CATALYST),
+            NonNullList.of(Ingredient.EMPTY,
+                Ingredient.of(Items.BLAZE_ROD),
+                Ingredient.of(Items.BLAZE_ROD),
+                Ingredient.of(Items.SHROOMLIGHT),
+                Ingredient.of(Items.GLOWSTONE_DUST),
+                Ingredient.of(Items.GLOWSTONE_DUST),
+                Ingredient.of(Items.SHROOMLIGHT),
+            )
+        ).save(recipeOutput)
+
+        // Fall Damage Reduction
+        LabAttributeRecipeBuilder(
+            Attributes.FALL_DAMAGE_MULTIPLIER,
+            AttributeModifier(
+                rl("fall_damage_reduction"),
+                -1.0,
+                AttributeModifier.Operation.ADD_VALUE
+            ),
+            NanoTier.SINGULARITY,
+            Ingredient.of(NanoMiraiItems.MAGENTA_RESEARCH_CATALYST),
+            NonNullList.of(Ingredient.EMPTY,
+                Ingredient.of(Items.FEATHER),
+                Ingredient.of(Items.WIND_CHARGE),
+                Ingredient.of(Items.WIND_CHARGE),
+                Ingredient.of(Items.FEATHER),
+                Ingredient.of(Items.HAY_BLOCK),
+                Ingredient.of(Items.HAY_BLOCK),
+            )
         ).save(recipeOutput)
     }
 
     fun labEffectRecipes(recipeOutput: RecipeOutput) {
+        //  ** Proto Tier Effects **
+        // Glowing
+        LabEffectRecipeBuilder(
+            MobEffectInstance(
+                MobEffects.GLOWING,
+                600, 0, false, true, true
+            ),
+            NanoTier.PROTO,
+            Ingredient.of(NanoMiraiItems.RED_RESEARCH_CATALYST),
+            NonNullList.of(Ingredient.EMPTY,
+                Ingredient.of(Items.GLOWSTONE_DUST),
+                Ingredient.of(Items.GLOWSTONE_DUST),
+                Ingredient.of(Items.GLOWSTONE_DUST),
+                Ingredient.of(Items.GLOW_BERRIES),
+                Ingredient.of(Items.GLOW_BERRIES),
+                Ingredient.of(Items.GLOW_BERRIES),
+            )
+        ).save(recipeOutput)
+
+        // Invisibility
+        LabEffectRecipeBuilder(
+            MobEffectInstance(
+                MobEffects.INVISIBILITY,
+                600, 0, false, true, true
+            ),
+            NanoTier.PROTO,
+            Ingredient.of(NanoMiraiItems.BLUE_RESEARCH_CATALYST),
+            NonNullList.of(Ingredient.EMPTY,
+                Ingredient.of(Items.ENDER_PEARL),
+                Ingredient.of(Items.GLASS),
+                Ingredient.of(Items.GUNPOWDER),
+                Ingredient.of(Items.ENDER_PEARL),
+                Ingredient.of(Items.GLASS),
+                Ingredient.of(Items.GUNPOWDER),
+            )
+        ).save(recipeOutput)
+
+        // Slow Falling
+        LabEffectRecipeBuilder(
+            MobEffectInstance(
+                MobEffects.SLOW_FALLING,
+                600, 0, false, true, true
+            ),
+            NanoTier.PROTO,
+            Ingredient.of(NanoMiraiItems.GREEN_RESEARCH_CATALYST),
+            NonNullList.of(Ingredient.EMPTY,
+                Ingredient.of(Items.FEATHER),
+                Ingredient.of(ItemTags.WOOL),
+                Ingredient.of(Items.FEATHER),
+                Ingredient.of(Items.FEATHER),
+                Ingredient.of(ItemTags.WOOL),
+                Ingredient.of(Items.FEATHER),
+            )
+        ).save(recipeOutput)
+
+        // Infested
+        LabEffectRecipeBuilder(
+            MobEffectInstance(
+                MobEffects.INFESTED,
+                600, 0, false, true, true
+            ),
+            NanoTier.PROTO,
+            Ingredient.of(NanoMiraiItems.RED_RESEARCH_CATALYST),
+            NonNullList.of(Ingredient.EMPTY,
+                Ingredient.of(Items.STONE),
+                Ingredient.of(Items.STONE),
+                Ingredient.of(Items.STONE),
+                Ingredient.of(Items.STONE),
+                Ingredient.of(Items.STONE),
+                Ingredient.of(Items.STONE),
+            )
+        ).save(recipeOutput)
+
+        // Weaving
+        LabEffectRecipeBuilder(
+            MobEffectInstance(
+                MobEffects.WEAVING,
+                600, 0, false, true, true
+            ),
+            NanoTier.PROTO,
+            Ingredient.of(NanoMiraiItems.RED_RESEARCH_CATALYST),
+            NonNullList.of(Ingredient.EMPTY,
+                Ingredient.of(Items.STRING),
+                Ingredient.of(Items.STRING),
+                Ingredient.of(Items.STRING),
+                Ingredient.of(Items.COBWEB),
+                Ingredient.of(Items.COBWEB),
+                Ingredient.of(Items.COBWEB),
+            )
+        ).save(recipeOutput)
+
+        // Wind Charged
+        LabEffectRecipeBuilder(
+            MobEffectInstance(
+                MobEffects.WIND_CHARGED,
+                600, 0, false, true, true
+            ),
+            NanoTier.PROTO,
+            Ingredient.of(NanoMiraiItems.BLUE_RESEARCH_CATALYST),
+            NonNullList.of(Ingredient.EMPTY,
+                Ingredient.of(Items.BREEZE_ROD),
+                Ingredient.of(Items.WIND_CHARGE),
+                Ingredient.of(Items.WIND_CHARGE),
+                Ingredient.of(Items.BREEZE_ROD),
+                Ingredient.of(Items.WIND_CHARGE),
+                Ingredient.of(Items.WIND_CHARGE),
+            )
+        ).save(recipeOutput)
+
+        // Oozing
+        LabEffectRecipeBuilder(
+            MobEffectInstance(
+                MobEffects.OOZING,
+                600, 0, false, true, true
+            ),
+            NanoTier.PROTO,
+            Ingredient.of(NanoMiraiItems.GREEN_RESEARCH_CATALYST),
+            NonNullList.of(Ingredient.EMPTY,
+                Ingredient.of(Items.SLIME_BLOCK),
+                Ingredient.of(Items.SLIME_BLOCK),
+                Ingredient.of(Items.SLIME_BLOCK),
+                Ingredient.of(Items.SLIME_BLOCK),
+                Ingredient.of(Items.SLIME_BLOCK),
+                Ingredient.of(Items.SLIME_BLOCK),
+            )
+        ).save(recipeOutput)
+
+        //  ** Cell Tier Effects **
+        // Slowness
         LabEffectRecipeBuilder(
             MobEffectInstance(
                 MobEffects.MOVEMENT_SLOWDOWN,
                 600, 2, false, true, true
             ),
-            NanoTier.PROTO,
-            Ingredient.of(Items.BLAZE_POWDER),
-            NonNullList.of(Ingredient.EMPTY, Ingredient.of(Items.SUGAR), Ingredient.of(Items.GLOWSTONE_DUST))
+            NanoTier.CELL,
+            Ingredient.of(NanoMiraiItems.BLUE_RESEARCH_CATALYST),
+            NonNullList.of(Ingredient.EMPTY,
+                Ingredient.of(Items.COBWEB),
+                Ingredient.of(Items.FERMENTED_SPIDER_EYE),
+                Ingredient.of(Items.COBWEB),
+                Ingredient.of(Items.COBWEB),
+                Ingredient.of(Items.SUGAR),
+                Ingredient.of(Items.COBWEB),
+            )
         ).save(recipeOutput)
 
+        // Weakness
+        LabEffectRecipeBuilder(
+            MobEffectInstance(
+                MobEffects.WEAKNESS,
+                600, 2, false, true, true
+            ),
+            NanoTier.CELL,
+            Ingredient.of(NanoMiraiItems.RED_RESEARCH_CATALYST),
+            NonNullList.of(Ingredient.EMPTY,
+                Ingredient.of(Items.BONE_MEAL),
+                Ingredient.of(Items.BLAZE_POWDER),
+                Ingredient.of(Items.BLAZE_POWDER),
+                Ingredient.of(Items.ROTTEN_FLESH),
+                Ingredient.of(Items.FERMENTED_SPIDER_EYE),
+                Ingredient.of(Items.FERMENTED_SPIDER_EYE),
+            )
+        ).save(recipeOutput)
+
+        // Levitation
+        LabEffectRecipeBuilder(
+            MobEffectInstance(
+                MobEffects.LEVITATION,
+                300, 2, false, true, true
+            ),
+            NanoTier.CELL,
+            Ingredient.of(NanoMiraiItems.GREEN_RESEARCH_CATALYST),
+            NonNullList.of(Ingredient.EMPTY,
+                Ingredient.of(Items.FEATHER),
+                Ingredient.of(Items.POPPED_CHORUS_FRUIT),
+                Ingredient.of(Items.POPPED_CHORUS_FRUIT),
+                Ingredient.of(Items.FEATHER),
+                Ingredient.of(Items.POPPED_CHORUS_FRUIT),
+                Ingredient.of(Items.POPPED_CHORUS_FRUIT),
+            )
+        ).save(recipeOutput)
+
+        //  ** Matrix Tier Effects **
+        // Poison
         LabEffectRecipeBuilder(
             MobEffectInstance(
                 MobEffects.POISON,
                 600, 2, false, true, true
             ),
             NanoTier.MATRIX,
-            Ingredient.of(Items.BLAZE_POWDER),
-            NonNullList.of(Ingredient.EMPTY, Ingredient.of(Items.PUFFERFISH), Ingredient.of(Items.SPIDER_EYE))
+            Ingredient.of(NanoMiraiItems.CYAN_RESEARCH_CATALYST),
+            NonNullList.of(Ingredient.EMPTY,
+                Ingredient.of(Items.PUFFERFISH),
+                Ingredient.of(Items.POISONOUS_POTATO),
+                Ingredient.of(Items.SPIDER_EYE),
+                Ingredient.of(Items.PUFFERFISH),
+                Ingredient.of(Items.POISONOUS_POTATO),
+                Ingredient.of(Items.SPIDER_EYE),
+            )
+        ).save(recipeOutput)
+
+        //  ** Singularity Tier Effects **
+        // Darkness
+        LabEffectRecipeBuilder(
+            MobEffectInstance(
+                MobEffects.DARKNESS,
+                600, 0, false, true, true
+            ),
+            NanoTier.SINGULARITY,
+            Ingredient.of(NanoMiraiItems.MAGENTA_RESEARCH_CATALYST),
+            NonNullList.of(Ingredient.EMPTY,
+                Ingredient.of(Items.BLACK_DYE),
+                Ingredient.of(Items.BLACK_DYE),
+                Ingredient.of(Items.BLACK_DYE),
+                Ingredient.of(Items.SCULK),
+                Ingredient.of(Items.SCULK),
+                Ingredient.of(Items.SCULK),
+            )
+        ).save(recipeOutput)
+
+        // Wither
+        LabEffectRecipeBuilder(
+            MobEffectInstance(
+                MobEffects.WITHER,
+                100, 1, false, true, true
+            ),
+            NanoTier.SINGULARITY,
+            Ingredient.of(NanoMiraiItems.YELLOW_RESEARCH_CATALYST),
+            NonNullList.of(Ingredient.EMPTY,
+                Ingredient.of(Items.WITHER_ROSE),
+                Ingredient.of(Items.STONE_SWORD),
+                Ingredient.of(Items.SOUL_SAND, Items.SOUL_SOIL),
+                Ingredient.of(Items.WITHER_ROSE),
+                Ingredient.of(Items.STONE_SWORD),
+                Ingredient.of(Items.SOUL_SAND, Items.SOUL_SOIL),
+            )
         ).save(recipeOutput)
     }
 

@@ -1,0 +1,33 @@
+{
+  "type": "nanomirai:lab_attribute",
+  "attribute": "minecraft:player.entity_interaction_range",
+  "catalyst": {
+    "item": "nanomirai:cyan_research_catalyst"
+  },
+  "ingredients": [
+    {
+      "item": "minecraft:fishing_rod"
+    },
+    {
+      "item": "minecraft:piston"
+    },
+    {
+      "item": "minecraft:armor_stand"
+    },
+    {
+      "item": "minecraft:fishing_rod"
+    },
+    {
+      "item": "minecraft:piston"
+    },
+    {
+      "item": "minecraft:armor_stand"
+    }
+  ],
+  "modifier": {
+    "amount": 2.0,
+    "id": "nanomirai:entity_interaction_range_increase",
+    "operation": "add_multiplied_base"
+  },
+  "tier": 2
+}

@@ -22,6 +22,12 @@ class NanoMiraiItemModelProvider(output: PackOutput, existingFileHelper: Existin
         basicItem(NanoMiraiItems.GRAPHITE)
         basicItem(NanoMiraiItems.AMETHYST_LENS)
         basicItem(NanoMiraiItems.SCULK_LENS)
+        basicItem(NanoMiraiItems.RED_RESEARCH_CATALYST)
+        basicItem(NanoMiraiItems.GREEN_RESEARCH_CATALYST)
+        basicItem(NanoMiraiItems.BLUE_RESEARCH_CATALYST)
+        basicItem(NanoMiraiItems.CYAN_RESEARCH_CATALYST)
+        basicItem(NanoMiraiItems.MAGENTA_RESEARCH_CATALYST)
+        basicItem(NanoMiraiItems.YELLOW_RESEARCH_CATALYST)
 
         simpleBlockItem(NanoMiraiBlocks.NANOMACHINE_ASSEMBLER)
         simpleBlockItem(NanoMiraiBlocks.LASER_ENGRAVER)

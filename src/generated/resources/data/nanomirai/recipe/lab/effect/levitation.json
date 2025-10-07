@@ -1,0 +1,37 @@
+{
+  "type": "nanomirai:lab_effect",
+  "catalyst": {
+    "item": "nanomirai:green_research_catalyst"
+  },
+  "effect": {
+    "amplifier": 2,
+    "duration": 300,
+    "id": "minecraft:levitation",
+    "neoforge:cures": [
+      "milk",
+      "protected_by_totem"
+    ],
+    "show_icon": true
+  },
+  "ingredients": [
+    {
+      "item": "minecraft:feather"
+    },
+    {
+      "item": "minecraft:popped_chorus_fruit"
+    },
+    {
+      "item": "minecraft:popped_chorus_fruit"
+    },
+    {
+      "item": "minecraft:feather"
+    },
+    {
+      "item": "minecraft:popped_chorus_fruit"
+    },
+    {
+      "item": "minecraft:popped_chorus_fruit"
+    }
+  ],
+  "tier": 1
+}

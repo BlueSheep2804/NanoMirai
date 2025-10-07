@@ -1,0 +1,33 @@
+{
+  "type": "nanomirai:lab_attribute",
+  "attribute": "minecraft:generic.max_health",
+  "catalyst": {
+    "item": "nanomirai:magenta_research_catalyst"
+  },
+  "ingredients": [
+    {
+      "item": "minecraft:totem_of_undying"
+    },
+    {
+      "item": "minecraft:glistering_melon_slice"
+    },
+    {
+      "item": "minecraft:glistering_melon_slice"
+    },
+    {
+      "item": "minecraft:totem_of_undying"
+    },
+    {
+      "item": "minecraft:golden_apple"
+    },
+    {
+      "item": "minecraft:golden_apple"
+    }
+  ],
+  "modifier": {
+    "amount": 2.0,
+    "id": "nanomirai:max_health_increase",
+    "operation": "add_multiplied_total"
+  },
+  "tier": 3
+}

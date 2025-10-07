@@ -1,0 +1,33 @@
+{
+  "type": "nanomirai:lab_attribute",
+  "attribute": "minecraft:generic.water_movement_efficiency",
+  "catalyst": {
+    "item": "nanomirai:green_research_catalyst"
+  },
+  "ingredients": [
+    {
+      "item": "minecraft:cod"
+    },
+    {
+      "item": "minecraft:cod"
+    },
+    {
+      "item": "minecraft:nautilus_shell"
+    },
+    {
+      "item": "minecraft:cod"
+    },
+    {
+      "item": "minecraft:cod"
+    },
+    {
+      "item": "minecraft:nautilus_shell"
+    }
+  ],
+  "modifier": {
+    "amount": 1.0,
+    "id": "nanomirai:water_movement_efficiency_increase",
+    "operation": "add_value"
+  },
+  "tier": 1
+}

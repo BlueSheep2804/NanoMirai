@@ -36,6 +36,12 @@ object NanoMiraiItems {
     val GRAPHITE: Item by REGISTRY.registerSimpleItem("graphite")
     val AMETHYST_LENS: Item by REGISTRY.registerSimpleItem("amethyst_lens")
     val SCULK_LENS: Item by REGISTRY.registerSimpleItem("sculk_lens")
+    val RED_RESEARCH_CATALYST: Item by REGISTRY.registerSimpleItem("red_research_catalyst")
+    val GREEN_RESEARCH_CATALYST: Item by REGISTRY.registerSimpleItem("green_research_catalyst")
+    val BLUE_RESEARCH_CATALYST: Item by REGISTRY.registerSimpleItem("blue_research_catalyst")
+    val CYAN_RESEARCH_CATALYST: Item by REGISTRY.registerSimpleItem("cyan_research_catalyst")
+    val MAGENTA_RESEARCH_CATALYST: Item by REGISTRY.registerSimpleItem("magenta_research_catalyst")
+    val YELLOW_RESEARCH_CATALYST: Item by REGISTRY.registerSimpleItem("yellow_research_catalyst")
 
     val NANOMACHINE_ASSEMBLER: BlockItem by REGISTRY.registerSimpleBlockItem("nanomachine_assembler") { ->
         NanoMiraiBlocks.NANOMACHINE_ASSEMBLER

@@ -1,0 +1,33 @@
+{
+  "type": "nanomirai:lab_attribute",
+  "attribute": "minecraft:generic.scale",
+  "catalyst": {
+    "item": "nanomirai:red_research_catalyst"
+  },
+  "ingredients": [
+    {
+      "tag": "c:seeds"
+    },
+    {
+      "tag": "c:seeds"
+    },
+    {
+      "item": "minecraft:string"
+    },
+    {
+      "tag": "c:mushrooms"
+    },
+    {
+      "tag": "c:mushrooms"
+    },
+    {
+      "item": "minecraft:string"
+    }
+  ],
+  "modifier": {
+    "amount": -0.5,
+    "id": "nanomirai:scale_decrease",
+    "operation": "add_multiplied_total"
+  },
+  "tier": 1
+}

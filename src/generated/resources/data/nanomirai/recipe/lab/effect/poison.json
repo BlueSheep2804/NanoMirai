@@ -1,7 +1,7 @@
 {
   "type": "nanomirai:lab_effect",
   "catalyst": {
-    "item": "minecraft:blaze_powder"
+    "item": "nanomirai:cyan_research_catalyst"
   },
   "effect": {
     "amplifier": 2,
@@ -17,6 +17,18 @@
   "ingredients": [
     {
       "item": "minecraft:pufferfish"
+    },
+    {
+      "item": "minecraft:poisonous_potato"
+    },
+    {
+      "item": "minecraft:spider_eye"
+    },
+    {
+      "item": "minecraft:pufferfish"
+    },
+    {
+      "item": "minecraft:poisonous_potato"
     },
     {
       "item": "minecraft:spider_eye"

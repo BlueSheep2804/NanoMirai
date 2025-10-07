@@ -1,0 +1,33 @@
+{
+  "type": "nanomirai:lab_attribute",
+  "attribute": "minecraft:generic.oxygen_bonus",
+  "catalyst": {
+    "item": "nanomirai:blue_research_catalyst"
+  },
+  "ingredients": [
+    {
+      "item": "minecraft:pufferfish"
+    },
+    {
+      "item": "minecraft:pufferfish"
+    },
+    {
+      "item": "minecraft:glass_bottle"
+    },
+    {
+      "item": "minecraft:pufferfish"
+    },
+    {
+      "item": "minecraft:pufferfish"
+    },
+    {
+      "item": "minecraft:glass_bottle"
+    }
+  ],
+  "modifier": {
+    "amount": 128.0,
+    "id": "nanomirai:oxygen_bonus_increase",
+    "operation": "add_value"
+  },
+  "tier": 1
+}

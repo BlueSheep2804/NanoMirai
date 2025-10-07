@@ -1,0 +1,53 @@
+{
+  "type": "nanomirai:lab_effect",
+  "catalyst": {
+    "item": "nanomirai:yellow_research_catalyst"
+  },
+  "effect": {
+    "amplifier": 1,
+    "duration": 100,
+    "id": "minecraft:wither",
+    "neoforge:cures": [
+      "milk",
+      "protected_by_totem"
+    ],
+    "show_icon": true
+  },
+  "ingredients": [
+    {
+      "item": "minecraft:wither_rose"
+    },
+    {
+      "item": "minecraft:stone_sword"
+    },
+    {
+      "type": "neoforge:compound",
+      "children": [
+        {
+          "item": "minecraft:soul_sand"
+        },
+        {
+          "item": "minecraft:soul_soil"
+        }
+      ]
+    },
+    {
+      "item": "minecraft:wither_rose"
+    },
+    {
+      "item": "minecraft:stone_sword"
+    },
+    {
+      "type": "neoforge:compound",
+      "children": [
+        {
+          "item": "minecraft:soul_sand"
+        },
+        {
+          "item": "minecraft:soul_soil"
+        }
+      ]
+    }
+  ],
+  "tier": 3
+}

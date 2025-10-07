@@ -1,0 +1,33 @@
+{
+  "type": "nanomirai:lab_attribute",
+  "attribute": "minecraft:player.block_interaction_range",
+  "catalyst": {
+    "item": "nanomirai:cyan_research_catalyst"
+  },
+  "ingredients": [
+    {
+      "item": "minecraft:dropper"
+    },
+    {
+      "item": "minecraft:piston"
+    },
+    {
+      "item": "minecraft:armor_stand"
+    },
+    {
+      "item": "minecraft:dropper"
+    },
+    {
+      "item": "minecraft:piston"
+    },
+    {
+      "item": "minecraft:armor_stand"
+    }
+  ],
+  "modifier": {
+    "amount": 2.0,
+    "id": "nanomirai:block_interaction_range_increase",
+    "operation": "add_multiplied_base"
+  },
+  "tier": 2
+}

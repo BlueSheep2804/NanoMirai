@@ -1,0 +1,36 @@
+{
+  "type": "nanomirai:lab_effect",
+  "catalyst": {
+    "item": "nanomirai:green_research_catalyst"
+  },
+  "effect": {
+    "duration": 600,
+    "id": "minecraft:slow_falling",
+    "neoforge:cures": [
+      "milk",
+      "protected_by_totem"
+    ],
+    "show_icon": true
+  },
+  "ingredients": [
+    {
+      "item": "minecraft:feather"
+    },
+    {
+      "tag": "minecraft:wool"
+    },
+    {
+      "item": "minecraft:feather"
+    },
+    {
+      "item": "minecraft:feather"
+    },
+    {
+      "tag": "minecraft:wool"
+    },
+    {
+      "item": "minecraft:feather"
+    }
+  ],
+  "tier": 0
+}

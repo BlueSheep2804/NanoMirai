@@ -2,20 +2,32 @@
   "type": "nanomirai:lab_attribute",
   "attribute": "minecraft:generic.scale",
   "catalyst": {
-    "item": "minecraft:ender_eye"
+    "item": "nanomirai:green_research_catalyst"
   },
   "ingredients": [
+    {
+      "item": "minecraft:bamboo"
+    },
+    {
+      "item": "minecraft:bamboo"
+    },
     {
       "item": "minecraft:ender_pearl"
     },
     {
-      "item": "minecraft:nether_star"
+      "item": "minecraft:bamboo"
+    },
+    {
+      "item": "minecraft:bamboo"
+    },
+    {
+      "item": "minecraft:ender_pearl"
     }
   ],
   "modifier": {
     "amount": 2.0,
     "id": "nanomirai:scale_increase",
-    "operation": "add_multiplied_total"
+    "operation": "add_multiplied_base"
   },
   "tier": 0
 }
