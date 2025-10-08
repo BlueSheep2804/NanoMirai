@@ -28,7 +28,7 @@ class SynthesizeRecipeCategory(helper: IGuiHelper): IRecipeCategory<SynthesizeRe
         val TYPE = RecipeType(UID, SynthesizeRecipe::class.java)
     }
 
-    private val icon: IDrawable = helper.createDrawableIngredient(VanillaTypes.ITEM_STACK, ItemStack(NanoMiraiItems.NANO_PROTO))
+    private val icon: IDrawable = helper.createDrawableIngredient(VanillaTypes.ITEM_STACK, ItemStack(NanoMiraiItems.SYNTHESIZE_NANO))
 
     override fun getRecipeType(): RecipeType<SynthesizeRecipe> {
         return TYPE
