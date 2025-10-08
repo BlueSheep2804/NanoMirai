@@ -52,6 +52,7 @@ class SynthesizeNanoItem(properties: Properties) : Item(properties), INanoTiered
             blockEntity.block = inputBlock
             blockEntity.setPrimaryItem(primaryItem.split(1))
             if (!secondaryItem.isEmpty) blockEntity.setSecondaryItem(secondaryItem.split(1))
+            player.displayClientMessage(Component.translatable("recipe.nanomirai.synthesize.start"), true)
         }
 
         return InteractionResult.SUCCESS_NO_ITEM_USED
