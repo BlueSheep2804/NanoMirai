@@ -84,7 +84,7 @@ class SynthesizeDisplayBlockEntity(pos: BlockPos, blockState: BlockState) : Bloc
     }
 
     fun tick(level: Level, pos: BlockPos, state: BlockState) {
-        if (!itemHandler.getStackInSlot(1).isEmpty) {
+        if (!itemHandler.getStackInSlot(1).isEmpty && hasRecipe()) {
             increaseCraftingProgress()
             setChanged(level, pos, state)
 
@@ -104,7 +104,7 @@ class SynthesizeDisplayBlockEntity(pos: BlockPos, blockState: BlockState) : Bloc
 
     private fun craftItem() {
         val recipe = getCurrentRecipe()
-        val output = if (recipe.isEmpty) ItemStack(NanoMiraiItems.BROKEN_NANOMACHINE) else recipe.get().value.result.copy()
+        val output = recipe.get().value.result.copy()
 
         val inventory = SimpleContainer(1)
         inventory.setItem(0, output)
@@ -117,6 +117,10 @@ class SynthesizeDisplayBlockEntity(pos: BlockPos, blockState: BlockState) : Bloc
 
     private fun increaseCraftingProgress() {
         progress++
+    }
+
+    private fun hasRecipe(): Boolean {
+        return getCurrentRecipe().isPresent
     }
 
     private fun getCurrentRecipe(): Optional<RecipeHolder<SynthesizeRecipe>> {
@@ -173,10 +177,8 @@ class SynthesizeDisplayBlockEntity(pos: BlockPos, blockState: BlockState) : Bloc
         return ItemStack.EMPTY
     }
 
-    override fun setItem(p0: Int, p1: ItemStack) {
-        itemHandler.setStackInSlot(1, p1)
-        startCrafting()
-        setChanged()
+    override fun setItem(p0: Int, stack: ItemStack) {
+        setSecondaryItem(stack)
     }
 
     override fun stillValid(p0: Player): Boolean {

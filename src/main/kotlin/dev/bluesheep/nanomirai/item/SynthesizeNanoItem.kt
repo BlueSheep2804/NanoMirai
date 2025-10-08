@@ -1,7 +1,9 @@
 package dev.bluesheep.nanomirai.item
 
 import dev.bluesheep.nanomirai.block.entity.SynthesizeDisplayBlockEntity
+import dev.bluesheep.nanomirai.recipe.BlockWithPairItemInput
 import dev.bluesheep.nanomirai.registry.NanoMiraiBlocks
+import dev.bluesheep.nanomirai.registry.NanoMiraiRecipeType
 import net.minecraft.core.dispenser.BlockSource
 import net.minecraft.core.dispenser.OptionalDispenseItemBehavior
 import net.minecraft.network.chat.Component
@@ -11,7 +13,6 @@ import net.minecraft.world.item.Item
 import net.minecraft.world.item.ItemStack
 import net.minecraft.world.item.TooltipFlag
 import net.minecraft.world.item.context.UseOnContext
-import net.minecraft.world.level.block.Blocks
 import net.minecraft.world.level.block.DispenserBlock
 
 class SynthesizeNanoItem(properties: Properties) : Item(properties), INanoTieredItem {
@@ -32,20 +33,25 @@ class SynthesizeNanoItem(properties: Properties) : Item(properties), INanoTiered
         val inputBlock = context.level.getBlockState(context.clickedPos)
         val mainhand = player.getItemInHand(InteractionHand.MAIN_HAND)
         val offhand = player.getItemInHand(InteractionHand.OFF_HAND)
-        if (inputBlock.`is`(NanoMiraiBlocks.SYNTHESIZE_DISPLAY)) return InteractionResult.FAIL
+        val primaryItem = (if (context.hand == InteractionHand.MAIN_HAND) mainhand else offhand)
+        val secondaryItem = (if (context.hand == InteractionHand.MAIN_HAND) offhand else mainhand)
+
+        val recipe = level.recipeManager.getRecipesFor(
+            NanoMiraiRecipeType.SYNTHESIZE,
+            BlockWithPairItemInput(inputBlock, primaryItem, secondaryItem),
+            level
+        )
+        if (recipe.isEmpty()) {
+            player.displayClientMessage(Component.translatable("recipe.nanomirai.synthesize.not_found"), true)
+            return InteractionResult.FAIL
+        }
 
         level.setBlock(context.clickedPos, NanoMiraiBlocks.SYNTHESIZE_DISPLAY.defaultBlockState(), 3)
         val blockEntity = level.getBlockEntity(context.clickedPos)
         if (blockEntity is SynthesizeDisplayBlockEntity) {
             blockEntity.block = inputBlock
-            val primaryItem = (if (context.hand == InteractionHand.MAIN_HAND) mainhand else offhand).copy().apply { this.count = 1 }
-            val secondaryItem = (if (context.hand == InteractionHand.MAIN_HAND) offhand else mainhand).copy().apply { this.count = 1 }
-            blockEntity.setPrimaryItem(primaryItem)
-            blockEntity.setSecondaryItem(secondaryItem)
-            if (!player.isCreative) {
-                mainhand.shrink(1)
-                offhand.shrink(1)
-            }
+            blockEntity.setPrimaryItem(primaryItem.split(1))
+            if (!secondaryItem.isEmpty) blockEntity.setSecondaryItem(secondaryItem.split(1))
         }
 
         return InteractionResult.SUCCESS_NO_ITEM_USED
@@ -62,14 +68,19 @@ class SynthesizeNanoItem(properties: Properties) : Item(properties), INanoTiered
             val dispenser = blockSource.state
             val inputBlockPos = blockSource.pos.relative(dispenser.getValue(DispenserBlock.FACING))
             val inputBlock = blockSource.level.getBlockState(inputBlockPos)
-            if (inputBlock.`is`(NanoMiraiBlocks.SYNTHESIZE_DISPLAY) || inputBlock.`is`(Blocks.AIR)) return itemStack
-            level.setBlockAndUpdate(inputBlockPos, NanoMiraiBlocks.SYNTHESIZE_DISPLAY.defaultBlockState())
 
+            val hasInputBlockRecipe = level.recipeManager.getAllRecipesFor(NanoMiraiRecipeType.SYNTHESIZE).any {
+                inputBlock.`is`(it.value.inputBlock.block)
+            }
+            if (!hasInputBlockRecipe) {
+                return itemStack
+            }
+
+            level.setBlockAndUpdate(inputBlockPos, NanoMiraiBlocks.SYNTHESIZE_DISPLAY.defaultBlockState())
             val blockEntity = level.getBlockEntity(inputBlockPos)
             if (blockEntity is SynthesizeDisplayBlockEntity) {
                 blockEntity.block = inputBlock
-                blockEntity.setPrimaryItem(itemStack.copy().apply { this.count = 1 })
-                itemStack.shrink(1)
+                blockEntity.setPrimaryItem(itemStack.split(1))
                 isSuccess = true
                 return itemStack
             }
