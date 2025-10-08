@@ -4,7 +4,6 @@ import dev.bluesheep.nanomirai.block.SynthesizeDisplayBlock
 import dev.bluesheep.nanomirai.recipe.BlockWithPairItemInput
 import dev.bluesheep.nanomirai.recipe.synthesize.SynthesizeRecipe
 import dev.bluesheep.nanomirai.registry.NanoMiraiBlockEntities
-import dev.bluesheep.nanomirai.registry.NanoMiraiItems
 import dev.bluesheep.nanomirai.registry.NanoMiraiRecipeType
 import net.minecraft.core.BlockPos
 import net.minecraft.core.Direction
@@ -18,6 +17,7 @@ import net.minecraft.world.Containers
 import net.minecraft.world.SimpleContainer
 import net.minecraft.world.WorldlyContainer
 import net.minecraft.world.entity.player.Player
+import net.minecraft.world.item.BlockItem
 import net.minecraft.world.item.ItemStack
 import net.minecraft.world.item.crafting.RecipeHolder
 import net.minecraft.world.level.Level
@@ -89,8 +89,7 @@ class SynthesizeDisplayBlockEntity(pos: BlockPos, blockState: BlockState) : Bloc
             setChanged(level, pos, state)
 
             if (hasCraftingFinished()) {
-                craftItem()
-                level.removeBlock(pos, false)
+                craftItem(level)
             }
         }
     }
@@ -102,13 +101,19 @@ class SynthesizeDisplayBlockEntity(pos: BlockPos, blockState: BlockState) : Bloc
         setChanged()
     }
 
-    private fun craftItem() {
+    private fun craftItem(level: Level) {
         val recipe = getCurrentRecipe()
         val output = recipe.get().value.result.copy()
+        val outputItem = output.item
 
-        val inventory = SimpleContainer(1)
-        inventory.setItem(0, output)
-        Containers.dropContents(level, worldPosition, inventory)
+        if (outputItem is BlockItem) {
+            level.setBlockAndUpdate(worldPosition, outputItem.block.defaultBlockState())
+        } else {
+            val inventory = SimpleContainer(1)
+            inventory.setItem(0, output)
+            Containers.dropContents(level, worldPosition, inventory)
+            level.removeBlock(worldPosition, false)
+        }
     }
 
     fun hasCraftingFinished(): Boolean {

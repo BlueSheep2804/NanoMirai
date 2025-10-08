@@ -749,5 +749,13 @@ class NanoMiraiRecipeProvider(output: PackOutput, registries: CompletableFuture<
             Ingredient.of(Items.ECHO_SHARD),
             200
         ).save(recipeOutput)
+
+        SynthesizeRecipeBuilder(
+            ItemStack(Items.CRAFTER),
+            NanoTier.PROTO,
+            Blocks.CRAFTING_TABLE.defaultBlockState(),
+            Ingredient.of(Items.IRON_HELMET),
+            20
+        ).save(recipeOutput)
     }
 }
