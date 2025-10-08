@@ -13,14 +13,6 @@ import thedarkcolour.kotlinforforge.neoforge.forge.getValue
 object NanoMiraiItems {
     val REGISTRY: DeferredRegister.Items = DeferredRegister.createItems(NanoMirai.ID)
 
-    val GOGGLES: ArmorItem by REGISTRY.register("goggles") { ->
-        ArmorItem(
-            NanoMiraiArmorMaterials.GOGGLES_MATERIAL,
-            ArmorItem.Type.HELMET,
-            Item.Properties().stacksTo(1)
-        )
-    }
-
     val NANO_PROTO: Item by REGISTRY.registerSimpleItem("nano_proto")
     val NANO_CELL: Item by REGISTRY.registerSimpleItem("nano_cell")
     val NANO_MATRIX: Item by REGISTRY.registerSimpleItem("nano_matrix")
@@ -31,7 +23,6 @@ object NanoMiraiItems {
     val SUPPORT_NANO: SupportNanoItem by REGISTRY.register("support_nano", ::SupportNanoItem)
     val NANO_SWARM_BLASTER: NanoSwarmBlasterItem by REGISTRY.register("nano_swarm_blaster", ::NanoSwarmBlasterItem)
 
-    val BROKEN_NANOMACHINE: Item by REGISTRY.registerSimpleItem("broken_nanomachine")
     val GRAPHENE_SHEET: Item by REGISTRY.registerSimpleItem("graphene_sheet")
     val GRAPHITE: Item by REGISTRY.registerSimpleItem("graphite")
     val AMETHYST_LENS: Item by REGISTRY.registerSimpleItem("amethyst_lens")

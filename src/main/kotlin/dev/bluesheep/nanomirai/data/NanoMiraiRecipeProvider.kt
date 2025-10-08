@@ -34,32 +34,6 @@ class NanoMiraiRecipeProvider(output: PackOutput, registries: CompletableFuture<
         laserRecipes(recipeOutput)
         synthesizeRecipes(recipeOutput)
 
-        // Nano Proto
-        ShapedRecipeBuilder.shaped(
-            RecipeCategory.MISC,
-            NanoMiraiItems.NANO_PROTO
-        )
-            .define('G', NanoMiraiItems.GRAPHITE)
-            .define('R', Items.REDSTONE)
-            .define('C', Items.COPPER_INGOT)
-            .define('M', NanoMiraiItems.BROKEN_NANOMACHINE)
-            .pattern("GRG")
-            .pattern("CMC")
-            .pattern("GRG")
-            .unlockedBy("has_broken_nanomachine", has(NanoMiraiItems.BROKEN_NANOMACHINE))
-            .save(recipeOutput)
-
-        // Goggles
-        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, NanoMiraiItems.GOGGLES)
-            .define('I', Items.IRON_INGOT)
-            .define('W', ItemTags.WOOL)
-            .define('G', Tags.Items.GLASS_PANES)
-            .pattern("IWI")
-            .pattern("GIG")
-            .pattern("III")
-            .unlockedBy("has_iron", has(Items.IRON_INGOT))
-            .save(recipeOutput)
-
         // Graphene Sheet
         SimpleCookingRecipeBuilder.smelting(
             Ingredient.of(Items.COAL),

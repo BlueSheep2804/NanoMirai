@@ -9,7 +9,6 @@ import net.neoforged.neoforge.common.data.ExistingFileHelper
 
 class NanoMiraiItemModelProvider(output: PackOutput, existingFileHelper: ExistingFileHelper) : ItemModelProvider(output, NanoMirai.ID, existingFileHelper) {
     override fun registerModels() {
-        basicItem(NanoMiraiItems.GOGGLES)
         basicItem(NanoMiraiItems.NANO_PROTO)
         basicItem(NanoMiraiItems.NANO_CELL)
         basicItem(NanoMiraiItems.NANO_MATRIX)
@@ -17,7 +16,6 @@ class NanoMiraiItemModelProvider(output: PackOutput, existingFileHelper: Existin
         basicItem(NanoMiraiItems.SYNTHESIZE_NANO)
         basicItem(NanoMiraiItems.SUPPORT_NANO)
         handheldItem(NanoMiraiItems.NANO_SWARM_BLASTER)
-        basicItem(NanoMiraiItems.BROKEN_NANOMACHINE)
         basicItem(NanoMiraiItems.GRAPHENE_SHEET)
         basicItem(NanoMiraiItems.GRAPHITE)
         basicItem(NanoMiraiItems.AMETHYST_LENS)
