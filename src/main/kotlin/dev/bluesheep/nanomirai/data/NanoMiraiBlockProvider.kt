@@ -4,6 +4,7 @@ import dev.bluesheep.nanomirai.NanoMirai
 import dev.bluesheep.nanomirai.block.LaserEngraverBlock
 import dev.bluesheep.nanomirai.block.SynthesizeDisplayBlock
 import dev.bluesheep.nanomirai.registry.NanoMiraiBlocks
+import dev.bluesheep.nanomirai.util.SynthesizeState
 import net.minecraft.data.PackOutput
 import net.neoforged.neoforge.client.model.generators.BlockStateProvider
 import net.neoforged.neoforge.client.model.generators.ConfiguredModel
@@ -27,7 +28,7 @@ class NanoMiraiBlockProvider(output: PackOutput, exFileHelper: ExistingFileHelpe
         )
         getVariantBuilder(NanoMiraiBlocks.LASER_ENGRAVER).forAllStates { state ->
             val facing = state.getValue(LaserEngraverBlock.HORIZONTAL_FACING)
-            val isCrafting = state.getValue(SynthesizeDisplayBlock.CRAFTING)
+            val isCrafting = state.getValue(LaserEngraverBlock.CRAFTING)
             return@forAllStates ConfiguredModel.builder()
                 .modelFile(if (isCrafting) laserEngraverCraftingModel else laserEngraverModel)
                 .rotationY(facing.opposite.toYRot().toInt())
@@ -35,8 +36,12 @@ class NanoMiraiBlockProvider(output: PackOutput, exFileHelper: ExistingFileHelpe
         }
 
         getVariantBuilder(NanoMiraiBlocks.SYNTHESIZE_DISPLAY).forAllStates { state ->
-            val isCrafting = state.getValue(SynthesizeDisplayBlock.CRAFTING)
-            val name = if (isCrafting) "synthesize_display_crafting" else "synthesize_display"
+            val synthesizeState = state.getValue(SynthesizeDisplayBlock.STATE)
+            val name = when (synthesizeState) {
+                SynthesizeState.IDLE -> "synthesize_display"
+                SynthesizeState.CRAFTING -> "synthesize_display_crafting"
+                SynthesizeState.INVALID -> "synthesize_display_invalid"
+            }
             return@forAllStates ConfiguredModel.builder()
                 .modelFile(
                     models().withExistingParent(name, mcLoc("block/cube_all"))

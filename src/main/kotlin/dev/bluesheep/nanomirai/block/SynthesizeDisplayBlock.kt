@@ -3,6 +3,8 @@ package dev.bluesheep.nanomirai.block
 import com.mojang.serialization.MapCodec
 import dev.bluesheep.nanomirai.block.entity.SynthesizeDisplayBlockEntity
 import dev.bluesheep.nanomirai.registry.NanoMiraiBlockEntities
+import dev.bluesheep.nanomirai.registry.NanoMiraiBlockStates
+import dev.bluesheep.nanomirai.util.SynthesizeState
 import net.minecraft.core.BlockPos
 import net.minecraft.world.level.Level
 import net.minecraft.world.level.block.BaseEntityBlock
@@ -13,18 +15,17 @@ import net.minecraft.world.level.block.entity.BlockEntityTicker
 import net.minecraft.world.level.block.entity.BlockEntityType
 import net.minecraft.world.level.block.state.BlockState
 import net.minecraft.world.level.block.state.StateDefinition
-import net.minecraft.world.level.block.state.properties.BlockStateProperties
-import net.minecraft.world.level.block.state.properties.BooleanProperty
+import net.minecraft.world.level.block.state.properties.EnumProperty
 
 class SynthesizeDisplayBlock(properties: Properties) : BaseEntityBlock(properties) {
     companion object {
         val CODEC: MapCodec<SynthesizeDisplayBlock> = simpleCodec(::SynthesizeDisplayBlock)
-        val CRAFTING: BooleanProperty = BlockStateProperties.CRAFTING
+        val STATE: EnumProperty<SynthesizeState> = NanoMiraiBlockStates.SYNTHESIZE_STATE
     }
 
     init {
         registerDefaultState(stateDefinition.any()
-            .setValue(CRAFTING, false)
+            .setValue(STATE, SynthesizeState.IDLE)
         )
     }
 
@@ -33,7 +34,7 @@ class SynthesizeDisplayBlock(properties: Properties) : BaseEntityBlock(propertie
     }
 
     override fun createBlockStateDefinition(builder: StateDefinition.Builder<Block, BlockState>) {
-        builder.add(CRAFTING)
+        builder.add(STATE)
     }
 
     override fun newBlockEntity(pos: BlockPos, state: BlockState): BlockEntity {

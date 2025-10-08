@@ -1,10 +1,13 @@
 {
   "variants": {
-    "crafting=false": {
+    "synthesize_state=crafting": {
+      "model": "nanomirai:block/synthesize_display_crafting"
+    },
+    "synthesize_state=idle": {
       "model": "nanomirai:block/synthesize_display"
     },
-    "crafting=true": {
-      "model": "nanomirai:block/synthesize_display_crafting"
+    "synthesize_state=invalid": {
+      "model": "nanomirai:block/synthesize_display_invalid"
     }
   }
 }
