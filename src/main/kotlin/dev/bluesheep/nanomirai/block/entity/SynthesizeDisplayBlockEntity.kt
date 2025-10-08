@@ -63,6 +63,15 @@ class SynthesizeDisplayBlockEntity(pos: BlockPos, blockState: BlockState) : Bloc
         return ClientboundBlockEntityDataPacket.create(this)
     }
 
+    fun drops() {
+        val inventory = SimpleContainer(itemHandler.slots)
+        for (i in 0 until inventory.containerSize) {
+            inventory.setItem(i, itemHandler.getStackInSlot(i))
+        }
+
+        Containers.dropContents(level, worldPosition.above(), inventory)
+    }
+
     fun setPrimaryItem(stack: ItemStack) {
         itemHandler.setStackInSlot(0, stack)
         setChanged()
@@ -102,7 +111,7 @@ class SynthesizeDisplayBlockEntity(pos: BlockPos, blockState: BlockState) : Bloc
         Containers.dropContents(level, worldPosition, inventory)
     }
 
-    private fun hasCraftingFinished(): Boolean {
+    fun hasCraftingFinished(): Boolean {
         return progress >= maxProgress
     }
 

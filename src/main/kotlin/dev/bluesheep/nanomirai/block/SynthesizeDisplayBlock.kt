@@ -40,6 +40,26 @@ class SynthesizeDisplayBlock(properties: Properties) : BaseEntityBlock(propertie
         return SynthesizeDisplayBlockEntity(pos, state)
     }
 
+    override fun onRemove(
+        state: BlockState,
+        level: Level,
+        pos: BlockPos,
+        newState: BlockState,
+        movedByPiston: Boolean
+    ) {
+        if (state.block != newState.block) {
+            val blockEntity = level.getBlockEntity(pos)
+            if (blockEntity is SynthesizeDisplayBlockEntity) {
+                if (!blockEntity.hasCraftingFinished()) {
+                    blockEntity.drops()
+                    level.setBlockAndUpdate(pos, blockEntity.block)
+                }
+            }
+        }
+
+        super.onRemove(state, level, pos, newState, movedByPiston)
+    }
+
     override fun <T : BlockEntity> getTicker(
         level: Level,
         state: BlockState,

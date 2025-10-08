@@ -27,7 +27,7 @@ object NanoMiraiBlocks {
     val SYNTHESIZE_DISPLAY: Block by REGISTRY.registerBlock(
         "synthesize_display",
         ::SynthesizeDisplayBlock,
-        BlockBehaviour.Properties.of().strength(-1F, 3600000F).noLootTable().noOcclusion().isValidSpawn(Blocks::never).isRedstoneConductor(::never).isSuffocating(::never).isViewBlocking(::never)
+        BlockBehaviour.Properties.of().strength(0.5F, 3600000F).noLootTable().noOcclusion().isValidSpawn(Blocks::never).isRedstoneConductor(::never).isSuffocating(::never).isViewBlocking(::never)
     )
     val NANO_LAB: NanoLabBlock by REGISTRY.registerBlock("nano_lab", ::NanoLabBlock, machineProperties)
 
