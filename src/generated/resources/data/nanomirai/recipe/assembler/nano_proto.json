@@ -1,0 +1,33 @@
+{
+  "type": "nanomirai:assembler",
+  "ingredients": [
+    {
+      "count": 2,
+      "ingredient": {
+        "item": "nanomirai:simple_circuit"
+      }
+    },
+    {
+      "count": 2,
+      "ingredient": {
+        "item": "minecraft:slime_ball"
+      }
+    },
+    {
+      "count": 4,
+      "ingredient": {
+        "item": "minecraft:bamboo"
+      }
+    },
+    {
+      "count": 4,
+      "ingredient": {
+        "item": "minecraft:redstone_torch"
+      }
+    }
+  ],
+  "result": {
+    "count": 1,
+    "id": "nanomirai:nano_proto"
+  }
+}

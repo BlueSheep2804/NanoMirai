@@ -1,11 +1,11 @@
 {
   "parent": "minecraft:recipes/root",
   "criteria": {
-    "has_graphene_sheet": {
+    "has_coal": {
       "conditions": {
         "items": [
           {
-            "items": "nanomirai:graphene_sheet"
+            "items": "minecraft:coal"
           }
         ]
       },
@@ -21,7 +21,7 @@
   "requirements": [
     [
       "has_the_recipe",
-      "has_graphene_sheet"
+      "has_coal"
     ]
   ],
   "rewards": {

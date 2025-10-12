@@ -1,0 +1,33 @@
+{
+  "type": "nanomirai:assembler",
+  "ingredients": [
+    {
+      "count": 2,
+      "ingredient": {
+        "item": "minecraft:redstone"
+      }
+    },
+    {
+      "count": 1,
+      "ingredient": {
+        "item": "nanomirai:graphite"
+      }
+    },
+    {
+      "count": 1,
+      "ingredient": {
+        "item": "minecraft:copper_ingot"
+      }
+    },
+    {
+      "count": 1,
+      "ingredient": {
+        "tag": "minecraft:terracotta"
+      }
+    }
+  ],
+  "result": {
+    "count": 2,
+    "id": "nanomirai:simple_circuit"
+  }
+}

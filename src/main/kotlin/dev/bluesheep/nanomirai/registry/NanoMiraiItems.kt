@@ -4,7 +4,6 @@ import dev.bluesheep.nanomirai.NanoMirai
 import dev.bluesheep.nanomirai.item.NanoSwarmBlasterItem
 import dev.bluesheep.nanomirai.item.SupportNanoItem
 import dev.bluesheep.nanomirai.item.SynthesizeNanoItem
-import net.minecraft.world.item.ArmorItem
 import net.minecraft.world.item.BlockItem
 import net.minecraft.world.item.Item
 import net.neoforged.neoforge.registries.DeferredRegister
@@ -23,8 +22,12 @@ object NanoMiraiItems {
     val SUPPORT_NANO: SupportNanoItem by REGISTRY.register("support_nano", ::SupportNanoItem)
     val NANO_SWARM_BLASTER: NanoSwarmBlasterItem by REGISTRY.register("nano_swarm_blaster", ::NanoSwarmBlasterItem)
 
-    val GRAPHENE_SHEET: Item by REGISTRY.registerSimpleItem("graphene_sheet")
     val GRAPHITE: Item by REGISTRY.registerSimpleItem("graphite")
+    val SILICON: Item by REGISTRY.registerSimpleItem("silicon")
+    val SIMPLE_CIRCUIT: Item by REGISTRY.registerSimpleItem("simple_circuit")
+    val NORMAL_CIRCUIT: Item by REGISTRY.registerSimpleItem("normal_circuit")
+    val NANO_CIRCUIT: Item by REGISTRY.registerSimpleItem("nano_circuit")
+    val NANO_SOC: Item by REGISTRY.registerSimpleItem("nano_soc")
     val AMETHYST_LENS: Item by REGISTRY.registerSimpleItem("amethyst_lens")
     val SCULK_LENS: Item by REGISTRY.registerSimpleItem("sculk_lens")
     val RED_RESEARCH_CATALYST: Item by REGISTRY.registerSimpleItem("red_research_catalyst")

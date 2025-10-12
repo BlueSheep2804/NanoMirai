@@ -1,11 +1,11 @@
 {
   "parent": "minecraft:recipes/root",
   "criteria": {
-    "has_broken_nanomachine": {
+    "has_graphite": {
       "conditions": {
         "items": [
           {
-            "items": "nanomirai:broken_nanomachine"
+            "items": "nanomirai:graphite"
           }
         ]
       },
@@ -13,7 +13,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "nanomirai:nano_proto"
+        "recipe": "nanomirai:simple_circuit"
       },
       "trigger": "minecraft:recipe_unlocked"
     }
@@ -21,12 +21,12 @@
   "requirements": [
     [
       "has_the_recipe",
-      "has_broken_nanomachine"
+      "has_graphite"
     ]
   ],
   "rewards": {
     "recipes": [
-      "nanomirai:nano_proto"
+      "nanomirai:simple_circuit"
     ]
   }
 }

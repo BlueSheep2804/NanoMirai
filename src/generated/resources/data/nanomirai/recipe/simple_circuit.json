@@ -8,20 +8,20 @@
     "G": {
       "item": "nanomirai:graphite"
     },
-    "M": {
-      "item": "nanomirai:broken_nanomachine"
-    },
     "R": {
       "item": "minecraft:redstone"
+    },
+    "T": {
+      "tag": "minecraft:terracotta"
     }
   },
   "pattern": [
-    "GRG",
-    "CMC",
-    "GRG"
+    "RRR",
+    "GCG",
+    "TCT"
   ],
   "result": {
     "count": 1,
-    "id": "nanomirai:nano_proto"
+    "id": "nanomirai:simple_circuit"
   }
 }

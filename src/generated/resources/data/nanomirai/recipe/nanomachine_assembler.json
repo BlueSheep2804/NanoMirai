@@ -3,22 +3,22 @@
   "category": "misc",
   "key": {
     "C": {
-      "item": "minecraft:crafter"
+      "item": "nanomirai:simple_circuit"
+    },
+    "D": {
+      "item": "minecraft:diamond"
     },
     "I": {
       "item": "minecraft:iron_ingot"
     },
-    "L": {
-      "item": "minecraft:redstone_lamp"
-    },
-    "S": {
-      "item": "minecraft:spyglass"
+    "T": {
+      "item": "minecraft:crafting_table"
     }
   },
   "pattern": [
-    "ILI",
-    "CSC",
-    "III"
+    "ICI",
+    "CDC",
+    "ITI"
   ],
   "result": {
     "count": 1,

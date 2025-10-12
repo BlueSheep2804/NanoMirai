@@ -1,6 +1,6 @@
 {
   "parent": "minecraft:item/generated",
   "textures": {
-    "layer0": "nanomirai:item/broken_nanomachine"
+    "layer0": "nanomirai:item/nano_circuit"
   }
 }
