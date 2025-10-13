@@ -19,6 +19,7 @@ import net.minecraft.network.protocol.game.ClientGamePacketListener
 import net.minecraft.network.protocol.game.ClientboundBlockEntityDataPacket
 import net.minecraft.world.Containers
 import net.minecraft.world.SimpleContainer
+import net.minecraft.world.effect.MobEffectInstance
 import net.minecraft.world.inventory.ContainerData
 import net.minecraft.world.item.ItemStack
 import net.minecraft.world.item.crafting.RecipeHolder
@@ -176,18 +177,22 @@ class NanoLabBlockEntity(pos: BlockPos, blockState: BlockState) : BlockEntity(Na
         val stack = itemHandler.getStackInSlot(OUTPUT_SLOT)
         when (stack.item) {
             is SupportNanoItem -> {
+                val recipe = getCurrentAttributeRecipe()
+                if (recipe.isEmpty) return false
                 val tier = NanoTier.fromRarity(stack.rarity)
-                val currentAttributeSize = CuriosApi.getAttributeModifiers(
+                val currentAttributes = CuriosApi.getAttributeModifiers(
                     SlotContext("support_nano", null, 0, false, true),
                     rl("support_nano"),
                     stack
-                )?.size() ?: 0
-                return currentAttributeSize < tier.maxAttributes
+                )
+                return currentAttributes.size() < tier.maxAttributes && !currentAttributes.containsKey(recipe.get().value.attribute)
             }
             is NanoSwarmBlasterItem -> {
+                val recipe = getCurrentEffectRecipe()
+                if (recipe.isEmpty) return false
                 val tier = NanoTier.fromRarity(stack.rarity)
-                val currentEffectSize = stack.get(DataComponents.POTION_CONTENTS)?.customEffects?.size ?: 0
-                return currentEffectSize < tier.maxEffects
+                val currentEffects = stack.get(DataComponents.POTION_CONTENTS)?.customEffects ?: emptyList<MobEffectInstance>()
+                return currentEffects.size < tier.maxEffects && !currentEffects.contains(recipe.get().value.mobEffectInstance)
             }
             else -> return false
         }
