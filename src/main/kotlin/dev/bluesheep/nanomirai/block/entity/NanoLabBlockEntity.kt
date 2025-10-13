@@ -119,17 +119,7 @@ class NanoLabBlockEntity(pos: BlockPos, blockState: BlockState) : BlockEntity(Na
             val attribute = attributeRecipe.get().value.attribute
             val modifier = attributeRecipe.get().value.modifier
 
-            attributeRecipe.get().value.items.forEach { ingredient ->
-                var toRemove = 1
-                for (i in 2 until SIZE) {
-                    val stackInSlot = itemHandler.getStackInSlot(i)
-                    if (ingredient.test(stackInSlot)) {
-                        val extracted = itemHandler.extractItem(i, toRemove, false)
-                        toRemove -= extracted.count
-                        if (toRemove <= 0) break
-                    }
-                }
-            }
+            consumeIngredients()
             SupportNanoItem.setAttributes(
                 itemHandler.getStackInSlot(OUTPUT_SLOT),
                 attribute,
@@ -139,19 +129,17 @@ class NanoLabBlockEntity(pos: BlockPos, blockState: BlockState) : BlockEntity(Na
 
         val effectRecipe = getCurrentEffectRecipe()
         if (!effectRecipe.isEmpty) {
-            effectRecipe.get().value.items.forEach { ingredient ->
-                var toRemove = 1
-                for (i in 2 until SIZE) {
-                    val stackInSlot = itemHandler.getStackInSlot(i)
-                    if (ingredient.test(stackInSlot)) {
-                        val extracted = itemHandler.extractItem(i, toRemove, false)
-                        toRemove -= extracted.count
-                        if (toRemove <= 0) break
-                    }
-                }
-            }
+            consumeIngredients()
+            NanoSwarmBlasterItem.addEffect(
+                itemHandler.getStackInSlot(OUTPUT_SLOT),
+                effectRecipe.get().value.mobEffectInstance
+            )
+        }
+    }
 
-            NanoSwarmBlasterItem.addEffect(itemHandler.getStackInSlot(OUTPUT_SLOT), effectRecipe.get().value.mobEffectInstance)
+    private fun consumeIngredients() {
+        for (i in 2 until SIZE) {
+            itemHandler.getStackInSlot(i).shrink(1)
         }
     }
 
