@@ -1,5 +1,6 @@
 package dev.bluesheep.nanomirai.block.entity
 
+import dev.bluesheep.nanomirai.NanoMirai.rl
 import dev.bluesheep.nanomirai.item.NanoSwarmBlasterItem
 import dev.bluesheep.nanomirai.item.SupportNanoItem
 import dev.bluesheep.nanomirai.recipe.lab.NanoLabRecipeInput
@@ -8,8 +9,10 @@ import dev.bluesheep.nanomirai.recipe.lab.effect.LabEffectRecipe
 import dev.bluesheep.nanomirai.registry.NanoMiraiBlockEntities
 import dev.bluesheep.nanomirai.registry.NanoMiraiItems
 import dev.bluesheep.nanomirai.registry.NanoMiraiRecipeType
+import dev.bluesheep.nanomirai.util.NanoTier
 import net.minecraft.core.BlockPos
 import net.minecraft.core.HolderLookup
+import net.minecraft.core.component.DataComponents
 import net.minecraft.nbt.CompoundTag
 import net.minecraft.network.protocol.Packet
 import net.minecraft.network.protocol.game.ClientGamePacketListener
@@ -23,6 +26,8 @@ import net.minecraft.world.level.Level
 import net.minecraft.world.level.block.entity.BlockEntity
 import net.minecraft.world.level.block.state.BlockState
 import net.neoforged.neoforge.items.ItemStackHandler
+import top.theillusivec4.curios.api.CuriosApi
+import top.theillusivec4.curios.api.SlotContext
 import java.util.*
 
 class NanoLabBlockEntity(pos: BlockPos, blockState: BlockState) : BlockEntity(NanoMiraiBlockEntities.NANO_LAB, pos, blockState) {
@@ -89,7 +94,7 @@ class NanoLabBlockEntity(pos: BlockPos, blockState: BlockState) : BlockEntity(Na
     }
 
     fun tick(level: Level, pos: BlockPos, state: BlockState) {
-        if (hasRecipe()) {
+        if (hasRecipe() && isCraftable()) {
             increaseCraftingProgress()
             setChanged(level, pos, state)
 
@@ -165,6 +170,27 @@ class NanoLabBlockEntity(pos: BlockPos, blockState: BlockState) : BlockEntity(Na
                 (attributeRecipe.isPresent && itemHandler.getStackInSlot(OUTPUT_SLOT).`is`(NanoMiraiItems.SUPPORT_NANO)) ||
                 (effectRecipe.isPresent && itemHandler.getStackInSlot(OUTPUT_SLOT).`is`(NanoMiraiItems.NANO_SWARM_BLASTER))
         )
+    }
+
+    private fun isCraftable(): Boolean {
+        val stack = itemHandler.getStackInSlot(OUTPUT_SLOT)
+        when (stack.item) {
+            is SupportNanoItem -> {
+                val tier = NanoTier.fromRarity(stack.rarity)
+                val currentAttributeSize = CuriosApi.getAttributeModifiers(
+                    SlotContext("support_nano", null, 0, false, true),
+                    rl("support_nano"),
+                    stack
+                )?.size() ?: 0
+                return currentAttributeSize < tier.maxAttributes
+            }
+            is NanoSwarmBlasterItem -> {
+                val tier = NanoTier.fromRarity(stack.rarity)
+                val currentEffectSize = stack.get(DataComponents.POTION_CONTENTS)?.customEffects?.size ?: 0
+                return currentEffectSize < tier.maxEffects
+            }
+            else -> return false
+        }
     }
 
     private fun getCurrentAttributeRecipe(): Optional<RecipeHolder<LabAttributeRecipe>> {

@@ -3,17 +3,16 @@ package dev.bluesheep.nanomirai.util
 import dev.bluesheep.nanomirai.registry.NanoMiraiItems
 import net.minecraft.core.component.DataComponents
 import net.minecraft.network.chat.Component
-import net.minecraft.network.chat.MutableComponent
 import net.minecraft.world.item.Item
 import net.minecraft.world.item.ItemStack
 import net.minecraft.world.item.Rarity
 import net.minecraft.world.item.crafting.Ingredient
 
-enum class NanoTier(val rarity: Rarity, val item: Item) {
-    PROTO(Rarity.COMMON, NanoMiraiItems.NANO_PROTO),
-    CELL(Rarity.UNCOMMON, NanoMiraiItems.NANO_CELL),
-    MATRIX(Rarity.RARE, NanoMiraiItems.NANO_MATRIX),
-    SINGULARITY(Rarity.EPIC, NanoMiraiItems.NANO_SINGULARITY);
+enum class NanoTier(val rarity: Rarity, val item: Item, val maxAttributes: Int, val maxEffects: Int) {
+    PROTO(Rarity.COMMON, NanoMiraiItems.NANO_PROTO, 1, 1),
+    CELL(Rarity.UNCOMMON, NanoMiraiItems.NANO_CELL, 2, 2),
+    MATRIX(Rarity.RARE, NanoMiraiItems.NANO_MATRIX, 3, 3),
+    SINGULARITY(Rarity.EPIC, NanoMiraiItems.NANO_SINGULARITY, 4, 4);
 
     companion object {
         fun getTieredItem(item: Item, tier: NanoTier): ItemStack {
