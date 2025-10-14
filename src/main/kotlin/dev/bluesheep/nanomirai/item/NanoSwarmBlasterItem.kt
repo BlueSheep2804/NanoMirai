@@ -2,6 +2,7 @@ package dev.bluesheep.nanomirai.item
 
 import dev.bluesheep.nanomirai.entity.SwarmBullet
 import dev.bluesheep.nanomirai.registry.NanoMiraiItems
+import dev.bluesheep.nanomirai.util.NanoTier
 import net.minecraft.core.Direction
 import net.minecraft.core.Position
 import net.minecraft.core.component.DataComponents
@@ -60,6 +61,7 @@ class NanoSwarmBlasterItem : Item(
                 level.addFreshEntity(swarm)
                 stack.hurtAndBreak(1, player, if (usedHand == InteractionHand.MAIN_HAND) EquipmentSlot.MAINHAND else EquipmentSlot.OFFHAND)
             }
+            player.cooldowns.addCooldown(this, NanoTier.fromRarity(stack.rarity).blasterCooldown)
             return InteractionResultHolder.consume(stack)
         }
         return InteractionResultHolder.fail(stack)
