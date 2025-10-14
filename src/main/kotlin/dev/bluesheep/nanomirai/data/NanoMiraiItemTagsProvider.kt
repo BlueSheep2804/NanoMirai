@@ -26,6 +26,12 @@ class NanoMiraiItemTagsProvider(output: PackOutput, lookupProvider: CompletableF
             .add(NanoMiraiItems.AMETHYST_LENS)
             .add(NanoMiraiItems.SCULK_LENS)
 
+        tag(NanoMiraiTags.NANO_MATERIALS)
+            .add(NanoMiraiItems.NANO_PROTO)
+            .add(NanoMiraiItems.NANO_CELL)
+            .add(NanoMiraiItems.NANO_MATRIX)
+            .add(NanoMiraiItems.NANO_SINGULARITY)
+
         tag(NanoMiraiTags.FUNCTIONAL_NANOMACHINES)
             .add(NanoMiraiItems.SYNTHESIZE_NANO)
             .add(NanoMiraiItems.SUPPORT_NANO)

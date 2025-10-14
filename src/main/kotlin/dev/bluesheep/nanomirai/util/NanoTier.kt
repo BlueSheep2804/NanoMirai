@@ -8,11 +8,18 @@ import net.minecraft.world.item.ItemStack
 import net.minecraft.world.item.Rarity
 import net.minecraft.world.item.crafting.Ingredient
 
-enum class NanoTier(val rarity: Rarity, val item: Item, val maxAttributes: Int, val maxEffects: Int, val blasterCooldown: Int) {
-    PROTO(Rarity.COMMON, NanoMiraiItems.NANO_PROTO, 1, 1, 160),
-    CELL(Rarity.UNCOMMON, NanoMiraiItems.NANO_CELL, 2, 2, 120),
-    MATRIX(Rarity.RARE, NanoMiraiItems.NANO_MATRIX, 3, 3, 80),
-    SINGULARITY(Rarity.EPIC, NanoMiraiItems.NANO_SINGULARITY, 4, 4, 40);
+enum class NanoTier(
+    val rarity: Rarity,
+    val item: Item,
+    val maxAttributes: Int,
+    val maxEffects: Int,
+    val blasterCooldown: Int,
+    val repairAmount: Int
+) {
+    PROTO(Rarity.COMMON, NanoMiraiItems.NANO_PROTO, 1, 1, 160, 1),
+    CELL(Rarity.UNCOMMON, NanoMiraiItems.NANO_CELL, 2, 2, 120, 2),
+    MATRIX(Rarity.RARE, NanoMiraiItems.NANO_MATRIX, 3, 3, 80, 3),
+    SINGULARITY(Rarity.EPIC, NanoMiraiItems.NANO_SINGULARITY, 4, 4, 40, 4);
 
     companion object {
         fun getTieredItem(item: Item, tier: NanoTier): ItemStack {

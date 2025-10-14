@@ -2,6 +2,7 @@ package dev.bluesheep.nanomirai.item
 
 import dev.bluesheep.nanomirai.entity.SwarmBullet
 import dev.bluesheep.nanomirai.registry.NanoMiraiItems
+import dev.bluesheep.nanomirai.registry.NanoMiraiTags
 import dev.bluesheep.nanomirai.util.NanoTier
 import net.minecraft.core.Direction
 import net.minecraft.core.Position
@@ -11,8 +12,11 @@ import net.minecraft.world.InteractionHand
 import net.minecraft.world.InteractionResultHolder
 import net.minecraft.world.effect.MobEffectInstance
 import net.minecraft.world.entity.EquipmentSlot
+import net.minecraft.world.entity.SlotAccess
 import net.minecraft.world.entity.player.Player
 import net.minecraft.world.entity.projectile.Projectile
+import net.minecraft.world.inventory.ClickAction
+import net.minecraft.world.inventory.Slot
 import net.minecraft.world.item.Item
 import net.minecraft.world.item.ItemStack
 import net.minecraft.world.item.ProjectileItem
@@ -52,19 +56,53 @@ class NanoSwarmBlasterItem : Item(
 
     override fun use(level: Level, player: Player, usedHand: InteractionHand): InteractionResultHolder<ItemStack?> {
         val stack = player.getItemInHand(usedHand)
-        if (stack.damageValue < stack.maxDamage -1) {
-            if (!level.isClientSide) {
-                val swarm = SwarmBullet(level, player)
-                swarm.item = stack.copy()
-                val angle = player.lookAngle
-                swarm.shoot(angle.x, angle.y, angle.z, 0.25f, 0f)
-                level.addFreshEntity(swarm)
-                stack.hurtAndBreak(1, player, if (usedHand == InteractionHand.MAIN_HAND) EquipmentSlot.MAINHAND else EquipmentSlot.OFFHAND)
+        if (player.isCrouching) {
+            if (stack.isDamaged) {
+                val inventory = player.inventory
+                val repairMaterials = mutableListOf<ItemStack>()
+                for (i in 0 until inventory.containerSize) {
+                    val item = inventory.getItem(i)
+                    if (item.`is`(NanoMiraiTags.NANO_MATERIALS)) {
+                        repairMaterials.add(item)
+                    }
+                }
+                if (!repairMaterials.isEmpty()) {
+                    repairMaterials.sortBy {
+                        it.rarity.ordinal * 100 + it.count
+                    }
+                    repair(stack, repairMaterials.first())
+                }
             }
-            player.cooldowns.addCooldown(this, NanoTier.fromRarity(stack.rarity).blasterCooldown)
-            return InteractionResultHolder.consume(stack)
+        } else {
+            if (stack.damageValue < stack.maxDamage - 1) {
+                if (!level.isClientSide) {
+                    val swarm = SwarmBullet(level, player)
+                    swarm.item = stack.copy()
+                    val angle = player.lookAngle
+                    swarm.shoot(angle.x, angle.y, angle.z, 0.25f, 0f)
+                    level.addFreshEntity(swarm)
+                    stack.hurtAndBreak(
+                        1,
+                        player,
+                        if (usedHand == InteractionHand.MAIN_HAND) EquipmentSlot.MAINHAND else EquipmentSlot.OFFHAND
+                    )
+                }
+                player.cooldowns.addCooldown(this, NanoTier.fromRarity(stack.rarity).blasterCooldown)
+                return InteractionResultHolder.consume(stack)
+            }
         }
         return InteractionResultHolder.fail(stack)
+    }
+
+    override fun overrideOtherStackedOnMe(
+        stack: ItemStack,
+        other: ItemStack,
+        slot: Slot,
+        action: ClickAction,
+        player: Player,
+        access: SlotAccess
+    ): Boolean {
+        return otherStackedOnMe(stack, other, action)
     }
 
     override fun asProjectile(
