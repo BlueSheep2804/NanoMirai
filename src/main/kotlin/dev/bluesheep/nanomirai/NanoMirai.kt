@@ -41,7 +41,6 @@ object NanoMirai {
         NanoMiraiItems.REGISTRY.register(MOD_BUS)
         NanoMiraiBlockEntities.REGISTRY.register(MOD_BUS)
         NanoMiraiMenu.REGISTRY.register(MOD_BUS)
-        NanoMiraiEntities.REGISTRY.register(MOD_BUS)
         NanoMiraiRecipeType.REGISTRY.register(MOD_BUS)
         NanoMiraiRecipeSerializer.REGISTRY.register(MOD_BUS)
         NanoMiraiCreativeTab.REGISTRY.register(MOD_BUS)

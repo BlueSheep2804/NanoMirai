@@ -16,10 +16,10 @@ enum class NanoTier(
     val blasterCooldown: Int,
     val repairAmount: Int
 ) {
-    PROTO(Rarity.COMMON, NanoMiraiItems.NANO_PROTO, 1, 1, 160, 1),
-    CELL(Rarity.UNCOMMON, NanoMiraiItems.NANO_CELL, 2, 2, 120, 2),
-    MATRIX(Rarity.RARE, NanoMiraiItems.NANO_MATRIX, 3, 3, 80, 3),
-    SINGULARITY(Rarity.EPIC, NanoMiraiItems.NANO_SINGULARITY, 4, 4, 40, 4);
+    PROTO(Rarity.COMMON, NanoMiraiItems.NANO_PROTO, 1, 1, 120, 1),
+    CELL(Rarity.UNCOMMON, NanoMiraiItems.NANO_CELL, 2, 2, 80, 2),
+    MATRIX(Rarity.RARE, NanoMiraiItems.NANO_MATRIX, 3, 3, 40, 3),
+    SINGULARITY(Rarity.EPIC, NanoMiraiItems.NANO_SINGULARITY, 4, 4, 20, 4);
 
     companion object {
         fun getTieredItem(item: Item, tier: NanoTier): ItemStack {

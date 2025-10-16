@@ -1,5 +1,13 @@
 {
   "parent": "minecraft:item/handheld",
+  "overrides": [
+    {
+      "model": "nanomirai:item/nano_swarm_blaster_charged",
+      "predicate": {
+        "nanomirai:charged": 0.9
+      }
+    }
+  ],
   "textures": {
     "layer0": "nanomirai:item/nano_swarm_blaster"
   }

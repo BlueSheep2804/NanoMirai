@@ -15,7 +15,19 @@ class NanoMiraiItemModelProvider(output: PackOutput, existingFileHelper: Existin
         basicItem(NanoMiraiItems.NANO_SINGULARITY)
         basicItem(NanoMiraiItems.SYNTHESIZE_NANO)
         basicItem(NanoMiraiItems.SUPPORT_NANO)
-        handheldItem(NanoMiraiItems.NANO_SWARM_BLASTER)
+
+        getBuilder("nano_swarm_blaster_charged")
+            .parent(getExistingFile(mcLoc("item/handheld")))
+            .texture("layer0", "item/nano_swarm_blaster_charged")
+
+        getBuilder("nano_swarm_blaster")
+            .parent(getExistingFile(mcLoc("item/handheld")))
+            .texture("layer0", "item/nano_swarm_blaster")
+            .override()
+                .predicate(modLoc("charged"), 0.9f)
+                .model(getExistingFile(modLoc("item/nano_swarm_blaster_charged")))
+                .end()
+
         basicItem(NanoMiraiItems.GRAPHITE)
         basicItem(NanoMiraiItems.SILICON)
         basicItem(NanoMiraiItems.SIMPLE_CIRCUIT)
