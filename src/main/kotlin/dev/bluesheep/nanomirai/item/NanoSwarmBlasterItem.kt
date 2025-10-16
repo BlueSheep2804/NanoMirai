@@ -119,6 +119,7 @@ class NanoSwarmBlasterItem : Item(
                         it.rarity.ordinal * 100 + it.count
                     }
                     repair(stack, repairMaterials.first())
+                    return InteractionResultHolder.consume(stack)
                 }
             }
         } else {
