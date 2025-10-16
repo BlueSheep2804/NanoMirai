@@ -65,10 +65,8 @@ class SynthesizeDisplayBlockEntity(pos: BlockPos, blockState: BlockState) : Bloc
     }
 
     fun drops() {
-        val inventory = SimpleContainer(itemHandler.slots)
-        for (i in 0 until inventory.containerSize) {
-            inventory.setItem(i, itemHandler.getStackInSlot(i))
-        }
+        val inventory = SimpleContainer(1)
+        inventory.setItem(0, itemHandler.getStackInSlot(1))
 
         Containers.dropContents(level, worldPosition.above(), inventory)
     }

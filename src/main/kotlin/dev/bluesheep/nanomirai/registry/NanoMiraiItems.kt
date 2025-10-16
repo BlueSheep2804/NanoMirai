@@ -17,9 +17,7 @@ object NanoMiraiItems {
     val NANO_CELL: Item by REGISTRY.registerSimpleItem("nano_cell", Item.Properties().rarity(Rarity.UNCOMMON))
     val NANO_MATRIX: Item by REGISTRY.registerSimpleItem("nano_matrix", Item.Properties().rarity(Rarity.RARE))
     val NANO_SINGULARITY: Item by REGISTRY.registerSimpleItem("nano_singularity", Item.Properties().rarity(Rarity.EPIC))
-    val SYNTHESIZE_NANO: SynthesizeNanoItem by REGISTRY.register("synthesize_nano") { ->
-        SynthesizeNanoItem(Item.Properties())
-    }
+    val SYNTHESIZE_NANO: SynthesizeNanoItem by REGISTRY.register("synthesize_nano", ::SynthesizeNanoItem)
     val SUPPORT_NANO: SupportNanoItem by REGISTRY.register("support_nano", ::SupportNanoItem)
     val NANO_SWARM_BLASTER: NanoSwarmBlasterItem by REGISTRY.register("nano_swarm_blaster", ::NanoSwarmBlasterItem)
 

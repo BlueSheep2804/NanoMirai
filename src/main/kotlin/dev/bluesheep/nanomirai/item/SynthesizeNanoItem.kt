@@ -9,13 +9,17 @@ import net.minecraft.core.dispenser.OptionalDispenseItemBehavior
 import net.minecraft.network.chat.Component
 import net.minecraft.world.InteractionHand
 import net.minecraft.world.InteractionResult
+import net.minecraft.world.entity.EquipmentSlot
 import net.minecraft.world.item.Item
 import net.minecraft.world.item.ItemStack
 import net.minecraft.world.item.TooltipFlag
 import net.minecraft.world.item.context.UseOnContext
 import net.minecraft.world.level.block.DispenserBlock
 
-class SynthesizeNanoItem(properties: Properties) : Item(properties), INanoTieredItem {
+class SynthesizeNanoItem : Item(
+    Properties()
+        .durability(8)
+), INanoTieredItem {
     override fun appendHoverText(
         stack: ItemStack,
         context: TooltipContext,
@@ -50,8 +54,13 @@ class SynthesizeNanoItem(properties: Properties) : Item(properties), INanoTiered
         val blockEntity = level.getBlockEntity(context.clickedPos)
         if (blockEntity is SynthesizeDisplayBlockEntity) {
             blockEntity.block = inputBlock
-            blockEntity.setPrimaryItem(primaryItem.split(1))
-            if (!secondaryItem.isEmpty) blockEntity.setSecondaryItem(secondaryItem.split(1))
+            blockEntity.setPrimaryItem(primaryItem.copy())
+            blockEntity.setSecondaryItem(secondaryItem.split(1))
+            primaryItem.hurtAndBreak(
+                1,
+                player,
+                if (context.hand == InteractionHand.MAIN_HAND) EquipmentSlot.MAINHAND else EquipmentSlot.OFFHAND
+            )
             player.displayClientMessage(Component.translatable("recipe.nanomirai.synthesize.start"), true)
         }
 
@@ -81,7 +90,12 @@ class SynthesizeNanoItem(properties: Properties) : Item(properties), INanoTiered
             val blockEntity = level.getBlockEntity(inputBlockPos)
             if (blockEntity is SynthesizeDisplayBlockEntity) {
                 blockEntity.block = inputBlock
-                blockEntity.setPrimaryItem(itemStack.split(1))
+                blockEntity.setPrimaryItem(itemStack.copy())
+                itemStack.hurtAndBreak(
+                    1,
+                    level,
+                    null
+                ) {}
                 isSuccess = true
                 return itemStack
             }
