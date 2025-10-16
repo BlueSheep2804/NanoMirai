@@ -57,7 +57,7 @@ abstract class AbstractLabRecipeCategory<R: AbstractLabRecipe> : IRecipeCategory
         val font = Minecraft.getInstance().font
         val component = Component.translatable(
             "recipe.nanomirai.nano_lab.tier",
-            NanoTier.getTierNameComponent(NanoTier.entries.first { it.rarity.ordinal == recipe.tier })
+            NanoTier.entries.first { it.rarity.ordinal == recipe.tier }.nameComponent
         )
         guiGraphics.drawString(
             font,

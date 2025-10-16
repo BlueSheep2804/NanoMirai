@@ -20,8 +20,8 @@ object NanoMiraiCreativeTab {
             .displayItems { params, output ->
                 NanoMiraiItems.REGISTRY.entries.forEach { item ->
                     if (item.get() is INanoTieredItem) {
-                        NanoTier.entries.forEach {
-                            output.accept(NanoTier.getTieredItem(item.get(), it))
+                        NanoTier.entries.forEach { tier ->
+                            output.accept(tier.getTieredItem(item.get()))
                         }
                     } else {
                         output.accept(item.get())

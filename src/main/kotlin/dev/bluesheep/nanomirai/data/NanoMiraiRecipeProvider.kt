@@ -157,7 +157,7 @@ class NanoMiraiRecipeProvider(output: PackOutput, registries: CompletableFuture<
         // Synthesize Nano
         NanoTier.entries.forEach {
             AssemblerRecipeBuilder(
-                NanoTier.getTieredSynthesizeNano(it),
+                it.getSynthesizeNano(),
                 NonNullList.of(
                     StackedIngredient.EMPTY,
                     StackedIngredient.of(4, it.item),
@@ -170,7 +170,7 @@ class NanoMiraiRecipeProvider(output: PackOutput, registries: CompletableFuture<
         // Support Nano
         NanoTier.entries.forEach {
             AssemblerRecipeBuilder(
-                NanoTier.getTieredSupportNano(it),
+                it.getSupportNano(),
                 NonNullList.of(
                     StackedIngredient.EMPTY,
                     StackedIngredient.of(4, it.item),
@@ -184,7 +184,7 @@ class NanoMiraiRecipeProvider(output: PackOutput, registries: CompletableFuture<
         // Nano Swarm Blaster
         NanoTier.entries.forEach {
             AssemblerRecipeBuilder(
-                NanoTier.getTieredNanoSwarmBlaster(it),
+                it.getNanoSwarmBlaster(),
                 NonNullList.of(
                     StackedIngredient.EMPTY,
                     StackedIngredient.of(4, it.item),

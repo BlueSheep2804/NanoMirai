@@ -16,7 +16,7 @@ interface INanoTieredItem {
             val tier = NanoTier.fromRarity(rarity)
             val component = Component.translatable(
                 "item.nanomirai.tooltip.nano_tier",
-                Component.translatable("nanomirai.nano_tier.${tier.name.lowercase()}").withStyle(rarity.styleModifier)
+                tier.nameComponent
             )
             if (tooltipFlag.isAdvanced) {
                 component.append(
