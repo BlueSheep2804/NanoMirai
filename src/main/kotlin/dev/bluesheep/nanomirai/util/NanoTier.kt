@@ -26,7 +26,7 @@ enum class NanoTier(
 
     fun getTieredItem(item: Item): ItemStack {
         return ItemStack(item).apply {
-            this.set(DataComponents.RARITY, rarity)
+            this.set(DataComponents.RARITY, this@NanoTier.rarity)
         }
     }
 
