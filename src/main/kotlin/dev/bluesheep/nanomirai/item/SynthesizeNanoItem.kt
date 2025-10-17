@@ -10,6 +10,10 @@ import net.minecraft.network.chat.Component
 import net.minecraft.world.InteractionHand
 import net.minecraft.world.InteractionResult
 import net.minecraft.world.entity.EquipmentSlot
+import net.minecraft.world.entity.SlotAccess
+import net.minecraft.world.entity.player.Player
+import net.minecraft.world.inventory.ClickAction
+import net.minecraft.world.inventory.Slot
 import net.minecraft.world.item.Item
 import net.minecraft.world.item.ItemStack
 import net.minecraft.world.item.TooltipFlag
@@ -65,6 +69,17 @@ class SynthesizeNanoItem : Item(
         }
 
         return InteractionResult.SUCCESS_NO_ITEM_USED
+    }
+
+    override fun overrideOtherStackedOnMe(
+        stack: ItemStack,
+        other: ItemStack,
+        slot: Slot,
+        action: ClickAction,
+        player: Player,
+        access: SlotAccess
+    ): Boolean {
+        return otherStackedOnMe(stack, other, action)
     }
 
     class DispenserBehavior : OptionalDispenseItemBehavior() {
