@@ -5,10 +5,12 @@ import dev.bluesheep.nanomirai.recipe.BlockWithPairItemInput
 import dev.bluesheep.nanomirai.recipe.synthesize.SynthesizeRecipe
 import dev.bluesheep.nanomirai.registry.NanoMiraiBlockEntities
 import dev.bluesheep.nanomirai.registry.NanoMiraiRecipeType
+import dev.bluesheep.nanomirai.util.NanoTier
 import dev.bluesheep.nanomirai.util.SynthesizeState
 import net.minecraft.core.BlockPos
 import net.minecraft.core.Direction
 import net.minecraft.core.HolderLookup
+import net.minecraft.core.component.DataComponents
 import net.minecraft.nbt.CompoundTag
 import net.minecraft.nbt.NbtOps
 import net.minecraft.network.protocol.Packet
@@ -20,6 +22,7 @@ import net.minecraft.world.WorldlyContainer
 import net.minecraft.world.entity.player.Player
 import net.minecraft.world.item.BlockItem
 import net.minecraft.world.item.ItemStack
+import net.minecraft.world.item.Rarity
 import net.minecraft.world.item.crafting.RecipeHolder
 import net.minecraft.world.level.Level
 import net.minecraft.world.level.block.Blocks
@@ -27,6 +30,7 @@ import net.minecraft.world.level.block.entity.BlockEntity
 import net.minecraft.world.level.block.state.BlockState
 import net.neoforged.neoforge.items.ItemStackHandler
 import java.util.*
+import kotlin.math.floor
 
 class SynthesizeDisplayBlockEntity(pos: BlockPos, blockState: BlockState) : BlockEntity(NanoMiraiBlockEntities.SYNTHESIZE_DISPLAY, pos, blockState), WorldlyContainer {
     val itemHandler = ItemStackHandler(2)
@@ -95,10 +99,11 @@ class SynthesizeDisplayBlockEntity(pos: BlockPos, blockState: BlockState) : Bloc
 
     private fun startCrafting() {
         val recipe = getCurrentRecipe()
-        val state = if (recipe.isPresent) {
-            SynthesizeState.CRAFTING
-        } else {
-            SynthesizeState.INVALID
+        var state = SynthesizeState.INVALID
+        if (recipe.isPresent) {
+            state = SynthesizeState.CRAFTING
+            val tier = NanoTier.fromRarity(itemHandler.getStackInSlot(0).get(DataComponents.RARITY) ?: Rarity.COMMON)
+            maxProgress = (recipe.get().value.duration / tier.processingSpeedMultiplier).toInt()
         }
         level!!.setBlockAndUpdate(blockPos, blockState.setValue(SynthesizeDisplayBlock.STATE, state))
         setChanged()

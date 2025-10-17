@@ -40,6 +40,7 @@
   "recipe.nanomirai.synthesize": "Synthesize",
   "recipe.nanomirai.synthesize.interact": "Interact with this block to synthesize",
   "recipe.nanomirai.synthesize.duration": "%s ticks",
+  "recipe.nanomirai.synthesize.duration.tier": "%1$s: %2$s",
   "recipe.nanomirai.synthesize.not_found": "Oops! Couldn't find the recipe.",
   "recipe.nanomirai.synthesize.start": "Synthesize started!",
   "recipe.nanomirai.nano_lab.category": "%1$s - %2$s",

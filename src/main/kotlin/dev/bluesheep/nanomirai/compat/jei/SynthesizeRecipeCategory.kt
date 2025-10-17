@@ -78,15 +78,30 @@ class SynthesizeRecipeCategory(helper: IGuiHelper): IRecipeCategory<SynthesizeRe
         val font = Minecraft.getInstance().font
         pose.pushPose()
         val text = Component.translatable("recipe.nanomirai.synthesize.duration", recipe.duration)
+        val durationPosX = 128 - font.width(text)
         guiGraphics.drawString(
             font,
             text,
-            128 - font.width(text),
+            durationPosX,
             0,
             0xFF808080.toInt(),
             false
         )
         pose.popPose()
+
+        if (mouseX in durationPosX.toDouble()..128.0 && mouseY in 0.0..font.lineHeight.toDouble()) {
+            val tooltip = NanoTier.entries.map {
+                Component.translatable(
+                    "recipe.nanomirai.synthesize.duration.tier",
+                    it.nameComponent,
+                    Component.translatable(
+                        "recipe.nanomirai.synthesize.duration",
+                        (recipe.duration / it.processingSpeedMultiplier).toInt()
+                    )
+                )
+            }
+            guiGraphics.renderComponentTooltip(font, tooltip, mouseX.toInt(), mouseY.toInt())
+        }
 
         pose.pushPose()
         pose.scale(2F, 2F, 2F)

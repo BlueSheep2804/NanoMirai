@@ -11,15 +11,16 @@ import net.minecraft.world.item.crafting.Ingredient
 enum class NanoTier(
     val rarity: Rarity,
     val item: Item,
+    val processingSpeedMultiplier: Double,
     val maxAttributes: Int,
     val maxEffects: Int,
     val blasterCooldown: Int,
     val repairAmount: Int
 ) {
-    PROTO(Rarity.COMMON, NanoMiraiItems.NANO_PROTO, 1, 1, 120, 1),
-    CELL(Rarity.UNCOMMON, NanoMiraiItems.NANO_CELL, 2, 2, 80, 2),
-    MATRIX(Rarity.RARE, NanoMiraiItems.NANO_MATRIX, 3, 3, 40, 3),
-    SINGULARITY(Rarity.EPIC, NanoMiraiItems.NANO_SINGULARITY, 4, 4, 20, 4);
+    PROTO(Rarity.COMMON, NanoMiraiItems.NANO_PROTO, 1.0, 1, 1, 120, 1),
+    CELL(Rarity.UNCOMMON, NanoMiraiItems.NANO_CELL, 1.2, 2, 2, 80, 2),
+    MATRIX(Rarity.RARE, NanoMiraiItems.NANO_MATRIX, 1.5, 3, 3, 40, 3),
+    SINGULARITY(Rarity.EPIC, NanoMiraiItems.NANO_SINGULARITY, 2.0, 4, 4, 20, 4);
 
     val nameComponent: Component
         get() = Component.translatable("nanomirai.nano_tier.${name.lowercase()}").withStyle(rarity.styleModifier)
