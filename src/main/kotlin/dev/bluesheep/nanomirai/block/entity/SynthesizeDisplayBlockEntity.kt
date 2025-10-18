@@ -11,11 +11,14 @@ import net.minecraft.core.BlockPos
 import net.minecraft.core.Direction
 import net.minecraft.core.HolderLookup
 import net.minecraft.core.component.DataComponents
+import net.minecraft.core.particles.ItemParticleOption
+import net.minecraft.core.particles.ParticleTypes
 import net.minecraft.nbt.CompoundTag
 import net.minecraft.nbt.NbtOps
 import net.minecraft.network.protocol.Packet
 import net.minecraft.network.protocol.game.ClientGamePacketListener
 import net.minecraft.network.protocol.game.ClientboundBlockEntityDataPacket
+import net.minecraft.server.level.ServerLevel
 import net.minecraft.world.Containers
 import net.minecraft.world.SimpleContainer
 import net.minecraft.world.WorldlyContainer
@@ -89,12 +92,44 @@ class SynthesizeDisplayBlockEntity(pos: BlockPos, blockState: BlockState) : Bloc
     fun tick(level: Level, pos: BlockPos, state: BlockState) {
         if (!itemHandler.getStackInSlot(1).isEmpty && hasRecipe()) {
             increaseCraftingProgress()
+            spawnParticles(level, pos)
             setChanged(level, pos, state)
 
             if (hasCraftingFinished()) {
                 craftItem(level)
             }
         }
+    }
+
+    private fun spawnParticles(level: Level, pos: BlockPos) {
+        if (level !is ServerLevel) return
+        val center = pos.center
+        level.sendParticles(
+            ParticleTypes.ENCHANTED_HIT,
+            center.x,
+            center.y,
+            center.z,
+            1,
+            0.3,
+            0.3,
+            0.3,
+            0.2
+        )
+        if (progress % 5 != 0) return
+        level.sendParticles(
+            ItemParticleOption(
+                ParticleTypes.ITEM,
+                itemHandler.getStackInSlot(1)
+            ),
+            center.x,
+            center.y,
+            center.z,
+            5,
+            0.3,
+            0.3,
+            0.3,
+            0.1
+        )
     }
 
     private fun startCrafting() {
