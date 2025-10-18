@@ -1,7 +1,19 @@
 {
   "variants": {
-    "": {
+    "facing=east": {
+      "model": "nanomirai:block/nanomachine_assembler",
+      "y": 90
+    },
+    "facing=north": {
       "model": "nanomirai:block/nanomachine_assembler"
+    },
+    "facing=south": {
+      "model": "nanomirai:block/nanomachine_assembler",
+      "y": 180
+    },
+    "facing=west": {
+      "model": "nanomirai:block/nanomachine_assembler",
+      "y": 270
     }
   }
 }

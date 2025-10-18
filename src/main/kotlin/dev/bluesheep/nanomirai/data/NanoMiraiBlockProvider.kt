@@ -12,7 +12,17 @@ import net.neoforged.neoforge.common.data.ExistingFileHelper
 
 class NanoMiraiBlockProvider(output: PackOutput, exFileHelper: ExistingFileHelper) : BlockStateProvider(output, NanoMirai.ID, exFileHelper) {
     override fun registerStatesAndModels() {
-        simpleBlock(NanoMiraiBlocks.NANOMACHINE_ASSEMBLER)
+        horizontalBlock(
+            NanoMiraiBlocks.NANOMACHINE_ASSEMBLER,
+            models().withExistingParent("nanomachine_assembler", mcLoc("block/cube"))
+                .texture("particle", modLoc("block/nanomachine_assembler_side"))
+                .texture("down", modLoc("block/nanomachine_assembler_bottom"))
+                .texture("up", modLoc("block/nanomachine_assembler_top"))
+                .texture("north", modLoc("block/nanomachine_assembler_front"))
+                .texture("south", modLoc("block/nanomachine_assembler_back"))
+                .texture("west", modLoc("block/nanomachine_assembler_side"))
+                .texture("east", modLoc("block/nanomachine_assembler_side"))
+        )
 
         val laserEngraverModel = models().orientable(
             "laser_engraver",
