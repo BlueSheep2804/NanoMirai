@@ -7,15 +7,24 @@ import net.minecraft.core.NonNullList
 import net.minecraft.network.RegistryFriendlyByteBuf
 import net.minecraft.network.codec.ByteBufCodecs
 import net.minecraft.network.codec.StreamCodec
+import net.minecraft.world.effect.MobEffect
 import net.minecraft.world.effect.MobEffectInstance
 import net.minecraft.world.item.crafting.Ingredient
 import net.minecraft.world.item.crafting.RecipeSerializer
 
 class LabEffectRecipeSerializer : RecipeSerializer<LabEffectRecipe> {
     companion object {
+        val EFFECT_CODEC: Codec<MobEffectInstance> = RecordCodecBuilder.create { inst ->
+            inst.group(
+                MobEffect.CODEC.fieldOf("id").forGetter(MobEffectInstance::getEffect),
+                Codec.INT.fieldOf("duration").forGetter(MobEffectInstance::getDuration),
+                Codec.INT.fieldOf("amplifier").forGetter(MobEffectInstance::getAmplifier)
+            ).apply(inst, ::MobEffectInstance)
+        }
+
         val CODEC: MapCodec<LabEffectRecipe> = RecordCodecBuilder.mapCodec { inst ->
             inst.group(
-                MobEffectInstance.CODEC.fieldOf("effect").forGetter(LabEffectRecipe::mobEffectInstance),
+                EFFECT_CODEC.fieldOf("effect").forGetter(LabEffectRecipe::mobEffectInstance),
                 Codec.INT.fieldOf("tier").forGetter(LabEffectRecipe::tier),
                 Ingredient.CODEC_NONEMPTY.fieldOf("catalyst").forGetter(LabEffectRecipe::catalyst),
                 Ingredient.LIST_CODEC_NONEMPTY.fieldOf("ingredients").xmap({ list ->

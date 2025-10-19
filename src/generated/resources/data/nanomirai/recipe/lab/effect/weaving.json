@@ -4,13 +4,9 @@
     "item": "nanomirai:red_research_catalyst"
   },
   "effect": {
+    "amplifier": 0,
     "duration": 600,
-    "id": "minecraft:weaving",
-    "neoforge:cures": [
-      "protected_by_totem",
-      "milk"
-    ],
-    "show_icon": true
+    "id": "minecraft:weaving"
   },
   "ingredients": [
     {

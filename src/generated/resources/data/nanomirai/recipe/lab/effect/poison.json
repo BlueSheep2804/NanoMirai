@@ -6,13 +6,7 @@
   "effect": {
     "amplifier": 2,
     "duration": 600,
-    "id": "minecraft:poison",
-    "neoforge:cures": [
-      "protected_by_totem",
-      "honey",
-      "milk"
-    ],
-    "show_icon": true
+    "id": "minecraft:poison"
   },
   "ingredients": [
     {

@@ -6,12 +6,7 @@
   "effect": {
     "amplifier": 1,
     "duration": 100,
-    "id": "minecraft:wither",
-    "neoforge:cures": [
-      "protected_by_totem",
-      "milk"
-    ],
-    "show_icon": true
+    "id": "minecraft:wither"
   },
   "ingredients": [
     {

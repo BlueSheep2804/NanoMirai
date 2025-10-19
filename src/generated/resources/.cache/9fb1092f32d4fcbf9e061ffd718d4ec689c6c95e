@@ -1,4 +1,4 @@
-// 1.21.1	2025-10-12T19:19:17.7648121	Recipes
+// 1.21.1	2025-10-19T17:34:22.4545134	Recipes
 e2706c509f2f03b9f38635fe43c546543e245230 data/minecraft/recipe/synthesize/crafter.json
 2d4d42b3ab61d8c4d3f7c1683648f0cbf8dd14f6 data/nanomirai/advancement/recipes/misc/graphite.json
 e01ac07f3368040f57919ff06603c434e6dc5a42 data/nanomirai/advancement/recipes/misc/laser_engraver.json
@@ -39,19 +39,19 @@ d6079b13b249266f3c9b35b4d8d33a8750c4623c data/nanomirai/recipe/lab/attribute/spe
 5f026a9ca3ba7ed75a70363f04086e37da70b445 data/nanomirai/recipe/lab/attribute/step_height_increase.json
 2466120730650f451f206029751bbe232e22b312 data/nanomirai/recipe/lab/attribute/submerged_mining_speed_increase.json
 d4b50aa039f730894a440584167c42ce3ef09a7c data/nanomirai/recipe/lab/attribute/water_movement_efficiency_increase.json
-f59345642b90bc7f2bb0ba1dda24cf51d8297481 data/nanomirai/recipe/lab/effect/darkness.json
-8711f18827d97df33f41877379d7436d584428cb data/nanomirai/recipe/lab/effect/glowing.json
-52f26a51440e12b93991b910628f1e34f76391d9 data/nanomirai/recipe/lab/effect/infested.json
-297c31e38a6c9ee0fd9ef25c890bfb74b93235fa data/nanomirai/recipe/lab/effect/invisibility.json
-165b1c103c137eaee545dc4206189d24c42a6ef4 data/nanomirai/recipe/lab/effect/levitation.json
-826e44a286e4f9884e77712b73a00614c933c352 data/nanomirai/recipe/lab/effect/oozing.json
-2fd6a24f0148a5e82c5a59e55da195bf1145b146 data/nanomirai/recipe/lab/effect/poison.json
-92788a4f6a4b16b5d6f44e4545eb0cafc853af28 data/nanomirai/recipe/lab/effect/slowness.json
-93610f4537eaeb3259fc9d690498579c1974d3db data/nanomirai/recipe/lab/effect/slow_falling.json
-70271355520e077edd8d0c778c29b15646ff378b data/nanomirai/recipe/lab/effect/weakness.json
-a968d9dc962b7fcae877b4dcbb6738f8b32258b0 data/nanomirai/recipe/lab/effect/weaving.json
-574099bcbaac7cb20781a6349ab805f9700a331e data/nanomirai/recipe/lab/effect/wind_charged.json
-72b309f119d478ac427891d7821372537d2baeb5 data/nanomirai/recipe/lab/effect/wither.json
+3235251852338297768637cfda952d34cedf6094 data/nanomirai/recipe/lab/effect/darkness.json
+aaa6d9522ae78be90ededf35b8a2b929bc8fd735 data/nanomirai/recipe/lab/effect/glowing.json
+91a1f1b9d33e1e1a733d6e6556e13453e1d2079b data/nanomirai/recipe/lab/effect/infested.json
+6715dd601720f285209d40af786496c017947fbf data/nanomirai/recipe/lab/effect/invisibility.json
+430a2160d2ddc50becbc2d716236ad481ceae25b data/nanomirai/recipe/lab/effect/levitation.json
+c48bfd0470ee9323bb5bbe2d38a69e838df23593 data/nanomirai/recipe/lab/effect/oozing.json
+6dece8064562b639e1d65a2d7f266ae3e71247e4 data/nanomirai/recipe/lab/effect/poison.json
+59d136169cd657ab6514ae4fa6c8e0580879aa10 data/nanomirai/recipe/lab/effect/slowness.json
+a6f878068e682a696226ca010d8fa20eaadf51be data/nanomirai/recipe/lab/effect/slow_falling.json
+5a11ab9ae3e983d770c8958e578d8e11f10bb227 data/nanomirai/recipe/lab/effect/weakness.json
+7fff514072e39844a6951319dc97087fcb8e3fd0 data/nanomirai/recipe/lab/effect/weaving.json
+2c5ae457e0e7efbdc887fe8e780e43e73dde0fbf data/nanomirai/recipe/lab/effect/wind_charged.json
+14403de57f423d1fcc357b9bd1974226ffa25b4b data/nanomirai/recipe/lab/effect/wither.json
 95c6af8135862bd4043bea4a74592414769c9910 data/nanomirai/recipe/laser/blue_research_catalyst.json
 061234b10a5ccb3d3015dc36da785cb3c42917a2 data/nanomirai/recipe/laser/cyan_research_catalyst.json
 89f1b3eabca98bfbfe29c5ea4c9ed59389ba51e2 data/nanomirai/recipe/laser/green_research_catalyst.json
