@@ -110,14 +110,12 @@ class NanoSwarmBlasterItem : Item(
                 val repairMaterials = mutableListOf<ItemStack>()
                 for (i in 0 until inventory.containerSize) {
                     val item = inventory.getItem(i)
-                    if (item.`is`(NanoMiraiTags.NANO_MATERIALS)) {
+                    if (item.`is`(NanoMiraiItems.REPAIR_NANO)) {
                         repairMaterials.add(item)
                     }
                 }
                 if (!repairMaterials.isEmpty()) {
-                    repairMaterials.sortBy {
-                        it.rarity.ordinal * 100 + it.count
-                    }
+                    repairMaterials.sortBy(ItemStack::getCount)
                     repair(stack, repairMaterials.first())
                     return InteractionResultHolder.consume(stack)
                 }

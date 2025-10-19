@@ -16,7 +16,7 @@ object NanoMiraiCreativeTab {
     val TAB: DeferredHolder<CreativeModeTab, CreativeModeTab> = REGISTRY.register("nanomirai_tab") { ->
         CreativeModeTab.builder()
             .title(Component.translatable("itemGroup.nanomirai"))
-            .icon { ItemStack(NanoMiraiItems.NANO_CELL) }
+            .icon { ItemStack(NanoMiraiItems.SYNTHESIZE_NANO) }
             .displayItems { params, output ->
                 NanoMiraiItems.REGISTRY.entries.forEach { item ->
                     if (item.get() is INanoTieredItem) {

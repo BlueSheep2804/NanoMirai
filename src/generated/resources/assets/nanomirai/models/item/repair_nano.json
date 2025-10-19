@@ -1,6 +1,6 @@
 {
   "parent": "minecraft:item/generated",
   "textures": {
-    "layer0": "nanomirai:item/nano_cell"
+    "layer0": "nanomirai:item/repair_nano"
   }
 }

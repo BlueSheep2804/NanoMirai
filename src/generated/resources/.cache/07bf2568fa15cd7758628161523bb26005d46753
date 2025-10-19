@@ -1,8 +1,7 @@
-// 1.21.1	2025-10-14T17:19:51.9454565	Tags for minecraft:item mod id nanomirai
+// 1.21.1	2025-10-19T23:44:30.538479	Tags for minecraft:item mod id nanomirai
 eb8425c2b34c8f3d2b33f3b93649cf197a2280e5 data/curios/tags/item/support_nano.json
 7abd3e504cc2d5ebff5291a2cd03de5b507a4875 data/nanomirai/tags/item/functional_nanomachines.json
 c1e3658ac5bc882085db65b8cf34d1c100fd7d25 data/nanomirai/tags/item/lens.json
-d455995d4497a9928812efc11d4e489870094994 data/nanomirai/tags/item/nano_materials.json
 244bd60fbc677a966cf85abbbaaaf170155c1853 data/nanomirai/tags/item/sherd_cold_ocean_ruins.json
 deca5dd87fe5c94a7972056504bf6f79f4035af0 data/nanomirai/tags/item/sherd_desert_pyramid.json
 9ad41038d1127483313589cca4463bbfe2c561f1 data/nanomirai/tags/item/sherd_desert_well.json

@@ -1,4 +1,4 @@
-// 1.21.1	2025-10-19T22:37:23.8286279	Item Models: nanomirai
+// 1.21.1	2025-10-19T23:47:11.6995196	Item Models: nanomirai
 899b7290cbb64a057afcbc553e31968bfefbb8f5 assets/nanomirai/models/item/amethyst_lens.json
 ebb80cf2f4257e9112ed235e00208fe6b0ba53be assets/nanomirai/models/item/blue_research_catalyst.json
 cfc781b0cc789012ac8369f9d34aa4a2b434a8ab assets/nanomirai/models/item/cyan_research_catalyst.json
@@ -7,17 +7,14 @@ cfc781b0cc789012ac8369f9d34aa4a2b434a8ab assets/nanomirai/models/item/cyan_resea
 30dd9d3786fbaa4be6c259f56e22055f9ed10a7d assets/nanomirai/models/item/laser_engraver.json
 606a60cd9ac7e95d05a4a1ba938a7208fcd1b291 assets/nanomirai/models/item/magenta_research_catalyst.json
 e9f06f66d4f58ae9878ba98ef9aed6dbe43e38a8 assets/nanomirai/models/item/nanomachine_assembler.json
-d51c08fe039f2316fd94322f53676a24ccfb46ae assets/nanomirai/models/item/nano_cell.json
 4f4296475d75e0857fbbb870bb5022350975a9c8 assets/nanomirai/models/item/nano_circuit.json
 14d93bd933b7d0d7409ebb40d2c6cfdde734fbc4 assets/nanomirai/models/item/nano_lab.json
-1d27be0085ddc5349397981bb1dc95af227e37b2 assets/nanomirai/models/item/nano_matrix.json
-68babcec65e31a309f0a6a2bbfc8c52c9f0381a1 assets/nanomirai/models/item/nano_proto.json
-fd17f8697aa6a494be2a8aa743377e43e6c6fe07 assets/nanomirai/models/item/nano_singularity.json
 97a577c51f83ae3e47ca8e50b00aeb3f697dfa8e assets/nanomirai/models/item/nano_soc.json
 a0688f2abd0c2dedf511524687ecbdd2758e573f assets/nanomirai/models/item/nano_swarm_blaster.json
 011a9bb507effd80e73c439767a51296dbab2a49 assets/nanomirai/models/item/nano_swarm_blaster_charged.json
 06dac3ac4cb9600a872c678b56de0815c46bd688 assets/nanomirai/models/item/red_research_catalyst.json
 a6bedcebc56d12b96443bac5fe9770ec6613dcc6 assets/nanomirai/models/item/reinforced_obsidian.json
+6bfd34146db5a6b25f13fad7d53e7456805150bc assets/nanomirai/models/item/repair_nano.json
 aecfc26bced6729d6cfef996c661395f2629ca52 assets/nanomirai/models/item/sculk_lens.json
 83507b3dd47b6a4d8345d8a768a413435a37edb7 assets/nanomirai/models/item/silicon.json
 27fcfa14c20be665f00cce24b14b1415e157a63b assets/nanomirai/models/item/silicon_wafer.json

@@ -9,10 +9,6 @@ import net.neoforged.neoforge.common.data.ExistingFileHelper
 
 class NanoMiraiItemModelProvider(output: PackOutput, existingFileHelper: ExistingFileHelper) : ItemModelProvider(output, NanoMirai.ID, existingFileHelper) {
     override fun registerModels() {
-        basicItem(NanoMiraiItems.NANO_PROTO)
-        basicItem(NanoMiraiItems.NANO_CELL)
-        basicItem(NanoMiraiItems.NANO_MATRIX)
-        basicItem(NanoMiraiItems.NANO_SINGULARITY)
         basicItem(NanoMiraiItems.SYNTHESIZE_NANO)
         basicItem(NanoMiraiItems.SUPPORT_NANO)
 
@@ -27,6 +23,8 @@ class NanoMiraiItemModelProvider(output: PackOutput, existingFileHelper: Existin
                 .predicate(modLoc("charged"), 0.9f)
                 .model(getExistingFile(modLoc("item/nano_swarm_blaster_charged")))
                 .end()
+
+        basicItem(NanoMiraiItems.REPAIR_NANO)
 
         basicItem(NanoMiraiItems.GRAPHITE)
         basicItem(NanoMiraiItems.SILICON)

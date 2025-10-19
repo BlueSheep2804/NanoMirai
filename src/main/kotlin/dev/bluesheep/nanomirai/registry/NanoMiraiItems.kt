@@ -6,20 +6,16 @@ import dev.bluesheep.nanomirai.item.SupportNanoItem
 import dev.bluesheep.nanomirai.item.SynthesizeNanoItem
 import net.minecraft.world.item.BlockItem
 import net.minecraft.world.item.Item
-import net.minecraft.world.item.Rarity
 import net.neoforged.neoforge.registries.DeferredRegister
 import thedarkcolour.kotlinforforge.neoforge.forge.getValue
 
 object NanoMiraiItems {
     val REGISTRY: DeferredRegister.Items = DeferredRegister.createItems(NanoMirai.ID)
 
-    val NANO_PROTO: Item by REGISTRY.registerSimpleItem("nano_proto")
-    val NANO_CELL: Item by REGISTRY.registerSimpleItem("nano_cell", Item.Properties().rarity(Rarity.UNCOMMON))
-    val NANO_MATRIX: Item by REGISTRY.registerSimpleItem("nano_matrix", Item.Properties().rarity(Rarity.RARE))
-    val NANO_SINGULARITY: Item by REGISTRY.registerSimpleItem("nano_singularity", Item.Properties().rarity(Rarity.EPIC))
     val SYNTHESIZE_NANO: SynthesizeNanoItem by REGISTRY.register("synthesize_nano", ::SynthesizeNanoItem)
     val SUPPORT_NANO: SupportNanoItem by REGISTRY.register("support_nano", ::SupportNanoItem)
     val NANO_SWARM_BLASTER: NanoSwarmBlasterItem by REGISTRY.register("nano_swarm_blaster", ::NanoSwarmBlasterItem)
+    val REPAIR_NANO: Item by REGISTRY.registerSimpleItem("repair_nano")
 
     val GRAPHITE: Item by REGISTRY.registerSimpleItem("graphite")
     val SILICON: Item by REGISTRY.registerSimpleItem("silicon")

@@ -1,8 +1,0 @@
-{
-  "values": [
-    "nanomirai:nano_proto",
-    "nanomirai:nano_cell",
-    "nanomirai:nano_matrix",
-    "nanomirai:nano_singularity"
-  ]
-}

@@ -147,13 +147,19 @@ class NanoMiraiRecipeProvider(output: PackOutput, registries: CompletableFuture<
             )
         ).save(recipeOutput)
 
+        val tierCircuits = mapOf(
+            NanoTier.PROTO to NanoMiraiItems.SIMPLE_CIRCUIT,
+            NanoTier.CELL to NanoMiraiItems.NANO_CIRCUIT,
+            NanoTier.MATRIX to NanoMiraiItems.SIMPLE_SOC,
+            NanoTier.SINGULARITY to NanoMiraiItems.NANO_SOC
+        )
         // Synthesize Nano
         NanoTier.entries.forEach {
             AssemblerRecipeBuilder(
                 it.getSynthesizeNano(),
                 NonNullList.of(
                     StackedIngredient.EMPTY,
-                    StackedIngredient.of(4, it.item),
+                    StackedIngredient.of(4, tierCircuits[it]!!),
                     StackedIngredient.of(2, Items.NOTE_BLOCK),
                     StackedIngredient.of(4, Items.AMETHYST_SHARD),
                 )
@@ -166,7 +172,7 @@ class NanoMiraiRecipeProvider(output: PackOutput, registries: CompletableFuture<
                 it.getSupportNano(),
                 NonNullList.of(
                     StackedIngredient.EMPTY,
-                    StackedIngredient.of(4, it.item),
+                    StackedIngredient.of(4, tierCircuits[it]!!),
                     StackedIngredient.of(2, Items.ENDER_PEARL),
                     StackedIngredient.of(4, Items.KELP),
                     StackedIngredient.of(1, Items.AXOLOTL_BUCKET),
@@ -180,7 +186,7 @@ class NanoMiraiRecipeProvider(output: PackOutput, registries: CompletableFuture<
                 it.getNanoSwarmBlaster(),
                 NonNullList.of(
                     StackedIngredient.EMPTY,
-                    StackedIngredient.of(4, it.item),
+                    StackedIngredient.of(4, tierCircuits[it]!!),
                     StackedIngredient.of(4, Items.IRON_INGOT),
                     StackedIngredient.of(2, Items.PISTON),
                     StackedIngredient.of(1, Items.SCULK_SHRIEKER),

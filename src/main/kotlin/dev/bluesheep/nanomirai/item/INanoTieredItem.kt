@@ -1,6 +1,6 @@
 package dev.bluesheep.nanomirai.item
 
-import dev.bluesheep.nanomirai.registry.NanoMiraiTags
+import dev.bluesheep.nanomirai.registry.NanoMiraiItems
 import dev.bluesheep.nanomirai.util.NanoTier
 import net.minecraft.ChatFormatting
 import net.minecraft.core.component.DataComponents
@@ -34,14 +34,13 @@ interface INanoTieredItem {
         action: ClickAction
     ): Boolean {
         if (action != ClickAction.SECONDARY) return false
-        if (!other.`is`(NanoMiraiTags.NANO_MATERIALS)) return false
+        if (!other.`is`(NanoMiraiItems.REPAIR_NANO)) return false
         if (stack.isDamaged) repair(stack, other)
         return true
     }
 
     fun repair(stack: ItemStack, material: ItemStack) {
-        val tier = NanoTier.entries.first { material.`is`(it.item) }
-        stack.damageValue -= tier.repairAmount
+        stack.damageValue--
         material.shrink(1)
     }
 }
