@@ -4,30 +4,30 @@
     {
       "count": 2,
       "ingredient": {
-        "item": "nanomirai:simple_circuit"
+        "item": "nanomirai:silicon_wafer"
       }
     },
     {
       "count": 2,
       "ingredient": {
-        "item": "minecraft:slime_ball"
+        "item": "minecraft:gold_ingot"
       }
     },
     {
-      "count": 4,
+      "count": 2,
       "ingredient": {
-        "item": "minecraft:bamboo"
+        "item": "minecraft:redstone"
       }
     },
     {
-      "count": 4,
+      "count": 1,
       "ingredient": {
-        "item": "minecraft:redstone_torch"
+        "item": "nanomirai:reinforced_obsidian"
       }
     }
   ],
   "result": {
     "count": 1,
-    "id": "nanomirai:nano_proto"
+    "id": "nanomirai:simple_soc"
   }
 }

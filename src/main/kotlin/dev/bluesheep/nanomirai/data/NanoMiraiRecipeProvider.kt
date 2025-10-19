@@ -7,6 +7,7 @@ import dev.bluesheep.nanomirai.recipe.lab.attribute.LabAttributeRecipeBuilder
 import dev.bluesheep.nanomirai.recipe.lab.effect.LabEffectRecipeBuilder
 import dev.bluesheep.nanomirai.recipe.laser.LaserRecipeBuilder
 import dev.bluesheep.nanomirai.recipe.synthesize.SynthesizeRecipeBuilder
+import dev.bluesheep.nanomirai.registry.NanoMiraiBlocks
 import dev.bluesheep.nanomirai.registry.NanoMiraiItems
 import dev.bluesheep.nanomirai.registry.NanoMiraiTags
 import dev.bluesheep.nanomirai.util.NanoTier
@@ -80,19 +81,20 @@ class NanoMiraiRecipeProvider(output: PackOutput, registries: CompletableFuture<
             .pattern("ICI")
             .pattern("CDC")
             .pattern("ITI")
-            .unlockedBy("has_simple_nano_circuit", has(NanoMiraiItems.SIMPLE_CIRCUIT))
+            .unlockedBy("has_simple_circuit", has(NanoMiraiItems.SIMPLE_CIRCUIT))
             .save(recipeOutput)
 
         // Laser Engraver
         ShapedRecipeBuilder.shaped(RecipeCategory.MISC, NanoMiraiItems.LASER_ENGRAVER)
-            .define('C', Items.CRAFTER)
             .define('I', Items.IRON_INGOT)
             .define('L', Items.REDSTONE_LAMP)
+            .define('C', NanoMiraiItems.SIMPLE_SOC)
             .define('G', Tags.Items.GLASS_BLOCKS)
+            .define('O', Items.OBSIDIAN)
             .pattern("ILI")
             .pattern("CGC")
-            .pattern("III")
-            .unlockedBy("has_iron", has(Items.IRON_INGOT))
+            .pattern("IOI")
+            .unlockedBy("has_normal_circuit", has(NanoMiraiItems.SIMPLE_SOC))
             .save(recipeOutput)
     }
 
@@ -109,48 +111,39 @@ class NanoMiraiRecipeProvider(output: PackOutput, registries: CompletableFuture<
             )
         ).save(recipeOutput)
 
-        // Nano Proto
+        // Nano Circuit
         AssemblerRecipeBuilder(
-            ItemStack(NanoMiraiItems.NANO_PROTO),
+            ItemStack(NanoMiraiItems.NANO_CIRCUIT, 1),
             NonNullList.of(
                 StackedIngredient.EMPTY,
-                StackedIngredient.of(2, NanoMiraiItems.SIMPLE_CIRCUIT),
-                StackedIngredient.of(2, Items.SLIME_BALL),
-                StackedIngredient.of(4, Items.BAMBOO),
-                StackedIngredient.of(4, Items.REDSTONE_TORCH),
+                StackedIngredient.of(2, NanoMiraiItems.SILICON),
+                StackedIngredient.of(2, Items.IRON_INGOT),
+                StackedIngredient.of(2, Items.REDSTONE),
+                StackedIngredient.of(1, Items.OBSIDIAN),
             )
         ).save(recipeOutput)
 
-        // Nano Cell
+        // Simple SoC
         AssemblerRecipeBuilder(
-            ItemStack(NanoMiraiItems.NANO_CELL),
+            ItemStack(NanoMiraiItems.SIMPLE_SOC, 1),
             NonNullList.of(
                 StackedIngredient.EMPTY,
-                StackedIngredient.of(16, Items.REDSTONE),
-                StackedIngredient.of(3, Items.COAL),
-                StackedIngredient.of(1, Items.IRON_INGOT),
+                StackedIngredient.of(2, NanoMiraiItems.SILICON_WAFER),
+                StackedIngredient.of(2, Items.GOLD_INGOT),
+                StackedIngredient.of(2, Items.REDSTONE),
+                StackedIngredient.of(1, NanoMiraiBlocks.REINFORCED_OBSIDIAN),
             )
         ).save(recipeOutput)
 
-        // Nano Matrix
+        // Simple SoC
         AssemblerRecipeBuilder(
-            ItemStack(NanoMiraiItems.NANO_MATRIX),
+            ItemStack(NanoMiraiItems.NANO_SOC, 1),
             NonNullList.of(
                 StackedIngredient.EMPTY,
-                StackedIngredient.of(16, Items.REDSTONE),
-                StackedIngredient.of(3, Items.COAL),
-                StackedIngredient.of(1, Items.GOLD_INGOT),
-            )
-        ).save(recipeOutput)
-
-        // Nano Singularity
-        AssemblerRecipeBuilder(
-            ItemStack(NanoMiraiItems.NANO_SINGULARITY),
-            NonNullList.of(
-                StackedIngredient.EMPTY,
-                StackedIngredient.of(4, Items.REDSTONE),
-                StackedIngredient.of(3, Items.COAL, NanoMiraiItems.GRAPHITE),
-                StackedIngredient.of(2, ItemTags.WOOL),
+                StackedIngredient.of(2, NanoMiraiItems.SILICON_WAFER),
+                StackedIngredient.of(2, Items.GOLD_INGOT),
+                StackedIngredient.of(2, Items.REDSTONE),
+                StackedIngredient.of(1, NanoMiraiBlocks.REINFORCED_OBSIDIAN),
             )
         ).save(recipeOutput)
 
@@ -763,50 +756,42 @@ class NanoMiraiRecipeProvider(output: PackOutput, registries: CompletableFuture<
     }
 
     fun laserRecipes(recipeOutput: RecipeOutput) {
-//        LaserRecipeBuilder(
-//            ItemStack(NanoMiraiItems.NANO_CIRCUIT),
-//            Ingredient.of(NanoMiraiItems.SIMPLE_NANO_CIRCUIT)
-//        ).save(recipeOutput)
-//
-//        LaserRecipeBuilder(
-//            ItemStack(NanoMiraiItems.NANO_SOC),
-//            Ingredient.of(NanoMiraiItems.INCOMPLETE_NANO_SOC)
-//        ).save(recipeOutput)
+        LaserRecipeBuilder(
+            ItemStack(NanoMiraiItems.SILICON_WAFER),
+            Ingredient.of(NanoMiraiItems.SILICON)
+        ).save(recipeOutput)
 
         LaserRecipeBuilder(
             ItemStack(NanoMiraiItems.RED_RESEARCH_CATALYST),
-            Ingredient.of(NanoMiraiTags.SHERD_WARM_OCEAN_RUINS),
-            Ingredient.of(NanoMiraiItems.AMETHYST_LENS)
+            Ingredient.of(NanoMiraiTags.SHERD_WARM_OCEAN_RUINS)
         ).save(recipeOutput)
 
         LaserRecipeBuilder(
             ItemStack(NanoMiraiItems.GREEN_RESEARCH_CATALYST),
-            Ingredient.of(NanoMiraiTags.SHERD_DESERT_PYRAMID),
-            Ingredient.of(NanoMiraiItems.AMETHYST_LENS)
+            Ingredient.of(NanoMiraiTags.SHERD_DESERT_PYRAMID)
         ).save(recipeOutput)
 
         LaserRecipeBuilder(
             ItemStack(NanoMiraiItems.BLUE_RESEARCH_CATALYST),
-            Ingredient.of(NanoMiraiTags.SHERD_COLD_OCEAN_RUINS),
-            Ingredient.of(NanoMiraiItems.AMETHYST_LENS)
+            Ingredient.of(NanoMiraiTags.SHERD_COLD_OCEAN_RUINS)
         ).save(recipeOutput)
 
         LaserRecipeBuilder(
             ItemStack(NanoMiraiItems.CYAN_RESEARCH_CATALYST),
             Ingredient.of(NanoMiraiTags.SHERD_TRIAL_CHAMBER),
-            Ingredient.of(NanoMiraiItems.SCULK_LENS)
+            Ingredient.of(NanoMiraiItems.AMETHYST_LENS)
         ).save(recipeOutput)
 
         LaserRecipeBuilder(
             ItemStack(NanoMiraiItems.MAGENTA_RESEARCH_CATALYST),
             Ingredient.of(NanoMiraiTags.SHERD_TRAIL_RUINS),
-            Ingredient.of(NanoMiraiItems.SCULK_LENS)
+            Ingredient.of(NanoMiraiItems.AMETHYST_LENS)
         ).save(recipeOutput)
 
         LaserRecipeBuilder(
             ItemStack(NanoMiraiItems.YELLOW_RESEARCH_CATALYST),
             Ingredient.of(NanoMiraiTags.SHERD_DESERT_WELL),
-            Ingredient.of(NanoMiraiItems.SCULK_LENS)
+            Ingredient.of(NanoMiraiItems.AMETHYST_LENS)
         ).save(recipeOutput)
     }
 
@@ -841,6 +826,22 @@ class NanoMiraiRecipeProvider(output: PackOutput, registries: CompletableFuture<
             Blocks.CRAFTING_TABLE.defaultBlockState(),
             Ingredient.of(Items.IRON_HELMET),
             20
+        ).save(recipeOutput)
+
+        SynthesizeRecipeBuilder(
+            ItemStack(Items.BUDDING_AMETHYST),
+            NanoTier.PROTO,
+            Blocks.RAW_IRON_BLOCK.defaultBlockState(),
+            Ingredient.of(Items.ENDER_PEARL),
+            200
+        ).save(recipeOutput)
+
+        SynthesizeRecipeBuilder(
+            ItemStack(NanoMiraiItems.REINFORCED_OBSIDIAN),
+            NanoTier.MATRIX,
+            Blocks.OBSIDIAN.defaultBlockState(),
+            Ingredient.of(Items.POPPED_CHORUS_FRUIT),
+            600
         ).save(recipeOutput)
     }
 }

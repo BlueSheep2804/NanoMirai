@@ -1,0 +1,15 @@
+{
+  "type": "nanomirai:synthesize",
+  "block": {
+    "Name": "minecraft:obsidian"
+  },
+  "catalyst": {
+    "item": "minecraft:popped_chorus_fruit"
+  },
+  "duration": 600,
+  "result": {
+    "count": 1,
+    "id": "nanomirai:reinforced_obsidian"
+  },
+  "tier": 2
+}

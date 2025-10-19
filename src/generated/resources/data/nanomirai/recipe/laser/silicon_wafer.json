@@ -1,11 +1,11 @@
 {
   "type": "nanomirai:laser",
   "ingredient": {
-    "tag": "nanomirai:sherd_desert_pyramid"
+    "item": "nanomirai:silicon"
   },
   "lens": [],
   "result": {
     "count": 1,
-    "id": "nanomirai:green_research_catalyst"
+    "id": "nanomirai:silicon_wafer"
   }
 }

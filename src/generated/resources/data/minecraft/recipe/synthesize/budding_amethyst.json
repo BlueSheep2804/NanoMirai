@@ -1,0 +1,15 @@
+{
+  "type": "nanomirai:synthesize",
+  "block": {
+    "Name": "minecraft:raw_iron_block"
+  },
+  "catalyst": {
+    "item": "minecraft:ender_pearl"
+  },
+  "duration": 200,
+  "result": {
+    "count": 1,
+    "id": "minecraft:budding_amethyst"
+  },
+  "tier": 0
+}

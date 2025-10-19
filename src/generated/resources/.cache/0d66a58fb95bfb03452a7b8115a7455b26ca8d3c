@@ -1,2 +1,5 @@
-// 1.21.1	2025-10-04T15:18:02.8430849	Tags for minecraft:block mod id nanomirai
-b0826cc367a5cd216dc71bce15df267aad02a10c data/minecraft/tags/block/mineable/pickaxe.json
+// 1.21.1	2025-10-19T16:20:59.4398167	Tags for minecraft:block mod id nanomirai
+358d7186c8f45bdfff4be1f72965d27ccef554b4 data/minecraft/tags/block/dragon_immune.json
+33faf1a8cdb3f6b1df5c46924ceecc7e746915ff data/minecraft/tags/block/mineable/pickaxe.json
+358d7186c8f45bdfff4be1f72965d27ccef554b4 data/minecraft/tags/block/needs_diamond_tool.json
+358d7186c8f45bdfff4be1f72965d27ccef554b4 data/minecraft/tags/block/wither_immune.json

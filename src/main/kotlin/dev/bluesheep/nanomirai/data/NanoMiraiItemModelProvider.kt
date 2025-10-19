@@ -30,9 +30,10 @@ class NanoMiraiItemModelProvider(output: PackOutput, existingFileHelper: Existin
 
         basicItem(NanoMiraiItems.GRAPHITE)
         basicItem(NanoMiraiItems.SILICON)
+        basicItem(NanoMiraiItems.SILICON_WAFER)
         basicItem(NanoMiraiItems.SIMPLE_CIRCUIT)
-        basicItem(NanoMiraiItems.NORMAL_CIRCUIT)
         basicItem(NanoMiraiItems.NANO_CIRCUIT)
+        basicItem(NanoMiraiItems.SIMPLE_SOC)
         basicItem(NanoMiraiItems.NANO_SOC)
         basicItem(NanoMiraiItems.AMETHYST_LENS)
         basicItem(NanoMiraiItems.SCULK_LENS)
@@ -46,5 +47,7 @@ class NanoMiraiItemModelProvider(output: PackOutput, existingFileHelper: Existin
         simpleBlockItem(NanoMiraiBlocks.NANOMACHINE_ASSEMBLER)
         simpleBlockItem(NanoMiraiBlocks.LASER_ENGRAVER)
         simpleBlockItem(NanoMiraiBlocks.NANO_LAB)
+
+        simpleBlockItem(NanoMiraiBlocks.REINFORCED_OBSIDIAN)
     }
 }

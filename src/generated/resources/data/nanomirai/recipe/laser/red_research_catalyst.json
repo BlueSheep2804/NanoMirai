@@ -3,9 +3,7 @@
   "ingredient": {
     "tag": "nanomirai:sherd_warm_ocean_ruins"
   },
-  "lens": {
-    "item": "nanomirai:amethyst_lens"
-  },
+  "lens": [],
   "result": {
     "count": 1,
     "id": "nanomirai:red_research_catalyst"

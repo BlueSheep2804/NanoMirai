@@ -23,9 +23,10 @@ object NanoMiraiItems {
 
     val GRAPHITE: Item by REGISTRY.registerSimpleItem("graphite")
     val SILICON: Item by REGISTRY.registerSimpleItem("silicon")
+    val SILICON_WAFER: Item by REGISTRY.registerSimpleItem("silicon_wafer")
     val SIMPLE_CIRCUIT: Item by REGISTRY.registerSimpleItem("simple_circuit")
-    val NORMAL_CIRCUIT: Item by REGISTRY.registerSimpleItem("normal_circuit")
     val NANO_CIRCUIT: Item by REGISTRY.registerSimpleItem("nano_circuit")
+    val SIMPLE_SOC: Item by REGISTRY.registerSimpleItem("simple_soc")
     val NANO_SOC: Item by REGISTRY.registerSimpleItem("nano_soc")
     val AMETHYST_LENS: Item by REGISTRY.registerSimpleItem("amethyst_lens")
     val SCULK_LENS: Item by REGISTRY.registerSimpleItem("sculk_lens")
@@ -44,5 +45,9 @@ object NanoMiraiItems {
     }
     val NANO_LAB: BlockItem by REGISTRY.registerSimpleBlockItem("nano_lab") { ->
         NanoMiraiBlocks.NANO_LAB
+    }
+
+    val REINFORCED_OBSIDIAN: BlockItem by REGISTRY.registerSimpleBlockItem("reinforced_obsidian") { ->
+        NanoMiraiBlocks.REINFORCED_OBSIDIAN
     }
 }

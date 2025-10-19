@@ -21,5 +21,6 @@ class NanoMiraiBlockLootSubProvider(lookupProvider: HolderLookup.Provider) : Blo
         dropSelf(NanoMiraiBlocks.NANOMACHINE_ASSEMBLER)
         dropSelf(NanoMiraiBlocks.LASER_ENGRAVER)
         dropSelf(NanoMiraiBlocks.NANO_LAB)
+        dropSelf(NanoMiraiBlocks.REINFORCED_OBSIDIAN)
     }
 }

@@ -11,6 +11,7 @@ import net.minecraft.world.level.block.Block
 import net.minecraft.world.level.block.Blocks
 import net.minecraft.world.level.block.state.BlockBehaviour
 import net.minecraft.world.level.block.state.BlockState
+import net.minecraft.world.level.material.MapColor
 import net.neoforged.neoforge.registries.DeferredRegister
 import thedarkcolour.kotlinforforge.neoforge.forge.getValue
 
@@ -30,6 +31,14 @@ object NanoMiraiBlocks {
         BlockBehaviour.Properties.of().strength(0.5F, 3600000F).noLootTable().noOcclusion().isValidSpawn(Blocks::never).isRedstoneConductor(::never).isSuffocating(::never).isViewBlocking(::never)
     )
     val NANO_LAB: NanoLabBlock by REGISTRY.registerBlock("nano_lab", ::NanoLabBlock, machineProperties)
+
+    val REINFORCED_OBSIDIAN: Block by REGISTRY.registerSimpleBlock(
+        "reinforced_obsidian",
+        BlockBehaviour.Properties.of()
+            .mapColor(MapColor.COLOR_BLACK)
+            .strength(50F, 3600000F)
+            .requiresCorrectToolForDrops()
+    )
 
     private fun never(state: BlockState, blockGetter: BlockGetter, pos: BlockPos): Boolean = false
 }

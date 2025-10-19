@@ -15,7 +15,17 @@ class NanoMiraiBlockTagsProvider(output: PackOutput, lookupProvider: Completable
             .add(
                 NanoMiraiBlocks.NANOMACHINE_ASSEMBLER,
                 NanoMiraiBlocks.LASER_ENGRAVER,
-                NanoMiraiBlocks.NANO_LAB
+                NanoMiraiBlocks.NANO_LAB,
+                NanoMiraiBlocks.REINFORCED_OBSIDIAN
             )
+
+        tag(BlockTags.NEEDS_DIAMOND_TOOL)
+            .add(NanoMiraiBlocks.REINFORCED_OBSIDIAN)
+
+        tag(BlockTags.WITHER_IMMUNE)
+            .add(NanoMiraiBlocks.REINFORCED_OBSIDIAN)
+
+        tag(BlockTags.DRAGON_IMMUNE)
+            .add(NanoMiraiBlocks.REINFORCED_OBSIDIAN)
     }
 }

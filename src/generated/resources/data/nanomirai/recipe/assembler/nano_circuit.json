@@ -1,0 +1,33 @@
+{
+  "type": "nanomirai:assembler",
+  "ingredients": [
+    {
+      "count": 2,
+      "ingredient": {
+        "item": "nanomirai:silicon"
+      }
+    },
+    {
+      "count": 2,
+      "ingredient": {
+        "item": "minecraft:iron_ingot"
+      }
+    },
+    {
+      "count": 2,
+      "ingredient": {
+        "item": "minecraft:redstone"
+      }
+    },
+    {
+      "count": 1,
+      "ingredient": {
+        "item": "minecraft:obsidian"
+      }
+    }
+  ],
+  "result": {
+    "count": 1,
+    "id": "nanomirai:nano_circuit"
+  }
+}

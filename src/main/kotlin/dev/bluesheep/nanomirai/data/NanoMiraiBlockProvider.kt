@@ -62,5 +62,7 @@ class NanoMiraiBlockProvider(output: PackOutput, exFileHelper: ExistingFileHelpe
         }
 
         simpleBlock(NanoMiraiBlocks.NANO_LAB)
+
+        simpleBlock(NanoMiraiBlocks.REINFORCED_OBSIDIAN)
     }
 }
