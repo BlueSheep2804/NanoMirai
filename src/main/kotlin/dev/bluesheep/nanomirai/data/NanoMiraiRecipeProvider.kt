@@ -193,10 +193,10 @@ class NanoMiraiRecipeProvider(output: PackOutput, registries: CompletableFuture<
         ).save(recipeOutput)
 
         val tierCircuits = mapOf(
-            NanoTier.PROTO to NanoMiraiItems.SIMPLE_CIRCUIT,
-            NanoTier.CELL to NanoMiraiItems.NORMAL_CIRCUIT,
-            NanoTier.MATRIX to NanoMiraiItems.NANO_CIRCUIT,
-            NanoTier.SINGULARITY to NanoMiraiItems.SCULMIUM_CIRCUIT
+            NanoTier.MK1 to NanoMiraiItems.SIMPLE_CIRCUIT,
+            NanoTier.MK2 to NanoMiraiItems.NORMAL_CIRCUIT,
+            NanoTier.MK3 to NanoMiraiItems.NANO_CIRCUIT,
+            NanoTier.MK4 to NanoMiraiItems.SCULMIUM_CIRCUIT
         )
         // Synthesize Nano
         NanoTier.entries.forEach {
@@ -250,7 +250,7 @@ class NanoMiraiRecipeProvider(output: PackOutput, registries: CompletableFuture<
                 2.0,
                 AttributeModifier.Operation.ADD_MULTIPLIED_BASE
             ),
-            NanoTier.PROTO,
+            NanoTier.MK1,
             Ingredient.of(NanoMiraiItems.GREEN_RESEARCH_CATALYST),
             NonNullList.of(Ingredient.EMPTY,
                 Ingredient.of(Items.BAMBOO),
@@ -270,7 +270,7 @@ class NanoMiraiRecipeProvider(output: PackOutput, registries: CompletableFuture<
                 2.0,
                 AttributeModifier.Operation.ADD_MULTIPLIED_BASE
             ),
-            NanoTier.PROTO,
+            NanoTier.MK1,
             Ingredient.of(NanoMiraiItems.BLUE_RESEARCH_CATALYST),
             NonNullList.of(Ingredient.EMPTY,
                 Ingredient.of(Items.REDSTONE),
@@ -291,7 +291,7 @@ class NanoMiraiRecipeProvider(output: PackOutput, registries: CompletableFuture<
                 2.0,
                 AttributeModifier.Operation.ADD_MULTIPLIED_BASE
             ),
-            NanoTier.CELL,
+            NanoTier.MK2,
             Ingredient.of(NanoMiraiItems.RED_RESEARCH_CATALYST),
             NonNullList.of(Ingredient.EMPTY,
                 Ingredient.of(Items.DEEPSLATE),
@@ -311,7 +311,7 @@ class NanoMiraiRecipeProvider(output: PackOutput, registries: CompletableFuture<
                 -0.5,
                 AttributeModifier.Operation.ADD_MULTIPLIED_TOTAL
             ),
-            NanoTier.CELL,
+            NanoTier.MK2,
             Ingredient.of(NanoMiraiItems.RED_RESEARCH_CATALYST),
             NonNullList.of(Ingredient.EMPTY,
                 Ingredient.of(Tags.Items.SEEDS),
@@ -331,7 +331,7 @@ class NanoMiraiRecipeProvider(output: PackOutput, registries: CompletableFuture<
                 1.0,
                 AttributeModifier.Operation.ADD_MULTIPLIED_TOTAL
             ),
-            NanoTier.CELL,
+            NanoTier.MK2,
             Ingredient.of(NanoMiraiItems.BLUE_RESEARCH_CATALYST),
             NonNullList.of(Ingredient.EMPTY,
                 Ingredient.of(Items.SUGAR),
@@ -351,7 +351,7 @@ class NanoMiraiRecipeProvider(output: PackOutput, registries: CompletableFuture<
                 1.0,
                 AttributeModifier.Operation.ADD_VALUE
             ),
-            NanoTier.CELL,
+            NanoTier.MK2,
             Ingredient.of(NanoMiraiItems.GREEN_RESEARCH_CATALYST),
             NonNullList.of(Ingredient.EMPTY,
                 Ingredient.of(Items.COD),
@@ -371,7 +371,7 @@ class NanoMiraiRecipeProvider(output: PackOutput, registries: CompletableFuture<
                 128.0,
                 AttributeModifier.Operation.ADD_VALUE
             ),
-            NanoTier.CELL,
+            NanoTier.MK2,
             Ingredient.of(NanoMiraiItems.BLUE_RESEARCH_CATALYST),
             NonNullList.of(Ingredient.EMPTY,
                 Ingredient.of(Items.PUFFERFISH),
@@ -392,7 +392,7 @@ class NanoMiraiRecipeProvider(output: PackOutput, registries: CompletableFuture<
                 2.0,
                 AttributeModifier.Operation.ADD_MULTIPLIED_BASE
             ),
-            NanoTier.MATRIX,
+            NanoTier.MK3,
             Ingredient.of(NanoMiraiItems.MAGENTA_RESEARCH_CATALYST),
             NonNullList.of(Ingredient.EMPTY,
                 Ingredient.of(Items.SCULK),
@@ -412,7 +412,7 @@ class NanoMiraiRecipeProvider(output: PackOutput, registries: CompletableFuture<
                 0.4,
                 AttributeModifier.Operation.ADD_VALUE
             ),
-            NanoTier.MATRIX,
+            NanoTier.MK3,
             Ingredient.of(NanoMiraiItems.CYAN_RESEARCH_CATALYST),
             NonNullList.of(Ingredient.EMPTY,
                 Ingredient.of(Items.PISTON),
@@ -432,7 +432,7 @@ class NanoMiraiRecipeProvider(output: PackOutput, registries: CompletableFuture<
                 2.0,
                 AttributeModifier.Operation.ADD_MULTIPLIED_BASE
             ),
-            NanoTier.MATRIX,
+            NanoTier.MK3,
             Ingredient.of(NanoMiraiItems.CYAN_RESEARCH_CATALYST),
             NonNullList.of(Ingredient.EMPTY,
                 Ingredient.of(Items.DROPPER),
@@ -452,7 +452,7 @@ class NanoMiraiRecipeProvider(output: PackOutput, registries: CompletableFuture<
                 2.0,
                 AttributeModifier.Operation.ADD_MULTIPLIED_BASE
             ),
-            NanoTier.MATRIX,
+            NanoTier.MK3,
             Ingredient.of(NanoMiraiItems.CYAN_RESEARCH_CATALYST),
             NonNullList.of(Ingredient.EMPTY,
                 Ingredient.of(Items.FISHING_ROD),
@@ -472,7 +472,7 @@ class NanoMiraiRecipeProvider(output: PackOutput, registries: CompletableFuture<
                 0.8,
                 AttributeModifier.Operation.ADD_MULTIPLIED_BASE
             ),
-            NanoTier.MATRIX,
+            NanoTier.MK3,
             Ingredient.of(NanoMiraiItems.YELLOW_RESEARCH_CATALYST),
             NonNullList.of(Ingredient.EMPTY,
                 Ingredient.of(Items.SHROOMLIGHT),
@@ -492,7 +492,7 @@ class NanoMiraiRecipeProvider(output: PackOutput, registries: CompletableFuture<
                 4.0,
                 AttributeModifier.Operation.ADD_MULTIPLIED_TOTAL
             ),
-            NanoTier.MATRIX,
+            NanoTier.MK3,
             Ingredient.of(NanoMiraiItems.CYAN_RESEARCH_CATALYST),
             NonNullList.of(Ingredient.EMPTY,
                 Ingredient.of(Items.SALMON),
@@ -513,7 +513,7 @@ class NanoMiraiRecipeProvider(output: PackOutput, registries: CompletableFuture<
                 2.0,
                 AttributeModifier.Operation.ADD_MULTIPLIED_TOTAL
             ),
-            NanoTier.SINGULARITY,
+            NanoTier.MK4,
             Ingredient.of(NanoMiraiItems.MAGENTA_RESEARCH_CATALYST),
             NonNullList.of(Ingredient.EMPTY,
                 Ingredient.of(Items.TOTEM_OF_UNDYING),
@@ -533,7 +533,7 @@ class NanoMiraiRecipeProvider(output: PackOutput, registries: CompletableFuture<
                 1.0,
                 AttributeModifier.Operation.ADD_MULTIPLIED_TOTAL
             ),
-            NanoTier.SINGULARITY,
+            NanoTier.MK4,
             Ingredient.of(NanoMiraiItems.YELLOW_RESEARCH_CATALYST),
             NonNullList.of(Ingredient.EMPTY,
                 Ingredient.of(Items.BLAZE_ROD),
@@ -553,7 +553,7 @@ class NanoMiraiRecipeProvider(output: PackOutput, registries: CompletableFuture<
                 -1.0,
                 AttributeModifier.Operation.ADD_VALUE
             ),
-            NanoTier.SINGULARITY,
+            NanoTier.MK4,
             Ingredient.of(NanoMiraiItems.MAGENTA_RESEARCH_CATALYST),
             NonNullList.of(Ingredient.EMPTY,
                 Ingredient.of(Items.FEATHER),
@@ -574,7 +574,7 @@ class NanoMiraiRecipeProvider(output: PackOutput, registries: CompletableFuture<
                 MobEffects.GLOWING,
                 600, 0, false, true, true
             ),
-            NanoTier.PROTO,
+            NanoTier.MK1,
             Ingredient.of(NanoMiraiItems.RED_RESEARCH_CATALYST),
             NonNullList.of(Ingredient.EMPTY,
                 Ingredient.of(Items.GLOWSTONE_DUST),
@@ -592,7 +592,7 @@ class NanoMiraiRecipeProvider(output: PackOutput, registries: CompletableFuture<
                 MobEffects.INVISIBILITY,
                 600, 0, false, true, true
             ),
-            NanoTier.PROTO,
+            NanoTier.MK1,
             Ingredient.of(NanoMiraiItems.BLUE_RESEARCH_CATALYST),
             NonNullList.of(Ingredient.EMPTY,
                 Ingredient.of(Items.ENDER_PEARL),
@@ -610,7 +610,7 @@ class NanoMiraiRecipeProvider(output: PackOutput, registries: CompletableFuture<
                 MobEffects.SLOW_FALLING,
                 600, 0, false, true, true
             ),
-            NanoTier.PROTO,
+            NanoTier.MK1,
             Ingredient.of(NanoMiraiItems.GREEN_RESEARCH_CATALYST),
             NonNullList.of(Ingredient.EMPTY,
                 Ingredient.of(Items.FEATHER),
@@ -628,7 +628,7 @@ class NanoMiraiRecipeProvider(output: PackOutput, registries: CompletableFuture<
                 MobEffects.INFESTED,
                 600, 0, false, true, true
             ),
-            NanoTier.PROTO,
+            NanoTier.MK1,
             Ingredient.of(NanoMiraiItems.RED_RESEARCH_CATALYST),
             NonNullList.of(Ingredient.EMPTY,
                 Ingredient.of(Items.STONE),
@@ -646,7 +646,7 @@ class NanoMiraiRecipeProvider(output: PackOutput, registries: CompletableFuture<
                 MobEffects.WEAVING,
                 600, 0, false, true, true
             ),
-            NanoTier.PROTO,
+            NanoTier.MK1,
             Ingredient.of(NanoMiraiItems.RED_RESEARCH_CATALYST),
             NonNullList.of(Ingredient.EMPTY,
                 Ingredient.of(Items.STRING),
@@ -664,7 +664,7 @@ class NanoMiraiRecipeProvider(output: PackOutput, registries: CompletableFuture<
                 MobEffects.WIND_CHARGED,
                 600, 0, false, true, true
             ),
-            NanoTier.PROTO,
+            NanoTier.MK1,
             Ingredient.of(NanoMiraiItems.BLUE_RESEARCH_CATALYST),
             NonNullList.of(Ingredient.EMPTY,
                 Ingredient.of(Items.BREEZE_ROD),
@@ -682,7 +682,7 @@ class NanoMiraiRecipeProvider(output: PackOutput, registries: CompletableFuture<
                 MobEffects.OOZING,
                 600, 0, false, true, true
             ),
-            NanoTier.PROTO,
+            NanoTier.MK1,
             Ingredient.of(NanoMiraiItems.GREEN_RESEARCH_CATALYST),
             NonNullList.of(Ingredient.EMPTY,
                 Ingredient.of(Items.SLIME_BLOCK),
@@ -701,7 +701,7 @@ class NanoMiraiRecipeProvider(output: PackOutput, registries: CompletableFuture<
                 MobEffects.MOVEMENT_SLOWDOWN,
                 600, 2, false, true, true
             ),
-            NanoTier.CELL,
+            NanoTier.MK2,
             Ingredient.of(NanoMiraiItems.BLUE_RESEARCH_CATALYST),
             NonNullList.of(Ingredient.EMPTY,
                 Ingredient.of(Items.COBWEB),
@@ -719,7 +719,7 @@ class NanoMiraiRecipeProvider(output: PackOutput, registries: CompletableFuture<
                 MobEffects.WEAKNESS,
                 600, 2, false, true, true
             ),
-            NanoTier.CELL,
+            NanoTier.MK2,
             Ingredient.of(NanoMiraiItems.RED_RESEARCH_CATALYST),
             NonNullList.of(Ingredient.EMPTY,
                 Ingredient.of(Items.BONE_MEAL),
@@ -737,7 +737,7 @@ class NanoMiraiRecipeProvider(output: PackOutput, registries: CompletableFuture<
                 MobEffects.LEVITATION,
                 300, 2, false, true, true
             ),
-            NanoTier.CELL,
+            NanoTier.MK2,
             Ingredient.of(NanoMiraiItems.GREEN_RESEARCH_CATALYST),
             NonNullList.of(Ingredient.EMPTY,
                 Ingredient.of(Items.FEATHER),
@@ -756,7 +756,7 @@ class NanoMiraiRecipeProvider(output: PackOutput, registries: CompletableFuture<
                 MobEffects.POISON,
                 600, 2, false, true, true
             ),
-            NanoTier.MATRIX,
+            NanoTier.MK3,
             Ingredient.of(NanoMiraiItems.CYAN_RESEARCH_CATALYST),
             NonNullList.of(Ingredient.EMPTY,
                 Ingredient.of(Items.PUFFERFISH),
@@ -775,7 +775,7 @@ class NanoMiraiRecipeProvider(output: PackOutput, registries: CompletableFuture<
                 MobEffects.DARKNESS,
                 600, 0, false, true, true
             ),
-            NanoTier.SINGULARITY,
+            NanoTier.MK4,
             Ingredient.of(NanoMiraiItems.MAGENTA_RESEARCH_CATALYST),
             NonNullList.of(Ingredient.EMPTY,
                 Ingredient.of(Items.BLACK_DYE),
@@ -793,7 +793,7 @@ class NanoMiraiRecipeProvider(output: PackOutput, registries: CompletableFuture<
                 MobEffects.WITHER,
                 100, 1, false, true, true
             ),
-            NanoTier.SINGULARITY,
+            NanoTier.MK4,
             Ingredient.of(NanoMiraiItems.YELLOW_RESEARCH_CATALYST),
             NonNullList.of(Ingredient.EMPTY,
                 Ingredient.of(Items.WITHER_ROSE),
@@ -873,7 +873,7 @@ class NanoMiraiRecipeProvider(output: PackOutput, registries: CompletableFuture<
     fun synthesizeRecipes(recipeOutput: RecipeOutput) {
         SynthesizeRecipeBuilder(
             ItemStack(NanoMiraiItems.GRAPHITE, 5),
-            NanoTier.PROTO,
+            NanoTier.MK1,
             Blocks.COAL_BLOCK.defaultBlockState(),
             Ingredient.of(NanoMiraiItems.GRAPHITE),
             60
@@ -881,7 +881,7 @@ class NanoMiraiRecipeProvider(output: PackOutput, registries: CompletableFuture<
 
         SynthesizeRecipeBuilder(
             ItemStack(NanoMiraiItems.AMETHYST_LENS),
-            NanoTier.MATRIX,
+            NanoTier.MK3,
             Blocks.TINTED_GLASS.defaultBlockState(),
             Ingredient.of(Items.AMETHYST_SHARD),
             60
@@ -889,7 +889,7 @@ class NanoMiraiRecipeProvider(output: PackOutput, registries: CompletableFuture<
 
         SynthesizeRecipeBuilder(
             ItemStack(NanoMiraiItems.SCULK_LENS),
-            NanoTier.SINGULARITY,
+            NanoTier.MK4,
             Blocks.SCULK_CATALYST.defaultBlockState(),
             Ingredient.of(NanoMiraiItems.AMETHYST_LENS),
             200
@@ -897,7 +897,7 @@ class NanoMiraiRecipeProvider(output: PackOutput, registries: CompletableFuture<
 
         SynthesizeRecipeBuilder(
             ItemStack(Items.SCULK_CATALYST),
-            NanoTier.SINGULARITY,
+            NanoTier.MK4,
             Blocks.BONE_BLOCK.defaultBlockState(),
             Ingredient.of(NanoMiraiItems.SCULMIUM_INGOT),
             200
@@ -905,7 +905,7 @@ class NanoMiraiRecipeProvider(output: PackOutput, registries: CompletableFuture<
 
         SynthesizeRecipeBuilder(
             ItemStack(Items.SCULK_SHRIEKER),
-            NanoTier.SINGULARITY,
+            NanoTier.MK4,
             Blocks.BONE_BLOCK.defaultBlockState(),
             Ingredient.of(NanoMiraiItems.SCULMIUM_CIRCUIT),
             200
@@ -913,7 +913,7 @@ class NanoMiraiRecipeProvider(output: PackOutput, registries: CompletableFuture<
 
         SynthesizeRecipeBuilder(
             ItemStack(Items.CRAFTER),
-            NanoTier.PROTO,
+            NanoTier.MK1,
             Blocks.CRAFTING_TABLE.defaultBlockState(),
             Ingredient.of(Items.IRON_HELMET),
             20
@@ -921,7 +921,7 @@ class NanoMiraiRecipeProvider(output: PackOutput, registries: CompletableFuture<
 
         SynthesizeRecipeBuilder(
             ItemStack(Items.BUDDING_AMETHYST),
-            NanoTier.PROTO,
+            NanoTier.MK1,
             Blocks.RAW_COPPER_BLOCK.defaultBlockState(),
             Ingredient.of(Items.LAPIS_LAZULI),
             200
@@ -929,7 +929,7 @@ class NanoMiraiRecipeProvider(output: PackOutput, registries: CompletableFuture<
 
         SynthesizeRecipeBuilder(
             ItemStack(NanoMiraiItems.REINFORCED_OBSIDIAN),
-            NanoTier.CELL,
+            NanoTier.MK2,
             Blocks.OBSIDIAN.defaultBlockState(),
             Ingredient.of(Items.POPPED_CHORUS_FRUIT),
             600

@@ -1,6 +1,5 @@
 package dev.bluesheep.nanomirai.item
 
-import dev.bluesheep.nanomirai.NanoMirai.rl
 import dev.bluesheep.nanomirai.registry.NanoMiraiItems
 import net.minecraft.core.Holder
 import net.minecraft.network.chat.Component
@@ -8,7 +7,6 @@ import net.minecraft.world.entity.ai.attributes.Attribute
 import net.minecraft.world.entity.ai.attributes.AttributeModifier
 import net.minecraft.world.item.Item
 import net.minecraft.world.item.ItemStack
-import net.minecraft.world.item.TooltipFlag
 import top.theillusivec4.curios.api.CuriosApi
 import top.theillusivec4.curios.api.type.capability.ICurioItem
 
@@ -19,7 +17,6 @@ class SupportNanoItem() : Item(Properties().stacksTo(1)), INanoTieredItem, ICuri
             CuriosApi.addModifier(
                 stack,
                 attribute,
-//                rl("support_${attribute.registeredName.substringAfter(":").replace(".", "_")}"),
                 modifier.id,
                 modifier.amount,
                 modifier.operation,
@@ -28,13 +25,7 @@ class SupportNanoItem() : Item(Properties().stacksTo(1)), INanoTieredItem, ICuri
         }
     }
 
-    override fun appendHoverText(
-        stack: ItemStack,
-        context: TooltipContext,
-        tooltipComponents: MutableList<Component?>,
-        tooltipFlag: TooltipFlag
-    ) {
-        super.appendHoverText(stack, context, tooltipComponents, tooltipFlag)
-        appendTierTooltip(stack, context, tooltipComponents, tooltipFlag)
+    override fun getName(stack: ItemStack): Component {
+        return getTieredName(stack, super.getName(stack))
     }
 }

@@ -15,10 +15,10 @@ enum class NanoTier(
     val maxEffects: Int,
     val blasterCooldown: Int
 ) {
-    PROTO(Rarity.COMMON, 1.0, 1, 1, 120),
-    CELL(Rarity.UNCOMMON, 1.2, 2, 2, 80),
-    MATRIX(Rarity.RARE, 1.5, 3, 3, 40),
-    SINGULARITY(Rarity.EPIC, 2.0, 4, 4, 20);
+    MK1(Rarity.COMMON, 1.0, 1, 1, 120),
+    MK2(Rarity.UNCOMMON, 1.2, 2, 2, 80),
+    MK3(Rarity.RARE, 1.5, 3, 3, 40),
+    MK4(Rarity.EPIC, 2.0, 4, 4, 20);
 
     val nameComponent: Component
         get() = Component.translatable("nanomirai.nano_tier.${name.lowercase()}").withStyle(rarity.styleModifier)

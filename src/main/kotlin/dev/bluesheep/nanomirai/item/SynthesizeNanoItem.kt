@@ -16,7 +16,6 @@ import net.minecraft.world.inventory.ClickAction
 import net.minecraft.world.inventory.Slot
 import net.minecraft.world.item.Item
 import net.minecraft.world.item.ItemStack
-import net.minecraft.world.item.TooltipFlag
 import net.minecraft.world.item.context.UseOnContext
 import net.minecraft.world.level.block.DispenserBlock
 
@@ -24,14 +23,8 @@ class SynthesizeNanoItem : Item(
     Properties()
         .durability(8)
 ), INanoTieredItem {
-    override fun appendHoverText(
-        stack: ItemStack,
-        context: TooltipContext,
-        tooltipComponents: MutableList<Component?>,
-        tooltipFlag: TooltipFlag
-    ) {
-        super.appendHoverText(stack, context, tooltipComponents, tooltipFlag)
-        appendTierTooltip(stack, context, tooltipComponents, tooltipFlag)
+    override fun getName(stack: ItemStack): Component {
+        return getTieredName(stack, super.getName(stack))
     }
 
     override fun useOn(context: UseOnContext): InteractionResult {

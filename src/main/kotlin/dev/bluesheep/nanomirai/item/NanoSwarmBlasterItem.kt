@@ -1,7 +1,6 @@
 package dev.bluesheep.nanomirai.item
 
 import dev.bluesheep.nanomirai.registry.NanoMiraiItems
-import dev.bluesheep.nanomirai.registry.NanoMiraiTags
 import dev.bluesheep.nanomirai.util.NanoTier
 import net.minecraft.client.multiplayer.ClientLevel
 import net.minecraft.core.component.DataComponents
@@ -50,6 +49,10 @@ class NanoSwarmBlasterItem : Item(
         }
     }
 
+    override fun getName(stack: ItemStack): Component {
+        return getTieredName(stack, super.getName(stack))
+    }
+
     override fun appendHoverText(
         stack: ItemStack,
         context: TooltipContext,
@@ -57,7 +60,6 @@ class NanoSwarmBlasterItem : Item(
         tooltipFlag: TooltipFlag
     ) {
         super.appendHoverText(stack, context, tooltipComponents, tooltipFlag)
-        appendTierTooltip(stack, context, tooltipComponents, tooltipFlag)
         val potion = stack.get(DataComponents.POTION_CONTENTS) ?: PotionContents.EMPTY
         potion.addPotionTooltip(tooltipComponents::add, 1.0f, context.tickRate())
     }
