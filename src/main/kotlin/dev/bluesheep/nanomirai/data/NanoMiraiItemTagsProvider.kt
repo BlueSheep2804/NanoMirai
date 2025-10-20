@@ -6,8 +6,10 @@ import dev.bluesheep.nanomirai.registry.NanoMiraiTags
 import net.minecraft.core.HolderLookup
 import net.minecraft.data.PackOutput
 import net.minecraft.data.tags.ItemTagsProvider
+import net.minecraft.tags.ItemTags
 import net.minecraft.world.item.Items
 import net.minecraft.world.level.block.Block
+import net.neoforged.neoforge.common.Tags
 import net.neoforged.neoforge.common.data.ExistingFileHelper
 import java.util.concurrent.CompletableFuture
 
@@ -22,9 +24,24 @@ class NanoMiraiItemTagsProvider(output: PackOutput, lookupProvider: CompletableF
         tag(NanoMiraiTags.CURIOS_SUPPORT_NANO)
             .add(NanoMiraiItems.SUPPORT_NANO)
 
-        tag(NanoMiraiTags.LENS)
+        tag(NanoMiraiTags.LENSES)
             .add(NanoMiraiItems.AMETHYST_LENS)
             .add(NanoMiraiItems.SCULK_LENS)
+
+        tag(NanoMiraiTags.RESEARCH_CATALYSTS)
+            .add(NanoMiraiItems.RED_RESEARCH_CATALYST)
+            .add(NanoMiraiItems.GREEN_RESEARCH_CATALYST)
+            .add(NanoMiraiItems.BLUE_RESEARCH_CATALYST)
+            .add(NanoMiraiItems.CYAN_RESEARCH_CATALYST)
+            .add(NanoMiraiItems.MAGENTA_RESEARCH_CATALYST)
+            .add(NanoMiraiItems.YELLOW_RESEARCH_CATALYST)
+
+        tag(NanoMiraiTags.REPAIR_NANO_INGREDIENTS)
+            .addTags(
+                ItemTags.DIRT,
+                Tags.Items.STONES,
+                Tags.Items.SANDS
+            )
 
         tag(NanoMiraiTags.FUNCTIONAL_NANOMACHINES)
             .add(NanoMiraiItems.SYNTHESIZE_NANO)

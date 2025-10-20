@@ -2,7 +2,7 @@
   "type": "nanomirai:assembler",
   "ingredients": [
     {
-      "count": 2,
+      "count": 4,
       "ingredient": {
         "item": "nanomirai:silicon_wafer"
       }
@@ -10,13 +10,7 @@
     {
       "count": 2,
       "ingredient": {
-        "item": "minecraft:gold_ingot"
-      }
-    },
-    {
-      "count": 2,
-      "ingredient": {
-        "item": "minecraft:redstone"
+        "item": "nanomirai:sculmium_ingot"
       }
     },
     {
@@ -24,10 +18,22 @@
       "ingredient": {
         "item": "nanomirai:reinforced_obsidian"
       }
+    },
+    {
+      "count": 4,
+      "ingredient": {
+        "item": "minecraft:redstone"
+      }
+    },
+    {
+      "count": 2,
+      "ingredient": {
+        "item": "minecraft:sculk_sensor"
+      }
     }
   ],
   "result": {
     "count": 1,
-    "id": "nanomirai:nano_soc"
+    "id": "nanomirai:sculmium_circuit"
   }
 }

@@ -104,7 +104,7 @@ class LaserEngraverMenu(containerId: Int, playerInv: Inventory, val blockEntity:
             }
 
             override fun mayPlace(stack: ItemStack): Boolean {
-                return stack.`is`(NanoMiraiTags.LENS)
+                return stack.`is`(NanoMiraiTags.LENSES)
             }
         })
     }

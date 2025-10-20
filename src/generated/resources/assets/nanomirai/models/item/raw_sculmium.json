@@ -1,6 +1,6 @@
 {
   "parent": "minecraft:item/generated",
   "textures": {
-    "layer0": "nanomirai:item/nano_soc"
+    "layer0": "nanomirai:item/raw_sculmium"
   }
 }

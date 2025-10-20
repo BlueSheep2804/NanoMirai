@@ -1,0 +1,13 @@
+{
+  "type": "nanomirai:laser",
+  "ingredient": {
+    "item": "nanomirai:raw_sculmium"
+  },
+  "lens": {
+    "item": "nanomirai:amethyst_lens"
+  },
+  "result": {
+    "count": 1,
+    "id": "nanomirai:sculmium_ingot"
+  }
+}

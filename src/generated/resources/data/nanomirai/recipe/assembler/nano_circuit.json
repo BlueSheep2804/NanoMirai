@@ -4,13 +4,19 @@
     {
       "count": 2,
       "ingredient": {
-        "item": "nanomirai:silicon"
+        "item": "nanomirai:silicon_wafer"
       }
     },
     {
       "count": 2,
       "ingredient": {
-        "item": "minecraft:iron_ingot"
+        "item": "minecraft:gold_ingot"
+      }
+    },
+    {
+      "count": 1,
+      "ingredient": {
+        "item": "nanomirai:reinforced_obsidian"
       }
     },
     {
@@ -22,7 +28,7 @@
     {
       "count": 1,
       "ingredient": {
-        "item": "minecraft:obsidian"
+        "item": "minecraft:observer"
       }
     }
   ],

@@ -1,18 +1,18 @@
 {
   "type": "nanomirai:synthesize",
   "block": {
-    "Name": "minecraft:sculk_catalyst",
+    "Name": "minecraft:bone_block",
     "Properties": {
-      "bloom": "false"
+      "axis": "y"
     }
   },
   "catalyst": {
-    "item": "nanomirai:amethyst_lens"
+    "item": "nanomirai:sculmium_ingot"
   },
   "duration": 200,
   "result": {
     "count": 1,
-    "id": "nanomirai:sculk_lens"
+    "id": "minecraft:sculk_catalyst"
   },
   "tier": 3
 }

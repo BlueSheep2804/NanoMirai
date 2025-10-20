@@ -4,13 +4,25 @@
     {
       "count": 2,
       "ingredient": {
-        "item": "nanomirai:silicon_wafer"
+        "item": "nanomirai:silicon"
       }
     },
     {
       "count": 2,
       "ingredient": {
-        "item": "minecraft:gold_ingot"
+        "item": "minecraft:iron_ingot"
+      }
+    },
+    {
+      "count": 1,
+      "ingredient": {
+        "item": "minecraft:obsidian"
+      }
+    },
+    {
+      "count": 1,
+      "ingredient": {
+        "item": "minecraft:repeater"
       }
     },
     {
@@ -18,16 +30,10 @@
       "ingredient": {
         "item": "minecraft:redstone"
       }
-    },
-    {
-      "count": 1,
-      "ingredient": {
-        "item": "nanomirai:reinforced_obsidian"
-      }
     }
   ],
   "result": {
     "count": 1,
-    "id": "nanomirai:simple_soc"
+    "id": "nanomirai:normal_circuit"
   }
 }

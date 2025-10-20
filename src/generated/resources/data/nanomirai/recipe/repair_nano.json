@@ -1,0 +1,37 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    {
+      "item": "nanomirai:graphite"
+    },
+    {
+      "tag": "nanomirai:repair_nano_ingredients"
+    },
+    {
+      "tag": "nanomirai:repair_nano_ingredients"
+    },
+    {
+      "tag": "nanomirai:repair_nano_ingredients"
+    },
+    {
+      "tag": "nanomirai:repair_nano_ingredients"
+    },
+    {
+      "tag": "nanomirai:repair_nano_ingredients"
+    },
+    {
+      "tag": "nanomirai:repair_nano_ingredients"
+    },
+    {
+      "tag": "nanomirai:repair_nano_ingredients"
+    },
+    {
+      "tag": "nanomirai:repair_nano_ingredients"
+    }
+  ],
+  "result": {
+    "count": 1,
+    "id": "nanomirai:repair_nano"
+  }
+}

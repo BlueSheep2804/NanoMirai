@@ -1,0 +1,13 @@
+{
+  "type": "nanomirai:laser",
+  "ingredient": {
+    "item": "minecraft:vine"
+  },
+  "lens": {
+    "item": "nanomirai:amethyst_lens"
+  },
+  "result": {
+    "count": 1,
+    "id": "minecraft:glow_lichen"
+  }
+}

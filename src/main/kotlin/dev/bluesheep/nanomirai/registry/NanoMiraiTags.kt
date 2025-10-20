@@ -8,8 +8,11 @@ import net.minecraft.world.item.Item
 
 object NanoMiraiTags {
     val CURIOS_SUPPORT_NANO: TagKey<Item> = TagKey.create(Registries.ITEM, ResourceLocation.fromNamespaceAndPath("curios", "support_nano"))
-    val LENS: TagKey<Item> = TagKey.create(Registries.ITEM, rl("lens"))
+    val LENSES: TagKey<Item> = TagKey.create(Registries.ITEM, rl("lenses"))
+    val RESEARCH_CATALYSTS: TagKey<Item> = TagKey.create(Registries.ITEM, rl("research_catalysts"))
+    val REPAIR_NANO_INGREDIENTS: TagKey<Item> = TagKey.create(Registries.ITEM, rl("repair_nano_ingredients"))
     val FUNCTIONAL_NANOMACHINES: TagKey<Item> = TagKey.create(Registries.ITEM, rl("functional_nanomachines"))
+
     val SHERD_COLD_OCEAN_RUINS: TagKey<Item> = TagKey.create(Registries.ITEM, rl("sherd_cold_ocean_ruins"))
     val SHERD_WARM_OCEAN_RUINS: TagKey<Item> = TagKey.create(Registries.ITEM, rl("sherd_warm_ocean_ruins"))
     val SHERD_DESERT_PYRAMID: TagKey<Item> = TagKey.create(Registries.ITEM, rl("sherd_desert_pyramid"))

@@ -1,11 +1,11 @@
 {
   "parent": "minecraft:recipes/root",
   "criteria": {
-    "has_normal_circuit": {
+    "has_sculmium_ingot": {
       "conditions": {
         "items": [
           {
-            "items": "nanomirai:normal_circuit"
+            "items": "nanomirai:sculmium_ingot"
           }
         ]
       },
@@ -13,7 +13,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "nanomirai:laser_engraver"
+        "recipe": "nanomirai:sculk_sensor_from_sculkium"
       },
       "trigger": "minecraft:recipe_unlocked"
     }
@@ -21,12 +21,12 @@
   "requirements": [
     [
       "has_the_recipe",
-      "has_normal_circuit"
+      "has_sculmium_ingot"
     ]
   ],
   "rewards": {
     "recipes": [
-      "nanomirai:laser_engraver"
+      "nanomirai:sculk_sensor_from_sculkium"
     ]
   }
 }
