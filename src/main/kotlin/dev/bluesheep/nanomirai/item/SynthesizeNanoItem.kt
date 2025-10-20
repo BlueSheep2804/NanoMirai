@@ -87,10 +87,10 @@ class SynthesizeNanoItem : Item(
             val inputBlockPos = blockSource.pos.relative(dispenser.getValue(DispenserBlock.FACING))
             val inputBlock = blockSource.level.getBlockState(inputBlockPos)
 
-            val hasInputBlockRecipe = level.recipeManager.getAllRecipesFor(NanoMiraiRecipeType.SYNTHESIZE).any {
-                inputBlock.`is`(it.value.inputBlock.block)
+            val hasRecipe = level.recipeManager.getAllRecipesFor(NanoMiraiRecipeType.SYNTHESIZE).any {
+                inputBlock.`is`(it.value.inputBlock.block) && itemStack.rarity.ordinal >= it.value.tier
             }
-            if (!hasInputBlockRecipe) {
+            if (!hasRecipe) {
                 return itemStack
             }
 
