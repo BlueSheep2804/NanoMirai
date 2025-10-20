@@ -61,7 +61,17 @@ class NanoMiraiBlockProvider(output: PackOutput, exFileHelper: ExistingFileHelpe
                 .build()
         }
 
-        simpleBlock(NanoMiraiBlocks.NANO_LAB)
+        horizontalBlock(
+            NanoMiraiBlocks.NANO_LAB,
+            models().withExistingParent("nano_lab", mcLoc("block/cube"))
+                .texture("particle", modLoc("block/nano_lab_back"))
+                .texture("down", modLoc("block/nano_lab_bottom"))
+                .texture("up", modLoc("block/nano_lab_top"))
+                .texture("north", modLoc("block/nano_lab_front"))
+                .texture("south", modLoc("block/nano_lab_back"))
+                .texture("west", modLoc("block/nano_lab_side"))
+                .texture("east", modLoc("block/nano_lab_side"))
+        )
 
         simpleBlock(NanoMiraiBlocks.REINFORCED_OBSIDIAN)
     }

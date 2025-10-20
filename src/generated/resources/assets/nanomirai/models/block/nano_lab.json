@@ -1,6 +1,12 @@
 {
-  "parent": "minecraft:block/cube_all",
+  "parent": "minecraft:block/cube",
   "textures": {
-    "all": "nanomirai:block/nano_lab"
+    "down": "nanomirai:block/nano_lab_bottom",
+    "east": "nanomirai:block/nano_lab_side",
+    "north": "nanomirai:block/nano_lab_front",
+    "particle": "nanomirai:block/nano_lab_back",
+    "south": "nanomirai:block/nano_lab_back",
+    "up": "nanomirai:block/nano_lab_top",
+    "west": "nanomirai:block/nano_lab_side"
   }
 }

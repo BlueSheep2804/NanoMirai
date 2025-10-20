@@ -1,7 +1,19 @@
 {
   "variants": {
-    "": {
+    "facing=east": {
+      "model": "nanomirai:block/nano_lab",
+      "y": 90
+    },
+    "facing=north": {
       "model": "nanomirai:block/nano_lab"
+    },
+    "facing=south": {
+      "model": "nanomirai:block/nano_lab",
+      "y": 180
+    },
+    "facing=west": {
+      "model": "nanomirai:block/nano_lab",
+      "y": 270
     }
   }
 }
