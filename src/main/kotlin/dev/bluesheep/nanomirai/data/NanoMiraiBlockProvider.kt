@@ -24,18 +24,24 @@ class NanoMiraiBlockProvider(output: PackOutput, exFileHelper: ExistingFileHelpe
                 .texture("east", modLoc("block/nanomachine_assembler_side"))
         )
 
-        val laserEngraverModel = models().orientable(
+        val laserEngraverModel = models().cube(
             "laser_engraver",
+            modLoc("block/laser_engraver_bottom"),
+            modLoc("block/laser_engraver_top"),
+            modLoc("block/laser_engraver_front"),
+            modLoc("block/laser_engraver_back"),
             modLoc("block/laser_engraver_side"),
-            modLoc("block/laser_engraver"),
-            modLoc("block/laser_engraver_top")
-        )
-        val laserEngraverCraftingModel = models().orientable(
+            modLoc("block/laser_engraver_side"),
+        ).texture("particle", modLoc("block/laser_engraver_back"))
+        val laserEngraverCraftingModel = models().cube(
             "laser_engraver_crafting",
+            modLoc("block/laser_engraver_bottom"),
+            modLoc("block/laser_engraver_top"),
+            modLoc("block/laser_engraver_front_crafting"),
+            modLoc("block/laser_engraver_back"),
             modLoc("block/laser_engraver_side_crafting"),
-            modLoc("block/laser_engraver_crafting"),
-            modLoc("block/laser_engraver_top")
-        )
+            modLoc("block/laser_engraver_side_crafting"),
+        ).texture("particle", modLoc("block/laser_engraver_back"))
         getVariantBuilder(NanoMiraiBlocks.LASER_ENGRAVER).forAllStates { state ->
             val facing = state.getValue(LaserEngraverBlock.HORIZONTAL_FACING)
             val isCrafting = state.getValue(LaserEngraverBlock.CRAFTING)

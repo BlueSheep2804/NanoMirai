@@ -1,8 +1,12 @@
 {
-  "parent": "minecraft:block/orientable",
+  "parent": "minecraft:block/cube",
   "textures": {
-    "front": "nanomirai:block/laser_engraver",
-    "side": "nanomirai:block/laser_engraver_side",
-    "top": "nanomirai:block/laser_engraver_top"
+    "down": "nanomirai:block/laser_engraver_bottom",
+    "east": "nanomirai:block/laser_engraver_side",
+    "north": "nanomirai:block/laser_engraver_front",
+    "particle": "nanomirai:block/laser_engraver_back",
+    "south": "nanomirai:block/laser_engraver_back",
+    "up": "nanomirai:block/laser_engraver_top",
+    "west": "nanomirai:block/laser_engraver_side"
   }
 }
