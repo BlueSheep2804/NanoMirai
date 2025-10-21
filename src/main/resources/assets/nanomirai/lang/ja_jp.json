@@ -37,7 +37,7 @@
   "container.nanomirai.nano_lab": "ナノラボ",
   "recipe.nanomirai.synthesize": "合成",
   "recipe.nanomirai.synthesize.interact": "ブロックに使用して合成開始",
-  "recipe.nanomirai.synthesize.duration": "% ticks",
+  "recipe.nanomirai.synthesize.duration": "%s ticks",
   "recipe.nanomirai.synthesize.duration.tier": "%1$s: %2$s",
   "recipe.nanomirai.synthesize.not_found": "レシピが見つからないよ!",
   "recipe.nanomirai.synthesize.start": "合成開始!",
