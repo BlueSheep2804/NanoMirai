@@ -1,7 +1,7 @@
 {
   "type": "nanomirai:laser",
   "ingredient": {
-    "item": "nanomirai:raw_sculmium"
+    "tag": "c:raw_materials/sculmium"
   },
   "lens": {
     "item": "nanomirai:amethyst_lens"

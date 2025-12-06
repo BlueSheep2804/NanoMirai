@@ -1,4 +1,4 @@
-// 1.21.1	2025-10-21T01:13:11.3827392	Recipes
+// 1.21.1	2025-12-06T17:13:10.3231637	Recipes
 2d4d42b3ab61d8c4d3f7c1683648f0cbf8dd14f6 data/nanomirai/advancement/recipes/misc/graphite.json
 d650f81f6cac10b87450b13def477bb35e48407a data/nanomirai/advancement/recipes/misc/laser_engraver.json
 da3f90422dccea1a6515c8adadc3261e8a3a6136 data/nanomirai/advancement/recipes/misc/nanomachine_assembler.json
@@ -14,7 +14,7 @@ a1e9c54cbfeb865029c46955c8e309352f05b0ae data/nanomirai/advancement/recipes/misc
 0d68797caed7c09f4b57f3fa5b97e861d534d59e data/nanomirai/recipe/assembler/nano_swarm_blaster_mk3.json
 445cd6dbf0ca9176977458bba462bb5cfc5d6b35 data/nanomirai/recipe/assembler/nano_swarm_blaster_mk4.json
 ba019cbdcac760932bc2942ee01dc694f690e880 data/nanomirai/recipe/assembler/normal_circuit.json
-b098825538a2e67a07df80ef8b31bfff1e32438a data/nanomirai/recipe/assembler/sculmium_circuit.json
+d67ce30bc3e6bce868ea678f085cc7425159cccc data/nanomirai/recipe/assembler/sculmium_circuit.json
 36cc84c68c9ec9b8b0eb21867095d5a3181c89d4 data/nanomirai/recipe/assembler/simple_circuit.json
 fa6f873a2ae813d4bd86e2d4084d1872b646d796 data/nanomirai/recipe/assembler/support_nano_mk1.json
 ecf2c50b91a22bbdf57311c5d0bcdc0186a344d0 data/nanomirai/recipe/assembler/support_nano_mk2.json
@@ -62,7 +62,7 @@ f44fd60778987d4f1c7fd603ed15ab3bc551999c data/nanomirai/recipe/laser/green_resea
 cfe7d5dab1b65190e1a285a41a8d1b75dedf1285 data/nanomirai/recipe/laser/magenta_research_catalyst.json
 c63f316105445c7457de2e656130814bd4e301de data/nanomirai/recipe/laser/red_research_catalyst.json
 012b255b9c822a0e046e5fed3ed92613c5e953ea data/nanomirai/recipe/laser/sculk_vein_from_vine.json
-e6fbc94d84b830e288663fcd256390da940be5c4 data/nanomirai/recipe/laser/sculmium_ingot.json
+a5387411152ab406c96bc7e0eebc40144d8a512c data/nanomirai/recipe/laser/sculmium_ingot.json
 5094ca8ce4359f03369f573e319f4b99b9f423e8 data/nanomirai/recipe/laser/silicon_wafer.json
 4a36b137d4843a5032ed8977b08caf3c062e6d56 data/nanomirai/recipe/laser/yellow_research_catalyst.json
 f48075fa1b3e7fbb2b3cbbaa8a3b35198af8181b data/nanomirai/recipe/laser_engraver.json
@@ -70,7 +70,7 @@ d07585d6489e87667908fcf2df002ef2bcdf4152 data/nanomirai/recipe/nanomachine_assem
 a952a7a59f8826f26a048b7f22a8f091f8fe9f05 data/nanomirai/recipe/nano_lab.json
 2d4cf3d7c9f4d338ca854c274282cfc972bdd4ab data/nanomirai/recipe/raw_sculmium.json
 6fda4153dc4e15ffb60738036adc99535c34f0d0 data/nanomirai/recipe/repair_nano.json
-f163b8bebf2a9d2b328167f9281a4770363a5fcc data/nanomirai/recipe/sculk_sensor_from_sculkium.json
+05c96d737104b229c5eb2a565b7759e9e4bba3b9 data/nanomirai/recipe/sculk_sensor_from_sculkium.json
 dbd4cf99592cbddeb32355340ad1b8844edcae00 data/nanomirai/recipe/silicon_from_blasting.json
 28a4736a1b4af47e59d63f1369c7c700cedaf578 data/nanomirai/recipe/simple_circuit.json
 bf759f3f2af35635697b3c6967ac13a9793209a1 data/nanomirai/recipe/synthesize/amethyst_lens.json
@@ -78,6 +78,6 @@ bf759f3f2af35635697b3c6967ac13a9793209a1 data/nanomirai/recipe/synthesize/amethy
 e2706c509f2f03b9f38635fe43c546543e245230 data/nanomirai/recipe/synthesize/crafter_from_iron_helmet.json
 cebd64e7b522099a810bb26fca80ac4fade52d8b data/nanomirai/recipe/synthesize/graphite.json
 5599d7627949f6296078da96fc496b74c2819c0a data/nanomirai/recipe/synthesize/reinforced_obsidian.json
-d1b9341fe5ff0d22f1a874b153cd6e5b1756b372 data/nanomirai/recipe/synthesize/sculk_catalyst_from_sculmium_ingot.json
+a945475201fff6bc5af44b1cedeeaf47d5cd3b7d data/nanomirai/recipe/synthesize/sculk_catalyst_from_sculmium_ingot.json
 efd7bd0973294fcd49c32a421f7e95080935fc05 data/nanomirai/recipe/synthesize/sculk_lens.json
 56a1b0ff55257bdec74543a1962325e310d5f4dc data/nanomirai/recipe/synthesize/sculk_shrieker_from_sculmium_circuit.json

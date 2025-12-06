@@ -10,7 +10,7 @@
     {
       "count": 2,
       "ingredient": {
-        "item": "nanomirai:sculmium_ingot"
+        "tag": "c:ingots/sculmium"
       }
     },
     {

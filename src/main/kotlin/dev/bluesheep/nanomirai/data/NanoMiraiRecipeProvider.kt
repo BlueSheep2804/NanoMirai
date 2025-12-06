@@ -131,7 +131,7 @@ class NanoMiraiRecipeProvider(output: PackOutput, registries: CompletableFuture<
 
         // Sculk Sensor
         ShapedRecipeBuilder.shaped(RecipeCategory.MISC, Items.SCULK_SENSOR)
-            .define('C', NanoMiraiItems.SCULMIUM_INGOT)
+            .define('C', NanoMiraiTags.SCULMIUM_INGOT)
             .define('V', Items.SCULK_VEIN)
             .define('S', Items.SCULK)
             .pattern("VCV")
@@ -185,7 +185,7 @@ class NanoMiraiRecipeProvider(output: PackOutput, registries: CompletableFuture<
             NonNullList.of(
                 StackedIngredient.EMPTY,
                 StackedIngredient.of(4, NanoMiraiItems.SILICON_WAFER),
-                StackedIngredient.of(2, NanoMiraiItems.SCULMIUM_INGOT),
+                StackedIngredient.of(2, NanoMiraiTags.SCULMIUM_INGOT),
                 StackedIngredient.of(1, NanoMiraiBlocks.REINFORCED_OBSIDIAN),
                 StackedIngredient.of(4, Items.REDSTONE),
                 StackedIngredient.of(2, Items.SCULK_SENSOR),
@@ -814,7 +814,7 @@ class NanoMiraiRecipeProvider(output: PackOutput, registries: CompletableFuture<
 
         LaserRecipeBuilder(
             ItemStack(NanoMiraiItems.SCULMIUM_INGOT),
-            Ingredient.of(NanoMiraiItems.RAW_SCULMIUM),
+            Ingredient.of(NanoMiraiTags.RAW_SCULMIUM),
             Ingredient.of(NanoMiraiItems.AMETHYST_LENS)
         ).save(recipeOutput)
 
@@ -899,7 +899,7 @@ class NanoMiraiRecipeProvider(output: PackOutput, registries: CompletableFuture<
             ItemStack(Items.SCULK_CATALYST),
             NanoTier.MK4,
             Blocks.BONE_BLOCK.defaultBlockState(),
-            Ingredient.of(NanoMiraiItems.SCULMIUM_INGOT),
+            Ingredient.of(NanoMiraiTags.SCULMIUM_INGOT),
             200
         ).save(recipeOutput, rl("sculk_catalyst_from_sculmium_ingot"))
 

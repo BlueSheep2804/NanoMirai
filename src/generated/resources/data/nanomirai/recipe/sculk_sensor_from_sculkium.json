@@ -3,7 +3,7 @@
   "category": "misc",
   "key": {
     "C": {
-      "item": "nanomirai:sculmium_ingot"
+      "tag": "c:ingots/sculmium"
     },
     "S": {
       "item": "minecraft:sculk"

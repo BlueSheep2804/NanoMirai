@@ -24,6 +24,18 @@ class NanoMiraiItemTagsProvider(output: PackOutput, lookupProvider: CompletableF
         tag(NanoMiraiTags.CURIOS_SUPPORT_NANO)
             .add(NanoMiraiItems.SUPPORT_NANO)
 
+        tag(Tags.Items.INGOTS)
+            .add(NanoMiraiItems.SCULMIUM_INGOT)
+
+        tag(NanoMiraiTags.SCULMIUM_INGOT)
+            .add(NanoMiraiItems.SCULMIUM_INGOT)
+
+        tag(Tags.Items.RAW_MATERIALS)
+            .add(NanoMiraiItems.RAW_SCULMIUM)
+
+        tag(NanoMiraiTags.RAW_SCULMIUM)
+            .add(NanoMiraiItems.RAW_SCULMIUM)
+
         tag(NanoMiraiTags.LENSES)
             .add(NanoMiraiItems.AMETHYST_LENS)
             .add(NanoMiraiItems.SCULK_LENS)

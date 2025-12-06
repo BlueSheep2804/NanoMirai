@@ -1,5 +1,9 @@
-// 1.21.1	2025-10-20T20:33:47.3654611	Tags for minecraft:item mod id nanomirai
+// 1.21.1	2025-12-06T17:02:30.4668649	Tags for minecraft:item mod id nanomirai
 eb8425c2b34c8f3d2b33f3b93649cf197a2280e5 data/curios/tags/item/support_nano.json
+4ce5fab4f712c652794a477958ac8c7fefffac28 data/c/tags/item/ingots.json
+4ce5fab4f712c652794a477958ac8c7fefffac28 data/c/tags/item/ingots/sculmium.json
+657f04b0ebbf34daa0c222c155cb8216e4643095 data/c/tags/item/raw_materials.json
+657f04b0ebbf34daa0c222c155cb8216e4643095 data/c/tags/item/raw_materials/sculmium.json
 7abd3e504cc2d5ebff5291a2cd03de5b507a4875 data/nanomirai/tags/item/functional_nanomachines.json
 c1e3658ac5bc882085db65b8cf34d1c100fd7d25 data/nanomirai/tags/item/lenses.json
 dc1709428a6f79828f2d280377126869921bbac9 data/nanomirai/tags/item/repair_nano_ingredients.json

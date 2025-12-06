@@ -7,7 +7,7 @@
     }
   },
   "catalyst": {
-    "item": "nanomirai:sculmium_ingot"
+    "tag": "c:ingots/sculmium"
   },
   "duration": 200,
   "result": {
