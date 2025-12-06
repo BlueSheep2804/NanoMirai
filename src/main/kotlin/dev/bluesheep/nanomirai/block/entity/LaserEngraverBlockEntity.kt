@@ -112,16 +112,19 @@ class LaserEngraverBlockEntity(pos: BlockPos, blockState: BlockState) : BlockEnt
     private fun craftItem() {
         val recipe = getCurrentRecipe()
         if (recipe.isEmpty) return
-        val output = recipe.get().value.result
+        val result = recipe.get().value.result
 
         itemHandler.extractItem(1, 1, false)
-        itemHandler.setStackInSlot(
-            OUTPUT_SLOT,
-            ItemStack(
-                output.item,
-                itemHandler.getStackInSlot(OUTPUT_SLOT).count + output.count
+
+        val outputStack = itemHandler.getStackInSlot(OUTPUT_SLOT)
+        if (ItemStack.isSameItemSameComponents(outputStack, result)) {
+            outputStack.count += result.count
+        } else {
+            itemHandler.setStackInSlot(
+                OUTPUT_SLOT,
+                result.copy()
             )
-        )
+        }
     }
 
     private fun hasCraftingFinished(): Boolean {
@@ -152,7 +155,7 @@ class LaserEngraverBlockEntity(pos: BlockPos, blockState: BlockState) : BlockEnt
 
     private fun canInsertItemIntoOutputSlot(output: ItemStack): Boolean {
         return itemHandler.getStackInSlot(OUTPUT_SLOT).isEmpty ||
-                itemHandler.getStackInSlot(OUTPUT_SLOT).item == output.item
+                ItemStack.isSameItemSameComponents(itemHandler.getStackInSlot(OUTPUT_SLOT), output)
     }
 
     private fun canInsertAmountIntoOutputSlot(count: Int): Boolean {
