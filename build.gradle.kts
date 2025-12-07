@@ -1,8 +1,11 @@
+import org.jetbrains.kotlin.parsing.parseBoolean
+
 plugins {
     id("java-library")
     id("maven-publish")
     id("idea")
     id("net.neoforged.moddev") version "2.0.107"
+    id("me.modmuss50.mod-publish-plugin") version "1.1.0"
     id("org.jetbrains.kotlin.jvm") version "2.0.0"
 }
 
@@ -18,15 +21,23 @@ object ModInfo {
     const val mod_id = "nanomirai"
     const val mod_name = "NanoMirai"
     const val mod_license = "MIT"
-    const val mod_version = "1.0.2-SNAPSHOT"
+    const val mod_version = "1.0.2"
     const val mod_group_id = "dev.bluesheep"
     const val mod_authors = "BlueSheep2804"
     const val mod_description = ""
     const val jei_version = "19.21.0.247"
     const val curios_version = "9.4.2+1.21.1"
+
 }
 
-version = ModInfo.mod_version
+val isSnapshot = parseBoolean(project.property("is_snapshot") as String)
+val modVersion = if (isSnapshot) {
+    "${ModInfo.mod_version}-SNAPSHOT"
+} else {
+    ModInfo.mod_version
+}
+
+version = modVersion
 group = ModInfo.mod_group_id
 
 base {
@@ -130,7 +141,7 @@ var generateModMetadata = tasks.register("generateModMetadata", ProcessResources
         "mod_id" to ModInfo.mod_id,
         "mod_name" to ModInfo.mod_name,
         "mod_license" to ModInfo.mod_license,
-        "mod_version" to ModInfo.mod_version,
+        "mod_version" to modVersion,
         "mod_authors" to ModInfo.mod_authors,
         "mod_description" to ModInfo.mod_description
     )
@@ -150,5 +161,35 @@ idea {
     module {
         isDownloadSources = true
         isDownloadJavadoc = true
+    }
+}
+
+publishMods {
+    displayName = "${ModInfo.mod_name} $modVersion"
+    changelog = file("CHANGELOG.md").readText()
+    type = STABLE
+    file = tasks.jar.get().archiveFile
+    modLoaders.add("neoforge")
+
+    dryRun = true
+
+    curseforge {
+        accessToken = providers.environmentVariable("CURSEFORGE_API_KEY").get()
+        projectId = "1366797"
+        minecraftVersions.add(ModInfo.minecraft_version)
+        clientRequired = true
+        serverRequired = true
+
+        requires("kotlin-for-forge", "curios")
+        optional("jei")
+    }
+
+    modrinth {
+        accessToken = providers.environmentVariable("MODRINTH_TOKEN").get()
+        projectId = "XCjnR9PI"
+        minecraftVersions.add(ModInfo.minecraft_version)
+
+        requires("kotlin-for-forge", "curios")
+        optional("jei")
     }
 }
