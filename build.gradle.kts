@@ -171,10 +171,10 @@ publishMods {
     file = tasks.jar.get().archiveFile
     modLoaders.add("neoforge")
 
-    dryRun = true
+    //dryRun = true
 
     curseforge {
-        accessToken = providers.environmentVariable("CURSEFORGE_API_KEY").get()
+        accessToken = providers.environmentVariable("CURSEFORGE_API_KEY").getOrElse("")
         projectId = "1366797"
         minecraftVersions.add(ModInfo.minecraft_version)
         clientRequired = true
@@ -185,7 +185,7 @@ publishMods {
     }
 
     modrinth {
-        accessToken = providers.environmentVariable("MODRINTH_TOKEN").get()
+        accessToken = providers.environmentVariable("MODRINTH_TOKEN").getOrElse("")
         projectId = "XCjnR9PI"
         minecraftVersions.add(ModInfo.minecraft_version)
 
