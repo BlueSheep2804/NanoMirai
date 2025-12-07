@@ -166,7 +166,7 @@ idea {
 
 publishMods {
     displayName = "${ModInfo.mod_name} $modVersion"
-    changelog = file("CHANGELOG.md").readText()
+    changelog = file("changelog.md").readText()
     type = STABLE
     file = tasks.jar.get().archiveFile
     modLoaders.add("neoforge")
