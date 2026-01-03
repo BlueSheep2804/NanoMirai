@@ -4,7 +4,10 @@ import dev.bluesheep.nanomirai.recipe.assembler.AssemblerRecipe
 import dev.bluesheep.nanomirai.recipe.MultipleItemRecipeInput
 import dev.bluesheep.nanomirai.registry.NanoMiraiBlockEntities
 import dev.bluesheep.nanomirai.registry.NanoMiraiRecipeType
+import dev.bluesheep.nanomirai.util.InputItemHandler
+import dev.bluesheep.nanomirai.util.OutputItemHandler
 import net.minecraft.core.BlockPos
+import net.minecraft.core.Direction
 import net.minecraft.core.HolderLookup
 import net.minecraft.nbt.CompoundTag
 import net.minecraft.network.protocol.Packet
@@ -18,6 +21,7 @@ import net.minecraft.world.item.crafting.RecipeHolder
 import net.minecraft.world.level.Level
 import net.minecraft.world.level.block.entity.BlockEntity
 import net.minecraft.world.level.block.state.BlockState
+import net.neoforged.neoforge.items.IItemHandler
 import net.neoforged.neoforge.items.ItemStackHandler
 import java.util.Optional
 
@@ -25,8 +29,16 @@ class AssemblerBlockEntity(pos: BlockPos, blockState: BlockState) : BlockEntity(
     companion object {
         const val SIZE = 10
         const val OUTPUT_SLOT = 0
+        fun capabilityProvider(blockEntity: AssemblerBlockEntity, direction: Direction): IItemHandler {
+            return when (direction) {
+                Direction.DOWN -> blockEntity.outputItemHandler
+                else -> blockEntity.inputItemHandler
+            }
+        }
     }
     val itemHandler = ItemStackHandler(SIZE)
+    val inputItemHandler = InputItemHandler(itemHandler)
+    val outputItemHandler = OutputItemHandler(itemHandler, OUTPUT_SLOT)
     var progress = 0
     var maxProgress = 100
     val data: ContainerData = object : ContainerData {

@@ -1,5 +1,7 @@
 package dev.bluesheep.nanomirai
 
+import dev.bluesheep.nanomirai.block.entity.AssemblerBlockEntity
+import dev.bluesheep.nanomirai.block.entity.LaserEngraverBlockEntity
 import dev.bluesheep.nanomirai.data.NanoMiraiBlockProvider
 import dev.bluesheep.nanomirai.data.NanoMiraiBlockTagsProvider
 import dev.bluesheep.nanomirai.data.NanoMiraiCuriosProvider
@@ -15,6 +17,8 @@ import net.neoforged.bus.api.SubscribeEvent
 import net.neoforged.fml.common.EventBusSubscriber
 import net.neoforged.fml.common.Mod
 import net.neoforged.fml.event.lifecycle.FMLCommonSetupEvent
+import net.neoforged.neoforge.capabilities.Capabilities
+import net.neoforged.neoforge.capabilities.RegisterCapabilitiesEvent
 import net.neoforged.neoforge.data.event.GatherDataEvent
 import org.apache.logging.log4j.Level
 import org.apache.logging.log4j.LogManager
@@ -50,6 +54,20 @@ object NanoMirai {
     fun setup(event: FMLCommonSetupEvent) {
         LOGGER.info("Hello from server setup")
         DispenserBlock.registerBehavior(NanoMiraiItems.SYNTHESIZE_NANO, SynthesizeNanoItem.DispenserBehavior())
+    }
+
+    @SubscribeEvent
+    fun registerCapabilities(event: RegisterCapabilitiesEvent) {
+        event.registerBlockEntity(
+            Capabilities.ItemHandler.BLOCK,
+            NanoMiraiBlockEntities.NANOMACHINE_ASSEMBLER,
+            AssemblerBlockEntity::capabilityProvider
+        )
+        event.registerBlockEntity(
+            Capabilities.ItemHandler.BLOCK,
+            NanoMiraiBlockEntities.LASER_ENGRAVER,
+            LaserEngraverBlockEntity::capabilityProvider
+        )
     }
 
     @SubscribeEvent

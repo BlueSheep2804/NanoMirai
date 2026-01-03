@@ -5,7 +5,10 @@ import dev.bluesheep.nanomirai.recipe.DualRecipeInput
 import dev.bluesheep.nanomirai.recipe.laser.LaserRecipe
 import dev.bluesheep.nanomirai.registry.NanoMiraiBlockEntities
 import dev.bluesheep.nanomirai.registry.NanoMiraiRecipeType
+import dev.bluesheep.nanomirai.util.InputSingleItemHandler
+import dev.bluesheep.nanomirai.util.OutputItemHandler
 import net.minecraft.core.BlockPos
+import net.minecraft.core.Direction
 import net.minecraft.core.HolderLookup
 import net.minecraft.nbt.CompoundTag
 import net.minecraft.network.protocol.Packet
@@ -19,6 +22,7 @@ import net.minecraft.world.item.crafting.RecipeHolder
 import net.minecraft.world.level.Level
 import net.minecraft.world.level.block.entity.BlockEntity
 import net.minecraft.world.level.block.state.BlockState
+import net.neoforged.neoforge.items.IItemHandler
 import net.neoforged.neoforge.items.ItemStackHandler
 import java.util.*
 
@@ -26,8 +30,18 @@ class LaserEngraverBlockEntity(pos: BlockPos, blockState: BlockState) : BlockEnt
     companion object {
         const val SIZE = 3
         const val OUTPUT_SLOT = 0
+        fun capabilityProvider(blockEntity: LaserEngraverBlockEntity, direction: Direction): IItemHandler {
+            return when (direction) {
+                Direction.DOWN -> blockEntity.outputItemHandler
+                Direction.UP -> blockEntity.inputItemHandler
+                else -> blockEntity.lensItemHandler
+            }
+        }
     }
     val itemHandler = ItemStackHandler(SIZE)
+    val inputItemHandler = InputSingleItemHandler(itemHandler, 1)
+    val lensItemHandler = InputSingleItemHandler(itemHandler, 2)
+    val outputItemHandler = OutputItemHandler(itemHandler, OUTPUT_SLOT)
     var progress = 0
     var maxProgress = 100
     val data: ContainerData = object : ContainerData {

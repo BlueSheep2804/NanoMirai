@@ -119,6 +119,13 @@ repositories {
             includeGroup("top.theillusivec4.curios")
         }
     }
+    maven {
+        name = "Modrinth"
+        url = uri("https://api.modrinth.com/maven")
+        content {
+            includeGroup("maven.modrinth")
+        }
+    }
 }
 
 dependencies {
@@ -129,6 +136,8 @@ dependencies {
 
     compileOnly("top.theillusivec4.curios:curios-neoforge:${ModInfo.curios_version}:api")
     runtimeOnly("top.theillusivec4.curios:curios-neoforge:${ModInfo.curios_version}")
+
+    runtimeOnly("maven.modrinth:pipez:neoforge-1.21.1-1.2.19")
 }
 
 var generateModMetadata = tasks.register("generateModMetadata", ProcessResources::class.java) {
