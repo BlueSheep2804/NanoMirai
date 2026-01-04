@@ -30,8 +30,9 @@ class LaserEngraverBlockEntity(pos: BlockPos, blockState: BlockState) : BlockEnt
     companion object {
         const val SIZE = 3
         const val OUTPUT_SLOT = 0
-        fun capabilityProvider(blockEntity: LaserEngraverBlockEntity, direction: Direction): IItemHandler {
+        fun capabilityProvider(blockEntity: LaserEngraverBlockEntity, direction: Direction?): IItemHandler {
             return when (direction) {
+                null -> blockEntity.itemHandler
                 Direction.DOWN -> blockEntity.outputItemHandler
                 Direction.UP -> blockEntity.inputItemHandler
                 else -> blockEntity.lensItemHandler

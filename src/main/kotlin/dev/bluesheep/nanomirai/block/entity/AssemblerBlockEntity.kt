@@ -29,8 +29,9 @@ class AssemblerBlockEntity(pos: BlockPos, blockState: BlockState) : BlockEntity(
     companion object {
         const val SIZE = 10
         const val OUTPUT_SLOT = 0
-        fun capabilityProvider(blockEntity: AssemblerBlockEntity, direction: Direction): IItemHandler {
+        fun capabilityProvider(blockEntity: AssemblerBlockEntity, direction: Direction?): IItemHandler {
             return when (direction) {
+                null -> blockEntity.itemHandler
                 Direction.DOWN -> blockEntity.outputItemHandler
                 else -> blockEntity.inputItemHandler
             }
