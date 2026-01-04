@@ -27,7 +27,7 @@ object ModInfo {
     const val mod_description = ""
     const val jei_version = "19.21.0.247"
     const val curios_version = "9.4.2+1.21.1"
-
+    const val jade_version = "15.8.3+neoforge"
 }
 
 val isSnapshot = parseBoolean(project.property("is_snapshot") as String)
@@ -136,6 +136,8 @@ dependencies {
 
     compileOnly("top.theillusivec4.curios:curios-neoforge:${ModInfo.curios_version}:api")
     runtimeOnly("top.theillusivec4.curios:curios-neoforge:${ModInfo.curios_version}")
+
+    implementation("maven.modrinth:jade:${ModInfo.jade_version}")
 
     runtimeOnly("maven.modrinth:pipez:neoforge-1.21.1-1.2.19")
 }

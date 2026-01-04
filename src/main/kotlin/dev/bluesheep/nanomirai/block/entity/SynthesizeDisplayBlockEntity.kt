@@ -40,7 +40,7 @@ class SynthesizeDisplayBlockEntity(pos: BlockPos, blockState: BlockState) : Bloc
     companion object {
         fun capabilityProvider(blockEntity: SynthesizeDisplayBlockEntity, direction: Direction?): IItemHandler? {
             return when (direction) {
-                null -> blockEntity.inputItemHandler
+                null -> null
                 else -> blockEntity.inputItemHandler
             }
         }
@@ -112,6 +112,15 @@ class SynthesizeDisplayBlockEntity(pos: BlockPos, blockState: BlockState) : Bloc
         setChanged()
     }
 
+    fun getRecipeResult(): ItemStack {
+        val recipe = getCurrentRecipe()
+        return if (recipe.isPresent) {
+            recipe.get().value.result
+        } else {
+            ItemStack.EMPTY
+        }
+    }
+
     fun tick(level: Level, pos: BlockPos, state: BlockState) {
         if (!itemHandler.getStackInSlot(1).isEmpty && hasRecipe()) {
             increaseCraftingProgress()
@@ -168,8 +177,7 @@ class SynthesizeDisplayBlockEntity(pos: BlockPos, blockState: BlockState) : Bloc
     }
 
     private fun craftItem(level: Level) {
-        val recipe = getCurrentRecipe()
-        val output = recipe.get().value.result.copy()
+        val output = getRecipeResult().copy()
         val outputItem = output.item
 
         if (outputItem is BlockItem) {

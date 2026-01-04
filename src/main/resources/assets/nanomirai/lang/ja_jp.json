@@ -6,7 +6,10 @@
   "nanomirai.nano_tier.mk4": "Mk.4",
   "block.nanomirai.nanomachine_assembler": "ナノマシン組立機",
   "block.nanomirai.laser_engraver": "レーザー加工機",
-  "block.nanomirai.synthesize_display": "合成中...",
+  "block.nanomirai.synthesize_display": "合成用ブロック",
+  "block.nanomirai.synthesize_display.idle": "待機中",
+  "block.nanomirai.synthesize_display.crafting": "合成中...",
+  "block.nanomirai.synthesize_display.invalid": "アイテムが無効",
   "block.nanomirai.nano_lab": "ナノラボ",
   "block.nanomirai.reinforced_obsidian": "強化された黒曜石",
   "curios.identifier.support_nano": "サポートナノ",
@@ -44,5 +47,6 @@
   "recipe.nanomirai.nano_lab.category": "%1$s - %2$s",
   "recipe.nanomirai.nano_lab.attribute": "属性",
   "recipe.nanomirai.nano_lab.effect": "効果",
-  "recipe.nanomirai.nano_lab.tier": "%s+"
+  "recipe.nanomirai.nano_lab.tier": "%s+",
+  "config.jade.plugin_nanomirai.synthesize_display": "合成用ブロック"
 }

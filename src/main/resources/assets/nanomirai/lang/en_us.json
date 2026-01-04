@@ -6,7 +6,10 @@
   "nanomirai.nano_tier.mk4": "Mk.4",
   "block.nanomirai.nanomachine_assembler": "Nanomachine Assembler",
   "block.nanomirai.laser_engraver": "Laser Engraver",
-  "block.nanomirai.synthesize_display": "Synthesizing...",
+  "block.nanomirai.synthesize_display": "Synthesize Display",
+  "block.nanomirai.synthesize_display.idle": "Idle",
+  "block.nanomirai.synthesize_display.crafting": "Synthesizing...",
+  "block.nanomirai.synthesize_display.invalid": "Invalid Item",
   "block.nanomirai.nano_lab": "Nano Lab",
   "block.nanomirai.reinforced_obsidian": "Reinforced Obsidian",
   "curios.identifier.support_nano": "Support Nano",
@@ -44,5 +47,6 @@
   "recipe.nanomirai.nano_lab.category": "%1$s - %2$s",
   "recipe.nanomirai.nano_lab.attribute": "Attribute",
   "recipe.nanomirai.nano_lab.effect": "Effect",
-  "recipe.nanomirai.nano_lab.tier": "%s+"
+  "recipe.nanomirai.nano_lab.tier": "%s+",
+  "config.jade.plugin_nanomirai.synthesize_display": "Synthesize Display"
 }
