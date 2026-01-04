@@ -1,7 +1,6 @@
 package dev.bluesheep.nanomirai
 
-import dev.bluesheep.nanomirai.block.entity.AssemblerBlockEntity
-import dev.bluesheep.nanomirai.block.entity.LaserEngraverBlockEntity
+import dev.bluesheep.nanomirai.block.entity.*
 import dev.bluesheep.nanomirai.data.NanoMiraiBlockProvider
 import dev.bluesheep.nanomirai.data.NanoMiraiBlockTagsProvider
 import dev.bluesheep.nanomirai.data.NanoMiraiCuriosProvider
@@ -67,6 +66,11 @@ object NanoMirai {
             Capabilities.ItemHandler.BLOCK,
             NanoMiraiBlockEntities.LASER_ENGRAVER,
             LaserEngraverBlockEntity::capabilityProvider
+        )
+        event.registerBlockEntity(
+            Capabilities.ItemHandler.BLOCK,
+            NanoMiraiBlockEntities.SYNTHESIZE_DISPLAY,
+            SynthesizeDisplayBlockEntity::capabilityProvider
         )
     }
 

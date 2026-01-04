@@ -5,6 +5,7 @@ import dev.bluesheep.nanomirai.recipe.BlockWithPairItemInput
 import dev.bluesheep.nanomirai.recipe.synthesize.SynthesizeRecipe
 import dev.bluesheep.nanomirai.registry.NanoMiraiBlockEntities
 import dev.bluesheep.nanomirai.registry.NanoMiraiRecipeType
+import dev.bluesheep.nanomirai.util.InputSingleItemHandler
 import dev.bluesheep.nanomirai.util.NanoTier
 import dev.bluesheep.nanomirai.util.SynthesizeState
 import net.minecraft.core.BlockPos
@@ -31,12 +32,34 @@ import net.minecraft.world.level.Level
 import net.minecraft.world.level.block.Blocks
 import net.minecraft.world.level.block.entity.BlockEntity
 import net.minecraft.world.level.block.state.BlockState
+import net.neoforged.neoforge.items.IItemHandler
 import net.neoforged.neoforge.items.ItemStackHandler
 import java.util.*
-import kotlin.math.floor
 
-class SynthesizeDisplayBlockEntity(pos: BlockPos, blockState: BlockState) : BlockEntity(NanoMiraiBlockEntities.SYNTHESIZE_DISPLAY, pos, blockState), WorldlyContainer {
+class SynthesizeDisplayBlockEntity(pos: BlockPos, blockState: BlockState) : BlockEntity(NanoMiraiBlockEntities.SYNTHESIZE_DISPLAY, pos, blockState) {
+    companion object {
+        fun capabilityProvider(blockEntity: SynthesizeDisplayBlockEntity, direction: Direction?): IItemHandler? {
+            return when (direction) {
+                null -> blockEntity.inputItemHandler
+                else -> blockEntity.inputItemHandler
+            }
+        }
+    }
     val itemHandler = ItemStackHandler(2)
+    val inputItemHandler = object : InputSingleItemHandler(itemHandler, 1) {
+        override fun insertItem(slot: Int, stack: ItemStack, simulate: Boolean): ItemStack {
+            if (itemHandler.getStackInSlot(slotId).isEmpty) {
+                val newStack = stack.copy()
+                setSecondaryItem(newStack.split(1))
+                return newStack
+            }
+            return stack
+        }
+
+        override fun extractItem(slot: Int, amount: Int, simulate: Boolean): ItemStack {
+            return ItemStack.EMPTY
+        }
+    }
     var block: BlockState = Blocks.AIR.defaultBlockState()
     var progress = 0
     var maxProgress = 100
@@ -184,54 +207,4 @@ class SynthesizeDisplayBlockEntity(pos: BlockPos, blockState: BlockState) : Bloc
             level!!
         )
     }
-
-    override fun getSlotsForFace(p0: Direction): IntArray {
-        return intArrayOf(1)
-    }
-
-    override fun canPlaceItemThroughFace(
-        p0: Int,
-        p1: ItemStack,
-        p2: Direction?
-    ): Boolean {
-        return itemHandler.getStackInSlot(1).isEmpty
-    }
-
-    override fun canTakeItemThroughFace(
-        p0: Int,
-        p1: ItemStack,
-        p2: Direction
-    ): Boolean {
-        return false
-    }
-
-    override fun getContainerSize(): Int {
-        return 1
-    }
-
-    override fun isEmpty(): Boolean {
-        return itemHandler.getStackInSlot(1).isEmpty
-    }
-
-    override fun getItem(p0: Int): ItemStack {
-        return itemHandler.getStackInSlot(1)
-    }
-
-    override fun removeItem(p0: Int, p1: Int): ItemStack {
-        return ItemStack.EMPTY
-    }
-
-    override fun removeItemNoUpdate(p0: Int): ItemStack {
-        return ItemStack.EMPTY
-    }
-
-    override fun setItem(p0: Int, stack: ItemStack) {
-        setSecondaryItem(stack)
-    }
-
-    override fun stillValid(p0: Player): Boolean {
-        return false
-    }
-
-    override fun clearContent() {}
 }
