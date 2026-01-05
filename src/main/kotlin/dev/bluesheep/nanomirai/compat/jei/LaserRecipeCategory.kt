@@ -46,7 +46,7 @@ class LaserRecipeCategory(helper: IGuiHelper): IRecipeCategory<LaserRecipe> {
         focuses: IFocusGroup
     ) {
         builder.addSlot(RecipeIngredientRole.INPUT, 1, 27).addIngredients(recipe.ingredient).setStandardSlotBackground()
-        builder.addSlot(RecipeIngredientRole.CATALYST, 30, 1).addIngredients(recipe.lens).setStandardSlotBackground()
+        builder.addSlot(RecipeIngredientRole.CATALYST, 30, 1).addItemStacks(JeiUtil.addNotConsumedLore(recipe.lens)).setStandardSlotBackground()
         builder.addSlot(RecipeIngredientRole.OUTPUT, 63, 27).addItemStack(recipe.result).setOutputSlotBackground()
     }
 

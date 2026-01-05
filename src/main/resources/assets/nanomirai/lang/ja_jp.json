@@ -38,6 +38,7 @@
   "container.nanomirai.nanomachine_assembler": "ナノマシン組立機",
   "container.nanomirai.laser_engraver": "レーザー加工機",
   "container.nanomirai.nano_lab": "ナノラボ",
+  "recipe.nanomirai.not_consumed": "消費されない",
   "recipe.nanomirai.synthesize": "合成",
   "recipe.nanomirai.synthesize.interact": "ブロックに使用して合成開始",
   "recipe.nanomirai.synthesize.duration": "%s ticks",

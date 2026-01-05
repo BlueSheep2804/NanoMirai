@@ -30,7 +30,9 @@ abstract class AbstractLabRecipeCategory<R: AbstractLabRecipe> : IRecipeCategory
         for (i in 0 until 6) {
             items.add(if (i >= recipe.items.size) Ingredient.EMPTY else recipe.items[i])
         }
-        builder.addSlot(RecipeIngredientRole.CATALYST, 37, 37).addIngredients(recipe.catalyst).setStandardSlotBackground()
+        builder.addSlot(RecipeIngredientRole.CATALYST, 37, 37)
+            .addItemStacks(JeiUtil.addNotConsumedLore(recipe.catalyst))
+            .setStandardSlotBackground()
 
         builder.addSlot(RecipeIngredientRole.INPUT, 10, 1).addIngredients(items[0]).setStandardSlotBackground()
         builder.addSlot(RecipeIngredientRole.INPUT, 1, 37).addIngredients(items[1]).setStandardSlotBackground()
