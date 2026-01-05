@@ -3,7 +3,7 @@ package dev.bluesheep.nanomirai.menu
 import dev.bluesheep.nanomirai.block.entity.LaserEngraverBlockEntity
 import dev.bluesheep.nanomirai.registry.NanoMiraiBlocks
 import dev.bluesheep.nanomirai.registry.NanoMiraiMenu
-import dev.bluesheep.nanomirai.registry.NanoMiraiTags
+import dev.bluesheep.nanomirai.registry.NanoMiraiItemTags
 import net.minecraft.network.FriendlyByteBuf
 import net.minecraft.world.entity.player.Inventory
 import net.minecraft.world.entity.player.Player
@@ -104,7 +104,7 @@ class LaserEngraverMenu(containerId: Int, playerInv: Inventory, val blockEntity:
             }
 
             override fun mayPlace(stack: ItemStack): Boolean {
-                return stack.`is`(NanoMiraiTags.LENSES)
+                return stack.`is`(NanoMiraiItemTags.LENSES)
             }
         })
     }

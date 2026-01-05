@@ -1,4 +1,6 @@
-// 1.21.1	2025-10-19T16:20:59.4398167	Tags for minecraft:block mod id nanomirai
+// 1.21.1	2026-01-05T19:42:56.0225808	Tags for minecraft:block mod id nanomirai
+d840c1d30dbeb4f15078c4f7488acf990a9ec217 data/c/tags/block/obsidians.json
+358d7186c8f45bdfff4be1f72965d27ccef554b4 data/c/tags/block/obsidians/reinforced.json
 358d7186c8f45bdfff4be1f72965d27ccef554b4 data/minecraft/tags/block/dragon_immune.json
 33faf1a8cdb3f6b1df5c46924ceecc7e746915ff data/minecraft/tags/block/mineable/pickaxe.json
 358d7186c8f45bdfff4be1f72965d27ccef554b4 data/minecraft/tags/block/needs_diamond_tool.json

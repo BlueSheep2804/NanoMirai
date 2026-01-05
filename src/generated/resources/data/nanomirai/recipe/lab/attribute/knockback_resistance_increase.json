@@ -9,7 +9,7 @@
       "item": "minecraft:deepslate"
     },
     {
-      "item": "minecraft:obsidian"
+      "tag": "c:obsidians/normal"
     },
     {
       "item": "minecraft:pointed_dripstone"
@@ -18,7 +18,7 @@
       "item": "minecraft:deepslate"
     },
     {
-      "item": "minecraft:obsidian"
+      "tag": "c:obsidians/normal"
     },
     {
       "item": "minecraft:pointed_dripstone"

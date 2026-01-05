@@ -15,7 +15,7 @@
       "item": "minecraft:redstone_lamp"
     },
     "O": {
-      "item": "minecraft:obsidian"
+      "tag": "c:obsidians/normal"
     }
   },
   "pattern": [

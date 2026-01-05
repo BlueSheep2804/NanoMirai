@@ -16,7 +16,7 @@
     {
       "count": 1,
       "ingredient": {
-        "item": "minecraft:obsidian"
+        "tag": "c:obsidians/normal"
       }
     },
     {

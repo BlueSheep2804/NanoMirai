@@ -2,7 +2,7 @@ package dev.bluesheep.nanomirai.data
 
 import dev.bluesheep.nanomirai.NanoMirai
 import dev.bluesheep.nanomirai.registry.NanoMiraiItems
-import dev.bluesheep.nanomirai.registry.NanoMiraiTags
+import dev.bluesheep.nanomirai.registry.NanoMiraiItemTags
 import net.minecraft.core.HolderLookup
 import net.minecraft.data.PackOutput
 import net.minecraft.data.tags.ItemTagsProvider
@@ -21,26 +21,32 @@ class NanoMiraiItemTagsProvider(output: PackOutput, lookupProvider: CompletableF
     existingFileHelper
 ) {
     override fun addTags(lookupProvider: HolderLookup.Provider) {
-        tag(NanoMiraiTags.CURIOS_SUPPORT_NANO)
+        tag(NanoMiraiItemTags.CURIOS_SUPPORT_NANO)
             .add(NanoMiraiItems.SUPPORT_NANO)
 
         tag(Tags.Items.INGOTS)
             .add(NanoMiraiItems.SCULMIUM_INGOT)
 
-        tag(NanoMiraiTags.SCULMIUM_INGOT)
+        tag(NanoMiraiItemTags.SCULMIUM_INGOT)
             .add(NanoMiraiItems.SCULMIUM_INGOT)
 
         tag(Tags.Items.RAW_MATERIALS)
             .add(NanoMiraiItems.RAW_SCULMIUM)
 
-        tag(NanoMiraiTags.RAW_SCULMIUM)
+        tag(NanoMiraiItemTags.RAW_SCULMIUM)
             .add(NanoMiraiItems.RAW_SCULMIUM)
 
-        tag(NanoMiraiTags.LENSES)
+        tag(Tags.Items.OBSIDIANS)
+            .addTag(NanoMiraiItemTags.REINFORCED_OBSIDIAN)
+
+        tag(NanoMiraiItemTags.REINFORCED_OBSIDIAN)
+            .add(NanoMiraiItems.REINFORCED_OBSIDIAN)
+
+        tag(NanoMiraiItemTags.LENSES)
             .add(NanoMiraiItems.AMETHYST_LENS)
             .add(NanoMiraiItems.SCULK_LENS)
 
-        tag(NanoMiraiTags.RESEARCH_CATALYSTS)
+        tag(NanoMiraiItemTags.RESEARCH_CATALYSTS)
             .add(NanoMiraiItems.RED_RESEARCH_CATALYST)
             .add(NanoMiraiItems.GREEN_RESEARCH_CATALYST)
             .add(NanoMiraiItems.BLUE_RESEARCH_CATALYST)
@@ -48,29 +54,29 @@ class NanoMiraiItemTagsProvider(output: PackOutput, lookupProvider: CompletableF
             .add(NanoMiraiItems.MAGENTA_RESEARCH_CATALYST)
             .add(NanoMiraiItems.YELLOW_RESEARCH_CATALYST)
 
-        tag(NanoMiraiTags.REPAIR_NANO_INGREDIENTS)
+        tag(NanoMiraiItemTags.REPAIR_NANO_INGREDIENTS)
             .addTags(
                 ItemTags.DIRT,
                 Tags.Items.STONES,
                 Tags.Items.SANDS
             )
 
-        tag(NanoMiraiTags.FUNCTIONAL_NANOMACHINES)
+        tag(NanoMiraiItemTags.FUNCTIONAL_NANOMACHINES)
             .add(NanoMiraiItems.SYNTHESIZE_NANO)
             .add(NanoMiraiItems.SUPPORT_NANO)
             .add(NanoMiraiItems.NANO_SWARM_BLASTER)
 
-        tag(NanoMiraiTags.SHERD_DESERT_WELL)
+        tag(NanoMiraiItemTags.SHERD_DESERT_WELL)
             .add(Items.ARMS_UP_POTTERY_SHERD)
             .add(Items.BREWER_POTTERY_SHERD)
 
-        tag(NanoMiraiTags.SHERD_DESERT_PYRAMID)
+        tag(NanoMiraiItemTags.SHERD_DESERT_PYRAMID)
             .add(Items.ARCHER_POTTERY_SHERD)
             .add(Items.MINER_POTTERY_SHERD)
             .add(Items.PRIZE_POTTERY_SHERD)
             .add(Items.SKULL_POTTERY_SHERD)
 
-        tag(NanoMiraiTags.SHERD_TRAIL_RUINS)
+        tag(NanoMiraiItemTags.SHERD_TRAIL_RUINS)
             .add(Items.BURN_POTTERY_SHERD)
             .add(Items.DANGER_POTTERY_SHERD)
             .add(Items.FRIEND_POTTERY_SHERD)
@@ -79,18 +85,18 @@ class NanoMiraiItemTagsProvider(output: PackOutput, lookupProvider: CompletableF
             .add(Items.HOWL_POTTERY_SHERD)
             .add(Items.SHEAF_POTTERY_SHERD)
 
-        tag(NanoMiraiTags.SHERD_COLD_OCEAN_RUINS)
+        tag(NanoMiraiItemTags.SHERD_COLD_OCEAN_RUINS)
             .add(Items.BLADE_POTTERY_SHERD)
             .add(Items.EXPLORER_POTTERY_SHERD)
             .add(Items.MOURNER_POTTERY_SHERD)
             .add(Items.PLENTY_POTTERY_SHERD)
 
-        tag(NanoMiraiTags.SHERD_WARM_OCEAN_RUINS)
+        tag(NanoMiraiItemTags.SHERD_WARM_OCEAN_RUINS)
             .add(Items.ANGLER_POTTERY_SHERD)
             .add(Items.SHELTER_POTTERY_SHERD)
             .add(Items.SNORT_POTTERY_SHERD)
 
-        tag(NanoMiraiTags.SHERD_TRIAL_CHAMBER)
+        tag(NanoMiraiItemTags.SHERD_TRIAL_CHAMBER)
             .add(Items.SCRAPE_POTTERY_SHERD)
             .add(Items.FLOW_POTTERY_SHERD)
             .add(Items.GUSTER_POTTERY_SHERD)
