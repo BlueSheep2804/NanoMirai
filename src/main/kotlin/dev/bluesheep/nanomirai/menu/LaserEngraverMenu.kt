@@ -49,7 +49,7 @@ class LaserEngraverMenu(containerId: Int, playerInv: Inventory, val blockEntity:
 
                 getSlot(0).onQuickCraft(rawStack, quickMovedStack)
             } else if (quickMovedSlotIndex in playerInventoryIndex..hotbarIndexEnd) {
-                if (!this.moveItemStackTo(rawStack, 0, playerInventoryIndex, false)) {
+                if (!this.moveItemStackTo(rawStack, 0, playerInventoryIndex, true)) {
                     if (quickMovedSlotIndex < hotbarIndex) {
                         if (!this.moveItemStackTo(rawStack, hotbarIndex, hotbarIndexEnd, false)) {
                             return ItemStack.EMPTY
