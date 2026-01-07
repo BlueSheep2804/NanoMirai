@@ -21,7 +21,7 @@ object ModInfo {
     const val mod_id = "nanomirai"
     const val mod_name = "NanoMirai"
     const val mod_license = "MIT"
-    const val mod_version = "1.1.0"
+    const val mod_version = "2.0.0"
     const val mod_group_id = "dev.bluesheep"
     const val mod_authors = "BlueSheep2804"
     const val mod_description = ""
