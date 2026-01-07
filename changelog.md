@@ -1,16 +1,28 @@
-# NanoMirai 1.0.2
+# NanoMirai 1.1.0
 
-## Bug Fixes
-- Fixed an issue where the assembler and laser cutter ignored the "components" field in recipes.
-  - This resolved a problem that prevented crafting Mk.2, Mk.3, and Mk.4 nanomachines.
+## New Features
+- Assembler, Laser Engraver, and the Synthesize Display now support item Capability.
+  - This enables item insertion and extraction via pipes and similar transports from other mods.
+- Added integration with Jade.
+  - You can view the Synthesize Display's state, work progress, and contained items.
+- Added notation for items that are not consumed by recipes.
+- The Laser Engraver now prioritizes lenses when performing quick moves.
 
 ## Other
-- Added generic tags to Sculmium ingots and raw ore
+- Set lenses and research catalysts to be non-stackable.
+- Added generic tags to Reinforced Obsidian.
+- Added translations for tags.
 
 ---
-## バグ修正
-- 組立機とレーザー加工機がレシピのcomponentを無視する問題を修正
-  - これにより、Mk.2,3,4のナノマシンがクラフトできない問題が修正されました。
+## 新機能
+- 組立機、レーザー加工機、合成用ブロックをアイテムCapabilityに対応
+  - 他modのパイプ等を使用して、アイテムの搬入出が可能になりました
+- Jadeの連携を追加
+  - 合成用ブロックの状態、作業進捗、アイテムを確認できます
+- レシピで消費されないアイテムの表記を追加
+- レーザー加工機は、レンズを優先してクイック移動するように変更
 
 ## その他
-- スカルミウムのインゴットと原石に汎用タグを追加
+- レンズとリサーチカタリストをスタック不可に設定
+- 強化された黒曜石に汎用タグを追加
+- タグに翻訳を追加
