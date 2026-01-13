@@ -1,6 +1,7 @@
 package dev.bluesheep.nanomirai.registry
 
 import dev.bluesheep.nanomirai.NanoMirai
+import dev.bluesheep.nanomirai.item.MobCageItem
 import dev.bluesheep.nanomirai.item.NanoSwarmBlasterItem
 import dev.bluesheep.nanomirai.item.SupportNanoItem
 import dev.bluesheep.nanomirai.item.SynthesizeNanoItem
@@ -17,6 +18,8 @@ object NanoMiraiItems {
     val SUPPORT_NANO: SupportNanoItem by REGISTRY.register("support_nano", ::SupportNanoItem)
     val NANO_SWARM_BLASTER: NanoSwarmBlasterItem by REGISTRY.register("nano_swarm_blaster", ::NanoSwarmBlasterItem)
     val REPAIR_NANO: Item by REGISTRY.registerSimpleItem("repair_nano")
+
+    val MOB_CAGE: Item by REGISTRY.register("mob_cage", ::MobCageItem)
 
     val GRAPHITE: Item by REGISTRY.registerSimpleItem("graphite")
     val SILICON: Item by REGISTRY.registerSimpleItem("silicon")

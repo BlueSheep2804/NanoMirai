@@ -3,8 +3,11 @@ package dev.bluesheep.nanomirai.data
 import dev.bluesheep.nanomirai.NanoMirai
 import dev.bluesheep.nanomirai.registry.NanoMiraiBlocks
 import dev.bluesheep.nanomirai.registry.NanoMiraiItems
+import net.minecraft.client.renderer.block.model.BlockModel
 import net.minecraft.data.PackOutput
+import net.minecraft.world.item.ItemDisplayContext
 import net.neoforged.neoforge.client.model.generators.ItemModelProvider
+import net.neoforged.neoforge.client.model.generators.ModelFile
 import net.neoforged.neoforge.common.data.ExistingFileHelper
 
 class NanoMiraiItemModelProvider(output: PackOutput, existingFileHelper: ExistingFileHelper) : ItemModelProvider(output, NanoMirai.ID, existingFileHelper) {
@@ -25,6 +28,49 @@ class NanoMiraiItemModelProvider(output: PackOutput, existingFileHelper: Existin
                 .end()
 
         basicItem(NanoMiraiItems.REPAIR_NANO)
+
+        getBuilder("mob_cage")
+            .parent(ModelFile.UncheckedModelFile("builtin/entity"))
+            .transforms()
+            .transform(ItemDisplayContext.GROUND)
+                .rotation(0f, 0f, 0f)
+                .translation(0f, 2f, 0f)
+                .scale(0.5f)
+                .end()
+            .transform(ItemDisplayContext.THIRD_PERSON_RIGHT_HAND)
+                .rotation(0f, 0f, 0f)
+                .translation(0f, 3f, 1f)
+                .scale(0.55f)
+                .end()
+            .transform(ItemDisplayContext.FIRST_PERSON_RIGHT_HAND)
+                .rotation(0f, -90f, 25f)
+                .translation(1.13f, 3.2f, 1.13f)
+                .scale(0.68f)
+                .end()
+            .transform(ItemDisplayContext.FIXED)
+                .rotation(0f, 180f, 0f)
+                .translation(0f, 0f, 0f)
+                .scale(1f)
+                .end()
+            .end()
+            .guiLight(BlockModel.GuiLight.FRONT)
+
+        getBuilder("mob_cage_base")
+            .parent(getExistingFile(mcLoc("item/generated")))
+            .texture("layer0", "item/mob_cage_base")
+
+//        getBuilder("mob_cage")
+//            .parent(ModelFile.UncheckedModelFile("builtin/entity"))
+//            .customLoader(CompositeModelBuilder<ItemModelBuilder>::begin)
+//                .child(
+//                    "base",
+//                    nested()
+//                        .parent(getExistingFile(mcLoc("item/generated")))
+//                        .texture("layer0", modLoc("item/mob_cage_base"))
+//                )
+//                .child("entity", nested().parent(ModelFile.UncheckedModelFile("builtin/entity")))
+//                .visibility("entity", false)
+//                .end()
 
         basicItem(NanoMiraiItems.GRAPHITE)
         basicItem(NanoMiraiItems.SILICON)
