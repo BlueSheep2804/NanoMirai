@@ -11,19 +11,37 @@ import dev.bluesheep.nanomirai.item.NanoSwarmBlasterItem
 import dev.bluesheep.nanomirai.registry.NanoMiraiBlockEntities
 import dev.bluesheep.nanomirai.registry.NanoMiraiItems
 import dev.bluesheep.nanomirai.registry.NanoMiraiMenu
+import net.minecraft.client.gui.screens.Screen
 import net.minecraft.client.renderer.item.ItemProperties
 import net.minecraft.client.resources.model.ModelResourceLocation
 import net.neoforged.api.distmarker.Dist
 import net.neoforged.bus.api.SubscribeEvent
+import net.neoforged.fml.ModContainer
 import net.neoforged.fml.common.EventBusSubscriber
+import net.neoforged.fml.common.Mod
 import net.neoforged.fml.event.lifecycle.FMLClientSetupEvent
 import net.neoforged.neoforge.client.event.EntityRenderersEvent
 import net.neoforged.neoforge.client.event.ModelEvent
 import net.neoforged.neoforge.client.event.RegisterMenuScreensEvent
 import net.neoforged.neoforge.client.extensions.common.RegisterClientExtensionsEvent
+import net.neoforged.neoforge.client.gui.ConfigurationScreen
+import net.neoforged.neoforge.client.gui.IConfigScreenFactory
+import thedarkcolour.kotlinforforge.neoforge.forge.LOADING_CONTEXT
 
+@Mod(NanoMirai.ID, dist = [Dist.CLIENT])
 @EventBusSubscriber(value = [Dist.CLIENT], modid = NanoMirai.ID)
 object NanoMiraiClient {
+    init {
+        LOADING_CONTEXT.registerExtensionPoint(IConfigScreenFactory::class.java) {
+            IConfigScreenFactory { container: ModContainer, modListScreen: Screen ->
+                ConfigurationScreen(
+                    container,
+                    modListScreen
+                )
+            }
+        }
+    }
+
     @SubscribeEvent
     fun onClientSetup(event: FMLClientSetupEvent) {
         event.enqueueWork {

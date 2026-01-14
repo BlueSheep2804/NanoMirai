@@ -1,13 +1,9 @@
 package dev.bluesheep.nanomirai
 
-import dev.bluesheep.nanomirai.block.entity.*
-import dev.bluesheep.nanomirai.data.NanoMiraiBlockProvider
-import dev.bluesheep.nanomirai.data.NanoMiraiBlockTagsProvider
-import dev.bluesheep.nanomirai.data.NanoMiraiCuriosProvider
-import dev.bluesheep.nanomirai.data.NanoMiraiItemModelProvider
-import dev.bluesheep.nanomirai.data.NanoMiraiItemTagsProvider
-import dev.bluesheep.nanomirai.data.NanoMiraiLootTableProvider
-import dev.bluesheep.nanomirai.data.NanoMiraiRecipeProvider
+import dev.bluesheep.nanomirai.block.entity.AssemblerBlockEntity
+import dev.bluesheep.nanomirai.block.entity.LaserEngraverBlockEntity
+import dev.bluesheep.nanomirai.block.entity.SynthesizeDisplayBlockEntity
+import dev.bluesheep.nanomirai.data.*
 import dev.bluesheep.nanomirai.item.SynthesizeNanoItem
 import dev.bluesheep.nanomirai.registry.*
 import net.minecraft.resources.ResourceLocation
@@ -15,6 +11,7 @@ import net.minecraft.world.level.block.DispenserBlock
 import net.neoforged.bus.api.SubscribeEvent
 import net.neoforged.fml.common.EventBusSubscriber
 import net.neoforged.fml.common.Mod
+import net.neoforged.fml.config.ModConfig
 import net.neoforged.fml.event.lifecycle.FMLCommonSetupEvent
 import net.neoforged.neoforge.capabilities.Capabilities
 import net.neoforged.neoforge.capabilities.RegisterCapabilitiesEvent
@@ -22,6 +19,7 @@ import net.neoforged.neoforge.data.event.GatherDataEvent
 import org.apache.logging.log4j.Level
 import org.apache.logging.log4j.LogManager
 import org.apache.logging.log4j.Logger
+import thedarkcolour.kotlinforforge.neoforge.forge.LOADING_CONTEXT
 import thedarkcolour.kotlinforforge.neoforge.forge.MOD_BUS
 
 /**
@@ -47,6 +45,8 @@ object NanoMirai {
         NanoMiraiRecipeType.REGISTRY.register(MOD_BUS)
         NanoMiraiRecipeSerializer.REGISTRY.register(MOD_BUS)
         NanoMiraiCreativeTab.REGISTRY.register(MOD_BUS)
+
+        LOADING_CONTEXT.activeContainer.registerConfig(ModConfig.Type.SERVER, NanoMiraiConfig.SPEC)
     }
 
     @SubscribeEvent

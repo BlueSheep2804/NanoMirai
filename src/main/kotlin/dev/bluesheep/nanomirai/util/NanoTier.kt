@@ -1,5 +1,6 @@
 package dev.bluesheep.nanomirai.util
 
+import dev.bluesheep.nanomirai.NanoMiraiConfig
 import dev.bluesheep.nanomirai.registry.NanoMiraiItems
 import net.minecraft.core.component.DataComponents
 import net.minecraft.network.chat.Component
@@ -15,10 +16,34 @@ enum class NanoTier(
     val maxEffects: Int,
     val blasterCooldown: Int
 ) {
-    MK1(Rarity.COMMON, 1.0, 1, 1, 120),
-    MK2(Rarity.UNCOMMON, 1.2, 2, 2, 80),
-    MK3(Rarity.RARE, 1.5, 3, 3, 40),
-    MK4(Rarity.EPIC, 2.0, 4, 4, 20);
+    MK1(
+        Rarity.COMMON,
+        NanoMiraiConfig.processingSpeedMultiplierMk1.get(),
+        NanoMiraiConfig.maxAttributesMk1.get(),
+        NanoMiraiConfig.maxEffectsMk1.get(),
+        NanoMiraiConfig.blasterCooldownMk1.get()
+    ),
+    MK2(
+        Rarity.UNCOMMON,
+        NanoMiraiConfig.processingSpeedMultiplierMk2.get(),
+        NanoMiraiConfig.maxAttributesMk2.get(),
+        NanoMiraiConfig.maxEffectsMk2.get(),
+        NanoMiraiConfig.blasterCooldownMk2.get()
+    ),
+    MK3(
+        Rarity.RARE,
+        NanoMiraiConfig.processingSpeedMultiplierMk3.get(),
+        NanoMiraiConfig.maxAttributesMk3.get(),
+        NanoMiraiConfig.maxEffectsMk3.get(),
+        NanoMiraiConfig.blasterCooldownMk3.get()
+    ),
+    MK4(
+        Rarity.EPIC,
+        NanoMiraiConfig.processingSpeedMultiplierMk4.get(),
+        NanoMiraiConfig.maxAttributesMk4.get(),
+        NanoMiraiConfig.maxEffectsMk4.get(),
+        NanoMiraiConfig.blasterCooldownMk4.get()
+    );
 
     val nameComponent: Component
         get() = Component.translatable("nanomirai.nano_tier.${name.lowercase()}").withStyle(rarity.styleModifier)
