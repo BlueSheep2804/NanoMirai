@@ -8,45 +8,58 @@ import net.minecraft.world.item.Item
 import net.minecraft.world.item.ItemStack
 import net.minecraft.world.item.Rarity
 import net.minecraft.world.item.crafting.Ingredient
+import net.neoforged.neoforge.common.ModConfigSpec
 
 enum class NanoTier(
     val rarity: Rarity,
-    val processingSpeedMultiplier: Double,
-    val maxAttributes: Int,
-    val maxEffects: Int,
-    val blasterCooldown: Int
+    private val processingSpeedMultiplierConfig: ModConfigSpec.ConfigValue<Double>,
+    private val maxAttributesConfig: ModConfigSpec.ConfigValue<Int>,
+    private val maxEffectsConfig: ModConfigSpec.ConfigValue<Int>,
+    private val blasterCooldownConfig: ModConfigSpec.ConfigValue<Int>
 ) {
     MK1(
         Rarity.COMMON,
-        NanoMiraiConfig.processingSpeedMultiplierMk1.get(),
-        NanoMiraiConfig.maxAttributesMk1.get(),
-        NanoMiraiConfig.maxEffectsMk1.get(),
-        NanoMiraiConfig.blasterCooldownMk1.get()
+        NanoMiraiConfig.processingSpeedMultiplierMk1,
+        NanoMiraiConfig.maxAttributesMk1,
+        NanoMiraiConfig.maxEffectsMk1,
+        NanoMiraiConfig.blasterCooldownMk1
     ),
     MK2(
         Rarity.UNCOMMON,
-        NanoMiraiConfig.processingSpeedMultiplierMk2.get(),
-        NanoMiraiConfig.maxAttributesMk2.get(),
-        NanoMiraiConfig.maxEffectsMk2.get(),
-        NanoMiraiConfig.blasterCooldownMk2.get()
+        NanoMiraiConfig.processingSpeedMultiplierMk2,
+        NanoMiraiConfig.maxAttributesMk2,
+        NanoMiraiConfig.maxEffectsMk2,
+        NanoMiraiConfig.blasterCooldownMk2
     ),
     MK3(
         Rarity.RARE,
-        NanoMiraiConfig.processingSpeedMultiplierMk3.get(),
-        NanoMiraiConfig.maxAttributesMk3.get(),
-        NanoMiraiConfig.maxEffectsMk3.get(),
-        NanoMiraiConfig.blasterCooldownMk3.get()
+        NanoMiraiConfig.processingSpeedMultiplierMk3,
+        NanoMiraiConfig.maxAttributesMk3,
+        NanoMiraiConfig.maxEffectsMk3,
+        NanoMiraiConfig.blasterCooldownMk3
     ),
     MK4(
         Rarity.EPIC,
-        NanoMiraiConfig.processingSpeedMultiplierMk4.get(),
-        NanoMiraiConfig.maxAttributesMk4.get(),
-        NanoMiraiConfig.maxEffectsMk4.get(),
-        NanoMiraiConfig.blasterCooldownMk4.get()
+        NanoMiraiConfig.processingSpeedMultiplierMk4,
+        NanoMiraiConfig.maxAttributesMk4,
+        NanoMiraiConfig.maxEffectsMk4,
+        NanoMiraiConfig.blasterCooldownMk4
     );
 
     val nameComponent: Component
         get() = Component.translatable("nanomirai.nano_tier.${name.lowercase()}").withStyle(rarity.styleModifier)
+
+    val processingSpeedMultiplier: Double
+        get() = processingSpeedMultiplierConfig.get()
+
+    val maxAttributes: Int
+        get() = maxAttributesConfig.get()
+
+    val maxEffects: Int
+        get() = maxEffectsConfig.get()
+
+    val blasterCooldown: Int
+        get() = blasterCooldownConfig.get()
 
     fun getTieredItem(item: Item): ItemStack {
         return ItemStack(item).apply {
