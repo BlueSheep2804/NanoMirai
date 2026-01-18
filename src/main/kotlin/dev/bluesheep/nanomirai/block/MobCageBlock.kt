@@ -3,7 +3,11 @@ package dev.bluesheep.nanomirai.block
 import com.mojang.serialization.MapCodec
 import dev.bluesheep.nanomirai.block.entity.MobCageBlockEntity
 import net.minecraft.core.BlockPos
+import net.minecraft.world.entity.Entity
+import net.minecraft.world.entity.LivingEntity
+import net.minecraft.world.entity.player.Player
 import net.minecraft.world.level.BlockGetter
+import net.minecraft.world.level.Level
 import net.minecraft.world.level.block.BaseEntityBlock
 import net.minecraft.world.level.block.RenderShape
 import net.minecraft.world.level.block.entity.BlockEntity
@@ -25,6 +29,16 @@ class MobCageBlock(properties: Properties) : BaseEntityBlock(properties) {
         state: BlockState
     ): BlockEntity {
         return MobCageBlockEntity(pos, state)
+    }
+
+    override fun entityInside(state: BlockState, level: Level, pos: BlockPos, entity: Entity) {
+        if (entity !is LivingEntity) return
+        if (entity is Player) return
+        level.getBlockEntity(pos)?.let { blockEntity ->
+            if (blockEntity is MobCageBlockEntity) {
+                blockEntity.entityInside(entity)
+            }
+        }
     }
 
     override fun getRenderShape(state: BlockState): RenderShape {

@@ -18,7 +18,7 @@ class MobCageBlockEntityRenderer(context: BlockEntityRendererProvider.Context) :
         packedLight: Int,
         packedOverlay: Int
     ) {
-        val entity = blockEntity.entity
+        val entity = blockEntity.capturedEntity
         if (entity != null) {
             poseStack.pushPose()
             poseStack.scale(0.5f, 0.5f, 0.5f)

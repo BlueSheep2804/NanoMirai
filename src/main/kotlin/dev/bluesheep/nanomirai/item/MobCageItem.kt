@@ -2,13 +2,12 @@ package dev.bluesheep.nanomirai.item
 
 import com.mojang.serialization.MapCodec
 import dev.bluesheep.nanomirai.registry.NanoMiraiBlocks
+import dev.bluesheep.nanomirai.util.MobCageUtil
 import net.minecraft.core.component.DataComponents
 import net.minecraft.core.registries.BuiltInRegistries
-import net.minecraft.nbt.CompoundTag
 import net.minecraft.server.level.ServerLevel
 import net.minecraft.world.InteractionHand
 import net.minecraft.world.InteractionResult
-import net.minecraft.world.entity.Entity
 import net.minecraft.world.entity.EntityType
 import net.minecraft.world.entity.LivingEntity
 import net.minecraft.world.entity.MobSpawnType
@@ -40,13 +39,9 @@ class MobCageItem : BlockItem(
         if (!stack.getOrDefault(DataComponents.ENTITY_DATA, CustomData.EMPTY).isEmpty) return InteractionResult.PASS
 
         if (!player.level().isClientSide) {
-            val entityData = CompoundTag()
-            if (!interactionTarget.save(entityData)) return InteractionResult.FAIL
-            entityData.remove("Pos")
-            entityData.remove("Rotation")
-            stack.set(DataComponents.ENTITY_DATA, CustomData.of(entityData))
-
-            interactionTarget.remove(Entity.RemovalReason.DISCARDED)
+            val entityData = MobCageUtil.captureEntity(interactionTarget)
+            if (entityData == null) return InteractionResult.FAIL
+            stack.set(DataComponents.ENTITY_DATA, entityData)
         }
         return InteractionResult.sidedSuccess(player.level().isClientSide)
     }
