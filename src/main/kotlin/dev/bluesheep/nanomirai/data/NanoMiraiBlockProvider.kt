@@ -79,7 +79,7 @@ class NanoMiraiBlockProvider(output: PackOutput, exFileHelper: ExistingFileHelpe
                 .texture("east", modLoc("block/nano_lab_side"))
         )
 
-        simpleBlock(
+        horizontalBlock(
             NanoMiraiBlocks.MOB_CAGE,
             models().getExistingFile(modLoc("block/mob_cage"))
         )

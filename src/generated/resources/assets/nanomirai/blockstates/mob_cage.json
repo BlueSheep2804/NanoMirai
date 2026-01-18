@@ -1,7 +1,19 @@
 {
   "variants": {
-    "": {
+    "facing=east": {
+      "model": "nanomirai:block/mob_cage",
+      "y": 90
+    },
+    "facing=north": {
       "model": "nanomirai:block/mob_cage"
+    },
+    "facing=south": {
+      "model": "nanomirai:block/mob_cage",
+      "y": 180
+    },
+    "facing=west": {
+      "model": "nanomirai:block/mob_cage",
+      "y": 270
     }
   }
 }
