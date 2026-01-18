@@ -2,6 +2,7 @@ package dev.bluesheep.nanomirai.client
 
 import dev.bluesheep.nanomirai.NanoMirai
 import dev.bluesheep.nanomirai.NanoMirai.rl
+import dev.bluesheep.nanomirai.client.renderer.MobCageBlockEntityRenderer
 import dev.bluesheep.nanomirai.client.renderer.MobCageItemExtensions
 import dev.bluesheep.nanomirai.client.renderer.SynthesizeDisplayBlockEntityRenderer
 import dev.bluesheep.nanomirai.client.screen.AssemblerScreen
@@ -63,6 +64,7 @@ object NanoMiraiClient {
     @SubscribeEvent
     fun registerEntityRenderers(event: EntityRenderersEvent.RegisterRenderers) {
         event.registerBlockEntityRenderer(NanoMiraiBlockEntities.SYNTHESIZE_DISPLAY, ::SynthesizeDisplayBlockEntityRenderer)
+        event.registerBlockEntityRenderer(NanoMiraiBlockEntities.MOB_CAGE, ::MobCageBlockEntityRenderer)
     }
 
     @SubscribeEvent
@@ -72,6 +74,6 @@ object NanoMiraiClient {
 
     @SubscribeEvent
     fun registerAdditionalModels(event: ModelEvent.RegisterAdditional) {
-        event.register(ModelResourceLocation.standalone(rl("item/mob_cage_base")))
+        event.register(ModelResourceLocation.standalone(rl("block/mob_cage")))
     }
 }

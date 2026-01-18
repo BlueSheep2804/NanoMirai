@@ -11,6 +11,7 @@
   "block.nanomirai.synthesize_display.crafting": "合成中...",
   "block.nanomirai.synthesize_display.invalid": "アイテムが無効",
   "block.nanomirai.nano_lab": "ナノラボ",
+  "block.nanomirai.mob_cage": "モブケージ",
   "block.nanomirai.reinforced_obsidian": "強化された黒曜石",
   "curios.identifier.support_nano": "サポートナノ",
   "curios.modifiers.support_nano": "装備したとき:",

@@ -1,5 +1,6 @@
-// 1.21.1	2025-10-19T15:49:16.698913	Loot Tables
+// 1.21.1	2026-01-17T16:55:01.0839053	Loot Tables
 aacaa3db7c9994649efdcd985e57b97a9c498f24 data/nanomirai/loot_table/blocks/laser_engraver.json
+ef34e6aa057d8eaf32a55d68f5eefc1650af5e60 data/nanomirai/loot_table/blocks/mob_cage.json
 a0e35cf161284966f697cd40b09c76ee758c2d19 data/nanomirai/loot_table/blocks/nanomachine_assembler.json
 a387417253a70ac991deb26a5a19c17580a7675c data/nanomirai/loot_table/blocks/nano_lab.json
 3b26a84c8ec1e1ce07cc6c9be2e0edfee6a6a5f0 data/nanomirai/loot_table/blocks/reinforced_obsidian.json
