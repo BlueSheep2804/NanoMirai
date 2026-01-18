@@ -6,10 +6,6 @@ import net.minecraft.client.renderer.MultiBufferSource
 import net.minecraft.client.renderer.blockentity.BlockEntityRenderer
 import net.minecraft.client.renderer.blockentity.BlockEntityRendererProvider
 import net.minecraft.client.renderer.entity.EntityRenderDispatcher
-import net.minecraft.core.component.DataComponents
-import net.minecraft.world.entity.EntityType
-import net.minecraft.world.item.component.CustomData
-import org.joml.Quaternionf
 
 class MobCageBlockEntityRenderer(context: BlockEntityRendererProvider.Context) : BlockEntityRenderer<MobCageBlockEntity> {
     val entityRenderer: EntityRenderDispatcher = context.entityRenderer
