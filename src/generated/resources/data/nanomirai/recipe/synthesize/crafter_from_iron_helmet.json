@@ -1,7 +1,10 @@
 {
   "type": "nanomirai:synthesize",
   "block": {
-    "Name": "minecraft:crafting_table"
+    "block": {
+      "Name": "minecraft:crafting_table"
+    },
+    "nbt": {}
   },
   "catalyst": {
     "item": "minecraft:iron_helmet"

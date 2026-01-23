@@ -1,7 +1,10 @@
 {
   "type": "nanomirai:synthesize",
   "block": {
-    "Name": "minecraft:obsidian"
+    "block": {
+      "Name": "minecraft:obsidian"
+    },
+    "nbt": {}
   },
   "catalyst": {
     "item": "minecraft:popped_chorus_fruit"

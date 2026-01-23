@@ -1,15 +1,18 @@
 package dev.bluesheep.nanomirai.data
 
 import dev.bluesheep.nanomirai.NanoMirai.rl
+import dev.bluesheep.nanomirai.recipe.BlockStateWithNbt
 import dev.bluesheep.nanomirai.recipe.StackedIngredient
 import dev.bluesheep.nanomirai.recipe.assembler.AssemblerRecipeBuilder
 import dev.bluesheep.nanomirai.recipe.lab.attribute.LabAttributeRecipeBuilder
 import dev.bluesheep.nanomirai.recipe.lab.effect.LabEffectRecipeBuilder
 import dev.bluesheep.nanomirai.recipe.laser.LaserRecipeBuilder
 import dev.bluesheep.nanomirai.recipe.synthesize.SynthesizeRecipeBuilder
+import dev.bluesheep.nanomirai.registry.NanoMiraiBlocks
 import dev.bluesheep.nanomirai.registry.NanoMiraiItems
 import dev.bluesheep.nanomirai.registry.NanoMiraiItemTags
 import dev.bluesheep.nanomirai.util.NanoTier
+import dev.bluesheep.nanomirai.util.SynthesizeUtil
 import net.minecraft.core.HolderLookup
 import net.minecraft.core.NonNullList
 import net.minecraft.data.PackOutput
@@ -17,6 +20,7 @@ import net.minecraft.data.recipes.*
 import net.minecraft.tags.ItemTags
 import net.minecraft.world.effect.MobEffectInstance
 import net.minecraft.world.effect.MobEffects
+import net.minecraft.world.entity.EntityType
 import net.minecraft.world.entity.ai.attributes.AttributeModifier
 import net.minecraft.world.entity.ai.attributes.Attributes
 import net.minecraft.world.item.ItemStack
@@ -870,68 +874,90 @@ class NanoMiraiRecipeProvider(output: PackOutput, registries: CompletableFuture<
     }
 
     fun synthesizeRecipes(recipeOutput: RecipeOutput) {
-        SynthesizeRecipeBuilder(
+        SynthesizeRecipeBuilder.default(
             ItemStack(NanoMiraiItems.GRAPHITE, 5),
             NanoTier.MK1,
-            Blocks.COAL_BLOCK.defaultBlockState(),
+            Blocks.COAL_BLOCK,
             Ingredient.of(NanoMiraiItems.GRAPHITE),
             60
         ).save(recipeOutput)
 
-        SynthesizeRecipeBuilder(
+        SynthesizeRecipeBuilder.default(
             ItemStack(NanoMiraiItems.AMETHYST_LENS),
             NanoTier.MK3,
-            Blocks.TINTED_GLASS.defaultBlockState(),
+            Blocks.TINTED_GLASS,
             Ingredient.of(Items.AMETHYST_SHARD),
             60
         ).save(recipeOutput)
 
-        SynthesizeRecipeBuilder(
+        SynthesizeRecipeBuilder.default(
             ItemStack(NanoMiraiItems.SCULK_LENS),
             NanoTier.MK4,
-            Blocks.SCULK_CATALYST.defaultBlockState(),
+            Blocks.SCULK_CATALYST,
             Ingredient.of(NanoMiraiItems.AMETHYST_LENS),
             200
         ).save(recipeOutput)
 
-        SynthesizeRecipeBuilder(
+        SynthesizeRecipeBuilder.default(
             ItemStack(Items.SCULK_CATALYST),
             NanoTier.MK4,
-            Blocks.BONE_BLOCK.defaultBlockState(),
+            Blocks.BONE_BLOCK,
             Ingredient.of(NanoMiraiItemTags.SCULMIUM_INGOT),
             200
         ).save(recipeOutput, rl("sculk_catalyst_from_sculmium_ingot"))
 
-        SynthesizeRecipeBuilder(
+        SynthesizeRecipeBuilder.default(
             ItemStack(Items.SCULK_SHRIEKER),
             NanoTier.MK4,
-            Blocks.BONE_BLOCK.defaultBlockState(),
+            Blocks.BONE_BLOCK,
             Ingredient.of(NanoMiraiItems.SCULMIUM_CIRCUIT),
             200
         ).save(recipeOutput, rl("sculk_shrieker_from_sculmium_circuit"))
 
-        SynthesizeRecipeBuilder(
+        SynthesizeRecipeBuilder.default(
             ItemStack(Items.CRAFTER),
             NanoTier.MK1,
-            Blocks.CRAFTING_TABLE.defaultBlockState(),
+            Blocks.CRAFTING_TABLE,
             Ingredient.of(Items.IRON_HELMET),
             20
         ).save(recipeOutput, rl("crafter_from_iron_helmet"))
 
-        SynthesizeRecipeBuilder(
+        SynthesizeRecipeBuilder.default(
             ItemStack(Items.BUDDING_AMETHYST),
             NanoTier.MK1,
-            Blocks.RAW_COPPER_BLOCK.defaultBlockState(),
+            Blocks.RAW_COPPER_BLOCK,
             Ingredient.of(Items.LAPIS_LAZULI),
             200
         ).save(recipeOutput, rl("budding_amethyst_from_lapis_lazuli"))
 
-        SynthesizeRecipeBuilder(
+        SynthesizeRecipeBuilder.default(
             ItemStack(NanoMiraiItems.REINFORCED_OBSIDIAN),
             NanoTier.MK2,
-            Blocks.OBSIDIAN.defaultBlockState(),
+            Blocks.OBSIDIAN,
             Ingredient.of(Items.POPPED_CHORUS_FRUIT),
             600
         ).save(recipeOutput)
+
+        SynthesizeRecipeBuilder(
+            ItemStack(Items.WIND_CHARGE, 8),
+            NanoTier.MK3,
+            BlockStateWithNbt(
+                NanoMiraiBlocks.MOB_CAGE.defaultBlockState(),
+                SynthesizeUtil.createEntityData(EntityType.BREEZE)
+            ),
+            Ingredient.of(Items.BREEZE_ROD),
+            3000
+        ).save(recipeOutput, rl("wind_charge_from_blaze"))
+
+        SynthesizeRecipeBuilder(
+            ItemStack(Items.TNT),
+            NanoTier.MK3,
+            BlockStateWithNbt(
+                NanoMiraiBlocks.MOB_CAGE.defaultBlockState(),
+                SynthesizeUtil.createEntityData(EntityType.CREEPER)
+            ),
+            Ingredient.of(Items.SAND),
+            3000
+        ).save(recipeOutput, rl("tnt_from_creeper"))
     }
 }

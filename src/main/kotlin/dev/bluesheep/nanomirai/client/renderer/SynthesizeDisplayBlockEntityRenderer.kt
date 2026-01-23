@@ -23,7 +23,7 @@ class SynthesizeDisplayBlockEntityRenderer(context: BlockEntityRendererProvider.
         stack.pushPose()
         stack.translate(0.125, 0.125, 0.125)
         stack.scale(0.75f, 0.75f, 0.75f)
-        blockRenderDispatcher.renderSingleBlock(blockEntity.block, stack, bufferSource, packedLight, packedOverlay, ModelData.EMPTY, RenderType.TRANSLUCENT)
+        blockRenderDispatcher.renderSingleBlock(blockEntity.block.blockState, stack, bufferSource, packedLight, packedOverlay, ModelData.EMPTY, RenderType.TRANSLUCENT)
         stack.popPose()
     }
 }

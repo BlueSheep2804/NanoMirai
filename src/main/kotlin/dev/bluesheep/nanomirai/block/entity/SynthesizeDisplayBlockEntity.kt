@@ -1,6 +1,7 @@
 package dev.bluesheep.nanomirai.block.entity
 
 import dev.bluesheep.nanomirai.block.SynthesizeDisplayBlock
+import dev.bluesheep.nanomirai.recipe.BlockStateWithNbt
 import dev.bluesheep.nanomirai.recipe.BlockWithPairItemInput
 import dev.bluesheep.nanomirai.recipe.synthesize.SynthesizeRecipe
 import dev.bluesheep.nanomirai.registry.NanoMiraiBlockEntities
@@ -22,8 +23,6 @@ import net.minecraft.network.protocol.game.ClientboundBlockEntityDataPacket
 import net.minecraft.server.level.ServerLevel
 import net.minecraft.world.Containers
 import net.minecraft.world.SimpleContainer
-import net.minecraft.world.WorldlyContainer
-import net.minecraft.world.entity.player.Player
 import net.minecraft.world.item.BlockItem
 import net.minecraft.world.item.ItemStack
 import net.minecraft.world.item.Rarity
@@ -60,7 +59,7 @@ class SynthesizeDisplayBlockEntity(pos: BlockPos, blockState: BlockState) : Bloc
             return ItemStack.EMPTY
         }
     }
-    var block: BlockState = Blocks.AIR.defaultBlockState()
+    var block: BlockStateWithNbt = BlockStateWithNbt.EMPTY
     var progress = 0
     var maxProgress = 100
 
@@ -68,7 +67,7 @@ class SynthesizeDisplayBlockEntity(pos: BlockPos, blockState: BlockState) : Bloc
         super.loadAdditional(tag, registries)
 
         itemHandler.deserializeNBT(registries, tag.getCompound("items"))
-        BlockState.CODEC.parse(NbtOps.INSTANCE, tag.getCompound("block")).result().ifPresent { state ->
+        BlockStateWithNbt.CODEC.codec().parse(NbtOps.INSTANCE, tag.getCompound("block")).result().ifPresent { state ->
             block = state
         }
         progress = tag.getInt("progress")
@@ -77,7 +76,7 @@ class SynthesizeDisplayBlockEntity(pos: BlockPos, blockState: BlockState) : Bloc
 
     override fun saveAdditional(tag: CompoundTag, registries: HolderLookup.Provider) {
         tag.put("items", itemHandler.serializeNBT(registries))
-        BlockState.CODEC.encodeStart(NbtOps.INSTANCE, block).result().ifPresent {
+        BlockStateWithNbt.CODEC.codec().encodeStart(NbtOps.INSTANCE, block).result().ifPresent {
             tag.put("block", it)
         }
         tag.putInt("progress", progress)
@@ -99,6 +98,11 @@ class SynthesizeDisplayBlockEntity(pos: BlockPos, blockState: BlockState) : Bloc
         inventory.setItem(0, itemHandler.getStackInSlot(1))
 
         Containers.dropContents(level, worldPosition.above(), inventory)
+    }
+
+    fun setInputBlock(state: BlockState, tag: CompoundTag) {
+        block = BlockStateWithNbt(state, tag)
+        setChanged()
     }
 
     fun setPrimaryItem(stack: ItemStack) {
