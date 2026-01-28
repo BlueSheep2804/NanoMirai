@@ -1,0 +1,27 @@
+{
+  "type": "nanomirai:synthesize",
+  "block": {
+    "block": {
+      "Name": "nanomirai:mob_cage",
+      "Properties": {
+        "facing": "north"
+      }
+    },
+    "nbt": {
+      "components": {
+        "minecraft:entity_data": {
+          "id": "minecraft:creeper"
+        }
+      }
+    }
+  },
+  "catalyst": {
+    "item": "minecraft:sand"
+  },
+  "duration": 3000,
+  "result": {
+    "count": 1,
+    "id": "minecraft:tnt"
+  },
+  "tier": 2
+}

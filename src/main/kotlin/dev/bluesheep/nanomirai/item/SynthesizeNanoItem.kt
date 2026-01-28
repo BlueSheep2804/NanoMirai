@@ -34,7 +34,7 @@ class SynthesizeNanoItem : Item(
         val primaryItem = (if (context.hand == InteractionHand.MAIN_HAND) mainhand else offhand)
         val secondaryItem = (if (context.hand == InteractionHand.MAIN_HAND) offhand else mainhand)
 
-        if (!SynthesizeUtil.check(level, primaryItem, secondaryItem, inputBlock)) {
+        if (!SynthesizeUtil.check(level, primaryItem, secondaryItem, context.clickedPos)) {
             player.displayClientMessage(Component.translatable("recipe.nanomirai.synthesize.not_found"), true)
             return InteractionResult.FAIL
         }
@@ -79,7 +79,7 @@ class SynthesizeNanoItem : Item(
             val inputBlockPos = blockSource.pos.relative(dispenser.getValue(DispenserBlock.FACING))
             val inputBlock = level.getBlockState(inputBlockPos)
 
-            if (!SynthesizeUtil.check(level, itemStack, inputBlock)) {
+            if (!SynthesizeUtil.check(level, itemStack, inputBlockPos)) {
                 return itemStack
             }
 

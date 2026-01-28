@@ -1,10 +1,13 @@
 {
   "type": "nanomirai:synthesize",
   "block": {
-    "Name": "minecraft:bone_block",
-    "Properties": {
-      "axis": "y"
-    }
+    "block": {
+      "Name": "minecraft:bone_block",
+      "Properties": {
+        "axis": "y"
+      }
+    },
+    "nbt": {}
   },
   "catalyst": {
     "item": "nanomirai:sculmium_circuit"

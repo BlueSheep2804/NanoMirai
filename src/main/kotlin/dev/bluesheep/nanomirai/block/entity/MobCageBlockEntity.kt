@@ -32,6 +32,15 @@ class MobCageBlockEntity(pos: BlockPos, blockState: BlockState) : BlockEntity(Na
         return ClientboundBlockEntityDataPacket.create(this)
     }
 
+    override fun onDataPacket(
+        net: Connection,
+        pkt: ClientboundBlockEntityDataPacket,
+        lookupProvider: HolderLookup.Provider
+    ) {
+        super.onDataPacket(net, pkt, lookupProvider)
+        updateCapturedEntity()
+    }
+
     fun entityInside(entity: Entity) {
         if (capturedEntity != null) return
         val patchedComponent = PatchedDataComponentMap(components())
@@ -44,15 +53,6 @@ class MobCageBlockEntity(pos: BlockPos, blockState: BlockState) : BlockEntity(Na
 
         updateCapturedEntity()
         level?.sendBlockUpdated(blockPos, blockState, blockState, Block.UPDATE_CLIENTS)
-    }
-
-    override fun onDataPacket(
-        net: Connection,
-        pkt: ClientboundBlockEntityDataPacket,
-        lookupProvider: HolderLookup.Provider
-    ) {
-        super.onDataPacket(net, pkt, lookupProvider)
-        updateCapturedEntity()
     }
 
     private fun updateCapturedEntity() {

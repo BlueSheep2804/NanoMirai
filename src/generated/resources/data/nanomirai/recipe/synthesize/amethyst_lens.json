@@ -1,7 +1,10 @@
 {
   "type": "nanomirai:synthesize",
   "block": {
-    "Name": "minecraft:tinted_glass"
+    "block": {
+      "Name": "minecraft:tinted_glass"
+    },
+    "nbt": {}
   },
   "catalyst": {
     "item": "minecraft:amethyst_shard"

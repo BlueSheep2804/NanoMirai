@@ -6,6 +6,7 @@ import dev.bluesheep.nanomirai.registry.NanoMiraiBlockEntities
 import dev.bluesheep.nanomirai.registry.NanoMiraiBlockStates
 import dev.bluesheep.nanomirai.util.SynthesizeState
 import net.minecraft.core.BlockPos
+import net.minecraft.world.entity.player.Player
 import net.minecraft.world.level.Level
 import net.minecraft.world.level.block.BaseEntityBlock
 import net.minecraft.world.level.block.Block
@@ -16,6 +17,7 @@ import net.minecraft.world.level.block.entity.BlockEntityType
 import net.minecraft.world.level.block.state.BlockState
 import net.minecraft.world.level.block.state.StateDefinition
 import net.minecraft.world.level.block.state.properties.EnumProperty
+import net.minecraft.world.level.material.FluidState
 
 class SynthesizeDisplayBlock(properties: Properties) : BaseEntityBlock(properties) {
     companion object {
@@ -41,24 +43,29 @@ class SynthesizeDisplayBlock(properties: Properties) : BaseEntityBlock(propertie
         return SynthesizeDisplayBlockEntity(pos, state)
     }
 
-    override fun onRemove(
+    override fun onDestroyedByPlayer(
         state: BlockState,
         level: Level,
         pos: BlockPos,
-        newState: BlockState,
-        movedByPiston: Boolean
-    ) {
-        if (state.block != newState.block) {
-            val blockEntity = level.getBlockEntity(pos)
-            if (blockEntity is SynthesizeDisplayBlockEntity) {
-                if (!blockEntity.hasCraftingFinished()) {
-                    blockEntity.drops()
-                    level.setBlockAndUpdate(pos, blockEntity.block)
+        player: Player,
+        willHarvest: Boolean,
+        fluid: FluidState
+    ): Boolean {
+        val blockEntity = level.getBlockEntity(pos)
+        if (blockEntity is SynthesizeDisplayBlockEntity && !blockEntity.hasCraftingFinished()) {
+            val blockState = blockEntity.block.blockState
+            level.setBlockAndUpdate(pos, blockState)
+            if (!level.isClientSide) {
+                blockEntity.drops()
+                level.getBlockEntity(pos)?.let {
+                    it.loadWithComponents(blockEntity.block.nbt, level.registryAccess())
+                    it.setChanged()
+                    level.sendBlockUpdated(pos, it.blockState, it.blockState, Block.UPDATE_ALL)
                 }
             }
         }
 
-        super.onRemove(state, level, pos, newState, movedByPiston)
+        return true
     }
 
     override fun <T : BlockEntity> getTicker(
