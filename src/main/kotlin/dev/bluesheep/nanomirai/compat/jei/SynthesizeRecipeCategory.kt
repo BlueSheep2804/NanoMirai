@@ -50,7 +50,7 @@ class SynthesizeRecipeCategory(helper: IGuiHelper): IRecipeCategory<SynthesizeRe
         builder.addSlot(RecipeIngredientRole.INPUT, 56, 1)
             .addItemStack(
                 setLore(
-                    ItemStack(recipe.inputBlock.block),
+                    getBlockItemStack(recipe),
                     Component.translatable("recipe.nanomirai.synthesize.interact").withStyle(ChatFormatting.AQUA, ChatFormatting.UNDERLINE)
                 )
             )
@@ -105,7 +105,7 @@ class SynthesizeRecipeCategory(helper: IGuiHelper): IRecipeCategory<SynthesizeRe
 
         pose.pushPose()
         pose.scale(2F, 2F, 2F)
-        guiGraphics.renderItem(ItemStack(recipe.inputBlock.block), 24, 12)
+        guiGraphics.renderItem(getBlockItemStack(recipe), 24, 12)
         pose.popPose()
     }
 
@@ -131,5 +131,11 @@ class SynthesizeRecipeCategory(helper: IGuiHelper): IRecipeCategory<SynthesizeRe
         val items = ingredient.items
         items.map { setLore(it, lore) }
         return items.toList()
+    }
+
+    private fun getBlockItemStack(recipe: SynthesizeRecipe): ItemStack {
+        return Minecraft.getInstance().level?.let {
+            recipe.inputBlock.getItemStack(it.registryAccess())
+        } ?: ItemStack(recipe.inputBlock.block)
     }
 }
