@@ -95,5 +95,19 @@ class JeiCompat: IModPlugin {
         registration.registerSubtypeInterpreter(NanoMiraiItems.SYNTHESIZE_NANO, nanoTieredSubtypeInterpreter)
         registration.registerSubtypeInterpreter(NanoMiraiItems.SUPPORT_NANO, nanoTieredSubtypeInterpreter)
         registration.registerSubtypeInterpreter(NanoMiraiItems.NANO_SWARM_BLASTER, nanoTieredSubtypeInterpreter)
+
+        registration.registerSubtypeInterpreter(NanoMiraiItems.MOB_CAGE, object: ISubtypeInterpreter<ItemStack> {
+            override fun getSubtypeData(ingredient: ItemStack, context: UidContext): Any? {
+                return getLegacyStringSubtypeInfo(ingredient, context)
+            }
+
+            override fun getLegacyStringSubtypeInfo(ingredient: ItemStack, context: UidContext): String {
+                val entityType = ingredient.get(DataComponents.ENTITY_DATA)
+                if (entityType != null) {
+                    return entityType.copyTag().getString("id")
+                }
+                return "empty"
+            }
+        })
     }
 }
