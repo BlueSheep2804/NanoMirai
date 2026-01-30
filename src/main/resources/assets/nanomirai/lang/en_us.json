@@ -4,6 +4,8 @@
   "nanomirai.nano_tier.mk2": "Mk.2",
   "nanomirai.nano_tier.mk3": "Mk.3",
   "nanomirai.nano_tier.mk4": "Mk.4",
+  "nanomirai.tooltip.stored_energy": "%1$s / %2$s FE",
+  "nanomirai.tooltip.remaining_uses": "Remaining Uses: %s",
   "block.nanomirai.nanomachine_assembler": "Nanomachine Assembler",
   "block.nanomirai.laser_engraver": "Laser Engraver",
   "block.nanomirai.synthesize_display": "Synthesize Display",

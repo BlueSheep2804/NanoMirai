@@ -26,11 +26,10 @@ import net.minecraft.world.level.Level
 import net.minecraft.world.phys.AABB
 import java.util.*
 
-class NanoSwarmBlasterItem : Item(
-    Properties().stacksTo(1)
-        .component(DataComponents.MAX_DAMAGE, 10)
-        .component(DataComponents.DAMAGE, 0)
-        .component(DataComponents.POTION_CONTENTS, PotionContents.EMPTY)
+class NanoSwarmBlasterItem : PoweredItem(
+    Properties().component(DataComponents.POTION_CONTENTS, PotionContents.EMPTY),
+    10000,
+    1000
 ), INanoTieredItem {
     companion object {
         fun addEffect(stack: ItemStack, effect: MobEffectInstance) {
@@ -94,11 +93,7 @@ class NanoSwarmBlasterItem : Item(
                     }
                 }
 
-                stack.hurtAndBreak(
-                    1,
-                    livingEntity,
-                    if (livingEntity.usedItemHand == InteractionHand.MAIN_HAND) EquipmentSlot.MAINHAND else EquipmentSlot.OFFHAND
-                )
+                consumeEnergy(stack)
             }
             livingEntity.cooldowns.addCooldown(this, NanoTier.fromRarity(stack.rarity).blasterCooldown)
         }
@@ -106,37 +101,10 @@ class NanoSwarmBlasterItem : Item(
 
     override fun use(level: Level, player: Player, usedHand: InteractionHand): InteractionResultHolder<ItemStack?> {
         val stack = player.getItemInHand(usedHand)
-        if (player.isCrouching) {
-            if (stack.isDamaged) {
-                val inventory = player.inventory
-                val repairMaterials = mutableListOf<ItemStack>()
-                for (i in 0 until inventory.containerSize) {
-                    val item = inventory.getItem(i)
-                    if (item.`is`(NanoMiraiItems.REPAIR_NANO)) {
-                        repairMaterials.add(item)
-                    }
-                }
-                if (!repairMaterials.isEmpty()) {
-                    repairMaterials.sortBy(ItemStack::getCount)
-                    repair(stack, repairMaterials.first())
-                    return InteractionResultHolder.consume(stack)
-                }
-            }
-        } else {
+        if (isEnergyEnough(stack)) {
             player.startUsingItem(usedHand)
             return InteractionResultHolder.consume(stack)
         }
         return InteractionResultHolder.fail(stack)
-    }
-
-    override fun overrideOtherStackedOnMe(
-        stack: ItemStack,
-        other: ItemStack,
-        slot: Slot,
-        action: ClickAction,
-        player: Player,
-        access: SlotAccess
-    ): Boolean {
-        return otherStackedOnMe(stack, other, action)
     }
 }

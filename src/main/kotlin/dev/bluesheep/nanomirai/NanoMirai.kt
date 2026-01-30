@@ -3,6 +3,7 @@ package dev.bluesheep.nanomirai
 import dev.bluesheep.nanomirai.block.entity.AssemblerBlockEntity
 import dev.bluesheep.nanomirai.block.entity.LaserEngraverBlockEntity
 import dev.bluesheep.nanomirai.block.entity.SynthesizeDisplayBlockEntity
+import dev.bluesheep.nanomirai.capabilities.EnergyStorageItem
 import dev.bluesheep.nanomirai.data.*
 import dev.bluesheep.nanomirai.item.SynthesizeNanoItem
 import dev.bluesheep.nanomirai.registry.*
@@ -38,6 +39,7 @@ object NanoMirai {
     init {
         LOGGER.log(Level.INFO, "Hello world!")
 
+        NanoMiraiDataComponents.REGISTRY.register(MOD_BUS)
         NanoMiraiBlocks.REGISTRY.register(MOD_BUS)
         NanoMiraiItems.REGISTRY.register(MOD_BUS)
         NanoMiraiBlockEntities.REGISTRY.register(MOD_BUS)
@@ -71,6 +73,15 @@ object NanoMirai {
             Capabilities.ItemHandler.BLOCK,
             NanoMiraiBlockEntities.SYNTHESIZE_DISPLAY,
             SynthesizeDisplayBlockEntity::capabilityProvider
+        )
+
+        event.registerItem(
+            Capabilities.EnergyStorage.ITEM,
+            { itemStack, _ ->
+                EnergyStorageItem(itemStack)
+            },
+            NanoMiraiItems.SYNTHESIZE_NANO,
+            NanoMiraiItems.NANO_SWARM_BLASTER
         )
     }
 

@@ -4,6 +4,8 @@
   "nanomirai.nano_tier.mk2": "Mk.2",
   "nanomirai.nano_tier.mk3": "Mk.3",
   "nanomirai.nano_tier.mk4": "Mk.4",
+  "nanomirai.tooltip.stored_energy": "%1$s / %2$s FE",
+  "nanomirai.tooltip.remaining_uses": "%s回使用可能",
   "block.nanomirai.nanomachine_assembler": "ナノマシン組立機",
   "block.nanomirai.laser_engraver": "レーザー加工機",
   "block.nanomirai.synthesize_display": "合成用ブロック",

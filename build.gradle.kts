@@ -140,6 +140,7 @@ dependencies {
     implementation("maven.modrinth:jade:${ModInfo.jade_version}")
 
     runtimeOnly("maven.modrinth:pipez:neoforge-1.21.1-1.2.19")
+    runtimeOnly("maven.modrinth:mekanism:10.7.17.83")
 }
 
 var generateModMetadata = tasks.register("generateModMetadata", ProcessResources::class.java) {
