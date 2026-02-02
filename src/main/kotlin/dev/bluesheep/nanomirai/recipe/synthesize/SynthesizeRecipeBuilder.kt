@@ -18,7 +18,7 @@ class SynthesizeRecipeBuilder(result: ItemStack, val tier: NanoTier, val block: 
 
     override fun save(output: RecipeOutput, id: ResourceLocation) {
         val recipeId = id.withPrefix("synthesize/")
-        val recipe = SynthesizeRecipe(result, tier.rarity.ordinal, block, catalyst, duration)
+        val recipe = SynthesizeRecipe(result, tier.ordinal, block, catalyst, duration)
         output.accept(recipeId, recipe, null)
     }
 }

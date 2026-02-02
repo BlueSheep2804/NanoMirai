@@ -27,10 +27,7 @@
     }
   ],
   "result": {
-    "components": {
-      "minecraft:rarity": "rare"
-    },
     "count": 1,
-    "id": "nanomirai:support_nano"
+    "id": "nanomirai:support_nano_mk3"
   }
 }

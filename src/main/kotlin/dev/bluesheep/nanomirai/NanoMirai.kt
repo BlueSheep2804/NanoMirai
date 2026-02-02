@@ -7,6 +7,7 @@ import dev.bluesheep.nanomirai.capabilities.EnergyStorageItem
 import dev.bluesheep.nanomirai.data.*
 import dev.bluesheep.nanomirai.item.SynthesizeNanoItem
 import dev.bluesheep.nanomirai.registry.*
+import dev.bluesheep.nanomirai.util.NanoTier
 import net.minecraft.resources.ResourceLocation
 import net.minecraft.world.level.block.DispenserBlock
 import net.neoforged.bus.api.SubscribeEvent
@@ -53,8 +54,9 @@ object NanoMirai {
 
     @SubscribeEvent
     fun setup(event: FMLCommonSetupEvent) {
-        LOGGER.info("Hello from server setup")
-        DispenserBlock.registerBehavior(NanoMiraiItems.SYNTHESIZE_NANO, SynthesizeNanoItem.DispenserBehavior())
+        NanoTier.entries.forEach {
+            DispenserBlock.registerBehavior(it.synthesizeNanoItem, SynthesizeNanoItem.DISPENSER_BEHAVIOR)
+        }
     }
 
     @SubscribeEvent
@@ -80,8 +82,14 @@ object NanoMirai {
             { itemStack, _ ->
                 EnergyStorageItem(itemStack)
             },
-            NanoMiraiItems.SYNTHESIZE_NANO,
-            NanoMiraiItems.NANO_SWARM_BLASTER
+            NanoMiraiItems.SYNTHESIZE_NANO_MK1,
+            NanoMiraiItems.SYNTHESIZE_NANO_MK2,
+            NanoMiraiItems.SYNTHESIZE_NANO_MK3,
+            NanoMiraiItems.SYNTHESIZE_NANO_MK4,
+            NanoMiraiItems.NANO_SWARM_BLASTER_MK1,
+            NanoMiraiItems.NANO_SWARM_BLASTER_MK2,
+            NanoMiraiItems.NANO_SWARM_BLASTER_MK3,
+            NanoMiraiItems.NANO_SWARM_BLASTER_MK4
         )
     }
 

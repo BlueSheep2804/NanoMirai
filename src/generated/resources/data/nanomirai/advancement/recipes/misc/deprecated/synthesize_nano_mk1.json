@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_synthesize_nano": {
+      "conditions": {
+        "items": [
+          {
+            "items": "nanomirai:synthesize_nano"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "nanomirai:deprecated/synthesize_nano_mk1"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_the_recipe",
+      "has_synthesize_nano"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "nanomirai:deprecated/synthesize_nano_mk1"
+    ]
+  }
+}

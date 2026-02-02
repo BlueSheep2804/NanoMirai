@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    {
+      "type": "neoforge:components",
+      "components": {
+        "minecraft:rarity": "common"
+      },
+      "items": "nanomirai:synthesize_nano"
+    }
+  ],
+  "result": {
+    "count": 1,
+    "id": "nanomirai:synthesize_nano_mk1"
+  }
+}

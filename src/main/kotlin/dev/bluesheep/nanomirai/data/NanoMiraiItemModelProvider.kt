@@ -3,6 +3,7 @@ package dev.bluesheep.nanomirai.data
 import dev.bluesheep.nanomirai.NanoMirai
 import dev.bluesheep.nanomirai.registry.NanoMiraiBlocks
 import dev.bluesheep.nanomirai.registry.NanoMiraiItems
+import dev.bluesheep.nanomirai.util.NanoTier
 import net.minecraft.client.renderer.block.model.BlockModel
 import net.minecraft.data.PackOutput
 import net.minecraft.world.item.ItemDisplayContext
@@ -13,7 +14,19 @@ import net.neoforged.neoforge.common.data.ExistingFileHelper
 class NanoMiraiItemModelProvider(output: PackOutput, existingFileHelper: ExistingFileHelper) : ItemModelProvider(output, NanoMirai.ID, existingFileHelper) {
     override fun registerModels() {
         basicItem(NanoMiraiItems.SYNTHESIZE_NANO)
+
+        val synthesizeNano = getExistingFile(modLoc("item/synthesize_nano"))
+        NanoTier.entries.forEach {
+            getBuilder("synthesize_nano_${it.name.lowercase()}")
+                .parent(synthesizeNano)
+        }
+
         basicItem(NanoMiraiItems.SUPPORT_NANO)
+        val supportNano = getExistingFile(modLoc("item/support_nano"))
+        NanoTier.entries.forEach {
+            getBuilder("support_nano_${it.name.lowercase()}")
+                .parent(supportNano)
+        }
 
         getBuilder("nano_swarm_blaster_charged")
             .parent(getExistingFile(mcLoc("item/handheld")))
@@ -22,10 +35,15 @@ class NanoMiraiItemModelProvider(output: PackOutput, existingFileHelper: Existin
         getBuilder("nano_swarm_blaster")
             .parent(getExistingFile(mcLoc("item/handheld")))
             .texture("layer0", "item/nano_swarm_blaster")
-            .override()
-                .predicate(modLoc("charged"), 0.9f)
-                .model(getExistingFile(modLoc("item/nano_swarm_blaster_charged")))
-                .end()
+
+        NanoTier.entries.forEach {
+            getBuilder("nano_swarm_blaster_${it.name.lowercase()}")
+                .parent(getExistingFile(modLoc("item/nano_swarm_blaster")))
+                .override()
+                    .predicate(modLoc("charged"), 0.9f)
+                    .model(getExistingFile(modLoc("item/nano_swarm_blaster_charged")))
+                    .end()
+        }
 
         basicItem(NanoMiraiItems.REPAIR_NANO)
 

@@ -1,12 +1,14 @@
 package dev.bluesheep.nanomirai.block.entity
 
 import dev.bluesheep.nanomirai.NanoMirai.rl
+import dev.bluesheep.nanomirai.item.DeprecatedItem
 import dev.bluesheep.nanomirai.item.NanoSwarmBlasterItem
 import dev.bluesheep.nanomirai.item.SupportNanoItem
 import dev.bluesheep.nanomirai.recipe.lab.NanoLabRecipeInput
 import dev.bluesheep.nanomirai.recipe.lab.attribute.LabAttributeRecipe
 import dev.bluesheep.nanomirai.recipe.lab.effect.LabEffectRecipe
 import dev.bluesheep.nanomirai.registry.NanoMiraiBlockEntities
+import dev.bluesheep.nanomirai.registry.NanoMiraiItemTags
 import dev.bluesheep.nanomirai.registry.NanoMiraiItems
 import dev.bluesheep.nanomirai.registry.NanoMiraiRecipeType
 import dev.bluesheep.nanomirai.util.NanoTier
@@ -22,6 +24,7 @@ import net.minecraft.world.SimpleContainer
 import net.minecraft.world.effect.MobEffectInstance
 import net.minecraft.world.inventory.ContainerData
 import net.minecraft.world.item.ItemStack
+import net.minecraft.world.item.Rarity
 import net.minecraft.world.item.crafting.RecipeHolder
 import net.minecraft.world.level.Level
 import net.minecraft.world.level.block.entity.BlockEntity
@@ -37,7 +40,24 @@ class NanoLabBlockEntity(pos: BlockPos, blockState: BlockState) : BlockEntity(Na
         const val OUTPUT_SLOT = 0
         const val CATALYST_SLOT = 1
     }
-    val itemHandler = ItemStackHandler(SIZE)
+    val itemHandler = object : ItemStackHandler(SIZE) {
+        override fun onContentsChanged(slot: Int) {
+            if (slot != OUTPUT_SLOT) return
+            val outputStack = getStackInSlot(OUTPUT_SLOT)
+            if (outputStack.item is DeprecatedItem) {
+                val tier = NanoTier.fromRarity(outputStack.getOrDefault(DataComponents.RARITY, Rarity.COMMON))
+                val stack = if (outputStack.`is`(NanoMiraiItems.SUPPORT_NANO)) {
+                    tier.getSupportNano()
+                } else if (outputStack.`is`(NanoMiraiItems.NANO_SWARM_BLASTER)) {
+                    tier.getNanoSwarmBlaster()
+                } else {
+                    return
+                }
+                stack.applyComponents(outputStack.componentsPatch)
+                setStackInSlot(OUTPUT_SLOT, stack)
+            }
+        }
+    }
     var progress = 0
     var maxProgress = 100
     val data: ContainerData = object : ContainerData {
@@ -156,31 +176,29 @@ class NanoLabBlockEntity(pos: BlockPos, blockState: BlockState) : BlockEntity(Na
         val effectRecipe = getCurrentEffectRecipe()
 
         return (
-                (attributeRecipe.isPresent && itemHandler.getStackInSlot(OUTPUT_SLOT).`is`(NanoMiraiItems.SUPPORT_NANO)) ||
-                (effectRecipe.isPresent && itemHandler.getStackInSlot(OUTPUT_SLOT).`is`(NanoMiraiItems.NANO_SWARM_BLASTER))
+                (attributeRecipe.isPresent && itemHandler.getStackInSlot(OUTPUT_SLOT).`is`(NanoMiraiItemTags.SUPPORT_NANO)) ||
+                (effectRecipe.isPresent && itemHandler.getStackInSlot(OUTPUT_SLOT).`is`(NanoMiraiItemTags.NANO_SWARM_BLASTER))
         )
     }
 
     private fun isCraftable(): Boolean {
         val stack = itemHandler.getStackInSlot(OUTPUT_SLOT)
-        when (stack.item) {
+        when (val item = stack.item) {
             is SupportNanoItem -> {
                 val recipe = getCurrentAttributeRecipe()
                 if (recipe.isEmpty) return false
-                val tier = NanoTier.fromRarity(stack.rarity)
                 val currentAttributes = CuriosApi.getAttributeModifiers(
                     SlotContext("support_nano", null, 0, false, true),
                     rl("support_nano"),
                     stack
                 )
-                return currentAttributes.size() < tier.maxAttributes && !currentAttributes.containsKey(recipe.get().value.attribute)
+                return currentAttributes.size() < item.tier.maxAttributes && !currentAttributes.containsKey(recipe.get().value.attribute)
             }
             is NanoSwarmBlasterItem -> {
                 val recipe = getCurrentEffectRecipe()
                 if (recipe.isEmpty) return false
-                val tier = NanoTier.fromRarity(stack.rarity)
                 val currentEffects = stack.get(DataComponents.POTION_CONTENTS)?.customEffects ?: emptyList<MobEffectInstance>()
-                return currentEffects.size < tier.maxEffects && !currentEffects.contains(recipe.get().value.mobEffectInstance)
+                return currentEffects.size < item.tier.maxEffects && !currentEffects.contains(recipe.get().value.mobEffectInstance)
             }
             else -> return false
         }

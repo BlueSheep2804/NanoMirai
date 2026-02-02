@@ -25,10 +25,8 @@ import net.minecraft.world.Containers
 import net.minecraft.world.SimpleContainer
 import net.minecraft.world.item.BlockItem
 import net.minecraft.world.item.ItemStack
-import net.minecraft.world.item.Rarity
 import net.minecraft.world.item.crafting.RecipeHolder
 import net.minecraft.world.level.Level
-import net.minecraft.world.level.block.Blocks
 import net.minecraft.world.level.block.entity.BlockEntity
 import net.minecraft.world.level.block.state.BlockState
 import net.neoforged.neoforge.items.IItemHandler
@@ -172,9 +170,11 @@ class SynthesizeDisplayBlockEntity(pos: BlockPos, blockState: BlockState) : Bloc
         val recipe = getCurrentRecipe()
         var state = SynthesizeState.INVALID
         if (recipe.isPresent) {
-            state = SynthesizeState.CRAFTING
-            val tier = NanoTier.fromRarity(itemHandler.getStackInSlot(0).get(DataComponents.RARITY) ?: Rarity.COMMON)
-            maxProgress = (recipe.get().value.duration / tier.processingSpeedMultiplier).toInt()
+            val tier = NanoTier.fromItem(itemHandler.getStackInSlot(0).item)
+            tier?.let {
+                maxProgress = (recipe.get().value.duration / it.processingSpeedMultiplier).toInt()
+                state = SynthesizeState.CRAFTING
+            }
         }
         level!!.setBlockAndUpdate(blockPos, blockState.setValue(SynthesizeDisplayBlock.STATE, state))
         setChanged()

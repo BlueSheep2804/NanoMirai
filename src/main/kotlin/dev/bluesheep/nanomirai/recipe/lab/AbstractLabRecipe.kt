@@ -1,5 +1,6 @@
 package dev.bluesheep.nanomirai.recipe.lab
 
+import dev.bluesheep.nanomirai.item.INanoTieredItem
 import net.minecraft.core.HolderLookup
 import net.minecraft.core.NonNullList
 import net.minecraft.world.item.ItemStack
@@ -17,7 +18,9 @@ abstract class AbstractLabRecipe(val result: ItemStack, val tier: Int, val catal
         level: Level
     ): Boolean {
         if (!catalyst.test(input.catalyst)) return false
-        if (input.nanoItem.rarity.ordinal < tier) return false
+        val item = input.nanoItem.item
+        if (item !is INanoTieredItem) return false
+        if (item.tier.ordinal < tier) return false
         val inputList = input.list.filter { !it.isEmpty }.toMutableList()
 
         for (ingredient in ingredients.filter { !it.isEmpty }) {

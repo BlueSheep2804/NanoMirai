@@ -1,6 +1,6 @@
 package dev.bluesheep.nanomirai.item
 
-import dev.bluesheep.nanomirai.registry.NanoMiraiItems
+import dev.bluesheep.nanomirai.util.NanoTier
 import dev.bluesheep.nanomirai.util.SynthesizeUtil
 import net.minecraft.core.dispenser.BlockSource
 import net.minecraft.core.dispenser.OptionalDispenseItemBehavior
@@ -11,13 +11,21 @@ import net.minecraft.world.item.ItemStack
 import net.minecraft.world.item.context.UseOnContext
 import net.minecraft.world.level.block.DispenserBlock
 
-class SynthesizeNanoItem : PoweredItem(
-    Properties(),
+class SynthesizeNanoItem(override val tier: NanoTier) : PoweredItem(
+    Properties().rarity(tier.rarity),
     1000,
     100
 ), INanoTieredItem {
+    companion object {
+        val DISPENSER_BEHAVIOR = DispenserBehavior()
+    }
+
     override fun getName(stack: ItemStack): Component {
         return getTieredName(stack, super.getName(stack))
+    }
+
+    override fun getDescriptionId(): String {
+        return "item.nanomirai.synthesize_nano"
     }
 
     override fun useOn(context: UseOnContext): InteractionResult {
@@ -63,8 +71,12 @@ class SynthesizeNanoItem : PoweredItem(
             val dispenser = blockSource.state
             val inputBlockPos = blockSource.pos.relative(dispenser.getValue(DispenserBlock.FACING))
             val inputBlock = level.getBlockState(inputBlockPos)
+            val item = itemStack.item
+            if (item !is SynthesizeNanoItem) {
+                return itemStack
+            }
 
-            if (!NanoMiraiItems.SYNTHESIZE_NANO.isEnergyEnough(itemStack)) {
+            if (item.isEnergyEnough(itemStack)) {
                 return itemStack
             }
 
@@ -78,7 +90,7 @@ class SynthesizeNanoItem : PoweredItem(
                 inputBlock,
                 inputBlockPos
             ) ?: return super.execute(blockSource, itemStack)
-            NanoMiraiItems.SYNTHESIZE_NANO.consumeEnergy(itemStack)
+            item.consumeEnergy(itemStack)
             isSuccess = true
             return itemStack
         }

@@ -27,10 +27,7 @@
     }
   ],
   "result": {
-    "components": {
-      "minecraft:rarity": "epic"
-    },
     "count": 1,
-    "id": "nanomirai:nano_swarm_blaster"
+    "id": "nanomirai:nano_swarm_blaster_mk4"
   }
 }

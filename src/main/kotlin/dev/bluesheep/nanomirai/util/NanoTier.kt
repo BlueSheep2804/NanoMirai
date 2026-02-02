@@ -1,17 +1,24 @@
 package dev.bluesheep.nanomirai.util
 
 import dev.bluesheep.nanomirai.NanoMiraiConfig
+import dev.bluesheep.nanomirai.item.INanoTieredItem
+import dev.bluesheep.nanomirai.item.NanoSwarmBlasterItem
+import dev.bluesheep.nanomirai.item.SupportNanoItem
+import dev.bluesheep.nanomirai.item.SynthesizeNanoItem
 import dev.bluesheep.nanomirai.registry.NanoMiraiItems
-import net.minecraft.core.component.DataComponents
 import net.minecraft.network.chat.Component
 import net.minecraft.world.item.Item
 import net.minecraft.world.item.ItemStack
 import net.minecraft.world.item.Rarity
 import net.minecraft.world.item.crafting.Ingredient
 import net.neoforged.neoforge.common.ModConfigSpec
+import net.neoforged.neoforge.common.util.Lazy
 
 enum class NanoTier(
     val rarity: Rarity,
+    private val synthesizeNanoItemLazy: Lazy<SynthesizeNanoItem>,
+    private val supportNanoItemLazy: Lazy<SupportNanoItem>,
+    private val nanoSwarmBlasterItemLazy: Lazy<NanoSwarmBlasterItem>,
     private val processingSpeedMultiplierConfig: ModConfigSpec.ConfigValue<Double>,
     private val maxAttributesConfig: ModConfigSpec.ConfigValue<Int>,
     private val maxEffectsConfig: ModConfigSpec.ConfigValue<Int>,
@@ -19,6 +26,9 @@ enum class NanoTier(
 ) {
     MK1(
         Rarity.COMMON,
+        Lazy.of { -> NanoMiraiItems.SYNTHESIZE_NANO_MK1 },
+        Lazy.of { -> NanoMiraiItems.SUPPORT_NANO_MK1 },
+        Lazy.of { -> NanoMiraiItems.NANO_SWARM_BLASTER_MK1 },
         NanoMiraiConfig.processingSpeedMultiplierMk1,
         NanoMiraiConfig.maxAttributesMk1,
         NanoMiraiConfig.maxEffectsMk1,
@@ -26,6 +36,9 @@ enum class NanoTier(
     ),
     MK2(
         Rarity.UNCOMMON,
+        Lazy.of { -> NanoMiraiItems.SYNTHESIZE_NANO_MK2 },
+        Lazy.of { -> NanoMiraiItems.SUPPORT_NANO_MK2 },
+        Lazy.of { -> NanoMiraiItems.NANO_SWARM_BLASTER_MK2 },
         NanoMiraiConfig.processingSpeedMultiplierMk2,
         NanoMiraiConfig.maxAttributesMk2,
         NanoMiraiConfig.maxEffectsMk2,
@@ -33,6 +46,9 @@ enum class NanoTier(
     ),
     MK3(
         Rarity.RARE,
+        Lazy.of { -> NanoMiraiItems.SYNTHESIZE_NANO_MK3 },
+        Lazy.of { -> NanoMiraiItems.SUPPORT_NANO_MK3 },
+        Lazy.of { -> NanoMiraiItems.NANO_SWARM_BLASTER_MK3 },
         NanoMiraiConfig.processingSpeedMultiplierMk3,
         NanoMiraiConfig.maxAttributesMk3,
         NanoMiraiConfig.maxEffectsMk3,
@@ -40,6 +56,9 @@ enum class NanoTier(
     ),
     MK4(
         Rarity.EPIC,
+        Lazy.of { -> NanoMiraiItems.SYNTHESIZE_NANO_MK4 },
+        Lazy.of { -> NanoMiraiItems.SUPPORT_NANO_MK4 },
+        Lazy.of { -> NanoMiraiItems.NANO_SWARM_BLASTER_MK4 },
         NanoMiraiConfig.processingSpeedMultiplierMk4,
         NanoMiraiConfig.maxAttributesMk4,
         NanoMiraiConfig.maxEffectsMk4,
@@ -48,6 +67,15 @@ enum class NanoTier(
 
     val nameComponent: Component
         get() = Component.translatable("nanomirai.nano_tier.${name.lowercase()}").withStyle(rarity.styleModifier)
+
+    val synthesizeNanoItem: SynthesizeNanoItem
+        get() = synthesizeNanoItemLazy.get()
+
+    val supportNanoItem: SupportNanoItem
+        get() = supportNanoItemLazy.get()
+
+    val nanoSwarmBlasterItem: NanoSwarmBlasterItem
+        get() = nanoSwarmBlasterItemLazy.get()
 
     val processingSpeedMultiplier: Double
         get() = processingSpeedMultiplierConfig.get()
@@ -61,22 +89,16 @@ enum class NanoTier(
     val blasterCooldown: Int
         get() = blasterCooldownConfig.get()
 
-    fun getTieredItem(item: Item): ItemStack {
-        return ItemStack(item).apply {
-            this.set(DataComponents.RARITY, this@NanoTier.rarity)
-        }
-    }
-
     fun getSynthesizeNano(): ItemStack {
-        return getTieredItem(NanoMiraiItems.SYNTHESIZE_NANO)
+        return ItemStack(synthesizeNanoItem)
     }
 
     fun getSupportNano(): ItemStack {
-        return getTieredItem(NanoMiraiItems.SUPPORT_NANO)
+        return ItemStack(supportNanoItem)
     }
 
     fun getNanoSwarmBlaster(): ItemStack {
-        return getTieredItem(NanoMiraiItems.NANO_SWARM_BLASTER)
+        return ItemStack(nanoSwarmBlasterItem)
     }
 
     companion object {
@@ -96,8 +118,15 @@ enum class NanoTier(
             return NanoTier.entries.first { it.rarity == rarity }
         }
 
+        fun fromItem(item: Item): NanoTier? {
+            if (item is INanoTieredItem) {
+                return item.tier
+            }
+            return null
+        }
+
         fun fromMinLevel(level: Int): List<NanoTier> {
-            return NanoTier.entries.filter { it.rarity.ordinal >= level }
+            return NanoTier.entries.filter { it.ordinal >= level }
         }
     }
 }

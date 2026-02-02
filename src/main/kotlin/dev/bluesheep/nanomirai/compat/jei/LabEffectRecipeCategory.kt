@@ -17,7 +17,7 @@ class LabEffectRecipeCategory : AbstractLabRecipeCategory<LabEffectRecipe>() {
         val TYPE: RecipeType<LabEffectRecipe> = RecipeType(UID, LabEffectRecipe::class.java)
     }
 
-    private val icon = DoubleItemIcon(ItemStack(NanoMiraiItems.NANO_LAB), ItemStack(NanoMiraiItems.NANO_SWARM_BLASTER))
+    private val icon = DoubleItemIcon(ItemStack(NanoMiraiItems.NANO_LAB), ItemStack(NanoMiraiItems.NANO_SWARM_BLASTER_MK1))
 
     override fun getRecipeType(): RecipeType<LabEffectRecipe> {
         return TYPE

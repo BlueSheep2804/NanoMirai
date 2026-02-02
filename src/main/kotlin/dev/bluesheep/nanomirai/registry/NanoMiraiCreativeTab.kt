@@ -1,8 +1,7 @@
 package dev.bluesheep.nanomirai.registry
 
 import dev.bluesheep.nanomirai.NanoMirai
-import dev.bluesheep.nanomirai.item.INanoTieredItem
-import dev.bluesheep.nanomirai.util.NanoTier
+import dev.bluesheep.nanomirai.item.DeprecatedItem
 import net.minecraft.core.registries.Registries
 import net.minecraft.network.chat.Component
 import net.minecraft.world.item.CreativeModeTab
@@ -16,14 +15,10 @@ object NanoMiraiCreativeTab {
     val TAB: DeferredHolder<CreativeModeTab, CreativeModeTab> = REGISTRY.register("nanomirai_tab") { ->
         CreativeModeTab.builder()
             .title(Component.translatable("itemGroup.nanomirai"))
-            .icon { ItemStack(NanoMiraiItems.SYNTHESIZE_NANO) }
+            .icon { ItemStack(NanoMiraiItems.SYNTHESIZE_NANO_MK1) }
             .displayItems { params, output ->
                 NanoMiraiItems.REGISTRY.entries.forEach { item ->
-                    if (item.get() is INanoTieredItem) {
-                        NanoTier.entries.forEach { tier ->
-                            output.accept(tier.getTieredItem(item.get()))
-                        }
-                    } else {
+                    if (item.get() !is DeprecatedItem) {
                         output.accept(item.get())
                     }
                 }

@@ -15,6 +15,8 @@ import dev.bluesheep.nanomirai.util.NanoTier
 import dev.bluesheep.nanomirai.util.SynthesizeUtil
 import net.minecraft.core.HolderLookup
 import net.minecraft.core.NonNullList
+import net.minecraft.core.component.DataComponentPredicate
+import net.minecraft.core.component.DataComponents
 import net.minecraft.data.PackOutput
 import net.minecraft.data.recipes.*
 import net.minecraft.tags.ItemTags
@@ -28,6 +30,7 @@ import net.minecraft.world.item.Items
 import net.minecraft.world.item.crafting.Ingredient
 import net.minecraft.world.level.block.Blocks
 import net.neoforged.neoforge.common.Tags
+import net.neoforged.neoforge.common.crafting.DataComponentIngredient
 import java.util.concurrent.CompletableFuture
 
 class NanoMiraiRecipeProvider(output: PackOutput, registries: CompletableFuture<HolderLookup.Provider>) : RecipeProvider(output, registries) {
@@ -141,6 +144,14 @@ class NanoMiraiRecipeProvider(output: PackOutput, registries: CompletableFuture<
             .pattern("SSS")
             .unlockedBy("has_sculmium_ingot", has(NanoMiraiItems.SCULMIUM_INGOT))
             .save(recipeOutput, rl("sculk_sensor_from_sculkium"))
+
+        NanoTier.entries.forEach {
+            val predicate = DataComponentPredicate.builder().expect(DataComponents.RARITY, it.rarity).build()
+            ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, it.getSynthesizeNano())
+                .requires(DataComponentIngredient.of(false, predicate, NanoMiraiItems.SYNTHESIZE_NANO))
+                .unlockedBy("has_synthesize_nano", has(NanoMiraiItems.SYNTHESIZE_NANO))
+                .save(recipeOutput, rl("deprecated/synthesize_nano_${it.name.lowercase()}") )
+        }
     }
 
     fun assemblerRecipes(recipeOutput: RecipeOutput) {

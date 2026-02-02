@@ -15,6 +15,9 @@ object NanoMiraiItemTags {
     val RESEARCH_CATALYSTS: TagKey<Item> = TagKey.create(Registries.ITEM, rl("research_catalysts"))
     val REPAIR_NANO_INGREDIENTS: TagKey<Item> = TagKey.create(Registries.ITEM, rl("repair_nano_ingredients"))
     val FUNCTIONAL_NANOMACHINES: TagKey<Item> = TagKey.create(Registries.ITEM, rl("functional_nanomachines"))
+    val SYNTHESIZE_NANO: TagKey<Item> = TagKey.create(Registries.ITEM, rl("synthesize_nano"))
+    val SUPPORT_NANO: TagKey<Item> = TagKey.create(Registries.ITEM, rl("support_nano"))
+    val NANO_SWARM_BLASTER: TagKey<Item> = TagKey.create(Registries.ITEM, rl("nano_swarm_blaster"))
 
     val SHERD_COLD_OCEAN_RUINS: TagKey<Item> = TagKey.create(Registries.ITEM, rl("sherd_cold_ocean_ruins"))
     val SHERD_WARM_OCEAN_RUINS: TagKey<Item> = TagKey.create(Registries.ITEM, rl("sherd_warm_ocean_ruins"))

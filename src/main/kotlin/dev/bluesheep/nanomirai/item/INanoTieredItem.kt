@@ -6,6 +6,8 @@ import net.minecraft.world.item.ItemStack
 
 interface INanoTieredItem {
     fun getTieredName(stack: ItemStack, nameComponent: Component): Component {
-        return nameComponent.copy().append(" ").append(NanoTier.fromRarity(stack.rarity).nameComponent)
+        return nameComponent.copy().append(" ").append(tier.nameComponent)
     }
+
+    val tier: NanoTier
 }

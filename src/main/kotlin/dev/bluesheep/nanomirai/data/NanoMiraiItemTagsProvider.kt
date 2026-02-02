@@ -22,7 +22,7 @@ class NanoMiraiItemTagsProvider(output: PackOutput, lookupProvider: CompletableF
 ) {
     override fun addTags(lookupProvider: HolderLookup.Provider) {
         tag(NanoMiraiItemTags.CURIOS_SUPPORT_NANO)
-            .add(NanoMiraiItems.SUPPORT_NANO)
+            .addTag(NanoMiraiItemTags.SUPPORT_NANO)
 
         tag(Tags.Items.INGOTS)
             .add(NanoMiraiItems.SCULMIUM_INGOT)
@@ -62,9 +62,27 @@ class NanoMiraiItemTagsProvider(output: PackOutput, lookupProvider: CompletableF
             )
 
         tag(NanoMiraiItemTags.FUNCTIONAL_NANOMACHINES)
-            .add(NanoMiraiItems.SYNTHESIZE_NANO)
-            .add(NanoMiraiItems.SUPPORT_NANO)
-            .add(NanoMiraiItems.NANO_SWARM_BLASTER)
+            .addTag(NanoMiraiItemTags.SYNTHESIZE_NANO)
+            .addTag(NanoMiraiItemTags.SUPPORT_NANO)
+            .addTag(NanoMiraiItemTags.NANO_SWARM_BLASTER)
+
+        tag(NanoMiraiItemTags.SYNTHESIZE_NANO)
+            .add(NanoMiraiItems.SYNTHESIZE_NANO_MK1)
+            .add(NanoMiraiItems.SYNTHESIZE_NANO_MK2)
+            .add(NanoMiraiItems.SYNTHESIZE_NANO_MK3)
+            .add(NanoMiraiItems.SYNTHESIZE_NANO_MK4)
+
+        tag(NanoMiraiItemTags.SUPPORT_NANO)
+            .add(NanoMiraiItems.SUPPORT_NANO_MK1)
+            .add(NanoMiraiItems.SUPPORT_NANO_MK2)
+            .add(NanoMiraiItems.SUPPORT_NANO_MK3)
+            .add(NanoMiraiItems.SUPPORT_NANO_MK4)
+
+        tag(NanoMiraiItemTags.NANO_SWARM_BLASTER)
+            .add(NanoMiraiItems.NANO_SWARM_BLASTER_MK1)
+            .add(NanoMiraiItems.NANO_SWARM_BLASTER_MK2)
+            .add(NanoMiraiItems.NANO_SWARM_BLASTER_MK3)
+            .add(NanoMiraiItems.NANO_SWARM_BLASTER_MK4)
 
         tag(NanoMiraiItemTags.SHERD_DESERT_WELL)
             .add(Items.ARMS_UP_POTTERY_SHERD)

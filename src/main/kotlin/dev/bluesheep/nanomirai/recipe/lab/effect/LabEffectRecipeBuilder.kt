@@ -13,7 +13,7 @@ import net.minecraft.world.item.ItemStack
 import net.minecraft.world.item.crafting.Ingredient
 
 class LabEffectRecipeBuilder(val mobEffectInstance: MobEffectInstance, val tier: NanoTier, val catalyst: Ingredient, val items: NonNullList<Ingredient>) : SimpleRecipeBuilder(
-    ItemStack(NanoMiraiItems.NANO_SWARM_BLASTER).apply {
+    ItemStack(NanoMiraiItems.NANO_SWARM_BLASTER_MK4).apply {
         NanoSwarmBlasterItem.addEffect(this, mobEffectInstance)
     }
 ) {
@@ -23,7 +23,7 @@ class LabEffectRecipeBuilder(val mobEffectInstance: MobEffectInstance, val tier:
 
     override fun save(output: RecipeOutput, id: ResourceLocation) {
         val recipeId = id.withPrefix("lab/effect/")
-        val recipe = LabEffectRecipe(mobEffectInstance, tier.rarity.ordinal, catalyst, items)
+        val recipe = LabEffectRecipe(mobEffectInstance, tier.ordinal, catalyst, items)
         output.accept(
             recipeId,
             recipe,

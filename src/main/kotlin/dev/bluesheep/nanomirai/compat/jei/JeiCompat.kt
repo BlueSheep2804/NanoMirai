@@ -60,7 +60,11 @@ class JeiCompat: IModPlugin {
     override fun registerRecipeCatalysts(registration: IRecipeCatalystRegistration) {
         registration.addRecipeCatalyst(ItemStack(NanoMiraiItems.NANOMACHINE_ASSEMBLER), AssemblerRecipeCategory.TYPE)
         registration.addRecipeCatalyst(ItemStack(NanoMiraiItems.LASER_ENGRAVER), LaserRecipeCategory.TYPE)
-        registration.addRecipeCatalyst(ItemStack(NanoMiraiItems.SYNTHESIZE_NANO).apply { this.remove(DataComponents.RARITY) }, SynthesizeRecipeCategory.TYPE)
+
+        NanoTier.entries.forEach {
+            registration.addRecipeCatalyst(it.getSynthesizeNano(), SynthesizeRecipeCategory.TYPE)
+        }
+
         registration.addRecipeCatalyst(ItemStack(NanoMiraiItems.NANO_LAB), LabAttributeRecipeCategory.TYPE, LabEffectRecipeCategory.TYPE)
     }
 

@@ -17,7 +17,7 @@ import net.minecraft.world.item.ItemStack
 import net.minecraft.world.item.crafting.Ingredient
 
 class LabAttributeRecipeBuilder(val attribute: Holder<Attribute>, val modifier: AttributeModifier, val tier: NanoTier, val catalyst: Ingredient, val items: NonNullList<Ingredient>) : SimpleRecipeBuilder(
-    ItemStack(NanoMiraiItems.SUPPORT_NANO).apply {
+    ItemStack(NanoMiraiItems.SUPPORT_NANO_MK4).apply {
         SupportNanoItem.setAttributes(this, attribute, modifier)
     }
 ) {
@@ -27,7 +27,7 @@ class LabAttributeRecipeBuilder(val attribute: Holder<Attribute>, val modifier: 
 
     override fun save(output: RecipeOutput, id: ResourceLocation) {
         val recipeId = id.withPrefix("lab/attribute/")
-        val recipe = LabAttributeRecipe(attribute, modifier, tier.rarity.ordinal, catalyst, items)
+        val recipe = LabAttributeRecipe(attribute, modifier, tier.ordinal, catalyst, items)
         output.accept(
             recipeId,
             recipe,

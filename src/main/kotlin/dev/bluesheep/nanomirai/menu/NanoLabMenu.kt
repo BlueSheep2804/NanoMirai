@@ -4,6 +4,7 @@ import dev.bluesheep.nanomirai.block.entity.NanoLabBlockEntity
 import dev.bluesheep.nanomirai.registry.NanoMiraiBlocks
 import dev.bluesheep.nanomirai.registry.NanoMiraiMenu
 import dev.bluesheep.nanomirai.registry.NanoMiraiItemTags
+import dev.bluesheep.nanomirai.registry.NanoMiraiItems
 import net.minecraft.network.FriendlyByteBuf
 import net.minecraft.world.entity.player.Inventory
 import net.minecraft.world.entity.player.Player
@@ -97,7 +98,7 @@ class NanoLabMenu(containerId: Int, playerInv: Inventory, val blockEntity: NanoL
     private fun addContainerSlots(container: ItemStackHandler) {
         this.addSlot(object : SlotItemHandler(container, 0, 143, 63) {
             override fun mayPlace(stack: ItemStack): Boolean {
-                return stack.`is`(NanoMiraiItemTags.FUNCTIONAL_NANOMACHINES)
+                return stack.`is`(NanoMiraiItemTags.FUNCTIONAL_NANOMACHINES) || stack.`is`(NanoMiraiItems.SUPPORT_NANO) || stack.`is`(NanoMiraiItems.NANO_SWARM_BLASTER)
             }
         })
 

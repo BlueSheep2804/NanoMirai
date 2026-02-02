@@ -12,6 +12,7 @@ import dev.bluesheep.nanomirai.item.NanoSwarmBlasterItem
 import dev.bluesheep.nanomirai.registry.NanoMiraiBlockEntities
 import dev.bluesheep.nanomirai.registry.NanoMiraiItems
 import dev.bluesheep.nanomirai.registry.NanoMiraiMenu
+import dev.bluesheep.nanomirai.util.NanoTier
 import net.minecraft.client.gui.screens.Screen
 import net.minecraft.client.renderer.item.ItemProperties
 import net.minecraft.client.resources.model.ModelResourceLocation
@@ -46,11 +47,13 @@ object NanoMiraiClient {
     @SubscribeEvent
     fun onClientSetup(event: FMLClientSetupEvent) {
         event.enqueueWork {
-            ItemProperties.register(
-                NanoMiraiItems.NANO_SWARM_BLASTER,
-                rl("charged"),
-                NanoSwarmBlasterItem::overrideProperty
-            )
+            NanoTier.entries.forEach {
+                ItemProperties.register(
+                    it.nanoSwarmBlasterItem,
+                    rl("charged"),
+                    NanoSwarmBlasterItem::overrideProperty
+                )
+            }
         }
     }
 
