@@ -38,6 +38,7 @@ class NanoSwarmBlasterItem(override val tier: NanoTier) : PoweredItem(
 
         fun overrideProperty(stack: ItemStack, level: ClientLevel?, entity: LivingEntity?, seed: Int): Float {
             if (entity == null || entity.useItemRemainingTicks == 0) return 0f
+            if (entity.useItem != stack) return 0f
             val usingItemTicks = stack.getUseDuration(entity) - entity.useItemRemainingTicks
             return Mth.clamp(usingItemTicks / 10f, 0f, 1f)
         }
