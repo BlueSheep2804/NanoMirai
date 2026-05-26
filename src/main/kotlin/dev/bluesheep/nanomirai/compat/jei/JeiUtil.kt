@@ -1,25 +1,17 @@
 package dev.bluesheep.nanomirai.compat.jei
 
 import net.minecraft.ChatFormatting
-import net.minecraft.core.component.DataComponents
 import net.minecraft.network.chat.Component
-import net.minecraft.world.item.ItemStack
-import net.minecraft.world.item.component.ItemLore
-import net.minecraft.world.item.crafting.Ingredient
+import net.minecraft.network.chat.Style
 
 object JeiUtil {
-    fun addNotConsumedLore(ingredient: Ingredient): List<ItemStack> {
-        return ingredient.items.map {
-            it.copy().also { item ->
-                item.set(DataComponents.LORE, ItemLore(
-                    emptyList<Component>(),
-                    listOf(
-                        Component.translatable(
-                            "recipe.nanomirai.not_consumed"
-                        ).withStyle(ChatFormatting.AQUA, ChatFormatting.UNDERLINE)
-                    )
-                ))
-            }
-        }
-    }
+    val INFO_STYLE: Style = Style.EMPTY
+        .withColor(ChatFormatting.AQUA)
+        .withUnderlined(true)
+
+    val NOT_CONSUMED: Component = Component.translatable("recipe.nanomirai.not_consumed")
+        .withStyle(INFO_STYLE)
+
+    val SYNTHESIZE: Component = Component.translatable("recipe.nanomirai.synthesize.interact")
+        .withStyle(INFO_STYLE)
 }

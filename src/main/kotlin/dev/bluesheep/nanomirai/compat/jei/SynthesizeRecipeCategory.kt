@@ -48,12 +48,10 @@ class SynthesizeRecipeCategory(helper: IGuiHelper): IRecipeCategory<SynthesizeRe
         focuses: IFocusGroup
     ) {
         builder.addSlot(RecipeIngredientRole.INPUT, 56, 1)
-            .addItemStack(
-                setLore(
-                    getBlockItemStack(recipe),
-                    Component.translatable("recipe.nanomirai.synthesize.interact").withStyle(ChatFormatting.AQUA, ChatFormatting.UNDERLINE)
-                )
-            )
+            .addItemStack(getBlockItemStack(recipe))
+            .addRichTooltipCallback { view, builder ->
+                builder.add(JeiUtil.SYNTHESIZE)
+            }
             .setStandardSlotBackground()
 
         builder.addSlot(RecipeIngredientRole.INPUT, 1, 23)
@@ -115,22 +113,6 @@ class SynthesizeRecipeCategory(helper: IGuiHelper): IRecipeCategory<SynthesizeRe
 
     override fun getHeight(): Int {
         return 64
-    }
-
-    private fun setLore(itemStack: ItemStack, lore: Component): ItemStack {
-        itemStack.set(
-            DataComponents.LORE,
-            ItemLore(emptyList(),
-                listOf(lore)
-            )
-        )
-        return itemStack
-    }
-
-    private fun setIngredientLore(ingredient: Ingredient, lore: Component): List<ItemStack> {
-        val items = ingredient.items
-        items.map { setLore(it, lore) }
-        return items.toList()
     }
 
     private fun getBlockItemStack(recipe: SynthesizeRecipe): ItemStack {
