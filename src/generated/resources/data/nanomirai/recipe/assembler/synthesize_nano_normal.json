@@ -4,7 +4,7 @@
     {
       "count": 4,
       "ingredient": {
-        "item": "nanomirai:nano_circuit"
+        "item": "nanomirai:simple_circuit"
       }
     },
     {
@@ -22,6 +22,6 @@
   ],
   "result": {
     "count": 1,
-    "id": "nanomirai:synthesize_nano_mk3"
+    "id": "nanomirai:synthesize_nano_normal"
   }
 }

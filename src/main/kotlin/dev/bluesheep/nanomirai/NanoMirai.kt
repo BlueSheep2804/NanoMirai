@@ -82,14 +82,10 @@ object NanoMirai {
             { itemStack, _ ->
                 EnergyStorageItem(itemStack)
             },
-            NanoMiraiItems.SYNTHESIZE_NANO_MK1,
-            NanoMiraiItems.SYNTHESIZE_NANO_MK2,
-            NanoMiraiItems.SYNTHESIZE_NANO_MK3,
-            NanoMiraiItems.SYNTHESIZE_NANO_MK4,
-            NanoMiraiItems.NANO_SWARM_BLASTER_MK1,
-            NanoMiraiItems.NANO_SWARM_BLASTER_MK2,
-            NanoMiraiItems.NANO_SWARM_BLASTER_MK3,
-            NanoMiraiItems.NANO_SWARM_BLASTER_MK4
+            NanoMiraiItems.SYNTHESIZE_NANO_NORMAL,
+            NanoMiraiItems.SYNTHESIZE_NANO_IMPROVED,
+            NanoMiraiItems.NANO_SWARM_BLASTER_NORMAL,
+            NanoMiraiItems.NANO_SWARM_BLASTER_IMPROVED,
         )
     }
 

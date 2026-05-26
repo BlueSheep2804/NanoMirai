@@ -91,7 +91,7 @@ class JeiCompat: IModPlugin {
             override fun getLegacyStringSubtypeInfo(ingredient: ItemStack, context: UidContext): String {
                 val rarity = ingredient.get(DataComponents.RARITY)
                 if (rarity != null) {
-                    return NanoTier.fromRarity(rarity).name.lowercase()
+                    return rarity.name.lowercase()
                 }
                 return "recipe_catalyst"
             }

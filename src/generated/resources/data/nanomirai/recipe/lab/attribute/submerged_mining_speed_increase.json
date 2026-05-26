@@ -29,5 +29,5 @@
     "id": "nanomirai:submerged_mining_speed_increase",
     "operation": "add_multiplied_total"
   },
-  "tier": 2
+  "tier": 0
 }

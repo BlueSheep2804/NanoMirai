@@ -23,19 +23,15 @@ object NanoMiraiItems {
     val SYNTHESIZE_NANO: DeprecatedItem by REGISTRY.register("synthesize_nano") { ->
         DeprecatedItem(Item.Properties().durability(8), Component.translatable("nanomirai.tooltip.deprecated.synthesize_nano"))
     }
-    val SYNTHESIZE_NANO_MK1: SynthesizeNanoItem by registerSynthesizeNano(NanoTier.MK1)
-    val SYNTHESIZE_NANO_MK2: SynthesizeNanoItem by registerSynthesizeNano(NanoTier.MK2)
-    val SYNTHESIZE_NANO_MK3: SynthesizeNanoItem by registerSynthesizeNano(NanoTier.MK3)
-    val SYNTHESIZE_NANO_MK4: SynthesizeNanoItem by registerSynthesizeNano(NanoTier.MK4)
+    val SYNTHESIZE_NANO_NORMAL: SynthesizeNanoItem by registerSynthesizeNano(NanoTier.NORMAL)
+    val SYNTHESIZE_NANO_IMPROVED: SynthesizeNanoItem by registerSynthesizeNano(NanoTier.IMPROVED)
 
     @Deprecated("This item has been split into separate items for each tier.")
     val SUPPORT_NANO: DeprecatedItem by REGISTRY.register("support_nano") { ->
         DeprecatedItem(Item.Properties().stacksTo(1), Component.translatable("nanomirai.tooltip.deprecated.support_nano"))
     }
-    val SUPPORT_NANO_MK1: SupportNanoItem by registerSupportNano(NanoTier.MK1)
-    val SUPPORT_NANO_MK2: SupportNanoItem by registerSupportNano(NanoTier.MK2)
-    val SUPPORT_NANO_MK3: SupportNanoItem by registerSupportNano(NanoTier.MK3)
-    val SUPPORT_NANO_MK4: SupportNanoItem by registerSupportNano(NanoTier.MK4)
+    val SUPPORT_NANO_NORMAL: SupportNanoItem by registerSupportNano(NanoTier.NORMAL)
+    val SUPPORT_NANO_IMPROVED: SupportNanoItem by registerSupportNano(NanoTier.IMPROVED)
 
     @Deprecated("This item has been split into separate items for each tier.")
     val NANO_SWARM_BLASTER: DeprecatedItem by REGISTRY.register("nano_swarm_blaster") { ->
@@ -47,10 +43,8 @@ object NanoMiraiItems {
             Component.translatable("nanomirai.tooltip.deprecated.nano_swarm_blaster")
         )
     }
-    val NANO_SWARM_BLASTER_MK1: NanoSwarmBlasterItem by registerNanoSwarmBlaster(NanoTier.MK1)
-    val NANO_SWARM_BLASTER_MK2: NanoSwarmBlasterItem by registerNanoSwarmBlaster(NanoTier.MK2)
-    val NANO_SWARM_BLASTER_MK3: NanoSwarmBlasterItem by registerNanoSwarmBlaster(NanoTier.MK3)
-    val NANO_SWARM_BLASTER_MK4: NanoSwarmBlasterItem by registerNanoSwarmBlaster(NanoTier.MK4)
+    val NANO_SWARM_BLASTER_NORMAL: NanoSwarmBlasterItem by registerNanoSwarmBlaster(NanoTier.NORMAL)
+    val NANO_SWARM_BLASTER_IMPROVED: NanoSwarmBlasterItem by registerNanoSwarmBlaster(NanoTier.IMPROVED)
 
     val REPAIR_NANO: Item by REGISTRY.registerSimpleItem("repair_nano")
 

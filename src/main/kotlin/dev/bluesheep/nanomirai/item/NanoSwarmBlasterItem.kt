@@ -44,14 +44,6 @@ class NanoSwarmBlasterItem(override val tier: NanoTier) : PoweredItem(
         }
     }
 
-    override fun getName(stack: ItemStack): Component {
-        return getTieredName(stack, super.getName(stack))
-    }
-
-    override fun getDescriptionId(): String {
-        return "item.nanomirai.nano_swarm_blaster"
-    }
-
     override fun appendHoverText(
         stack: ItemStack,
         context: TooltipContext,

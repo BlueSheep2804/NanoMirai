@@ -29,5 +29,5 @@
     "id": "nanomirai:max_health_increase",
     "operation": "add_multiplied_total"
   },
-  "tier": 3
+  "tier": 1
 }

@@ -1,8 +1,6 @@
 {
   "values": [
-    "nanomirai:support_nano_mk1",
-    "nanomirai:support_nano_mk2",
-    "nanomirai:support_nano_mk3",
-    "nanomirai:support_nano_mk4"
+    "nanomirai:support_nano_normal",
+    "nanomirai:support_nano_improved"
   ]
 }

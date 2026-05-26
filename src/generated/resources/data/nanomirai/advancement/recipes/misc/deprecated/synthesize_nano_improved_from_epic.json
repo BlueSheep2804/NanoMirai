@@ -13,7 +13,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "nanomirai:deprecated/synthesize_nano_mk4"
+        "recipe": "nanomirai:deprecated/synthesize_nano_improved_from_epic"
       },
       "trigger": "minecraft:recipe_unlocked"
     }
@@ -26,7 +26,7 @@
   ],
   "rewards": {
     "recipes": [
-      "nanomirai:deprecated/synthesize_nano_mk4"
+      "nanomirai:deprecated/synthesize_nano_improved_from_epic"
     ]
   }
 }

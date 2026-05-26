@@ -45,7 +45,11 @@ class NanoLabBlockEntity(pos: BlockPos, blockState: BlockState) : BlockEntity(Na
             if (slot != OUTPUT_SLOT) return
             val outputStack = getStackInSlot(OUTPUT_SLOT)
             if (outputStack.item is DeprecatedItem) {
-                val tier = NanoTier.fromRarity(outputStack.getOrDefault(DataComponents.RARITY, Rarity.COMMON))
+                val rarity = outputStack.getOrDefault(DataComponents.RARITY, Rarity.COMMON)
+                val tier = when (rarity) {
+                    Rarity.COMMON, Rarity.UNCOMMON -> NanoTier.NORMAL
+                    Rarity.RARE, Rarity.EPIC -> NanoTier.IMPROVED
+                }
                 val stack = if (outputStack.`is`(NanoMiraiItems.SUPPORT_NANO)) {
                     tier.getSupportNano()
                 } else if (outputStack.`is`(NanoMiraiItems.NANO_SWARM_BLASTER)) {
@@ -53,7 +57,7 @@ class NanoLabBlockEntity(pos: BlockPos, blockState: BlockState) : BlockEntity(Na
                 } else {
                     return
                 }
-                stack.applyComponents(outputStack.componentsPatch)
+                stack.applyComponents(outputStack.componentsPatch.forget { it == DataComponents.RARITY })
                 setStackInSlot(OUTPUT_SLOT, stack)
             }
         }

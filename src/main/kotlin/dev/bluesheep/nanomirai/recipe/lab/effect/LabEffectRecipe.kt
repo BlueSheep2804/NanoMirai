@@ -13,7 +13,7 @@ import net.minecraft.world.item.crafting.RecipeSerializer
 import net.minecraft.world.item.crafting.RecipeType
 
 class LabEffectRecipe(val mobEffectInstance: MobEffectInstance, tier: Int, catalyst: Ingredient, items: NonNullList<Ingredient>) : AbstractLabRecipe(
-    ItemStack(NanoMiraiItems.NANO_SWARM_BLASTER_MK4).apply {
+    ItemStack(NanoMiraiItems.NANO_SWARM_BLASTER_IMPROVED).apply {
         NanoSwarmBlasterItem.addEffect(this, mobEffectInstance)
     },
     tier,

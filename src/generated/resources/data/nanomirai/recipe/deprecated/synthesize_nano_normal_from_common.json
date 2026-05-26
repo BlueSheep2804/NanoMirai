@@ -5,13 +5,13 @@
     {
       "type": "neoforge:components",
       "components": {
-        "minecraft:rarity": "rare"
+        "minecraft:rarity": "common"
       },
       "items": "nanomirai:synthesize_nano"
     }
   ],
   "result": {
     "count": 1,
-    "id": "nanomirai:synthesize_nano_mk3"
+    "id": "nanomirai:synthesize_nano_normal"
   }
 }

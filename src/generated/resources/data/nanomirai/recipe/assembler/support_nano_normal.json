@@ -4,30 +4,30 @@
     {
       "count": 4,
       "ingredient": {
-        "item": "nanomirai:normal_circuit"
-      }
-    },
-    {
-      "count": 4,
-      "ingredient": {
-        "item": "minecraft:iron_ingot"
+        "item": "nanomirai:simple_circuit"
       }
     },
     {
       "count": 2,
       "ingredient": {
-        "item": "minecraft:piston"
+        "item": "minecraft:ender_pearl"
+      }
+    },
+    {
+      "count": 4,
+      "ingredient": {
+        "item": "minecraft:kelp"
       }
     },
     {
       "count": 1,
       "ingredient": {
-        "item": "minecraft:sculk_shrieker"
+        "item": "minecraft:axolotl_bucket"
       }
     }
   ],
   "result": {
     "count": 1,
-    "id": "nanomirai:nano_swarm_blaster_mk2"
+    "id": "nanomirai:support_nano_normal"
   }
 }

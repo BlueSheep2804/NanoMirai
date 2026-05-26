@@ -24,45 +24,25 @@ enum class NanoTier(
     private val maxEffectsConfig: ModConfigSpec.ConfigValue<Int>,
     private val blasterCooldownConfig: ModConfigSpec.ConfigValue<Int>
 ) {
-    MK1(
+    NORMAL(
         Rarity.COMMON,
-        Lazy.of { -> NanoMiraiItems.SYNTHESIZE_NANO_MK1 },
-        Lazy.of { -> NanoMiraiItems.SUPPORT_NANO_MK1 },
-        Lazy.of { -> NanoMiraiItems.NANO_SWARM_BLASTER_MK1 },
-        NanoMiraiConfig.processingSpeedMultiplierMk1,
-        NanoMiraiConfig.maxAttributesMk1,
-        NanoMiraiConfig.maxEffectsMk1,
-        NanoMiraiConfig.blasterCooldownMk1
+        Lazy.of { -> NanoMiraiItems.SYNTHESIZE_NANO_NORMAL },
+        Lazy.of { -> NanoMiraiItems.SUPPORT_NANO_NORMAL },
+        Lazy.of { -> NanoMiraiItems.NANO_SWARM_BLASTER_NORMAL },
+        NanoMiraiConfig.processingSpeedMultiplierNormal,
+        NanoMiraiConfig.maxAttributesNormal,
+        NanoMiraiConfig.maxEffectsNormal,
+        NanoMiraiConfig.blasterCooldownNormal
     ),
-    MK2(
-        Rarity.UNCOMMON,
-        Lazy.of { -> NanoMiraiItems.SYNTHESIZE_NANO_MK2 },
-        Lazy.of { -> NanoMiraiItems.SUPPORT_NANO_MK2 },
-        Lazy.of { -> NanoMiraiItems.NANO_SWARM_BLASTER_MK2 },
-        NanoMiraiConfig.processingSpeedMultiplierMk2,
-        NanoMiraiConfig.maxAttributesMk2,
-        NanoMiraiConfig.maxEffectsMk2,
-        NanoMiraiConfig.blasterCooldownMk2
-    ),
-    MK3(
+    IMPROVED(
         Rarity.RARE,
-        Lazy.of { -> NanoMiraiItems.SYNTHESIZE_NANO_MK3 },
-        Lazy.of { -> NanoMiraiItems.SUPPORT_NANO_MK3 },
-        Lazy.of { -> NanoMiraiItems.NANO_SWARM_BLASTER_MK3 },
-        NanoMiraiConfig.processingSpeedMultiplierMk3,
-        NanoMiraiConfig.maxAttributesMk3,
-        NanoMiraiConfig.maxEffectsMk3,
-        NanoMiraiConfig.blasterCooldownMk3
-    ),
-    MK4(
-        Rarity.EPIC,
-        Lazy.of { -> NanoMiraiItems.SYNTHESIZE_NANO_MK4 },
-        Lazy.of { -> NanoMiraiItems.SUPPORT_NANO_MK4 },
-        Lazy.of { -> NanoMiraiItems.NANO_SWARM_BLASTER_MK4 },
-        NanoMiraiConfig.processingSpeedMultiplierMk4,
-        NanoMiraiConfig.maxAttributesMk4,
-        NanoMiraiConfig.maxEffectsMk4,
-        NanoMiraiConfig.blasterCooldownMk4
+        Lazy.of { -> NanoMiraiItems.SYNTHESIZE_NANO_IMPROVED },
+        Lazy.of { -> NanoMiraiItems.SUPPORT_NANO_IMPROVED },
+        Lazy.of { -> NanoMiraiItems.NANO_SWARM_BLASTER_IMPROVED },
+        NanoMiraiConfig.processingSpeedMultiplierImproved,
+        NanoMiraiConfig.maxAttributesImproved,
+        NanoMiraiConfig.maxEffectsImproved,
+        NanoMiraiConfig.blasterCooldownImproved
     );
 
     val nameComponent: Component
@@ -112,10 +92,6 @@ enum class NanoTier(
 
         fun nanoSwarmBlasterIngredient(level: Int): Ingredient {
             return Ingredient.of(*fromMinLevel(level).map(NanoTier::getNanoSwarmBlaster).toTypedArray())
-        }
-
-        fun fromRarity(rarity: Rarity): NanoTier {
-            return NanoTier.entries.first { it.rarity == rarity }
         }
 
         fun fromItem(item: Item): NanoTier? {

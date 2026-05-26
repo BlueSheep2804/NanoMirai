@@ -13,14 +13,10 @@ import mezz.jei.api.recipe.IFocusGroup
 import mezz.jei.api.recipe.RecipeIngredientRole
 import mezz.jei.api.recipe.RecipeType
 import mezz.jei.api.recipe.category.IRecipeCategory
-import net.minecraft.ChatFormatting
 import net.minecraft.client.Minecraft
 import net.minecraft.client.gui.GuiGraphics
-import net.minecraft.core.component.DataComponents
 import net.minecraft.network.chat.Component
 import net.minecraft.world.item.ItemStack
-import net.minecraft.world.item.component.ItemLore
-import net.minecraft.world.item.crafting.Ingredient
 
 class SynthesizeRecipeCategory(helper: IGuiHelper): IRecipeCategory<SynthesizeRecipe> {
     companion object {
@@ -28,7 +24,7 @@ class SynthesizeRecipeCategory(helper: IGuiHelper): IRecipeCategory<SynthesizeRe
         val TYPE = RecipeType(UID, SynthesizeRecipe::class.java)
     }
 
-    private val icon: IDrawable = helper.createDrawableIngredient(VanillaTypes.ITEM_STACK, ItemStack(NanoMiraiItems.SYNTHESIZE_NANO_MK1))
+    private val icon: IDrawable = helper.createDrawableIngredient(VanillaTypes.ITEM_STACK, ItemStack(NanoMiraiItems.SYNTHESIZE_NANO_NORMAL))
 
     override fun getRecipeType(): RecipeType<SynthesizeRecipe> {
         return TYPE

@@ -25,12 +25,4 @@ class SupportNanoItem(override val tier: NanoTier) : Item(Properties().stacksTo(
             )
         }
     }
-
-    override fun getName(stack: ItemStack): Component {
-        return getTieredName(stack, super.getName(stack))
-    }
-
-    override fun getDescriptionId(): String {
-        return "item.nanomirai.support_nano"
-    }
 }

@@ -29,5 +29,5 @@
     "id": "nanomirai:sneaking_speed_increase",
     "operation": "add_multiplied_base"
   },
-  "tier": 2
+  "tier": 0
 }

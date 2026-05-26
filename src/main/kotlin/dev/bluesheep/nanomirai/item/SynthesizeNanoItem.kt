@@ -20,14 +20,6 @@ class SynthesizeNanoItem(override val tier: NanoTier) : PoweredItem(
         val DISPENSER_BEHAVIOR = DispenserBehavior()
     }
 
-    override fun getName(stack: ItemStack): Component {
-        return getTieredName(stack, super.getName(stack))
-    }
-
-    override fun getDescriptionId(): String {
-        return "item.nanomirai.synthesize_nano"
-    }
-
     override fun useOn(context: UseOnContext): InteractionResult {
         val level = context.level
         if (level.isClientSide) return InteractionResult.PASS

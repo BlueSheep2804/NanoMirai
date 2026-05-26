@@ -1,8 +1,6 @@
 {
   "values": [
-    "nanomirai:nano_swarm_blaster_mk1",
-    "nanomirai:nano_swarm_blaster_mk2",
-    "nanomirai:nano_swarm_blaster_mk3",
-    "nanomirai:nano_swarm_blaster_mk4"
+    "nanomirai:nano_swarm_blaster_normal",
+    "nanomirai:nano_swarm_blaster_improved"
   ]
 }

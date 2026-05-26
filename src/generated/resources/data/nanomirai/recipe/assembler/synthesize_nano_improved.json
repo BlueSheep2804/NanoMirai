@@ -4,30 +4,24 @@
     {
       "count": 4,
       "ingredient": {
-        "item": "nanomirai:sculmium_circuit"
+        "item": "nanomirai:normal_circuit"
       }
     },
     {
       "count": 2,
       "ingredient": {
-        "item": "minecraft:ender_pearl"
+        "item": "minecraft:note_block"
       }
     },
     {
       "count": 4,
       "ingredient": {
-        "item": "minecraft:kelp"
-      }
-    },
-    {
-      "count": 1,
-      "ingredient": {
-        "item": "minecraft:axolotl_bucket"
+        "item": "minecraft:amethyst_shard"
       }
     }
   ],
   "result": {
     "count": 1,
-    "id": "nanomirai:support_nano_mk4"
+    "id": "nanomirai:synthesize_nano_improved"
   }
 }

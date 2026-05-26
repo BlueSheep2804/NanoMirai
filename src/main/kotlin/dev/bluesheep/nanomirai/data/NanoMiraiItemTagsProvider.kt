@@ -67,22 +67,16 @@ class NanoMiraiItemTagsProvider(output: PackOutput, lookupProvider: CompletableF
             .addTag(NanoMiraiItemTags.NANO_SWARM_BLASTER)
 
         tag(NanoMiraiItemTags.SYNTHESIZE_NANO)
-            .add(NanoMiraiItems.SYNTHESIZE_NANO_MK1)
-            .add(NanoMiraiItems.SYNTHESIZE_NANO_MK2)
-            .add(NanoMiraiItems.SYNTHESIZE_NANO_MK3)
-            .add(NanoMiraiItems.SYNTHESIZE_NANO_MK4)
+            .add(NanoMiraiItems.SYNTHESIZE_NANO_NORMAL)
+            .add(NanoMiraiItems.SYNTHESIZE_NANO_IMPROVED)
 
         tag(NanoMiraiItemTags.SUPPORT_NANO)
-            .add(NanoMiraiItems.SUPPORT_NANO_MK1)
-            .add(NanoMiraiItems.SUPPORT_NANO_MK2)
-            .add(NanoMiraiItems.SUPPORT_NANO_MK3)
-            .add(NanoMiraiItems.SUPPORT_NANO_MK4)
+            .add(NanoMiraiItems.SUPPORT_NANO_NORMAL)
+            .add(NanoMiraiItems.SUPPORT_NANO_IMPROVED)
 
         tag(NanoMiraiItemTags.NANO_SWARM_BLASTER)
-            .add(NanoMiraiItems.NANO_SWARM_BLASTER_MK1)
-            .add(NanoMiraiItems.NANO_SWARM_BLASTER_MK2)
-            .add(NanoMiraiItems.NANO_SWARM_BLASTER_MK3)
-            .add(NanoMiraiItems.NANO_SWARM_BLASTER_MK4)
+            .add(NanoMiraiItems.NANO_SWARM_BLASTER_NORMAL)
+            .add(NanoMiraiItems.NANO_SWARM_BLASTER_IMPROVED)
 
         tag(NanoMiraiItemTags.SHERD_DESERT_WELL)
             .add(Items.ARMS_UP_POTTERY_SHERD)

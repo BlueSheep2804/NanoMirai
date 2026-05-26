@@ -15,7 +15,7 @@ import net.minecraft.world.item.crafting.RecipeSerializer
 import net.minecraft.world.item.crafting.RecipeType
 
 class LabAttributeRecipe(val attribute: Holder<Attribute>, val modifier: AttributeModifier, tier: Int, catalyst: Ingredient, items: NonNullList<Ingredient>) : AbstractLabRecipe(
-    ItemStack(NanoMiraiItems.SUPPORT_NANO_MK4).apply {
+    ItemStack(NanoMiraiItems.SUPPORT_NANO_IMPROVED).apply {
         SupportNanoItem.setAttributes(this, attribute, modifier)
     },
     tier,

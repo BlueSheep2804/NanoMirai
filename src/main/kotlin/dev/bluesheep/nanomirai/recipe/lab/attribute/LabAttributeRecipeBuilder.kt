@@ -17,7 +17,7 @@ import net.minecraft.world.item.ItemStack
 import net.minecraft.world.item.crafting.Ingredient
 
 class LabAttributeRecipeBuilder(val attribute: Holder<Attribute>, val modifier: AttributeModifier, val tier: NanoTier, val catalyst: Ingredient, val items: NonNullList<Ingredient>) : SimpleRecipeBuilder(
-    ItemStack(NanoMiraiItems.SUPPORT_NANO_MK4).apply {
+    ItemStack(NanoMiraiItems.SUPPORT_NANO_IMPROVED).apply {
         SupportNanoItem.setAttributes(this, attribute, modifier)
     }
 ) {
