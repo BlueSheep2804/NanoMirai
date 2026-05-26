@@ -30,7 +30,7 @@ import thedarkcolour.kotlinforforge.neoforge.forge.MOD_BUS
  * An example for blocks is in the `blocks` package of this mod.
  */
 @Mod(NanoMirai.ID)
-@EventBusSubscriber()
+@EventBusSubscriber(modid = NanoMirai.ID)
 object NanoMirai {
     const val ID = "nanomirai"
 
