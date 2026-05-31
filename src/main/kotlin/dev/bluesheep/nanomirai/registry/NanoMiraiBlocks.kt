@@ -1,6 +1,8 @@
 package dev.bluesheep.nanomirai.registry
 
 import dev.bluesheep.nanomirai.NanoMirai
+import dev.bluesheep.nanomirai.block.AllayHeadBlock
+import dev.bluesheep.nanomirai.block.AllayWallHeadBlock
 import dev.bluesheep.nanomirai.block.AssemblerBlock
 import dev.bluesheep.nanomirai.block.LaserEngraverBlock
 import dev.bluesheep.nanomirai.block.MobCageBlock
@@ -44,6 +46,16 @@ object NanoMiraiBlocks {
             .mapColor(MapColor.COLOR_BLACK)
             .strength(50F, 3600000F)
             .requiresCorrectToolForDrops()
+    )
+    val ALLAY_HEAD: Block by REGISTRY.registerBlock(
+        "allay_head",
+        ::AllayHeadBlock,
+        BlockBehaviour.Properties.of().noOcclusion().dynamicShape()
+    )
+    val ALLAY_WALL_HEAD: Block by REGISTRY.registerBlock(
+        "allay_wall_head",
+        ::AllayWallHeadBlock,
+        BlockBehaviour.Properties.of().noOcclusion().dynamicShape()
     )
 
     private fun never(state: BlockState, blockGetter: BlockGetter, pos: BlockPos): Boolean = false

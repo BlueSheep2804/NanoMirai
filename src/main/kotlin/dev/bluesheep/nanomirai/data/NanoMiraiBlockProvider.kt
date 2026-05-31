@@ -85,5 +85,14 @@ class NanoMiraiBlockProvider(output: PackOutput, exFileHelper: ExistingFileHelpe
         )
 
         simpleBlock(NanoMiraiBlocks.REINFORCED_OBSIDIAN)
+
+        horizontalBlock(
+            NanoMiraiBlocks.ALLAY_HEAD,
+            models().getExistingFile(modLoc("block/allay_head"))
+        )
+        horizontalBlock(
+            NanoMiraiBlocks.ALLAY_WALL_HEAD,
+            models().getExistingFile(modLoc("block/allay_wall_head"))
+        )
     }
 }

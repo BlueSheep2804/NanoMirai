@@ -17,6 +17,8 @@
   "block.nanomirai.nano_lab": "ナノラボ",
   "block.nanomirai.mob_cage": "モブケージ",
   "block.nanomirai.reinforced_obsidian": "強化された黒曜石",
+  "block.nanomirai.allay_head": "アレイの頭",
+  "block.nanomirai.allay_wall_head": "壁に付けられたアレイの頭",
   "curios.identifier.support_nano": "サポートナノ",
   "curios.modifiers.support_nano": "装備したとき:",
   "item.nanomirai.synthesize_nano": "シンセナノ",

@@ -17,6 +17,8 @@
   "block.nanomirai.nano_lab": "Nano Lab",
   "block.nanomirai.mob_cage": "Mob Cage",
   "block.nanomirai.reinforced_obsidian": "Reinforced Obsidian",
+  "block.nanomirai.allay_head": "Allay Head",
+  "block.nanomirai.allay_wall_head": "Allay Wall Head",
   "curios.identifier.support_nano": "Support Nano",
   "curios.modifiers.support_nano": "When equipped:",
   "item.nanomirai.synthesize_nano": "Synthesize Nano",

@@ -106,5 +106,6 @@ class NanoMiraiItemModelProvider(output: PackOutput, existingFileHelper: Existin
         simpleBlockItem(NanoMiraiBlocks.NANO_LAB)
 
         simpleBlockItem(NanoMiraiBlocks.REINFORCED_OBSIDIAN)
+        simpleBlockItem(NanoMiraiBlocks.ALLAY_HEAD)
     }
 }

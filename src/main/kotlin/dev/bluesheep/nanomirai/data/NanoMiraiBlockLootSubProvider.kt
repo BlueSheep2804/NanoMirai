@@ -1,6 +1,7 @@
 package dev.bluesheep.nanomirai.data
 
 import dev.bluesheep.nanomirai.registry.NanoMiraiBlocks
+import dev.bluesheep.nanomirai.registry.NanoMiraiItems
 import net.minecraft.core.HolderLookup
 import net.minecraft.core.component.DataComponents
 import net.minecraft.data.loot.BlockLootSubProvider
@@ -28,6 +29,8 @@ class NanoMiraiBlockLootSubProvider(lookupProvider: HolderLookup.Provider) : Blo
         dropSelf(NanoMiraiBlocks.LASER_ENGRAVER)
         dropSelf(NanoMiraiBlocks.NANO_LAB)
         dropSelf(NanoMiraiBlocks.REINFORCED_OBSIDIAN)
+        dropSelf(NanoMiraiBlocks.ALLAY_HEAD)
+        dropOther(NanoMiraiBlocks.ALLAY_WALL_HEAD, NanoMiraiItems.ALLAY_HEAD)
 
         add(
             NanoMiraiBlocks.MOB_CAGE,

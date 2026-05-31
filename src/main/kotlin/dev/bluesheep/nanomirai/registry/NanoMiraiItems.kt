@@ -7,10 +7,12 @@ import dev.bluesheep.nanomirai.item.NanoSwarmBlasterItem
 import dev.bluesheep.nanomirai.item.SupportNanoItem
 import dev.bluesheep.nanomirai.item.SynthesizeNanoItem
 import dev.bluesheep.nanomirai.util.NanoTier
+import net.minecraft.core.Direction
 import net.minecraft.core.component.DataComponents
 import net.minecraft.network.chat.Component
 import net.minecraft.world.item.BlockItem
 import net.minecraft.world.item.Item
+import net.minecraft.world.item.StandingAndWallBlockItem
 import net.minecraft.world.item.alchemy.PotionContents
 import net.neoforged.neoforge.registries.DeferredItem
 import net.neoforged.neoforge.registries.DeferredRegister
@@ -80,6 +82,16 @@ object NanoMiraiItems {
 
     val REINFORCED_OBSIDIAN: BlockItem by REGISTRY.registerSimpleBlockItem("reinforced_obsidian") { ->
         NanoMiraiBlocks.REINFORCED_OBSIDIAN
+    }
+    val ALLAY_HEAD: BlockItem by REGISTRY.registerItem(
+        "allay_head",
+    ) {
+        StandingAndWallBlockItem(
+            NanoMiraiBlocks.ALLAY_HEAD,
+            NanoMiraiBlocks.ALLAY_WALL_HEAD,
+            Item.Properties(),
+            Direction.DOWN
+        )
     }
 
     fun registerSynthesizeNano(tier: NanoTier): DeferredItem<SynthesizeNanoItem> = REGISTRY.register(
