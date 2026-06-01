@@ -2,6 +2,9 @@
   "type": "minecraft:crafting_shaped",
   "category": "misc",
   "key": {
+    "A": {
+      "item": "minecraft:amethyst_shard"
+    },
     "C": {
       "item": "nanomirai:simple_circuit"
     },
@@ -9,19 +12,19 @@
       "item": "minecraft:diamond"
     },
     "I": {
-      "item": "minecraft:iron_ingot"
+      "tag": "c:ingots/iron"
     },
-    "T": {
-      "item": "minecraft:crafting_table"
+    "W": {
+      "tag": "c:dyes/light_blue"
     }
   },
   "pattern": [
-    "ICI",
-    "CDC",
-    "ITI"
+    "IAI",
+    "WCW",
+    " D "
   ],
   "result": {
     "count": 1,
-    "id": "nanomirai:nanomachine_assembler"
+    "id": "nanomirai:synthesize_nano_normal"
   }
 }

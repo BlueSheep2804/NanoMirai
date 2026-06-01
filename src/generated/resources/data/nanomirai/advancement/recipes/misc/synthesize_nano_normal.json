@@ -13,7 +13,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "nanomirai:nanomachine_assembler"
+        "recipe": "nanomirai:synthesize_nano_normal"
       },
       "trigger": "minecraft:recipe_unlocked"
     }
@@ -26,7 +26,7 @@
   ],
   "rewards": {
     "recipes": [
-      "nanomirai:nanomachine_assembler"
+      "nanomirai:synthesize_nano_normal"
     ]
   }
 }

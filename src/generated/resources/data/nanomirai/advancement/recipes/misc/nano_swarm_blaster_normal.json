@@ -13,7 +13,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "nanomirai:nano_lab"
+        "recipe": "nanomirai:nano_swarm_blaster_normal"
       },
       "trigger": "minecraft:recipe_unlocked"
     }
@@ -26,7 +26,7 @@
   ],
   "rewards": {
     "recipes": [
-      "nanomirai:nano_lab"
+      "nanomirai:nano_swarm_blaster_normal"
     ]
   }
 }

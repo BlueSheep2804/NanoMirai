@@ -2,29 +2,29 @@
   "type": "minecraft:crafting_shaped",
   "category": "misc",
   "key": {
-    "B": {
-      "item": "minecraft:iron_block"
-    },
     "C": {
       "item": "nanomirai:simple_circuit"
     },
     "E": {
       "item": "minecraft:emerald"
     },
-    "I": {
-      "item": "minecraft:iron_ingot"
+    "G": {
+      "tag": "c:ingots/gold"
     },
-    "S": {
-      "item": "minecraft:spyglass"
+    "K": {
+      "item": "minecraft:kelp"
+    },
+    "M": {
+      "item": "minecraft:glistering_melon_slice"
     }
   },
   "pattern": [
-    "IEI",
-    "CSC",
-    "IBI"
+    "GMG",
+    "CEC",
+    "KGK"
   ],
   "result": {
     "count": 1,
-    "id": "nanomirai:nano_lab"
+    "id": "nanomirai:support_nano_normal"
   }
 }

@@ -1,0 +1,23 @@
+{
+  "type": "nanomirai:synthesize",
+  "block": {
+    "block": {
+      "Name": "minecraft:crafter",
+      "Properties": {
+        "crafting": "false",
+        "orientation": "north_up",
+        "triggered": "false"
+      }
+    },
+    "nbt": {}
+  },
+  "catalyst": {
+    "item": "nanomirai:normal_circuit"
+  },
+  "duration": 200,
+  "result": {
+    "count": 1,
+    "id": "nanomirai:nanomachine_assembler"
+  },
+  "tier": 0
+}

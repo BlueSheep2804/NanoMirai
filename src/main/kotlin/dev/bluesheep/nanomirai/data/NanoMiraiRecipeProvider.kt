@@ -36,25 +36,20 @@ import java.util.concurrent.CompletableFuture
 
 class NanoMiraiRecipeProvider(output: PackOutput, registries: CompletableFuture<HolderLookup.Provider>) : RecipeProvider(output, registries) {
     override fun buildRecipes(recipeOutput: RecipeOutput) {
+        craftingRecipes(recipeOutput)
+
         assemblerRecipes(recipeOutput)
         labAttributeRecipes(recipeOutput)
         labEffectRecipes(recipeOutput)
         laserRecipes(recipeOutput)
         synthesizeRecipes(recipeOutput)
 
-        // Repair Nano
-        ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, NanoMiraiItems.REPAIR_NANO)
-            .requires(NanoMiraiItems.GRAPHITE)
-            .requires(Ingredient.of(NanoMiraiItemTags.REPAIR_NANO_INGREDIENTS), 8)
-            .unlockedBy("has_graphite", has(NanoMiraiItems.GRAPHITE))
-            .save(recipeOutput, rl("repair_nano"))
-
         // Graphite
         SimpleCookingRecipeBuilder.blasting(
             Ingredient.of(Items.COAL),
             RecipeCategory.MISC,
             NanoMiraiItems.GRAPHITE,
-            0f,
+            0.1f,
             100
         )
             .unlockedBy("has_coal", has(Items.COAL))
@@ -65,11 +60,78 @@ class NanoMiraiRecipeProvider(output: PackOutput, registries: CompletableFuture<
             Ingredient.of(Items.QUARTZ),
             RecipeCategory.MISC,
             NanoMiraiItems.SILICON,
-            0f,
+            0.1f,
             100
         )
             .unlockedBy("has_quartz", has(Items.QUARTZ))
             .save(recipeOutput, rl("silicon_from_blasting"))
+
+        // Deprecated item migrate
+        NanoTier.entries.forEach {
+            val predicate = DataComponentPredicate.builder()
+                .expect(DataComponents.RARITY, it.rarity)
+                .build()
+            val rarityPlusOne = Rarity.entries[it.rarity.ordinal+1]
+            val predicatePlusOne = DataComponentPredicate.builder()
+                .expect(DataComponents.RARITY, rarityPlusOne)
+                .build()
+            ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, it.getSynthesizeNano())
+                .requires(DataComponentIngredient.of(false, predicate, NanoMiraiItems.SYNTHESIZE_NANO))
+                .unlockedBy("has_synthesize_nano", has(NanoMiraiItems.SYNTHESIZE_NANO))
+                .save(recipeOutput, rl("deprecated/synthesize_nano_${it.name.lowercase()}_from_${it.rarity.name.lowercase()}") )
+            ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, it.getSynthesizeNano())
+                .requires(DataComponentIngredient.of(false, predicatePlusOne, NanoMiraiItems.SYNTHESIZE_NANO))
+                .unlockedBy("has_synthesize_nano", has(NanoMiraiItems.SYNTHESIZE_NANO))
+                .save(recipeOutput, rl("deprecated/synthesize_nano_${it.name.lowercase()}_from_${rarityPlusOne.name.lowercase()}") )
+        }
+    }
+
+    fun craftingRecipes(recipeOutput: RecipeOutput) {
+        // Synthesize Nano
+        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, NanoMiraiItems.SYNTHESIZE_NANO_NORMAL)
+            .pattern("IAI")
+            .pattern("WCW")
+            .pattern(" D ")
+            .define('I', Tags.Items.INGOTS_IRON)
+            .define('A', Items.AMETHYST_SHARD)
+            .define('W', Tags.Items.DYES_LIGHT_BLUE)
+            .define('C', NanoMiraiItems.SIMPLE_CIRCUIT)
+            .define('D', Items.DIAMOND)
+            .unlockedBy("has_simple_circuit", has(NanoMiraiItems.SIMPLE_CIRCUIT))
+            .save(recipeOutput)
+
+        // Support Nano
+        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, NanoMiraiItems.SUPPORT_NANO_NORMAL)
+            .pattern("GMG")
+            .pattern("CEC")
+            .pattern("KGK")
+            .define('G', Tags.Items.INGOTS_GOLD)
+            .define('M', Items.GLISTERING_MELON_SLICE)
+            .define('C', NanoMiraiItems.SIMPLE_CIRCUIT)
+            .define('E', Items.EMERALD)
+            .define('K', Items.KELP)
+            .unlockedBy("has_simple_circuit", has(NanoMiraiItems.SIMPLE_CIRCUIT))
+            .save(recipeOutput)
+
+        // Nano Swarm Blaster
+        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, NanoMiraiItems.NANO_SWARM_BLASTER_NORMAL)
+            .pattern("SSS")
+            .pattern("CPD")
+            .pattern("SL ")
+            .define('S', NanoMiraiItemTags.SCULMIUM_INGOT)
+            .define('C', NanoMiraiItems.SIMPLE_CIRCUIT)
+            .define('P', Items.PISTON)
+            .define('D', Items.DISPENSER)
+            .define('L', Items.LEVER)
+            .unlockedBy("has_simple_circuit", has(NanoMiraiItems.SIMPLE_CIRCUIT))
+            .save(recipeOutput)
+
+        // Repair Nano
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, NanoMiraiItems.REPAIR_NANO)
+            .requires(NanoMiraiItems.GRAPHITE)
+            .requires(Ingredient.of(NanoMiraiItemTags.REPAIR_NANO_INGREDIENTS), 8)
+            .unlockedBy("has_graphite", has(NanoMiraiItems.GRAPHITE))
+            .save(recipeOutput, rl("repair_nano"))
 
         // Raw Echo Steel
         ShapelessRecipeBuilder.shapeless(
@@ -98,17 +160,33 @@ class NanoMiraiRecipeProvider(output: PackOutput, registries: CompletableFuture<
             .unlockedBy("has_graphite", has(NanoMiraiItems.GRAPHITE))
             .save(recipeOutput)
 
-        // Nanomachine Assembler
-        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, NanoMiraiItems.NANOMACHINE_ASSEMBLER)
-            .define('I', Items.IRON_INGOT)
-            .define('C', NanoMiraiItems.SIMPLE_CIRCUIT)
-            .define('D', Items.DIAMOND)
-            .define('T', Items.CRAFTING_TABLE)
-            .pattern("ICI")
-            .pattern("CDC")
-            .pattern("ITI")
+        // Normal Circuit
+        ShapedRecipeBuilder.shaped(
+            RecipeCategory.MISC,
+            NanoMiraiItems.NORMAL_CIRCUIT
+        )
+            .pattern("GSG")
+            .pattern("SOS")
+            .pattern("CRC")
+            .define('G', Tags.Items.GLASS_BLOCKS)
+            .define('S', NanoMiraiItems.SIMPLE_CIRCUIT)
+            .define('O', Items.OBSIDIAN)
+            .define('R', Items.REDSTONE)
+            .define('C', Items.COPPER_INGOT)
             .unlockedBy("has_simple_circuit", has(NanoMiraiItems.SIMPLE_CIRCUIT))
             .save(recipeOutput)
+
+        // Nanomachine Assembler
+//        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, NanoMiraiItems.NANOMACHINE_ASSEMBLER)
+//            .define('I', Items.IRON_INGOT)
+//            .define('C', NanoMiraiItems.SIMPLE_CIRCUIT)
+//            .define('D', Items.DIAMOND)
+//            .define('T', Items.CRAFTING_TABLE)
+//            .pattern("ICI")
+//            .pattern("CDC")
+//            .pattern("ITI")
+//            .unlockedBy("has_simple_circuit", has(NanoMiraiItems.SIMPLE_CIRCUIT))
+//            .save(recipeOutput)
 
         // Laser Engraver
         ShapedRecipeBuilder.shaped(RecipeCategory.MISC, NanoMiraiItems.LASER_ENGRAVER)
@@ -124,17 +202,17 @@ class NanoMiraiRecipeProvider(output: PackOutput, registries: CompletableFuture<
             .save(recipeOutput)
 
         // Nano Lab
-        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, NanoMiraiItems.NANO_LAB)
-            .define('I', Items.IRON_INGOT)
-            .define('E', Items.EMERALD)
-            .define('C', NanoMiraiItems.SIMPLE_CIRCUIT)
-            .define('S', Items.SPYGLASS)
-            .define('B', Items.IRON_BLOCK)
-            .pattern("IEI")
-            .pattern("CSC")
-            .pattern("IBI")
-            .unlockedBy("has_simple_circuit", has(NanoMiraiItems.SIMPLE_CIRCUIT))
-            .save(recipeOutput)
+//        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, NanoMiraiItems.NANO_LAB)
+//            .define('I', Items.IRON_INGOT)
+//            .define('E', Items.EMERALD)
+//            .define('C', NanoMiraiItems.SIMPLE_CIRCUIT)
+//            .define('S', Items.SPYGLASS)
+//            .define('B', Items.IRON_BLOCK)
+//            .pattern("IEI")
+//            .pattern("CSC")
+//            .pattern("IBI")
+//            .unlockedBy("has_simple_circuit", has(NanoMiraiItems.SIMPLE_CIRCUIT))
+//            .save(recipeOutput)
 
         // Sculk Sensor
         ShapedRecipeBuilder.shaped(RecipeCategory.MISC, Items.SCULK_SENSOR)
@@ -144,25 +222,19 @@ class NanoMiraiRecipeProvider(output: PackOutput, registries: CompletableFuture<
             .pattern("VCV")
             .pattern("SSS")
             .unlockedBy("has_sculmium_ingot", has(NanoMiraiItems.SCULMIUM_INGOT))
-            .save(recipeOutput, rl("sculk_sensor_from_sculkium"))
+            .save(recipeOutput, rl("sculk_sensor_from_sculmium"))
 
-        NanoTier.entries.forEach {
-            val predicate = DataComponentPredicate.builder()
-                .expect(DataComponents.RARITY, it.rarity)
-                .build()
-            val rarityPlusOne = Rarity.entries[it.rarity.ordinal+1]
-            val predicatePlusOne = DataComponentPredicate.builder()
-                .expect(DataComponents.RARITY, rarityPlusOne)
-                .build()
-            ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, it.getSynthesizeNano())
-                .requires(DataComponentIngredient.of(false, predicate, NanoMiraiItems.SYNTHESIZE_NANO))
-                .unlockedBy("has_synthesize_nano", has(NanoMiraiItems.SYNTHESIZE_NANO))
-                .save(recipeOutput, rl("deprecated/synthesize_nano_${it.name.lowercase()}_from_${it.rarity.name.lowercase()}") )
-            ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, it.getSynthesizeNano())
-                .requires(DataComponentIngredient.of(false, predicatePlusOne, NanoMiraiItems.SYNTHESIZE_NANO))
-                .unlockedBy("has_synthesize_nano", has(NanoMiraiItems.SYNTHESIZE_NANO))
-                .save(recipeOutput, rl("deprecated/synthesize_nano_${it.name.lowercase()}_from_${rarityPlusOne.name.lowercase()}") )
-        }
+        // Allay Head
+        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, NanoMiraiItems.ALLAY_HEAD)
+            .pattern("WDW")
+            .pattern("ANA")
+            .pattern("WDW")
+            .define('W', ItemTags.WOOL)
+            .define('D', Items.DIAMOND)
+            .define('A', Items.AMETHYST_CLUSTER)
+            .define('N', Items.NOTE_BLOCK)
+            .unlockedBy("has_diamond", has(Items.DIAMOND))
+            .save(recipeOutput)
     }
 
     fun assemblerRecipes(recipeOutput: RecipeOutput) {
@@ -216,51 +288,6 @@ class NanoMiraiRecipeProvider(output: PackOutput, registries: CompletableFuture<
                 StackedIngredient.of(2, Items.SCULK_SENSOR),
             )
         ).save(recipeOutput)
-
-        val tierCircuits = mapOf(
-            NanoTier.NORMAL to NanoMiraiItems.SIMPLE_CIRCUIT,
-            NanoTier.IMPROVED to NanoMiraiItems.NORMAL_CIRCUIT,
-        )
-        // Synthesize Nano
-        NanoTier.entries.forEach {
-            AssemblerRecipeBuilder(
-                it.getSynthesizeNano(),
-                NonNullList.of(
-                    StackedIngredient.EMPTY,
-                    StackedIngredient.of(4, tierCircuits[it]!!),
-                    StackedIngredient.of(2, Items.NOTE_BLOCK),
-                    StackedIngredient.of(4, Items.AMETHYST_SHARD),
-                )
-            ).save(recipeOutput, rl("synthesize_nano_${it.name.lowercase()}"))
-        }
-
-        // Support Nano
-        NanoTier.entries.forEach {
-            AssemblerRecipeBuilder(
-                it.getSupportNano(),
-                NonNullList.of(
-                    StackedIngredient.EMPTY,
-                    StackedIngredient.of(4, tierCircuits[it]!!),
-                    StackedIngredient.of(2, Items.ENDER_PEARL),
-                    StackedIngredient.of(4, Items.KELP),
-                    StackedIngredient.of(1, Items.AXOLOTL_BUCKET),
-                )
-            ).save(recipeOutput, rl("support_nano_${it.name.lowercase()}"))
-        }
-
-        // Nano Swarm Blaster
-        NanoTier.entries.forEach {
-            AssemblerRecipeBuilder(
-                it.getNanoSwarmBlaster(),
-                NonNullList.of(
-                    StackedIngredient.EMPTY,
-                    StackedIngredient.of(4, tierCircuits[it]!!),
-                    StackedIngredient.of(4, Items.IRON_INGOT),
-                    StackedIngredient.of(2, Items.PISTON),
-                    StackedIngredient.of(1, Items.SCULK_SHRIEKER),
-                )
-            ).save(recipeOutput, rl("nano_swarm_blaster_${it.name.lowercase()}"))
-        }
     }
 
     fun labAttributeRecipes(recipeOutput: RecipeOutput) {
@@ -894,6 +921,60 @@ class NanoMiraiRecipeProvider(output: PackOutput, registries: CompletableFuture<
     }
 
     fun synthesizeRecipes(recipeOutput: RecipeOutput) {
+        // Improved Synthesize Nano
+        SynthesizeRecipeBuilder(
+            ItemStack(NanoMiraiItems.SYNTHESIZE_NANO_IMPROVED),
+            NanoTier.NORMAL,
+            BlockStateWithNbt(
+                NanoMiraiBlocks.MOB_CAGE.defaultBlockState(),
+                SynthesizeUtil.createEntityData(EntityType.ALLAY)
+            ),
+            Ingredient.of(NanoMiraiItems.NANO_CIRCUIT),
+            300
+        ).save(recipeOutput)
+
+        // Improved Support Nano
+        SynthesizeRecipeBuilder(
+            ItemStack(NanoMiraiItems.SUPPORT_NANO_IMPROVED),
+            NanoTier.NORMAL,
+            BlockStateWithNbt(
+                NanoMiraiBlocks.MOB_CAGE.defaultBlockState(),
+                SynthesizeUtil.createEntityData(EntityType.AXOLOTL)
+            ),
+            Ingredient.of(NanoMiraiItems.NANO_CIRCUIT),
+            300
+        ).save(recipeOutput)
+
+        // Improved Nano Swarm Blaster
+        SynthesizeRecipeBuilder(
+            ItemStack(NanoMiraiItems.NANO_SWARM_BLASTER_IMPROVED),
+            NanoTier.NORMAL,
+            BlockStateWithNbt(
+                NanoMiraiBlocks.MOB_CAGE.defaultBlockState(),
+                SynthesizeUtil.createEntityData(EntityType.WARDEN)
+            ),
+            Ingredient.of(NanoMiraiItems.NANO_CIRCUIT),
+            300
+        ).save(recipeOutput)
+
+        // Nanomachine Assembler
+        SynthesizeRecipeBuilder.default(
+            ItemStack(NanoMiraiItems.NANOMACHINE_ASSEMBLER),
+            NanoTier.NORMAL,
+            Blocks.CRAFTER,
+            Ingredient.of(NanoMiraiItems.NORMAL_CIRCUIT),
+            200
+        ).save(recipeOutput)
+
+        // Nano Lab
+        SynthesizeRecipeBuilder.default(
+            ItemStack(NanoMiraiItems.NANO_LAB),
+            NanoTier.NORMAL,
+            Blocks.ENCHANTING_TABLE,
+            Ingredient.of(NanoMiraiItems.NORMAL_CIRCUIT),
+            400
+        ).save(recipeOutput)
+
         SynthesizeRecipeBuilder.default(
             ItemStack(NanoMiraiItems.GRAPHITE, 5),
             NanoTier.NORMAL,
@@ -933,14 +1014,6 @@ class NanoMiraiRecipeProvider(output: PackOutput, registries: CompletableFuture<
             Ingredient.of(NanoMiraiItems.SCULMIUM_CIRCUIT),
             200
         ).save(recipeOutput, rl("sculk_shrieker_from_sculmium_circuit"))
-
-        SynthesizeRecipeBuilder.default(
-            ItemStack(Items.CRAFTER),
-            NanoTier.NORMAL,
-            Blocks.CRAFTING_TABLE,
-            Ingredient.of(Items.IRON_HELMET),
-            20
-        ).save(recipeOutput, rl("crafter_from_iron_helmet"))
 
         SynthesizeRecipeBuilder.default(
             ItemStack(Items.BUDDING_AMETHYST),

@@ -1,0 +1,27 @@
+{
+  "type": "nanomirai:synthesize",
+  "block": {
+    "block": {
+      "Name": "nanomirai:mob_cage",
+      "Properties": {
+        "facing": "north"
+      }
+    },
+    "nbt": {
+      "components": {
+        "minecraft:entity_data": {
+          "id": "minecraft:axolotl"
+        }
+      }
+    }
+  },
+  "catalyst": {
+    "item": "nanomirai:nano_circuit"
+  },
+  "duration": 300,
+  "result": {
+    "count": 1,
+    "id": "nanomirai:support_nano_improved"
+  },
+  "tier": 0
+}

@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_sculmium_ingot": {
+      "conditions": {
+        "items": [
+          {
+            "items": "nanomirai:sculmium_ingot"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "nanomirai:sculk_sensor_from_sculmium"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_the_recipe",
+      "has_sculmium_ingot"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "nanomirai:sculk_sensor_from_sculmium"
+    ]
+  }
+}

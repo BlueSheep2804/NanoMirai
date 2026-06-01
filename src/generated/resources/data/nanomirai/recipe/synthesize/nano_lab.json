@@ -2,17 +2,17 @@
   "type": "nanomirai:synthesize",
   "block": {
     "block": {
-      "Name": "minecraft:crafting_table"
+      "Name": "minecraft:enchanting_table"
     },
     "nbt": {}
   },
   "catalyst": {
-    "item": "minecraft:iron_helmet"
+    "item": "nanomirai:normal_circuit"
   },
-  "duration": 20,
+  "duration": 400,
   "result": {
     "count": 1,
-    "id": "minecraft:crafter"
+    "id": "nanomirai:nano_lab"
   },
   "tier": 0
 }
