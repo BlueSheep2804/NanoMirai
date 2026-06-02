@@ -22,7 +22,6 @@ class SynthesizeNanoItem(override val tier: NanoTier) : PoweredItem(
 
     override fun useOn(context: UseOnContext): InteractionResult {
         val level = context.level
-        if (level.isClientSide) return InteractionResult.PASS
         val player = context.player ?: return InteractionResult.PASS
         val inputBlock = level.getBlockState(context.clickedPos)
         val mainhand = player.getItemInHand(InteractionHand.MAIN_HAND)
@@ -49,7 +48,7 @@ class SynthesizeNanoItem(override val tier: NanoTier) : PoweredItem(
         consumeEnergy(primaryItem)
         player.displayClientMessage(Component.translatable("recipe.nanomirai.synthesize.start"), true)
 
-        return InteractionResult.SUCCESS_NO_ITEM_USED
+        return InteractionResult.sidedSuccess(level.isClientSide)
     }
 
     class DispenserBehavior : OptionalDispenseItemBehavior() {
