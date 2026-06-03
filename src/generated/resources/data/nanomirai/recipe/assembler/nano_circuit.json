@@ -2,15 +2,9 @@
   "type": "nanomirai:assembler",
   "ingredients": [
     {
-      "count": 2,
+      "count": 16,
       "ingredient": {
-        "item": "nanomirai:silicon_wafer"
-      }
-    },
-    {
-      "count": 2,
-      "ingredient": {
-        "item": "minecraft:gold_ingot"
+        "item": "minecraft:redstone"
       }
     },
     {
@@ -22,13 +16,13 @@
     {
       "count": 2,
       "ingredient": {
-        "item": "minecraft:redstone"
+        "item": "minecraft:gold_ingot"
       }
     },
     {
-      "count": 1,
+      "count": 2,
       "ingredient": {
-        "item": "minecraft:observer"
+        "item": "minecraft:ender_pearl"
       }
     }
   ],

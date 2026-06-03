@@ -2,12 +2,12 @@
   "type": "nanomirai:synthesize",
   "block": {
     "block": {
-      "Name": "minecraft:obsidian"
+      "Name": "minecraft:crying_obsidian"
     },
     "nbt": {}
   },
   "catalyst": {
-    "item": "minecraft:popped_chorus_fruit"
+    "item": "minecraft:amethyst_shard"
   },
   "duration": 600,
   "result": {

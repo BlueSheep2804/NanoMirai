@@ -14,9 +14,11 @@ import net.minecraft.world.item.BlockItem
 import net.minecraft.world.item.Item
 import net.minecraft.world.item.StandingAndWallBlockItem
 import net.minecraft.world.item.alchemy.PotionContents
+import net.minecraft.world.level.block.Block
 import net.neoforged.neoforge.registries.DeferredItem
 import net.neoforged.neoforge.registries.DeferredRegister
 import thedarkcolour.kotlinforforge.neoforge.forge.getValue
+import kotlin.reflect.KProperty0
 
 object NanoMiraiItems {
     val REGISTRY: DeferredRegister.Items = DeferredRegister.createItems(NanoMirai.ID)
@@ -61,6 +63,7 @@ object NanoMiraiItems {
     val NORMAL_CIRCUIT: Item by REGISTRY.registerSimpleItem("normal_circuit")
     val NANO_CIRCUIT: Item by REGISTRY.registerSimpleItem("nano_circuit")
     val SCULMIUM_CIRCUIT: Item by REGISTRY.registerSimpleItem("sculmium_circuit")
+    val LENS: Item by catalyst("lens")
     val AMETHYST_LENS: Item by catalyst("amethyst_lens")
     val SCULK_LENS: Item by catalyst("sculk_lens")
     val RED_RESEARCH_CATALYST: Item by catalyst("red_research_catalyst")
@@ -69,20 +72,13 @@ object NanoMiraiItems {
     val CYAN_RESEARCH_CATALYST: Item by catalyst("cyan_research_catalyst")
     val MAGENTA_RESEARCH_CATALYST: Item by catalyst("magenta_research_catalyst")
     val YELLOW_RESEARCH_CATALYST: Item by catalyst("yellow_research_catalyst")
+    val LASER_COMPONENT: Item by REGISTRY.registerSimpleItem("laser_component")
 
-    val NANOMACHINE_ASSEMBLER: BlockItem by REGISTRY.registerSimpleBlockItem("nanomachine_assembler") { ->
-        NanoMiraiBlocks.NANOMACHINE_ASSEMBLER
-    }
-    val LASER_ENGRAVER: BlockItem by REGISTRY.registerSimpleBlockItem("laser_engraver") { ->
-        NanoMiraiBlocks.LASER_ENGRAVER
-    }
-    val NANO_LAB: BlockItem by REGISTRY.registerSimpleBlockItem("nano_lab") { ->
-        NanoMiraiBlocks.NANO_LAB
-    }
+    val NANOMACHINE_ASSEMBLER: BlockItem by registerSimpleBlockItem(NanoMiraiBlocks::NANOMACHINE_ASSEMBLER)
+    val LASER_ENGRAVER: BlockItem by registerSimpleBlockItem(NanoMiraiBlocks::LASER_ENGRAVER)
+    val NANO_LAB: BlockItem by registerSimpleBlockItem(NanoMiraiBlocks::NANO_LAB)
 
-    val REINFORCED_OBSIDIAN: BlockItem by REGISTRY.registerSimpleBlockItem("reinforced_obsidian") { ->
-        NanoMiraiBlocks.REINFORCED_OBSIDIAN
-    }
+    val REINFORCED_OBSIDIAN: BlockItem by registerSimpleBlockItem(NanoMiraiBlocks::REINFORCED_OBSIDIAN)
     val ALLAY_HEAD: BlockItem by REGISTRY.registerItem(
         "allay_head",
     ) {
@@ -93,6 +89,8 @@ object NanoMiraiItems {
             Direction.DOWN
         )
     }
+    val RAW_SCULMIUM_BLOCK: BlockItem by registerSimpleBlockItem(NanoMiraiBlocks::RAW_SCULMIUM_BLOCK)
+    val SCULMIUM_BLOCK: BlockItem by registerSimpleBlockItem(NanoMiraiBlocks::SCULMIUM_BLOCK)
 
     fun registerSynthesizeNano(tier: NanoTier): DeferredItem<SynthesizeNanoItem> = REGISTRY.register(
         "synthesize_nano_${tier.name.lowercase()}",
@@ -110,4 +108,8 @@ object NanoMiraiItems {
         id,
         Item.Properties().stacksTo(1)
     )
+
+    fun registerSimpleBlockItem(block: KProperty0<Block>) = REGISTRY.registerSimpleBlockItem(
+        block.name.lowercase()
+    ) { block.get() }
 }

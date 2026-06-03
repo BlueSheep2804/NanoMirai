@@ -3,7 +3,9 @@
   "ingredient": {
     "tag": "nanomirai:sherd_cold_ocean_ruins"
   },
-  "lens": [],
+  "lens": {
+    "item": "nanomirai:lens"
+  },
   "result": {
     "count": 1,
     "id": "nanomirai:blue_research_catalyst"

@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_normal_circuit": {
+      "conditions": {
+        "items": [
+          {
+            "items": "nanomirai:normal_circuit"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "nanomirai:laser_component"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_the_recipe",
+      "has_normal_circuit"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "nanomirai:laser_component"
+    ]
+  }
+}

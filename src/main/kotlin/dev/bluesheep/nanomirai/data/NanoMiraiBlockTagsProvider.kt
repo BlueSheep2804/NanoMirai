@@ -3,6 +3,7 @@ package dev.bluesheep.nanomirai.data
 import dev.bluesheep.nanomirai.NanoMirai
 import dev.bluesheep.nanomirai.registry.NanoMiraiBlockTags
 import dev.bluesheep.nanomirai.registry.NanoMiraiBlocks
+import dev.bluesheep.nanomirai.registry.NanoMiraiItemTags
 import net.minecraft.core.HolderLookup
 import net.minecraft.data.PackOutput
 import net.minecraft.tags.BlockTags
@@ -18,8 +19,14 @@ class NanoMiraiBlockTagsProvider(output: PackOutput, lookupProvider: Completable
                 NanoMiraiBlocks.NANOMACHINE_ASSEMBLER,
                 NanoMiraiBlocks.LASER_ENGRAVER,
                 NanoMiraiBlocks.NANO_LAB,
-                NanoMiraiBlocks.REINFORCED_OBSIDIAN
+                NanoMiraiBlocks.REINFORCED_OBSIDIAN,
+                NanoMiraiBlocks.RAW_SCULMIUM_BLOCK,
+                NanoMiraiBlocks.SCULMIUM_BLOCK
             )
+
+        tag(BlockTags.NEEDS_STONE_TOOL)
+            .add(NanoMiraiBlocks.RAW_SCULMIUM_BLOCK)
+            .add(NanoMiraiBlocks.SCULMIUM_BLOCK)
 
         tag(BlockTags.NEEDS_DIAMOND_TOOL)
             .add(NanoMiraiBlocks.REINFORCED_OBSIDIAN)
@@ -35,5 +42,15 @@ class NanoMiraiBlockTagsProvider(output: PackOutput, lookupProvider: Completable
 
         tag(NanoMiraiBlockTags.REINFORCED_OBSIDIAN)
             .add(NanoMiraiBlocks.REINFORCED_OBSIDIAN)
+
+        tag(NanoMiraiBlockTags.STORAGE_BLOCKS_RAW_SCULMIUM)
+            .add(NanoMiraiBlocks.RAW_SCULMIUM_BLOCK)
+
+        tag(NanoMiraiBlockTags.STORAGE_BLOCKS_SCULMIUM)
+            .add(NanoMiraiBlocks.SCULMIUM_BLOCK)
+
+        tag(Tags.Blocks.STORAGE_BLOCKS)
+            .addTag(NanoMiraiBlockTags.STORAGE_BLOCKS_RAW_SCULMIUM)
+            .addTag(NanoMiraiBlockTags.STORAGE_BLOCKS_SCULMIUM)
     }
 }

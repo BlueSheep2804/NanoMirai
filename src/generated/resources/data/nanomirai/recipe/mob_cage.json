@@ -1,0 +1,26 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "C": {
+      "item": "minecraft:chain"
+    },
+    "E": {
+      "item": "minecraft:ender_pearl"
+    },
+    "I": {
+      "tag": "c:ingots/iron"
+    },
+    "N": {
+      "item": "nanomirai:nano_circuit"
+    }
+  },
+  "pattern": [
+    "CNC",
+    "EIE"
+  ],
+  "result": {
+    "count": 1,
+    "id": "nanomirai:mob_cage"
+  }
+}

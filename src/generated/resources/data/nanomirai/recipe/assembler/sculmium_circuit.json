@@ -2,15 +2,9 @@
   "type": "nanomirai:assembler",
   "ingredients": [
     {
-      "count": 4,
+      "count": 16,
       "ingredient": {
-        "item": "nanomirai:silicon_wafer"
-      }
-    },
-    {
-      "count": 2,
-      "ingredient": {
-        "tag": "c:ingots/sculmium"
+        "item": "minecraft:redstone"
       }
     },
     {
@@ -22,13 +16,13 @@
     {
       "count": 4,
       "ingredient": {
-        "item": "minecraft:redstone"
+        "item": "minecraft:gold_ingot"
       }
     },
     {
       "count": 2,
       "ingredient": {
-        "item": "minecraft:sculk_sensor"
+        "tag": "c:ingots/sculmium"
       }
     }
   ],

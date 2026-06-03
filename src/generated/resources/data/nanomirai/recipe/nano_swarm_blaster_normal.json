@@ -3,7 +3,7 @@
   "category": "misc",
   "key": {
     "C": {
-      "item": "nanomirai:simple_circuit"
+      "item": "nanomirai:laser_component"
     },
     "D": {
       "item": "minecraft:dispenser"
@@ -11,16 +11,13 @@
     "L": {
       "item": "minecraft:lever"
     },
-    "P": {
-      "item": "minecraft:piston"
-    },
     "S": {
       "tag": "c:ingots/sculmium"
     }
   },
   "pattern": [
     "SSS",
-    "CPD",
+    "SCD",
     "SL "
   ],
   "result": {

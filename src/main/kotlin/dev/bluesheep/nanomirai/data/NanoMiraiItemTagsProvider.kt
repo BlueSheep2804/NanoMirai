@@ -24,17 +24,29 @@ class NanoMiraiItemTagsProvider(output: PackOutput, lookupProvider: CompletableF
         tag(NanoMiraiItemTags.CURIOS_SUPPORT_NANO)
             .addTag(NanoMiraiItemTags.SUPPORT_NANO)
 
-        tag(Tags.Items.INGOTS)
-            .add(NanoMiraiItems.SCULMIUM_INGOT)
-
         tag(NanoMiraiItemTags.SCULMIUM_INGOT)
             .add(NanoMiraiItems.SCULMIUM_INGOT)
 
-        tag(Tags.Items.RAW_MATERIALS)
-            .add(NanoMiraiItems.RAW_SCULMIUM)
+        tag(Tags.Items.INGOTS)
+            .addTag(NanoMiraiItemTags.SCULMIUM_INGOT)
 
         tag(NanoMiraiItemTags.RAW_SCULMIUM)
             .add(NanoMiraiItems.RAW_SCULMIUM)
+
+        tag(Tags.Items.RAW_MATERIALS)
+            .addTag(NanoMiraiItemTags.RAW_SCULMIUM)
+
+        tag(NanoMiraiItemTags.STORAGE_BLOCKS_SCULMIUM)
+            .add(NanoMiraiItems.SCULMIUM_BLOCK)
+
+        tag(NanoMiraiItemTags.STORAGE_BLOCKS_RAW_SCULMIUM)
+            .add(NanoMiraiItems.RAW_SCULMIUM_BLOCK)
+
+        tag(Tags.Items.STORAGE_BLOCKS)
+            .addTags(
+                NanoMiraiItemTags.STORAGE_BLOCKS_RAW_SCULMIUM,
+                NanoMiraiItemTags.STORAGE_BLOCKS_SCULMIUM
+            )
 
         tag(Tags.Items.OBSIDIANS)
             .addTag(NanoMiraiItemTags.REINFORCED_OBSIDIAN)
@@ -43,6 +55,7 @@ class NanoMiraiItemTagsProvider(output: PackOutput, lookupProvider: CompletableF
             .add(NanoMiraiItems.REINFORCED_OBSIDIAN)
 
         tag(NanoMiraiItemTags.LENSES)
+            .add(NanoMiraiItems.LENS)
             .add(NanoMiraiItems.AMETHYST_LENS)
             .add(NanoMiraiItems.SCULK_LENS)
 

@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_nanomirai_sculmium_block": {
+      "conditions": {
+        "items": [
+          {
+            "items": "nanomirai:sculmium_block"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "nanomirai:sculmium_ingot_from_sculmium_block"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_the_recipe",
+      "has_nanomirai_sculmium_block"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "nanomirai:sculmium_ingot_from_sculmium_block"
+    ]
+  }
+}

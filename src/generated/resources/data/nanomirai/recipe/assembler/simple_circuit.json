@@ -2,7 +2,7 @@
   "type": "nanomirai:assembler",
   "ingredients": [
     {
-      "count": 2,
+      "count": 4,
       "ingredient": {
         "item": "minecraft:redstone"
       }
@@ -10,19 +10,19 @@
     {
       "count": 1,
       "ingredient": {
-        "item": "nanomirai:graphite"
+        "tag": "minecraft:terracotta"
       }
     },
     {
-      "count": 1,
+      "count": 2,
       "ingredient": {
         "item": "minecraft:copper_ingot"
       }
     },
     {
-      "count": 1,
+      "count": 2,
       "ingredient": {
-        "tag": "minecraft:terracotta"
+        "item": "nanomirai:graphite"
       }
     }
   ],

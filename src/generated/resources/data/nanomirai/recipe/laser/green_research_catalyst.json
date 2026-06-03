@@ -3,7 +3,9 @@
   "ingredient": {
     "tag": "nanomirai:sherd_desert_pyramid"
   },
-  "lens": [],
+  "lens": {
+    "item": "nanomirai:lens"
+  },
   "result": {
     "count": 1,
     "id": "nanomirai:green_research_catalyst"

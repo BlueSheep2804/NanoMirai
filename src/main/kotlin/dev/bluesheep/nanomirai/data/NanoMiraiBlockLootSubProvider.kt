@@ -31,6 +31,8 @@ class NanoMiraiBlockLootSubProvider(lookupProvider: HolderLookup.Provider) : Blo
         dropSelf(NanoMiraiBlocks.REINFORCED_OBSIDIAN)
         dropSelf(NanoMiraiBlocks.ALLAY_HEAD)
         dropOther(NanoMiraiBlocks.ALLAY_WALL_HEAD, NanoMiraiItems.ALLAY_HEAD)
+        dropSelf(NanoMiraiBlocks.RAW_SCULMIUM_BLOCK)
+        dropSelf(NanoMiraiBlocks.SCULMIUM_BLOCK)
 
         add(
             NanoMiraiBlocks.MOB_CAGE,

@@ -9,22 +9,22 @@
       "tag": "c:glass_blocks"
     },
     "I": {
-      "item": "minecraft:iron_ingot"
+      "tag": "c:ingots/iron"
     },
     "L": {
       "item": "minecraft:redstone_lamp"
     },
-    "O": {
-      "tag": "c:obsidians/normal"
+    "R": {
+      "item": "minecraft:redstone"
     }
   },
   "pattern": [
+    "RCR",
     "ILI",
-    "CGC",
-    "IOI"
+    " G "
   ],
   "result": {
     "count": 1,
-    "id": "nanomirai:laser_engraver"
+    "id": "nanomirai:laser_component"
   }
 }

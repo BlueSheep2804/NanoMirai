@@ -1,0 +1,13 @@
+{
+  "type": "nanomirai:laser",
+  "ingredient": {
+    "tag": "c:obsidians/normal"
+  },
+  "lens": {
+    "item": "nanomirai:lens"
+  },
+  "result": {
+    "count": 1,
+    "id": "minecraft:crying_obsidian"
+  }
+}

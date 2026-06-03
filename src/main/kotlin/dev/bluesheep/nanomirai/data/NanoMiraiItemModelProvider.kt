@@ -92,6 +92,7 @@ class NanoMiraiItemModelProvider(output: PackOutput, existingFileHelper: Existin
         basicItem(NanoMiraiItems.NORMAL_CIRCUIT)
         basicItem(NanoMiraiItems.NANO_CIRCUIT)
         basicItem(NanoMiraiItems.SCULMIUM_CIRCUIT)
+        basicItem(NanoMiraiItems.LENS)
         basicItem(NanoMiraiItems.AMETHYST_LENS)
         basicItem(NanoMiraiItems.SCULK_LENS)
         basicItem(NanoMiraiItems.RED_RESEARCH_CATALYST)
@@ -100,6 +101,7 @@ class NanoMiraiItemModelProvider(output: PackOutput, existingFileHelper: Existin
         basicItem(NanoMiraiItems.CYAN_RESEARCH_CATALYST)
         basicItem(NanoMiraiItems.MAGENTA_RESEARCH_CATALYST)
         basicItem(NanoMiraiItems.YELLOW_RESEARCH_CATALYST)
+        basicItem(NanoMiraiItems.LASER_COMPONENT)
 
         simpleBlockItem(NanoMiraiBlocks.NANOMACHINE_ASSEMBLER)
         simpleBlockItem(NanoMiraiBlocks.LASER_ENGRAVER)
@@ -107,5 +109,7 @@ class NanoMiraiItemModelProvider(output: PackOutput, existingFileHelper: Existin
 
         simpleBlockItem(NanoMiraiBlocks.REINFORCED_OBSIDIAN)
         simpleBlockItem(NanoMiraiBlocks.ALLAY_HEAD)
+        simpleBlockItem(NanoMiraiBlocks.RAW_SCULMIUM_BLOCK)
+        simpleBlockItem(NanoMiraiBlocks.SCULMIUM_BLOCK)
     }
 }

@@ -1,11 +1,11 @@
 {
   "parent": "minecraft:recipes/root",
   "criteria": {
-    "has_simple_circuit": {
+    "has_laser_component": {
       "conditions": {
         "items": [
           {
-            "items": "nanomirai:simple_circuit"
+            "items": "nanomirai:laser_component"
           }
         ]
       },
@@ -21,7 +21,7 @@
   "requirements": [
     [
       "has_the_recipe",
-      "has_simple_circuit"
+      "has_laser_component"
     ]
   ],
   "rewards": {

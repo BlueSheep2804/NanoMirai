@@ -5,8 +5,8 @@
     "C": {
       "item": "minecraft:copper_ingot"
     },
-    "G": {
-      "tag": "c:glass_blocks"
+    "D": {
+      "item": "minecraft:diamond"
     },
     "O": {
       "item": "minecraft:obsidian"
@@ -19,9 +19,9 @@
     }
   },
   "pattern": [
-    "GSG",
+    "RSR",
     "SOS",
-    "CRC"
+    "CDC"
   ],
   "result": {
     "count": 1,

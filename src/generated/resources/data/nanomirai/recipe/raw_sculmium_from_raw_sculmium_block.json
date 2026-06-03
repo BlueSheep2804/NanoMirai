@@ -1,0 +1,13 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    {
+      "item": "nanomirai:raw_sculmium_block"
+    }
+  ],
+  "result": {
+    "count": 9,
+    "id": "nanomirai:raw_sculmium"
+  }
+}

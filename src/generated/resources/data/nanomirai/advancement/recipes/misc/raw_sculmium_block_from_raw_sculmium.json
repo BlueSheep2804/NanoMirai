@@ -1,11 +1,11 @@
 {
   "parent": "minecraft:recipes/root",
   "criteria": {
-    "has_iron_ingot": {
+    "has_nanomirai_raw_sculmium": {
       "conditions": {
         "items": [
           {
-            "items": "minecraft:iron_ingot"
+            "items": "nanomirai:raw_sculmium"
           }
         ]
       },
@@ -13,7 +13,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "nanomirai:raw_sculmium"
+        "recipe": "nanomirai:raw_sculmium_block_from_raw_sculmium"
       },
       "trigger": "minecraft:recipe_unlocked"
     }
@@ -21,12 +21,12 @@
   "requirements": [
     [
       "has_the_recipe",
-      "has_iron_ingot"
+      "has_nanomirai_raw_sculmium"
     ]
   ],
   "rewards": {
     "recipes": [
-      "nanomirai:raw_sculmium"
+      "nanomirai:raw_sculmium_block_from_raw_sculmium"
     ]
   }
 }

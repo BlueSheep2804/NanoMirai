@@ -3,7 +3,9 @@
   "ingredient": {
     "item": "nanomirai:silicon"
   },
-  "lens": [],
+  "lens": {
+    "item": "nanomirai:lens"
+  },
   "result": {
     "count": 1,
     "id": "nanomirai:silicon_wafer"

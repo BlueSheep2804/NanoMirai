@@ -1,11 +1,13 @@
-// 1.21.1	2026-05-29T23:25:09.3587723	Item Models: nanomirai
+// 1.21.1	2026-06-03T00:05:31.9080918	Item Models: nanomirai
 0d313ca9a3c2bdff57ce341af9378fe2155f7f00 assets/nanomirai/models/item/allay_head.json
 899b7290cbb64a057afcbc553e31968bfefbb8f5 assets/nanomirai/models/item/amethyst_lens.json
 ebb80cf2f4257e9112ed235e00208fe6b0ba53be assets/nanomirai/models/item/blue_research_catalyst.json
 cfc781b0cc789012ac8369f9d34aa4a2b434a8ab assets/nanomirai/models/item/cyan_research_catalyst.json
 47e0fb4ea5e2c8019d394f79d4b0ce71af45ce93 assets/nanomirai/models/item/graphite.json
 9e5240981c7efd0e001d45052e0051de271bf97e assets/nanomirai/models/item/green_research_catalyst.json
+18bac45bf663f3863fd1b19245827ba6af64ff15 assets/nanomirai/models/item/laser_component.json
 30dd9d3786fbaa4be6c259f56e22055f9ed10a7d assets/nanomirai/models/item/laser_engraver.json
+4b06cd144187db7b0278bdb4274f91eb27175367 assets/nanomirai/models/item/lens.json
 606a60cd9ac7e95d05a4a1ba938a7208fcd1b291 assets/nanomirai/models/item/magenta_research_catalyst.json
 f62bc986f71966f13fb7579a61ce62506a63738b assets/nanomirai/models/item/mob_cage.json
 e9f06f66d4f58ae9878ba98ef9aed6dbe43e38a8 assets/nanomirai/models/item/nanomachine_assembler.json
@@ -17,10 +19,12 @@ b3513ac34c2550375c68658382a537ad2444a9f0 assets/nanomirai/models/item/nano_swarm
 b3513ac34c2550375c68658382a537ad2444a9f0 assets/nanomirai/models/item/nano_swarm_blaster_normal.json
 95fecc10e640deaed2c16dde02df10eb2a3e60f8 assets/nanomirai/models/item/normal_circuit.json
 aa3b98b686d139d6fd7d795ae33df2d74baabab9 assets/nanomirai/models/item/raw_sculmium.json
+518ab14ab261546264f84847e93a1976097c8021 assets/nanomirai/models/item/raw_sculmium_block.json
 06dac3ac4cb9600a872c678b56de0815c46bd688 assets/nanomirai/models/item/red_research_catalyst.json
 a6bedcebc56d12b96443bac5fe9770ec6613dcc6 assets/nanomirai/models/item/reinforced_obsidian.json
 6bfd34146db5a6b25f13fad7d53e7456805150bc assets/nanomirai/models/item/repair_nano.json
 aecfc26bced6729d6cfef996c661395f2629ca52 assets/nanomirai/models/item/sculk_lens.json
+8128f2281e63c2743397273d72de446b38a6bf0f assets/nanomirai/models/item/sculmium_block.json
 43d5ae2738c020b1d5151b6306679242c79eae9b assets/nanomirai/models/item/sculmium_circuit.json
 1b6fcc6a034a7c6b5142c7a1e68cdd0dbfb7a510 assets/nanomirai/models/item/sculmium_ingot.json
 83507b3dd47b6a4d8345d8a768a413435a37edb7 assets/nanomirai/models/item/silicon.json

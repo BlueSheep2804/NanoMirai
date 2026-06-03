@@ -9,6 +9,8 @@ import net.minecraft.world.item.Item
 object NanoMiraiItemTags {
     val CURIOS_SUPPORT_NANO: TagKey<Item> = TagKey.create(Registries.ITEM, ResourceLocation.fromNamespaceAndPath("curios", "support_nano"))
     val SCULMIUM_INGOT: TagKey<Item> = TagKey.create(Registries.ITEM, rlCommon("ingots/sculmium"))
+    val STORAGE_BLOCKS_SCULMIUM: TagKey<Item> = TagKey.create(Registries.ITEM, rlCommon("storage_blocks/sculmium"))
+    val STORAGE_BLOCKS_RAW_SCULMIUM: TagKey<Item> = TagKey.create(Registries.ITEM, rlCommon("storage_blocks/raw_sculmium"))
     val RAW_SCULMIUM: TagKey<Item> = TagKey.create(Registries.ITEM, rlCommon("raw_materials/sculmium"))
     val REINFORCED_OBSIDIAN: TagKey<Item> = TagKey.create(Registries.ITEM, rlCommon("obsidians/reinforced"))
     val LENSES: TagKey<Item> = TagKey.create(Registries.ITEM, rl("lenses"))

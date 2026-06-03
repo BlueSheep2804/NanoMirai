@@ -3,6 +3,8 @@
     "nanomirai:nanomachine_assembler",
     "nanomirai:laser_engraver",
     "nanomirai:nano_lab",
-    "nanomirai:reinforced_obsidian"
+    "nanomirai:reinforced_obsidian",
+    "nanomirai:raw_sculmium_block",
+    "nanomirai:sculmium_block"
   ]
 }

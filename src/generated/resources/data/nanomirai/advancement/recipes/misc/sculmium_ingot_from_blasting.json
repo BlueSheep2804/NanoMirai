@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_c_raw_materials/sculmium": {
+      "conditions": {
+        "items": [
+          {
+            "items": "#c:raw_materials/sculmium"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "nanomirai:sculmium_ingot_from_blasting"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_the_recipe",
+      "has_c_raw_materials/sculmium"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "nanomirai:sculmium_ingot_from_blasting"
+    ]
+  }
+}

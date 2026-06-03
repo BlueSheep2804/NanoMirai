@@ -1,0 +1,37 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    {
+      "item": "nanomirai:sculmium_ingot"
+    },
+    {
+      "item": "nanomirai:sculmium_ingot"
+    },
+    {
+      "item": "nanomirai:sculmium_ingot"
+    },
+    {
+      "item": "nanomirai:sculmium_ingot"
+    },
+    {
+      "item": "nanomirai:sculmium_ingot"
+    },
+    {
+      "item": "nanomirai:sculmium_ingot"
+    },
+    {
+      "item": "nanomirai:sculmium_ingot"
+    },
+    {
+      "item": "nanomirai:sculmium_ingot"
+    },
+    {
+      "item": "nanomirai:sculmium_ingot"
+    }
+  ],
+  "result": {
+    "count": 1,
+    "id": "nanomirai:sculmium_block"
+  }
+}

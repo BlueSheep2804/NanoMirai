@@ -1,13 +1,16 @@
-// 1.21.1	2026-05-26T20:42:39.3832691	Tags for minecraft:item mod id nanomirai
+// 1.21.1	2026-06-03T00:05:31.9106046	Tags for minecraft:item mod id nanomirai
 fdef0c7ccb1125755552d98e51cf1aa5e67e6df2 data/curios/tags/item/support_nano.json
-4ce5fab4f712c652794a477958ac8c7fefffac28 data/c/tags/item/ingots.json
+51024a50c8c93b77350def472a6665f3e107bf90 data/c/tags/item/ingots.json
 4ce5fab4f712c652794a477958ac8c7fefffac28 data/c/tags/item/ingots/sculmium.json
 d840c1d30dbeb4f15078c4f7488acf990a9ec217 data/c/tags/item/obsidians.json
 358d7186c8f45bdfff4be1f72965d27ccef554b4 data/c/tags/item/obsidians/reinforced.json
-657f04b0ebbf34daa0c222c155cb8216e4643095 data/c/tags/item/raw_materials.json
+0fcb2274891da7571b4f39a8445ba189f06f3b0d data/c/tags/item/raw_materials.json
 657f04b0ebbf34daa0c222c155cb8216e4643095 data/c/tags/item/raw_materials/sculmium.json
+83a4b05e721528d8678a423afafae073c5c58b2e data/c/tags/item/storage_blocks.json
+de02045af563e75ef3ded7c2c4dfd4d8f2e304e9 data/c/tags/item/storage_blocks/raw_sculmium.json
+098a94c1e215e9a35342a55e7affd3416bb9ec38 data/c/tags/item/storage_blocks/sculmium.json
 84650badf4e3894b517c02ee8ce9a82acbfda47a data/nanomirai/tags/item/functional_nanomachines.json
-c1e3658ac5bc882085db65b8cf34d1c100fd7d25 data/nanomirai/tags/item/lenses.json
+923d146b7ca6e5616f6b4efdfd7baf5a842b89a4 data/nanomirai/tags/item/lenses.json
 74039ec765c72c311f5ad3b05e7e71574717ea14 data/nanomirai/tags/item/nano_swarm_blaster.json
 dc1709428a6f79828f2d280377126869921bbac9 data/nanomirai/tags/item/repair_nano_ingredients.json
 0193852e42aacc153b3d1a60f359c14fff0613fb data/nanomirai/tags/item/research_catalysts.json

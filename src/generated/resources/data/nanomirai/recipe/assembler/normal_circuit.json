@@ -2,15 +2,9 @@
   "type": "nanomirai:assembler",
   "ingredients": [
     {
-      "count": 2,
+      "count": 8,
       "ingredient": {
-        "item": "nanomirai:silicon"
-      }
-    },
-    {
-      "count": 2,
-      "ingredient": {
-        "item": "minecraft:iron_ingot"
+        "item": "minecraft:redstone"
       }
     },
     {
@@ -20,15 +14,15 @@
       }
     },
     {
-      "count": 1,
+      "count": 4,
       "ingredient": {
-        "item": "minecraft:repeater"
+        "item": "minecraft:copper_ingot"
       }
     },
     {
       "count": 2,
       "ingredient": {
-        "item": "minecraft:redstone"
+        "item": "nanomirai:silicon"
       }
     }
   ],

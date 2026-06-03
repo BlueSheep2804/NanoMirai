@@ -1,0 +1,18 @@
+{
+  "type": "nanomirai:synthesize",
+  "block": {
+    "block": {
+      "Name": "minecraft:raw_iron_block"
+    },
+    "nbt": {}
+  },
+  "catalyst": {
+    "item": "minecraft:echo_shard"
+  },
+  "duration": 600,
+  "result": {
+    "count": 1,
+    "id": "nanomirai:raw_sculmium_block"
+  },
+  "tier": 1
+}

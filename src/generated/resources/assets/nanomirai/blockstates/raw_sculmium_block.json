@@ -1,0 +1,7 @@
+{
+  "variants": {
+    "": {
+      "model": "nanomirai:block/raw_sculmium_block"
+    }
+  }
+}

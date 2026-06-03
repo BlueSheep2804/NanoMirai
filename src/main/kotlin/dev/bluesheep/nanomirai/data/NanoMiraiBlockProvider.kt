@@ -94,5 +94,8 @@ class NanoMiraiBlockProvider(output: PackOutput, exFileHelper: ExistingFileHelpe
             NanoMiraiBlocks.ALLAY_WALL_HEAD,
             models().getExistingFile(modLoc("block/allay_wall_head"))
         )
+
+        simpleBlock(NanoMiraiBlocks.RAW_SCULMIUM_BLOCK)
+        simpleBlock(NanoMiraiBlocks.SCULMIUM_BLOCK)
     }
 }

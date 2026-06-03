@@ -57,6 +57,14 @@ object NanoMiraiBlocks {
         ::AllayWallHeadBlock,
         BlockBehaviour.Properties.of().noOcclusion().dynamicShape()
     )
+    val RAW_SCULMIUM_BLOCK: Block by REGISTRY.registerSimpleBlock(
+        "raw_sculmium_block",
+        BlockBehaviour.Properties.ofFullCopy(Blocks.RAW_IRON_BLOCK)
+    )
+    val SCULMIUM_BLOCK: Block by REGISTRY.registerSimpleBlock(
+        "sculmium_block",
+        BlockBehaviour.Properties.ofFullCopy(Blocks.IRON_BLOCK)
+    )
 
     private fun never(state: BlockState, blockGetter: BlockGetter, pos: BlockPos): Boolean = false
 }

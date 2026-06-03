@@ -2,14 +2,14 @@
   "type": "nanomirai:synthesize",
   "block": {
     "block": {
-      "Name": "minecraft:tinted_glass"
+      "Name": "minecraft:amethyst_block"
     },
     "nbt": {}
   },
   "catalyst": {
-    "item": "minecraft:amethyst_shard"
+    "item": "nanomirai:lens"
   },
-  "duration": 60,
+  "duration": 200,
   "result": {
     "count": 1,
     "id": "nanomirai:amethyst_lens"

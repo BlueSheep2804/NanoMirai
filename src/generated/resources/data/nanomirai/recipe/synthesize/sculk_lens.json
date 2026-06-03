@@ -12,7 +12,7 @@
   "catalyst": {
     "item": "nanomirai:amethyst_lens"
   },
-  "duration": 200,
+  "duration": 600,
   "result": {
     "count": 1,
     "id": "nanomirai:sculk_lens"

@@ -1,0 +1,22 @@
+{
+  "type": "nanomirai:synthesize",
+  "block": {
+    "block": {
+      "Name": "minecraft:blast_furnace",
+      "Properties": {
+        "facing": "north",
+        "lit": "false"
+      }
+    },
+    "nbt": {}
+  },
+  "catalyst": {
+    "item": "nanomirai:laser_component"
+  },
+  "duration": 200,
+  "result": {
+    "count": 1,
+    "id": "nanomirai:laser_engraver"
+  },
+  "tier": 0
+}
