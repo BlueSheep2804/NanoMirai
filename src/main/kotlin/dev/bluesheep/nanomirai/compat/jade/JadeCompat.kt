@@ -1,5 +1,6 @@
 package dev.bluesheep.nanomirai.compat.jade
 
+import dev.bluesheep.nanomirai.block.MobCageBlock
 import dev.bluesheep.nanomirai.block.SynthesizeDisplayBlock
 import snownee.jade.api.IWailaClientRegistration
 import snownee.jade.api.IWailaCommonRegistration
@@ -16,6 +17,15 @@ class JadeCompat : IWailaPlugin {
         registration.registerBlockComponent(
             SynthesizeDisplayComponentProvider.INSTANCE,
             SynthesizeDisplayBlock::class.java
+        )
+
+        registration.registerBlockIcon(
+            MobCageComponentProvider,
+            MobCageBlock::class.java
+        )
+        registration.registerBlockComponent(
+            MobCageComponentProvider,
+            MobCageBlock::class.java
         )
     }
 

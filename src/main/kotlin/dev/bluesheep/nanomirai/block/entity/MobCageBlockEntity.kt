@@ -11,6 +11,8 @@ import net.minecraft.network.Connection
 import net.minecraft.network.protocol.Packet
 import net.minecraft.network.protocol.game.ClientGamePacketListener
 import net.minecraft.network.protocol.game.ClientboundBlockEntityDataPacket
+import net.minecraft.sounds.SoundEvents
+import net.minecraft.sounds.SoundSource
 import net.minecraft.world.entity.Entity
 import net.minecraft.world.level.block.Block
 import net.minecraft.world.level.block.entity.BlockEntity
@@ -53,6 +55,14 @@ class MobCageBlockEntity(pos: BlockPos, blockState: BlockState) : BlockEntity(Na
 
         updateCapturedEntity()
         level?.sendBlockUpdated(blockPos, blockState, blockState, Block.UPDATE_CLIENTS)
+        level?.playSound(
+            null,
+            blockPos,
+            SoundEvents.ITEM_PICKUP,
+            SoundSource.BLOCKS,
+            0.5f,
+            0.8f
+        )
     }
 
     private fun updateCapturedEntity() {

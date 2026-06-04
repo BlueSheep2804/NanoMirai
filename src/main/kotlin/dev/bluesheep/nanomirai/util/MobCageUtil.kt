@@ -1,6 +1,9 @@
 package dev.bluesheep.nanomirai.util
 
+import net.minecraft.ChatFormatting
 import net.minecraft.nbt.CompoundTag
+import net.minecraft.network.chat.Component
+import net.minecraft.network.chat.MutableComponent
 import net.minecraft.world.entity.Entity
 import net.minecraft.world.entity.EntityType
 import net.minecraft.world.item.component.CustomData
@@ -27,5 +30,15 @@ object MobCageUtil {
         entityData.remove("HurtTime")
         entity.remove(Entity.RemovalReason.DISCARDED)
         return CustomData.of(entityData)
+    }
+
+    fun getEntityTooltip(entity: Entity): MutableComponent {
+        val default = entity.type.description
+        return if (entity.hasCustomName()) {
+            Component.translatable("block.nanomirai.mob_cage.tooltip.name", default, entity.name.copy().withStyle(
+                ChatFormatting.ITALIC))
+        } else {
+            Component.translatable("block.nanomirai.mob_cage.tooltip", default)
+        }
     }
 }

@@ -16,6 +16,8 @@
   "block.nanomirai.synthesize_display.invalid": "Invalid Item",
   "block.nanomirai.nano_lab": "Nano Lab",
   "block.nanomirai.mob_cage": "Mob Cage",
+  "block.nanomirai.mob_cage.tooltip": "Stored: %s",
+  "block.nanomirai.mob_cage.tooltip.name": "Stored: %1$s (%2$s)",
   "block.nanomirai.reinforced_obsidian": "Reinforced Obsidian",
   "block.nanomirai.allay_head": "Allay Head",
   "block.nanomirai.allay_wall_head": "Allay Wall Head",
@@ -77,5 +79,6 @@
   "recipe.nanomirai.nano_lab.attribute": "Attribute",
   "recipe.nanomirai.nano_lab.effect": "Effect",
   "recipe.nanomirai.nano_lab.tier": "%s+",
-  "config.jade.plugin_nanomirai.synthesize_display": "Synthesize Display"
+  "config.jade.plugin_nanomirai.synthesize_display": "Synthesize Display",
+  "config.jade.plugin_nanomirai.mob_cage": "Mob Cage"
 }

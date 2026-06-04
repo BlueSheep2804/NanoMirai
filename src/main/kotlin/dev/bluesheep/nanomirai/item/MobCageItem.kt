@@ -5,7 +5,10 @@ import dev.bluesheep.nanomirai.registry.NanoMiraiBlocks
 import dev.bluesheep.nanomirai.util.MobCageUtil
 import net.minecraft.core.component.DataComponents
 import net.minecraft.core.registries.BuiltInRegistries
+import net.minecraft.network.chat.Component
 import net.minecraft.server.level.ServerLevel
+import net.minecraft.sounds.SoundEvents
+import net.minecraft.sounds.SoundSource
 import net.minecraft.world.InteractionHand
 import net.minecraft.world.InteractionResult
 import net.minecraft.world.entity.EntityType
@@ -14,6 +17,7 @@ import net.minecraft.world.entity.MobSpawnType
 import net.minecraft.world.entity.player.Player
 import net.minecraft.world.item.BlockItem
 import net.minecraft.world.item.ItemStack
+import net.minecraft.world.item.TooltipFlag
 import net.minecraft.world.item.component.CustomData
 import net.minecraft.world.item.context.UseOnContext
 import net.minecraft.world.level.gameevent.GameEvent
@@ -26,6 +30,18 @@ class MobCageItem : BlockItem(
 ) {
     companion object {
         val ENTITY_TYPE_FIELD_CODEC: MapCodec<EntityType<*>> = BuiltInRegistries.ENTITY_TYPE.byNameCodec().fieldOf("id")
+    }
+
+    override fun appendHoverText(
+        stack: ItemStack,
+        context: TooltipContext,
+        tooltipComponents: MutableList<Component?>,
+        tooltipFlag: TooltipFlag
+    ) {
+        val entity = MobCageUtil.getEntityFromComponent(context.level(), stack.get(DataComponents.ENTITY_DATA))
+        entity?.let {
+            tooltipComponents.add(MobCageUtil.getEntityTooltip(entity))
+        }
     }
 
     override fun interactLivingEntity(
@@ -42,6 +58,15 @@ class MobCageItem : BlockItem(
             val entityData = MobCageUtil.captureEntity(interactionTarget)
             if (entityData == null) return InteractionResult.FAIL
             stack.set(DataComponents.ENTITY_DATA, entityData)
+
+            player.level().playSound(
+                null,
+                player.x, player.y, player.z,
+                SoundEvents.ITEM_PICKUP,
+                SoundSource.PLAYERS,
+                0.5f,
+                0.8f
+            )
         }
         return InteractionResult.sidedSuccess(player.level().isClientSide)
     }
@@ -72,6 +97,16 @@ class MobCageItem : BlockItem(
             )
             stack.set(DataComponents.ENTITY_DATA, CustomData.EMPTY)
             level.gameEvent(context.player, GameEvent.ENTITY_PLACE, pos)
+            level.playSound(
+                null,
+                context.player?.x ?: 0.0,
+                context.player?.y ?: 0.0,
+                context.player?.z ?: 0.0,
+                SoundEvents.ITEM_PICKUP,
+                SoundSource.PLAYERS,
+                0.5f,
+                0.4f
+            )
         }
         return InteractionResult.sidedSuccess(level.isClientSide)
     }
