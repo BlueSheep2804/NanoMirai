@@ -115,6 +115,7 @@ gradle-app.setting
 
 # Common working directory
 run/
+run2/
 runs/
 run-data/
 run-server/
