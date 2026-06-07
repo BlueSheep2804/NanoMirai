@@ -1,6 +1,9 @@
 package dev.bluesheep.nanomirai.block.entity
 
 import dev.bluesheep.nanomirai.block.SynthesizeDisplayBlock
+import dev.bluesheep.nanomirai.item.NanoSwarmBlasterItem
+import dev.bluesheep.nanomirai.item.SupportNanoItem
+import dev.bluesheep.nanomirai.item.SynthesizeNanoItem
 import dev.bluesheep.nanomirai.recipe.BlockStateWithNbt
 import dev.bluesheep.nanomirai.recipe.BlockWithPairItemInput
 import dev.bluesheep.nanomirai.recipe.synthesize.SynthesizeRecipe
@@ -9,10 +12,10 @@ import dev.bluesheep.nanomirai.registry.NanoMiraiRecipeType
 import dev.bluesheep.nanomirai.util.InputSingleItemHandler
 import dev.bluesheep.nanomirai.util.NanoTier
 import dev.bluesheep.nanomirai.util.SynthesizeState
+import dev.bluesheep.nanomirai.util.SynthesizeUtil
 import net.minecraft.core.BlockPos
 import net.minecraft.core.Direction
 import net.minecraft.core.HolderLookup
-import net.minecraft.core.component.DataComponents
 import net.minecraft.core.particles.ItemParticleOption
 import net.minecraft.core.particles.ParticleTypes
 import net.minecraft.nbt.CompoundTag
@@ -57,6 +60,10 @@ class SynthesizeDisplayBlockEntity(pos: BlockPos, blockState: BlockState) : Bloc
             return ItemStack.EMPTY
         }
     }
+    val inputSynthesizeNano: ItemStack
+        get() = itemHandler.getStackInSlot(0)
+    val inputCatalyst: ItemStack
+        get() = itemHandler.getStackInSlot(1)
     var block: BlockStateWithNbt = BlockStateWithNbt.EMPTY
     var progress = 0
     var maxProgress = 100
@@ -93,7 +100,7 @@ class SynthesizeDisplayBlockEntity(pos: BlockPos, blockState: BlockState) : Bloc
 
     fun drops() {
         val inventory = SimpleContainer(1)
-        inventory.setItem(0, itemHandler.getStackInSlot(1))
+        inventory.setItem(0, inputCatalyst)
 
         Containers.dropContents(level, worldPosition.above(), inventory)
     }
@@ -124,7 +131,7 @@ class SynthesizeDisplayBlockEntity(pos: BlockPos, blockState: BlockState) : Bloc
     }
 
     fun tick(level: Level, pos: BlockPos, state: BlockState) {
-        if (!itemHandler.getStackInSlot(1).isEmpty && hasRecipe()) {
+        if (!inputCatalyst.isEmpty && hasRecipe()) {
             increaseCraftingProgress()
             spawnParticles(level, pos)
             setChanged(level, pos, state)
@@ -153,7 +160,7 @@ class SynthesizeDisplayBlockEntity(pos: BlockPos, blockState: BlockState) : Bloc
         level.sendParticles(
             ItemParticleOption(
                 ParticleTypes.ITEM,
-                itemHandler.getStackInSlot(1)
+                inputCatalyst
             ),
             center.x,
             center.y,
@@ -170,7 +177,7 @@ class SynthesizeDisplayBlockEntity(pos: BlockPos, blockState: BlockState) : Bloc
         val recipe = getCurrentRecipe()
         var state = SynthesizeState.INVALID
         if (recipe.isPresent) {
-            val tier = NanoTier.fromItem(itemHandler.getStackInSlot(0).item)
+            val tier = NanoTier.fromItem(inputSynthesizeNano.item)
             tier?.let {
                 maxProgress = (recipe.get().value.duration / it.processingSpeedMultiplier).toInt()
                 state = SynthesizeState.CRAFTING
@@ -181,14 +188,23 @@ class SynthesizeDisplayBlockEntity(pos: BlockPos, blockState: BlockState) : Bloc
     }
 
     private fun craftItem(level: Level) {
-        val output = getRecipeResult().copy()
-        val outputItem = output.item
+        val result = getRecipeResult().copy()
 
-        if (outputItem is BlockItem) {
-            level.setBlockAndUpdate(worldPosition, outputItem.block.defaultBlockState())
+        if (result.item is BlockItem) {
+            level.setBlockAndUpdate(worldPosition, (result.item as BlockItem).block.defaultBlockState())
         } else {
             val inventory = SimpleContainer(1)
-            inventory.setItem(0, output)
+            val isSynthesizeNano = SynthesizeUtil.isEqualInputAndOutput(SynthesizeNanoItem::class, inputSynthesizeNano, result)
+            val isSupportNano = SynthesizeUtil.isEqualInputAndOutput(SupportNanoItem::class, inputCatalyst, result)
+            val isNanoSwarmBlaster = SynthesizeUtil.isEqualInputAndOutput(NanoSwarmBlasterItem::class, inputCatalyst, result)
+
+            if (isSynthesizeNano) {
+                result.applyComponents(inputSynthesizeNano.componentsPatch)
+            } else if (isSupportNano || isNanoSwarmBlaster) {
+                result.applyComponents(inputCatalyst.componentsPatch)
+            }
+            inventory.setItem(0, result)
+
             Containers.dropContents(level, worldPosition, inventory)
             level.removeBlock(worldPosition, false)
         }
@@ -213,8 +229,8 @@ class SynthesizeDisplayBlockEntity(pos: BlockPos, blockState: BlockState) : Bloc
             NanoMiraiRecipeType.SYNTHESIZE,
             BlockWithPairItemInput(
                 block,
-                itemHandler.getStackInSlot(0),
-                itemHandler.getStackInSlot(1)
+                inputSynthesizeNano,
+                inputCatalyst
             ),
             level!!
         )

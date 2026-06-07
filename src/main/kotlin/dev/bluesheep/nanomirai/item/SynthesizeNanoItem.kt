@@ -38,6 +38,7 @@ class SynthesizeNanoItem(override val tier: NanoTier) : PoweredItem(
             return InteractionResult.FAIL
         }
 
+        consumeEnergy(primaryItem)
         SynthesizeUtil.convertToSynthesizeDisplay(
             level,
             primaryItem,
@@ -45,7 +46,6 @@ class SynthesizeNanoItem(override val tier: NanoTier) : PoweredItem(
             inputBlock,
             context.clickedPos
         )
-        consumeEnergy(primaryItem)
         player.displayClientMessage(Component.translatable("recipe.nanomirai.synthesize.start"), true)
 
         return InteractionResult.sidedSuccess(level.isClientSide)
@@ -75,13 +75,13 @@ class SynthesizeNanoItem(override val tier: NanoTier) : PoweredItem(
                 return itemStack
             }
 
+            item.consumeEnergy(itemStack)
             SynthesizeUtil.convertToSynthesizeDisplay(
                 level,
                 itemStack,
                 inputBlock,
                 inputBlockPos
             ) ?: return super.execute(blockSource, itemStack)
-            item.consumeEnergy(itemStack)
             isSuccess = true
             return itemStack
         }

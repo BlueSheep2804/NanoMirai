@@ -13,6 +13,7 @@ import net.minecraft.world.entity.EntityType
 import net.minecraft.world.item.ItemStack
 import net.minecraft.world.level.Level
 import net.minecraft.world.level.block.state.BlockState
+import kotlin.reflect.KClass
 
 object SynthesizeUtil {
     fun createEntityData(entityType: EntityType<*>): CompoundTag {
@@ -50,7 +51,6 @@ object SynthesizeUtil {
         level.setBlockAndUpdate(inputBlockPos, NanoMiraiBlocks.SYNTHESIZE_DISPLAY.defaultBlockState())
         val blockEntity = level.getBlockEntity(inputBlockPos)
         if (blockEntity is SynthesizeDisplayBlockEntity) {
-//            blockEntity.block = inputBlock
             blockEntity.setInputBlock(inputBlock, nbt)
             blockEntity.setPrimaryItem(itemStack.copy())
             return blockEntity
@@ -67,5 +67,9 @@ object SynthesizeUtil {
         ) ?: return null
         blockEntity.setSecondaryItem(secondaryItem.split(1))
         return blockEntity
+    }
+
+    fun isEqualInputAndOutput(clazz: KClass<*>, input: ItemStack, output: ItemStack): Boolean {
+        return clazz.isInstance(input.item) && clazz.isInstance(output.item)
     }
 }
