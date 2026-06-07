@@ -6,26 +6,13 @@ import dev.bluesheep.nanomirai.recipe.BlockWithPairItemInput
 import dev.bluesheep.nanomirai.registry.NanoMiraiBlocks
 import dev.bluesheep.nanomirai.registry.NanoMiraiRecipeType
 import net.minecraft.core.BlockPos
-import net.minecraft.core.component.DataComponents
-import net.minecraft.core.registries.BuiltInRegistries
 import net.minecraft.nbt.CompoundTag
-import net.minecraft.world.entity.EntityType
 import net.minecraft.world.item.ItemStack
 import net.minecraft.world.level.Level
 import net.minecraft.world.level.block.state.BlockState
 import kotlin.reflect.KClass
 
 object SynthesizeUtil {
-    fun createEntityData(entityType: EntityType<*>): CompoundTag {
-        return CompoundTag().apply {
-            put("components", CompoundTag().apply {
-                put(BuiltInRegistries.DATA_COMPONENT_TYPE.getKey(DataComponents.ENTITY_DATA).toString(), CompoundTag().apply {
-                    putString("id", BuiltInRegistries.ENTITY_TYPE.getKey(entityType).toString())
-                })
-            })
-        }
-    }
-
     fun check(level: Level, itemStack: ItemStack, inputBlockPos: BlockPos): Boolean {
         val inputBlock = level.getBlockState(inputBlockPos)
         val nbt = level.getBlockEntity(inputBlockPos)?.saveWithFullMetadata(level.registryAccess()) ?: CompoundTag()

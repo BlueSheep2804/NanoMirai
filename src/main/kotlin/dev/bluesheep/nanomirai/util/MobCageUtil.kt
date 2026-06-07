@@ -1,6 +1,8 @@
 package dev.bluesheep.nanomirai.util
 
 import net.minecraft.ChatFormatting
+import net.minecraft.core.component.DataComponents
+import net.minecraft.core.registries.BuiltInRegistries
 import net.minecraft.nbt.CompoundTag
 import net.minecraft.network.chat.Component
 import net.minecraft.network.chat.MutableComponent
@@ -10,6 +12,16 @@ import net.minecraft.world.item.component.CustomData
 import net.minecraft.world.level.Level
 
 object MobCageUtil {
+    fun createEntityData(entityType: EntityType<*>): CompoundTag {
+        return CompoundTag().apply {
+            put("components", CompoundTag().apply {
+                put(BuiltInRegistries.DATA_COMPONENT_TYPE.getKey(DataComponents.ENTITY_DATA).toString(), CompoundTag().apply {
+                    putString("id", BuiltInRegistries.ENTITY_TYPE.getKey(entityType).toString())
+                })
+            })
+        }
+    }
+
     fun getEntityFromComponent(level: Level?, entityData: CustomData?): Entity? {
         if (entityData?.isEmpty ?: true) return null
         return level?.let {

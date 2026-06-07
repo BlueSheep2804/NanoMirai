@@ -9,10 +9,10 @@ import dev.bluesheep.nanomirai.recipe.lab.effect.LabEffectRecipeBuilder
 import dev.bluesheep.nanomirai.recipe.laser.LaserRecipeBuilder
 import dev.bluesheep.nanomirai.recipe.synthesize.SynthesizeRecipeBuilder
 import dev.bluesheep.nanomirai.registry.NanoMiraiBlocks
-import dev.bluesheep.nanomirai.registry.NanoMiraiItems
 import dev.bluesheep.nanomirai.registry.NanoMiraiItemTags
+import dev.bluesheep.nanomirai.registry.NanoMiraiItems
+import dev.bluesheep.nanomirai.util.MobCageUtil
 import dev.bluesheep.nanomirai.util.NanoTier
-import dev.bluesheep.nanomirai.util.SynthesizeUtil
 import net.minecraft.core.HolderLookup
 import net.minecraft.core.NonNullList
 import net.minecraft.core.component.DataComponentPredicate
@@ -20,7 +20,6 @@ import net.minecraft.core.component.DataComponents
 import net.minecraft.core.registries.BuiltInRegistries
 import net.minecraft.data.PackOutput
 import net.minecraft.data.recipes.*
-import net.minecraft.resources.ResourceLocation
 import net.minecraft.tags.ItemTags
 import net.minecraft.tags.TagKey
 import net.minecraft.world.effect.MobEffectInstance
@@ -33,7 +32,6 @@ import net.minecraft.world.item.ItemStack
 import net.minecraft.world.item.Items
 import net.minecraft.world.item.Rarity
 import net.minecraft.world.item.crafting.Ingredient
-import net.minecraft.world.item.crafting.Recipe
 import net.minecraft.world.level.block.Blocks
 import net.neoforged.neoforge.common.Tags
 import net.neoforged.neoforge.common.crafting.DataComponentIngredient
@@ -952,7 +950,7 @@ class NanoMiraiRecipeProvider(output: PackOutput, registries: CompletableFuture<
             NanoTier.NORMAL,
             BlockStateWithNbt(
                 NanoMiraiBlocks.MOB_CAGE.defaultBlockState(),
-                SynthesizeUtil.createEntityData(EntityType.ALLAY)
+                MobCageUtil.createEntityData(EntityType.ALLAY)
             ),
             Ingredient.of(Items.AMETHYST_SHARD),
             300
@@ -964,7 +962,7 @@ class NanoMiraiRecipeProvider(output: PackOutput, registries: CompletableFuture<
             NanoTier.NORMAL,
             BlockStateWithNbt(
                 NanoMiraiBlocks.MOB_CAGE.defaultBlockState(),
-                SynthesizeUtil.createEntityData(EntityType.AXOLOTL)
+                MobCageUtil.createEntityData(EntityType.AXOLOTL)
             ),
             Ingredient.of(NanoMiraiItems.SUPPORT_NANO_NORMAL),
             300
@@ -976,7 +974,7 @@ class NanoMiraiRecipeProvider(output: PackOutput, registries: CompletableFuture<
             NanoTier.NORMAL,
             BlockStateWithNbt(
                 NanoMiraiBlocks.MOB_CAGE.defaultBlockState(),
-                SynthesizeUtil.createEntityData(EntityType.WARDEN)
+                MobCageUtil.createEntityData(EntityType.WARDEN)
             ),
             Ingredient.of(NanoMiraiItems.NANO_SWARM_BLASTER_NORMAL),
             300
@@ -1079,7 +1077,7 @@ class NanoMiraiRecipeProvider(output: PackOutput, registries: CompletableFuture<
             NanoTier.NORMAL,
             BlockStateWithNbt(
                 NanoMiraiBlocks.MOB_CAGE.defaultBlockState(),
-                SynthesizeUtil.createEntityData(EntityType.BREEZE)
+                MobCageUtil.createEntityData(EntityType.BREEZE)
             ),
             Ingredient.of(Items.BREEZE_ROD),
             3000
@@ -1090,7 +1088,7 @@ class NanoMiraiRecipeProvider(output: PackOutput, registries: CompletableFuture<
             NanoTier.NORMAL,
             BlockStateWithNbt(
                 NanoMiraiBlocks.MOB_CAGE.defaultBlockState(),
-                SynthesizeUtil.createEntityData(EntityType.CREEPER)
+                MobCageUtil.createEntityData(EntityType.CREEPER)
             ),
             Ingredient.of(Items.SAND),
             3000
