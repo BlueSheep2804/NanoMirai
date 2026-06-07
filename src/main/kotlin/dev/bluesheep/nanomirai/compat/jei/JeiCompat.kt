@@ -3,6 +3,7 @@ package dev.bluesheep.nanomirai.compat.jei
 import dev.bluesheep.nanomirai.client.screen.AssemblerScreen
 import dev.bluesheep.nanomirai.client.screen.LaserEngraverScreen
 import dev.bluesheep.nanomirai.client.screen.NanoLabScreen
+import dev.bluesheep.nanomirai.registry.NanoMiraiBlocks
 import dev.bluesheep.nanomirai.registry.NanoMiraiItems
 import dev.bluesheep.nanomirai.registry.NanoMiraiRecipeType
 import dev.bluesheep.nanomirai.util.NanoTier
@@ -113,5 +114,20 @@ class JeiCompat: IModPlugin {
                 return "empty"
             }
         })
+    }
+
+    override fun registerExtraIngredients(registration: IExtraIngredientRegistration) {
+        val level = Minecraft.getInstance().level
+        val recipeManager = level?.recipeManager
+        if (recipeManager != null) {
+            val mobCages = recipeManager.getAllRecipesFor(NanoMiraiRecipeType.SYNTHESIZE)
+                .map {
+                    val block = it.value.inputBlock
+                    if (!block.blockState.`is`(NanoMiraiBlocks.MOB_CAGE)) return@map null
+                    block.getItemStack(level.registryAccess())
+                }
+                .filterNotNull()
+            registration.addExtraItemStacks(mobCages)
+        }
     }
 }
