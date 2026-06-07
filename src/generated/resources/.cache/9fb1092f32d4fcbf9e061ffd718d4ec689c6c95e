@@ -1,4 +1,4 @@
-// 1.21.1	2026-06-03T19:44:24.1097735	Recipes
+// 1.21.1	2026-06-07T18:08:02.9926567	Recipes
 a922df984b985fa57a51d897ac782bb1da4dba35 data/minecraft/recipe/laser/crying_obsidian.json
 86ca06b34a3b65db1b14b3bd8017a940c6d95dca data/nanomirai/advancement/recipes/misc/allay_head.json
 68ffc45f14c24a691890fb179f39a90bdf1ff672 data/nanomirai/advancement/recipes/misc/deprecated/synthesize_nano_improved_from_epic.json
@@ -101,7 +101,7 @@ d5c8094020abbfee78de5d7514280341853b73b3 data/nanomirai/recipe/synthesize/raw_sc
 07f0a5aa2dea7ac0febad1913f00a1ce4fb2754b data/nanomirai/recipe/synthesize/sculk_lens.json
 c68db1800956fe48982f84ffa1a49260f8335dce data/nanomirai/recipe/synthesize/sculk_shrieker_from_sculmium_circuit.json
 4a2e7e56196eeab7956b5cfe52d620099d228ee9 data/nanomirai/recipe/synthesize/support_nano_improved.json
-dd5954870fdac517b088661abe774a1923662d5c data/nanomirai/recipe/synthesize/synthesize_nano_improved.json
+f93d815de4a8d8d1db6cbe6ddd1643e80deee8bd data/nanomirai/recipe/synthesize/synthesize_nano_improved.json
 2d6f2f5f5fb35395b3a4a21a497f2e687c7a1a1c data/nanomirai/recipe/synthesize/tnt_from_creeper.json
 2e05e5c56b5a03f12029c2b67e2f69105b250ec3 data/nanomirai/recipe/synthesize/wind_charge_from_blaze.json
 e2bf83ee096604596f1689dbd087260014740bef data/nanomirai/recipe/synthesize_nano_normal.json

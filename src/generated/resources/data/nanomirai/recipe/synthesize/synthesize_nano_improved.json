@@ -16,7 +16,7 @@
     }
   },
   "catalyst": {
-    "item": "minecraft:amethyst_shard"
+    "item": "nanomirai:synthesize_nano_normal"
   },
   "duration": 300,
   "result": {

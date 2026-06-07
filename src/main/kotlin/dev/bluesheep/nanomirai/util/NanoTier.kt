@@ -78,12 +78,6 @@ enum class NanoTier(
     val nanoSwarmBlaster: ItemStack
         get() = ItemStack(nanoSwarmBlasterItem)
 
-    val upperTier: NanoTier?
-        get() = NanoTier.entries.getOrNull(ordinal + 1)
-
-    val isUpgradable: Boolean
-        get() = upperTier != null
-
     companion object {
         fun synthesizeNanoIngredient(level: Int): Ingredient {
             return Ingredient.of(*fromMinLevel(level).map(NanoTier::synthesizeNano).toTypedArray())

@@ -952,7 +952,7 @@ class NanoMiraiRecipeProvider(output: PackOutput, registries: CompletableFuture<
                 NanoMiraiBlocks.MOB_CAGE.defaultBlockState(),
                 MobCageUtil.createEntityData(EntityType.ALLAY)
             ),
-            Ingredient.of(Items.AMETHYST_SHARD),
+            Ingredient.of(NanoMiraiItems.SYNTHESIZE_NANO_NORMAL),
             300
         ).save(recipeOutput)
 

@@ -1,9 +1,7 @@
 package dev.bluesheep.nanomirai.block.entity
 
 import dev.bluesheep.nanomirai.block.SynthesizeDisplayBlock
-import dev.bluesheep.nanomirai.item.NanoSwarmBlasterItem
-import dev.bluesheep.nanomirai.item.SupportNanoItem
-import dev.bluesheep.nanomirai.item.SynthesizeNanoItem
+import dev.bluesheep.nanomirai.item.INanoTieredItem
 import dev.bluesheep.nanomirai.recipe.BlockStateWithNbt
 import dev.bluesheep.nanomirai.recipe.BlockWithPairItemInput
 import dev.bluesheep.nanomirai.recipe.synthesize.SynthesizeRecipe
@@ -12,7 +10,6 @@ import dev.bluesheep.nanomirai.registry.NanoMiraiRecipeType
 import dev.bluesheep.nanomirai.util.InputSingleItemHandler
 import dev.bluesheep.nanomirai.util.NanoTier
 import dev.bluesheep.nanomirai.util.SynthesizeState
-import dev.bluesheep.nanomirai.util.SynthesizeUtil
 import net.minecraft.core.BlockPos
 import net.minecraft.core.Direction
 import net.minecraft.core.HolderLookup
@@ -194,13 +191,8 @@ class SynthesizeDisplayBlockEntity(pos: BlockPos, blockState: BlockState) : Bloc
             level.setBlockAndUpdate(worldPosition, (result.item as BlockItem).block.defaultBlockState())
         } else {
             val inventory = SimpleContainer(1)
-            val isSynthesizeNano = SynthesizeUtil.isEqualInputAndOutput(SynthesizeNanoItem::class, inputSynthesizeNano, result)
-            val isSupportNano = SynthesizeUtil.isEqualInputAndOutput(SupportNanoItem::class, inputCatalyst, result)
-            val isNanoSwarmBlaster = SynthesizeUtil.isEqualInputAndOutput(NanoSwarmBlasterItem::class, inputCatalyst, result)
 
-            if (isSynthesizeNano) {
-                result.applyComponents(inputSynthesizeNano.componentsPatch)
-            } else if (isSupportNano || isNanoSwarmBlaster) {
+            if (inputCatalyst.item is INanoTieredItem && result.item is INanoTieredItem) {
                 result.applyComponents(inputCatalyst.componentsPatch)
             }
             inventory.setItem(0, result)

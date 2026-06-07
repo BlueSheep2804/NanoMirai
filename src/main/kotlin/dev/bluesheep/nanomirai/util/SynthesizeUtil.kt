@@ -55,8 +55,4 @@ object SynthesizeUtil {
         blockEntity.setSecondaryItem(secondaryItem.split(1))
         return blockEntity
     }
-
-    fun isEqualInputAndOutput(clazz: KClass<*>, input: ItemStack, output: ItemStack): Boolean {
-        return clazz.isInstance(input.item) && clazz.isInstance(output.item)
-    }
 }
