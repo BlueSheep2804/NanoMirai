@@ -51,9 +51,9 @@ class NanoLabBlockEntity(pos: BlockPos, blockState: BlockState) : BlockEntity(Na
                     Rarity.RARE, Rarity.EPIC -> NanoTier.IMPROVED
                 }
                 val stack = if (outputStack.`is`(NanoMiraiItems.SUPPORT_NANO)) {
-                    tier.getSupportNano()
+                    tier.supportNano
                 } else if (outputStack.`is`(NanoMiraiItems.NANO_SWARM_BLASTER)) {
-                    tier.getNanoSwarmBlaster()
+                    tier.nanoSwarmBlaster
                 } else {
                     return
                 }

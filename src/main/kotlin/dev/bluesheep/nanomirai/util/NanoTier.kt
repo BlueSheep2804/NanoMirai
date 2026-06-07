@@ -69,29 +69,26 @@ enum class NanoTier(
     val blasterCooldown: Int
         get() = blasterCooldownConfig.get()
 
-    fun getSynthesizeNano(): ItemStack {
-        return ItemStack(synthesizeNanoItem)
-    }
+    val synthesizeNano: ItemStack
+        get() = ItemStack(synthesizeNanoItem)
 
-    fun getSupportNano(): ItemStack {
-        return ItemStack(supportNanoItem)
-    }
+    val supportNano: ItemStack
+        get() = ItemStack(supportNanoItem)
 
-    fun getNanoSwarmBlaster(): ItemStack {
-        return ItemStack(nanoSwarmBlasterItem)
-    }
+    val nanoSwarmBlaster: ItemStack
+        get() = ItemStack(nanoSwarmBlasterItem)
 
     companion object {
         fun synthesizeNanoIngredient(level: Int): Ingredient {
-            return Ingredient.of(*fromMinLevel(level).map(NanoTier::getSynthesizeNano).toTypedArray())
+            return Ingredient.of(*fromMinLevel(level).map(NanoTier::synthesizeNano).toTypedArray())
         }
 
         fun supportNanoIngredient(level: Int): Ingredient {
-            return Ingredient.of(*fromMinLevel(level).map(NanoTier::getSupportNano).toTypedArray())
+            return Ingredient.of(*fromMinLevel(level).map(NanoTier::supportNano).toTypedArray())
         }
 
         fun nanoSwarmBlasterIngredient(level: Int): Ingredient {
-            return Ingredient.of(*fromMinLevel(level).map(NanoTier::getNanoSwarmBlaster).toTypedArray())
+            return Ingredient.of(*fromMinLevel(level).map(NanoTier::nanoSwarmBlaster).toTypedArray())
         }
 
         fun fromItem(item: Item): NanoTier? {

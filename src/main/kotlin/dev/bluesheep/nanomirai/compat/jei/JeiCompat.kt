@@ -63,7 +63,7 @@ class JeiCompat: IModPlugin {
         registration.addRecipeCatalyst(ItemStack(NanoMiraiItems.LASER_ENGRAVER), LaserRecipeCategory.TYPE)
 
         NanoTier.entries.forEach {
-            registration.addRecipeCatalyst(it.getSynthesizeNano(), SynthesizeRecipeCategory.TYPE)
+            registration.addRecipeCatalyst(it.synthesizeNano, SynthesizeRecipeCategory.TYPE)
         }
 
         registration.addRecipeCatalyst(ItemStack(NanoMiraiItems.NANO_LAB), LabAttributeRecipeCategory.TYPE, LabEffectRecipeCategory.TYPE)
