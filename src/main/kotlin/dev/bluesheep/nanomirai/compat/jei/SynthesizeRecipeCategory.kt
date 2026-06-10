@@ -113,7 +113,7 @@ class SynthesizeRecipeCategory(helper: IGuiHelper): IRecipeCategory<SynthesizeRe
 
     private fun getBlockItemStack(recipe: SynthesizeRecipe): ItemStack {
         return Minecraft.getInstance().level?.let {
-            recipe.inputBlock.getItemStack(it.registryAccess())
-        } ?: ItemStack(recipe.inputBlock.block)
+            recipe.blockInput.getItemStack(it.registryAccess())
+        } ?: ItemStack(recipe.blockInput.block)
     }
 }

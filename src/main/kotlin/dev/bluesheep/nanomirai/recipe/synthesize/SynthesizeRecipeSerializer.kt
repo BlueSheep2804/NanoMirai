@@ -3,7 +3,7 @@ package dev.bluesheep.nanomirai.recipe.synthesize
 import com.mojang.serialization.Codec
 import com.mojang.serialization.MapCodec
 import com.mojang.serialization.codecs.RecordCodecBuilder
-import dev.bluesheep.nanomirai.recipe.BlockStateWithNbt
+import dev.bluesheep.nanomirai.recipe.BlockInput
 import net.minecraft.network.RegistryFriendlyByteBuf
 import net.minecraft.network.codec.ByteBufCodecs
 import net.minecraft.network.codec.StreamCodec
@@ -17,7 +17,7 @@ class SynthesizeRecipeSerializer : RecipeSerializer<SynthesizeRecipe> {
             inst.group(
                 ItemStack.CODEC.fieldOf("result").forGetter(SynthesizeRecipe::result),
                 Codec.INT.fieldOf("tier").forGetter(SynthesizeRecipe::tier),
-                BlockStateWithNbt.CODEC.fieldOf("block").forGetter(SynthesizeRecipe::inputBlock),
+                BlockInput.CODEC.fieldOf("block").forGetter(SynthesizeRecipe::blockInput),
                 Ingredient.CODEC_NONEMPTY.fieldOf("catalyst").forGetter(SynthesizeRecipe::inputCatalystItem),
                 Codec.INT.fieldOf("duration").forGetter(SynthesizeRecipe::duration)
             ).apply(inst, ::SynthesizeRecipe)

@@ -1,13 +1,7 @@
 {
   "type": "nanomirai:synthesize",
   "block": {
-    "block": {
-      "Name": "minecraft:bone_block",
-      "Properties": {
-        "axis": "y"
-      }
-    },
-    "nbt": {}
+    "block": "minecraft:bone_block"
   },
   "catalyst": {
     "tag": "c:ingots/sculmium"

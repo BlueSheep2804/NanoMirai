@@ -1,7 +1,6 @@
 package dev.bluesheep.nanomirai.util
 
 import dev.bluesheep.nanomirai.block.entity.SynthesizeDisplayBlockEntity
-import dev.bluesheep.nanomirai.recipe.BlockStateWithNbt
 import dev.bluesheep.nanomirai.recipe.BlockWithPairItemInput
 import dev.bluesheep.nanomirai.registry.NanoMiraiBlocks
 import dev.bluesheep.nanomirai.registry.NanoMiraiRecipeType
@@ -10,14 +9,17 @@ import net.minecraft.nbt.CompoundTag
 import net.minecraft.world.item.ItemStack
 import net.minecraft.world.level.Level
 import net.minecraft.world.level.block.state.BlockState
-import kotlin.reflect.KClass
 
 object SynthesizeUtil {
     fun check(level: Level, itemStack: ItemStack, inputBlockPos: BlockPos): Boolean {
         val inputBlock = level.getBlockState(inputBlockPos)
         val nbt = level.getBlockEntity(inputBlockPos)?.saveWithFullMetadata(level.registryAccess()) ?: CompoundTag()
         val hasRecipe = level.recipeManager.getAllRecipesFor(NanoMiraiRecipeType.SYNTHESIZE).any {
-            it.value.checkWithoutCatalyst(BlockStateWithNbt(inputBlock, nbt), itemStack)
+            it.value.checkWithoutCatalyst(
+                inputBlock,
+                nbt,
+                itemStack
+            )
         }
         return hasRecipe
     }
@@ -27,7 +29,12 @@ object SynthesizeUtil {
         val nbt = level.getBlockEntity(inputBlockPos)?.saveWithFullMetadata(level.registryAccess()) ?: CompoundTag()
         val recipe = level.recipeManager.getRecipesFor(
             NanoMiraiRecipeType.SYNTHESIZE,
-            BlockWithPairItemInput(BlockStateWithNbt(inputBlock, nbt), primaryItem, secondaryItem),
+            BlockWithPairItemInput(
+                inputBlock,
+                nbt,
+                primaryItem,
+                secondaryItem
+            ),
             level
         )
         return !recipe.isEmpty()

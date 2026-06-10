@@ -1,10 +1,7 @@
 {
   "type": "nanomirai:synthesize",
   "block": {
-    "block": {
-      "Name": "minecraft:coal_block"
-    },
-    "nbt": {}
+    "block": "minecraft:coal_block"
   },
   "catalyst": {
     "item": "nanomirai:graphite"

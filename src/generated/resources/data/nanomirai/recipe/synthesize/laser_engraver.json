@@ -1,14 +1,7 @@
 {
   "type": "nanomirai:synthesize",
   "block": {
-    "block": {
-      "Name": "minecraft:blast_furnace",
-      "Properties": {
-        "facing": "north",
-        "lit": "false"
-      }
-    },
-    "nbt": {}
+    "block": "minecraft:blast_furnace"
   },
   "catalyst": {
     "item": "nanomirai:laser_component"

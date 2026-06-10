@@ -1,7 +1,8 @@
 package dev.bluesheep.nanomirai.data
 
 import dev.bluesheep.nanomirai.NanoMirai.rl
-import dev.bluesheep.nanomirai.recipe.BlockStateWithNbt
+import dev.bluesheep.nanomirai.recipe.BlockInput
+import dev.bluesheep.nanomirai.recipe.BlockPredicate
 import dev.bluesheep.nanomirai.recipe.StackedIngredient
 import dev.bluesheep.nanomirai.recipe.assembler.AssemblerRecipeBuilder
 import dev.bluesheep.nanomirai.recipe.lab.attribute.LabAttributeRecipeBuilder
@@ -13,6 +14,7 @@ import dev.bluesheep.nanomirai.registry.NanoMiraiItemTags
 import dev.bluesheep.nanomirai.registry.NanoMiraiItems
 import dev.bluesheep.nanomirai.util.MobCageUtil
 import dev.bluesheep.nanomirai.util.NanoTier
+import net.minecraft.advancements.critereon.StatePropertiesPredicate
 import net.minecraft.core.HolderLookup
 import net.minecraft.core.NonNullList
 import net.minecraft.core.component.DataComponentPredicate
@@ -20,8 +22,11 @@ import net.minecraft.core.component.DataComponents
 import net.minecraft.core.registries.BuiltInRegistries
 import net.minecraft.data.PackOutput
 import net.minecraft.data.recipes.*
+import net.minecraft.nbt.CompoundTag
+import net.minecraft.network.chat.Component
 import net.minecraft.tags.ItemTags
 import net.minecraft.tags.TagKey
+import net.minecraft.util.FastColor
 import net.minecraft.world.effect.MobEffectInstance
 import net.minecraft.world.effect.MobEffects
 import net.minecraft.world.entity.EntityType
@@ -31,8 +36,10 @@ import net.minecraft.world.item.Item
 import net.minecraft.world.item.ItemStack
 import net.minecraft.world.item.Items
 import net.minecraft.world.item.Rarity
+import net.minecraft.world.item.component.CustomData
 import net.minecraft.world.item.crafting.Ingredient
 import net.minecraft.world.level.block.Blocks
+import net.minecraft.world.level.block.CandleBlock
 import net.neoforged.neoforge.common.Tags
 import net.neoforged.neoforge.common.crafting.DataComponentIngredient
 import java.util.concurrent.CompletableFuture
@@ -948,8 +955,8 @@ class NanoMiraiRecipeProvider(output: PackOutput, registries: CompletableFuture<
         SynthesizeRecipeBuilder(
             ItemStack(NanoMiraiItems.SYNTHESIZE_NANO_IMPROVED),
             NanoTier.NORMAL,
-            BlockStateWithNbt(
-                NanoMiraiBlocks.MOB_CAGE.defaultBlockState(),
+            BlockInput.withNbt(
+                NanoMiraiBlocks.MOB_CAGE,
                 MobCageUtil.createEntityData(EntityType.ALLAY)
             ),
             Ingredient.of(NanoMiraiItems.SYNTHESIZE_NANO_NORMAL),
@@ -960,8 +967,8 @@ class NanoMiraiRecipeProvider(output: PackOutput, registries: CompletableFuture<
         SynthesizeRecipeBuilder(
             ItemStack(NanoMiraiItems.SUPPORT_NANO_IMPROVED),
             NanoTier.NORMAL,
-            BlockStateWithNbt(
-                NanoMiraiBlocks.MOB_CAGE.defaultBlockState(),
+            BlockInput.withNbt(
+                NanoMiraiBlocks.MOB_CAGE,
                 MobCageUtil.createEntityData(EntityType.AXOLOTL)
             ),
             Ingredient.of(NanoMiraiItems.SUPPORT_NANO_NORMAL),
@@ -972,8 +979,8 @@ class NanoMiraiRecipeProvider(output: PackOutput, registries: CompletableFuture<
         SynthesizeRecipeBuilder(
             ItemStack(NanoMiraiItems.NANO_SWARM_BLASTER_IMPROVED),
             NanoTier.NORMAL,
-            BlockStateWithNbt(
-                NanoMiraiBlocks.MOB_CAGE.defaultBlockState(),
+            BlockInput.withNbt(
+                NanoMiraiBlocks.MOB_CAGE,
                 MobCageUtil.createEntityData(EntityType.WARDEN)
             ),
             Ingredient.of(NanoMiraiItems.NANO_SWARM_BLASTER_NORMAL),
@@ -981,7 +988,7 @@ class NanoMiraiRecipeProvider(output: PackOutput, registries: CompletableFuture<
         ).save(recipeOutput)
 
         // Nanomachine Assembler
-        SynthesizeRecipeBuilder.default(
+        SynthesizeRecipeBuilder.simpleBlock(
             ItemStack(NanoMiraiItems.NANOMACHINE_ASSEMBLER),
             NanoTier.NORMAL,
             Blocks.CRAFTER,
@@ -990,7 +997,7 @@ class NanoMiraiRecipeProvider(output: PackOutput, registries: CompletableFuture<
         ).save(recipeOutput)
 
         // Laser Engraver
-        SynthesizeRecipeBuilder.default(
+        SynthesizeRecipeBuilder.simpleBlock(
             ItemStack(NanoMiraiItems.LASER_ENGRAVER),
             NanoTier.NORMAL,
             Blocks.BLAST_FURNACE,
@@ -999,7 +1006,7 @@ class NanoMiraiRecipeProvider(output: PackOutput, registries: CompletableFuture<
         ).save(recipeOutput)
 
         // Nano Lab
-        SynthesizeRecipeBuilder.default(
+        SynthesizeRecipeBuilder.simpleBlock(
             ItemStack(NanoMiraiItems.NANO_LAB),
             NanoTier.NORMAL,
             Blocks.ENCHANTING_TABLE,
@@ -1007,7 +1014,7 @@ class NanoMiraiRecipeProvider(output: PackOutput, registries: CompletableFuture<
             400
         ).save(recipeOutput)
 
-        SynthesizeRecipeBuilder.default(
+        SynthesizeRecipeBuilder.simpleBlock(
             ItemStack(NanoMiraiItems.GRAPHITE, 5),
             NanoTier.NORMAL,
             Blocks.COAL_BLOCK,
@@ -1015,7 +1022,7 @@ class NanoMiraiRecipeProvider(output: PackOutput, registries: CompletableFuture<
             60
         ).save(recipeOutput)
 
-        SynthesizeRecipeBuilder.default(
+        SynthesizeRecipeBuilder.simpleBlock(
             ItemStack(NanoMiraiItems.AMETHYST_LENS),
             NanoTier.NORMAL,
             Blocks.AMETHYST_BLOCK,
@@ -1023,7 +1030,7 @@ class NanoMiraiRecipeProvider(output: PackOutput, registries: CompletableFuture<
             200
         ).save(recipeOutput)
 
-        SynthesizeRecipeBuilder.default(
+        SynthesizeRecipeBuilder.simpleBlock(
             ItemStack(NanoMiraiItems.SCULK_LENS),
             NanoTier.IMPROVED,
             Blocks.SCULK_CATALYST,
@@ -1032,7 +1039,7 @@ class NanoMiraiRecipeProvider(output: PackOutput, registries: CompletableFuture<
         ).save(recipeOutput)
 
         // Raw Sculmium Block
-        SynthesizeRecipeBuilder.default(
+        SynthesizeRecipeBuilder.simpleBlock(
             ItemStack(NanoMiraiItems.RAW_SCULMIUM_BLOCK),
             NanoTier.IMPROVED,
             Blocks.RAW_IRON_BLOCK,
@@ -1040,7 +1047,7 @@ class NanoMiraiRecipeProvider(output: PackOutput, registries: CompletableFuture<
             600
         ).save(recipeOutput)
 
-        SynthesizeRecipeBuilder.default(
+        SynthesizeRecipeBuilder.simpleBlock(
             ItemStack(Items.SCULK_CATALYST),
             NanoTier.IMPROVED,
             Blocks.BONE_BLOCK,
@@ -1048,7 +1055,7 @@ class NanoMiraiRecipeProvider(output: PackOutput, registries: CompletableFuture<
             200
         ).save(recipeOutput, rl("sculk_catalyst_from_sculmium_ingot"))
 
-        SynthesizeRecipeBuilder.default(
+        SynthesizeRecipeBuilder.simpleBlock(
             ItemStack(Items.SCULK_SHRIEKER),
             NanoTier.IMPROVED,
             Blocks.BONE_BLOCK,
@@ -1056,7 +1063,7 @@ class NanoMiraiRecipeProvider(output: PackOutput, registries: CompletableFuture<
             200
         ).save(recipeOutput, rl("sculk_shrieker_from_sculmium_circuit"))
 
-        SynthesizeRecipeBuilder.default(
+        SynthesizeRecipeBuilder.simpleBlock(
             ItemStack(Items.BUDDING_AMETHYST),
             NanoTier.NORMAL,
             Blocks.RAW_COPPER_BLOCK,
@@ -1064,7 +1071,7 @@ class NanoMiraiRecipeProvider(output: PackOutput, registries: CompletableFuture<
             200
         ).save(recipeOutput, rl("budding_amethyst_from_lapis_lazuli"))
 
-        SynthesizeRecipeBuilder.default(
+        SynthesizeRecipeBuilder.simpleBlock(
             ItemStack(NanoMiraiItems.REINFORCED_OBSIDIAN),
             NanoTier.IMPROVED,
             Blocks.CRYING_OBSIDIAN,
@@ -1073,26 +1080,29 @@ class NanoMiraiRecipeProvider(output: PackOutput, registries: CompletableFuture<
         ).save(recipeOutput)
 
         SynthesizeRecipeBuilder(
-            ItemStack(Items.WIND_CHARGE, 8),
-            NanoTier.NORMAL,
-            BlockStateWithNbt(
-                NanoMiraiBlocks.MOB_CAGE.defaultBlockState(),
-                MobCageUtil.createEntityData(EntityType.BREEZE)
+            ItemStack(Items.SHEEP_SPAWN_EGG)
+                .apply {
+                    set(DataComponents.ENTITY_DATA, CustomData.of(
+                        CompoundTag().apply {
+                            putString("id", BuiltInRegistries.ENTITY_TYPE.getKey(EntityType.SHEEP).toString())
+                            putInt("Color", 11)
+                        }
+                    ))
+                    set(DataComponents.CUSTOM_NAME, Component.literal("BlueSheep").withColor(FastColor.ARGB32.color(23, 76, 167)))
+                },
+            NanoTier.IMPROVED,
+            BlockInput(
+                Blocks.BLUE_CANDLE,
+                BlockPredicate.create(
+                    StatePropertiesPredicate.Builder.properties()
+                        .hasProperty(CandleBlock.CANDLES, 4)
+                        .hasProperty(CandleBlock.LIT, true)
+                        .build().get()
+                )
             ),
-            Ingredient.of(Items.BREEZE_ROD),
-            3000
-        ).save(recipeOutput, rl("wind_charge_from_blaze"))
-
-        SynthesizeRecipeBuilder(
-            ItemStack(Items.TNT),
-            NanoTier.NORMAL,
-            BlockStateWithNbt(
-                NanoMiraiBlocks.MOB_CAGE.defaultBlockState(),
-                MobCageUtil.createEntityData(EntityType.CREEPER)
-            ),
-            Ingredient.of(Items.SAND),
-            3000
-        ).save(recipeOutput, rl("tnt_from_creeper"))
+            Ingredient.of(Items.BLUE_WOOL),
+            3000000
+        ).save(recipeOutput, rl("easter_egg"))
     }
 
     private fun RecipeBuilder.unlockedByItem(item: Item): RecipeBuilder {

@@ -1,13 +1,7 @@
 {
   "type": "nanomirai:synthesize",
   "block": {
-    "block": {
-      "Name": "minecraft:sculk_catalyst",
-      "Properties": {
-        "bloom": "false"
-      }
-    },
-    "nbt": {}
+    "block": "minecraft:sculk_catalyst"
   },
   "catalyst": {
     "item": "nanomirai:amethyst_lens"

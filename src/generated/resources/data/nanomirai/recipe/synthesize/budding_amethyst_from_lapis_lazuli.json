@@ -1,10 +1,7 @@
 {
   "type": "nanomirai:synthesize",
   "block": {
-    "block": {
-      "Name": "minecraft:raw_copper_block"
-    },
-    "nbt": {}
+    "block": "minecraft:raw_copper_block"
   },
   "catalyst": {
     "item": "minecraft:lapis_lazuli"

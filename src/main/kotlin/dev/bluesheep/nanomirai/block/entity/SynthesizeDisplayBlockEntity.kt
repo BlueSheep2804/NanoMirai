@@ -2,7 +2,6 @@ package dev.bluesheep.nanomirai.block.entity
 
 import dev.bluesheep.nanomirai.block.SynthesizeDisplayBlock
 import dev.bluesheep.nanomirai.item.INanoTieredItem
-import dev.bluesheep.nanomirai.recipe.BlockStateWithNbt
 import dev.bluesheep.nanomirai.recipe.BlockWithPairItemInput
 import dev.bluesheep.nanomirai.recipe.synthesize.SynthesizeRecipe
 import dev.bluesheep.nanomirai.registry.NanoMiraiBlockEntities
@@ -27,6 +26,7 @@ import net.minecraft.world.item.BlockItem
 import net.minecraft.world.item.ItemStack
 import net.minecraft.world.item.crafting.RecipeHolder
 import net.minecraft.world.level.Level
+import net.minecraft.world.level.block.Blocks
 import net.minecraft.world.level.block.entity.BlockEntity
 import net.minecraft.world.level.block.state.BlockState
 import net.neoforged.neoforge.items.IItemHandler
@@ -61,7 +61,8 @@ class SynthesizeDisplayBlockEntity(pos: BlockPos, blockState: BlockState) : Bloc
         get() = itemHandler.getStackInSlot(0)
     val inputCatalyst: ItemStack
         get() = itemHandler.getStackInSlot(1)
-    var block: BlockStateWithNbt = BlockStateWithNbt.EMPTY
+    var block: BlockState = Blocks.AIR.defaultBlockState()
+    var blockNbt: CompoundTag = CompoundTag()
     var progress = 0
     var maxProgress = 100
 
@@ -69,18 +70,20 @@ class SynthesizeDisplayBlockEntity(pos: BlockPos, blockState: BlockState) : Bloc
         super.loadAdditional(tag, registries)
 
         itemHandler.deserializeNBT(registries, tag.getCompound("items"))
-        BlockStateWithNbt.CODEC.codec().parse(NbtOps.INSTANCE, tag.getCompound("block")).result().ifPresent { state ->
+        BlockState.CODEC.parse(NbtOps.INSTANCE, tag.getCompound("block")).result().ifPresent { state ->
             block = state
         }
+        blockNbt = tag.getCompound("block_nbt")
         progress = tag.getInt("progress")
         maxProgress = tag.getInt("maxProgress")
     }
 
     override fun saveAdditional(tag: CompoundTag, registries: HolderLookup.Provider) {
         tag.put("items", itemHandler.serializeNBT(registries))
-        BlockStateWithNbt.CODEC.codec().encodeStart(NbtOps.INSTANCE, block).result().ifPresent {
+        BlockState.CODEC.encodeStart(NbtOps.INSTANCE, block).result().ifPresent {
             tag.put("block", it)
         }
+        tag.put("block_nbt", blockNbt)
         tag.putInt("progress", progress)
         tag.putInt("maxProgress", maxProgress)
 
@@ -103,7 +106,8 @@ class SynthesizeDisplayBlockEntity(pos: BlockPos, blockState: BlockState) : Bloc
     }
 
     fun setInputBlock(state: BlockState, tag: CompoundTag) {
-        block = BlockStateWithNbt(state, tag)
+        block = state
+        blockNbt = tag
         setChanged()
     }
 
@@ -221,6 +225,7 @@ class SynthesizeDisplayBlockEntity(pos: BlockPos, blockState: BlockState) : Bloc
             NanoMiraiRecipeType.SYNTHESIZE,
             BlockWithPairItemInput(
                 block,
+                blockNbt,
                 inputSynthesizeNano,
                 inputCatalyst
             ),

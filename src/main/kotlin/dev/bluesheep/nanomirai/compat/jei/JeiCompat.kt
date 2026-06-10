@@ -122,9 +122,9 @@ class JeiCompat: IModPlugin {
         if (recipeManager != null) {
             val mobCages = recipeManager.getAllRecipesFor(NanoMiraiRecipeType.SYNTHESIZE)
                 .map {
-                    val block = it.value.inputBlock
-                    if (!block.blockState.`is`(NanoMiraiBlocks.MOB_CAGE)) return@map null
-                    block.getItemStack(level.registryAccess())
+                    val blockInput = it.value.blockInput
+                    if (blockInput.block != NanoMiraiBlocks.MOB_CAGE) return@map null
+                    blockInput.getItemStack(level.registryAccess())
                 }
                 .filterNotNull()
             registration.addExtraItemStacks(mobCages)

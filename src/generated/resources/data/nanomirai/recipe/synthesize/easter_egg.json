@@ -1,0 +1,28 @@
+{
+  "type": "nanomirai:synthesize",
+  "block": {
+    "block": "minecraft:blue_candle",
+    "predicate": {
+      "blockStates": {
+        "candles": "4",
+        "lit": "true"
+      }
+    }
+  },
+  "catalyst": {
+    "item": "minecraft:blue_wool"
+  },
+  "duration": 3000000,
+  "result": {
+    "components": {
+      "minecraft:custom_name": "{\"color\":\"#174CA7\",\"text\":\"BlueSheep\"}",
+      "minecraft:entity_data": {
+        "Color": 11,
+        "id": "minecraft:sheep"
+      }
+    },
+    "count": 1,
+    "id": "minecraft:sheep_spawn_egg"
+  },
+  "tier": 1
+}

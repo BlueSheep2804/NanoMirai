@@ -1,10 +1,7 @@
 {
   "type": "nanomirai:synthesize",
   "block": {
-    "block": {
-      "Name": "minecraft:enchanting_table"
-    },
-    "nbt": {}
+    "block": "minecraft:enchanting_table"
   },
   "catalyst": {
     "item": "nanomirai:normal_circuit"

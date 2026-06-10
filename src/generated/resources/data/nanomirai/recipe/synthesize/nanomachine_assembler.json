@@ -1,15 +1,7 @@
 {
   "type": "nanomirai:synthesize",
   "block": {
-    "block": {
-      "Name": "minecraft:crafter",
-      "Properties": {
-        "crafting": "false",
-        "orientation": "north_up",
-        "triggered": "false"
-      }
-    },
-    "nbt": {}
+    "block": "minecraft:crafter"
   },
   "catalyst": {
     "item": "nanomirai:normal_circuit"

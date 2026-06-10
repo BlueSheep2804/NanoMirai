@@ -1,10 +1,7 @@
 {
   "type": "nanomirai:synthesize",
   "block": {
-    "block": {
-      "Name": "minecraft:crying_obsidian"
-    },
-    "nbt": {}
+    "block": "minecraft:crying_obsidian"
   },
   "catalyst": {
     "item": "minecraft:amethyst_shard"

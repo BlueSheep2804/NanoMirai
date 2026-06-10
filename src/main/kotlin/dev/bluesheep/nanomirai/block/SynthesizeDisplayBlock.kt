@@ -53,12 +53,12 @@ class SynthesizeDisplayBlock(properties: Properties) : BaseEntityBlock(propertie
     ): Boolean {
         val blockEntity = level.getBlockEntity(pos)
         if (blockEntity is SynthesizeDisplayBlockEntity && !blockEntity.hasCraftingFinished()) {
-            val blockState = blockEntity.block.blockState
+            val blockState = blockEntity.block
             level.setBlockAndUpdate(pos, blockState)
             if (!level.isClientSide) {
                 blockEntity.drops()
                 level.getBlockEntity(pos)?.let {
-                    it.loadWithComponents(blockEntity.block.nbt, level.registryAccess())
+                    it.loadWithComponents(blockEntity.blockNbt, level.registryAccess())
                     it.setChanged()
                     level.sendBlockUpdated(pos, it.blockState, it.blockState, Block.UPDATE_ALL)
                 }
