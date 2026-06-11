@@ -45,7 +45,7 @@ class JeiCompat: IModPlugin {
             )
             registration.addRecipes(
                 SynthesizeRecipeCategory.TYPE,
-                recipeManager.getAllRecipesFor(NanoMiraiRecipeType.SYNTHESIZE).map { it.value }
+                recipeManager.getAllRecipesFor(NanoMiraiRecipeType.SYNTHESIZE)
             )
             registration.addRecipes(
                 LabAttributeRecipeCategory.TYPE,

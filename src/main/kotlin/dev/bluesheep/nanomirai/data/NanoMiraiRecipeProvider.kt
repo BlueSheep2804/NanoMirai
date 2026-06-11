@@ -42,6 +42,7 @@ import net.minecraft.world.level.block.Blocks
 import net.minecraft.world.level.block.CandleBlock
 import net.neoforged.neoforge.common.Tags
 import net.neoforged.neoforge.common.crafting.DataComponentIngredient
+import java.util.Optional
 import java.util.concurrent.CompletableFuture
 
 class NanoMiraiRecipeProvider(output: PackOutput, registries: CompletableFuture<HolderLookup.Provider>) : RecipeProvider(output, registries) {
@@ -1094,14 +1095,20 @@ class NanoMiraiRecipeProvider(output: PackOutput, registries: CompletableFuture<
             BlockInput(
                 Blocks.BLUE_CANDLE,
                 BlockPredicate.create(
-                    StatePropertiesPredicate.Builder.properties()
-                        .hasProperty(CandleBlock.CANDLES, 4)
-                        .hasProperty(CandleBlock.LIT, true)
-                        .build().get()
+                    StatePropertiesPredicate(listOf(
+                        StatePropertiesPredicate.PropertyMatcher(
+                            CandleBlock.LIT.name,
+                            StatePropertiesPredicate.ExactMatcher("true")
+                        ),
+                        StatePropertiesPredicate.PropertyMatcher(
+                            CandleBlock.CANDLES.name,
+                            StatePropertiesPredicate.RangedMatcher(Optional.of("3"), Optional.empty())
+                        )
+                    ))
                 )
             ),
             Ingredient.of(Items.BLUE_WOOL),
-            3000000
+            280400
         ).save(recipeOutput, rl("easter_egg"))
     }
 

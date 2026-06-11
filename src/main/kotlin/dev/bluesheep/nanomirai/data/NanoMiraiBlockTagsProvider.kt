@@ -52,5 +52,8 @@ class NanoMiraiBlockTagsProvider(output: PackOutput, lookupProvider: Completable
         tag(Tags.Blocks.STORAGE_BLOCKS)
             .addTag(NanoMiraiBlockTags.STORAGE_BLOCKS_RAW_SCULMIUM)
             .addTag(NanoMiraiBlockTags.STORAGE_BLOCKS_SCULMIUM)
+
+        tag(NanoMiraiBlockTags.SYNTHESIZE_DISPLAY_AS_ITEM)
+            .add(NanoMiraiBlocks.MOB_CAGE)
     }
 }

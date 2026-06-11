@@ -1,4 +1,4 @@
-// 1.21.1	2026-06-02T22:58:40.1519389	Tags for minecraft:block mod id nanomirai
+// 1.21.1	2026-06-11T12:29:49.0777776	Tags for minecraft:block mod id nanomirai
 d840c1d30dbeb4f15078c4f7488acf990a9ec217 data/c/tags/block/obsidians.json
 358d7186c8f45bdfff4be1f72965d27ccef554b4 data/c/tags/block/obsidians/reinforced.json
 83a4b05e721528d8678a423afafae073c5c58b2e data/c/tags/block/storage_blocks.json
@@ -9,3 +9,4 @@ c94758d429732c044b01fc3a5bb7a96ffd24acfb data/minecraft/tags/block/mineable/pick
 358d7186c8f45bdfff4be1f72965d27ccef554b4 data/minecraft/tags/block/needs_diamond_tool.json
 406a8a5bce8aa38e926a7861feeeb3ec092929ca data/minecraft/tags/block/needs_stone_tool.json
 358d7186c8f45bdfff4be1f72965d27ccef554b4 data/minecraft/tags/block/wither_immune.json
+b0a38a2a0f4a25f64cc2e93be351f388b3095bc8 data/nanomirai/tags/block/synthesize_recipe_as_item.json

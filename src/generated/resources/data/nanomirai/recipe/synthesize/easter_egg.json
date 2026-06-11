@@ -4,7 +4,9 @@
     "block": "minecraft:blue_candle",
     "predicate": {
       "blockStates": {
-        "candles": "4",
+        "candles": {
+          "min": "3"
+        },
         "lit": "true"
       }
     }
@@ -12,7 +14,7 @@
   "catalyst": {
     "item": "minecraft:blue_wool"
   },
-  "duration": 3000000,
+  "duration": 280400,
   "result": {
     "components": {
       "minecraft:custom_name": "{\"color\":\"#174CA7\",\"text\":\"BlueSheep\"}",

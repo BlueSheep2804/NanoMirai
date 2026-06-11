@@ -1,4 +1,4 @@
-// 1.21.1	2026-06-10T23:01:38.6182874	Recipes
+// 1.21.1	2026-06-11T12:54:32.734922	Recipes
 a922df984b985fa57a51d897ac782bb1da4dba35 data/minecraft/recipe/laser/crying_obsidian.json
 86ca06b34a3b65db1b14b3bd8017a940c6d95dca data/nanomirai/advancement/recipes/misc/allay_head.json
 68ffc45f14c24a691890fb179f39a90bdf1ff672 data/nanomirai/advancement/recipes/misc/deprecated/synthesize_nano_improved_from_epic.json
@@ -90,7 +90,7 @@ d300a72f3fa3d86fd42b9cf157fcd004d98f8be2 data/nanomirai/recipe/silicon_from_blas
 ee8974898593ee752365228b2fc36d35d745afa3 data/nanomirai/recipe/support_nano_normal.json
 408f68a4d575cf8dd0a49cba635b355ce02a6ede data/nanomirai/recipe/synthesize/amethyst_lens.json
 7286d845fc4b4ceea000b923cd7b7ba066fba2b2 data/nanomirai/recipe/synthesize/budding_amethyst_from_lapis_lazuli.json
-b632aa10bdc322bbecfc54e74b1aa2fb60d58c5c data/nanomirai/recipe/synthesize/easter_egg.json
+d911a0fa3549652373c70f71cd15e75ea45d9a27 data/nanomirai/recipe/synthesize/easter_egg.json
 7fe07d45d1e8afa05f5d80e0789e6f9ead3a8d87 data/nanomirai/recipe/synthesize/graphite.json
 7672fa3c715bbdc6036d23b38e5ec9a07a56ac17 data/nanomirai/recipe/synthesize/laser_engraver.json
 fd008df75038310475b39ca8626dd57f8aa9bf55 data/nanomirai/recipe/synthesize/nanomachine_assembler.json

@@ -25,7 +25,7 @@ object ModInfo {
     const val mod_group_id = "dev.bluesheep"
     const val mod_authors = "BlueSheep2804"
     const val mod_description = ""
-    const val jei_version = "19.21.0.247"
+    const val jei_version = "19.21.2.313"
     const val curios_version = "9.4.2+1.21.1"
     const val jade_version = "15.8.3+neoforge"
 }
@@ -55,8 +55,7 @@ neoForge {
         minecraftVersion = ModInfo.parchment_minecraft_version
     }
 
-    // This line is optional. Access Transformers are automatically detected
-    // accessTransformers.add('src/main/resources/META-INF/accesstransformer.cfg')
+    setAccessTransformers("src/main/resources/META-INF/accesstransformer.cfg")
 
     runs {
         register("client") {
