@@ -5,6 +5,7 @@ import dev.bluesheep.nanomirai.block.entity.AssemblerBlockEntity
 import dev.bluesheep.nanomirai.block.entity.LaserEngraverBlockEntity
 import dev.bluesheep.nanomirai.block.entity.MobCageBlockEntity
 import dev.bluesheep.nanomirai.block.entity.NanoLabBlockEntity
+import dev.bluesheep.nanomirai.block.entity.SolarPanelBlockEntity
 import dev.bluesheep.nanomirai.block.entity.SynthesizeDisplayBlockEntity
 import net.minecraft.core.registries.Registries
 import net.minecraft.world.level.block.entity.BlockEntityType
@@ -42,6 +43,12 @@ object NanoMiraiBlockEntities {
         BlockEntityType.Builder.of(
             ::MobCageBlockEntity,
             NanoMiraiBlocks.MOB_CAGE
+        ).build(null)
+    }
+    val SOLAR_PANEL: BlockEntityType<SolarPanelBlockEntity> by REGISTRY.register("solar_panel") { ->
+        BlockEntityType.Builder.of(
+            ::SolarPanelBlockEntity,
+            NanoMiraiBlocks.SOLAR_PANEL
         ).build(null)
     }
 }

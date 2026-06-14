@@ -1,4 +1,4 @@
-// 1.21.1	2026-06-02T21:51:08.1842598	Loot Tables
+// 1.21.1	2026-06-13T13:44:03.6807608	Loot Tables
 b0afee5b796cea1b3e67331f84b2179ecb8d3dd4 data/nanomirai/loot_table/blocks/allay_head.json
 ba09ea58160a3c8406d2407940af3114aa12c330 data/nanomirai/loot_table/blocks/allay_wall_head.json
 aacaa3db7c9994649efdcd985e57b97a9c498f24 data/nanomirai/loot_table/blocks/laser_engraver.json
@@ -8,3 +8,4 @@ a387417253a70ac991deb26a5a19c17580a7675c data/nanomirai/loot_table/blocks/nano_l
 4d5dabb02b682f8df922f791e55315237f135622 data/nanomirai/loot_table/blocks/raw_sculmium_block.json
 3b26a84c8ec1e1ce07cc6c9be2e0edfee6a6a5f0 data/nanomirai/loot_table/blocks/reinforced_obsidian.json
 c1e9eff824cf2d773fda50cd27b7f8b9e3d8eddd data/nanomirai/loot_table/blocks/sculmium_block.json
+3460021b545b9fd8dea1fd090e613103dff073bd data/nanomirai/loot_table/blocks/solar_panel.json

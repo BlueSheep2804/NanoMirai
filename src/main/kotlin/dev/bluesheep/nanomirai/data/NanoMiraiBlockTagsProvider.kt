@@ -19,6 +19,7 @@ class NanoMiraiBlockTagsProvider(output: PackOutput, lookupProvider: Completable
                 NanoMiraiBlocks.NANOMACHINE_ASSEMBLER,
                 NanoMiraiBlocks.LASER_ENGRAVER,
                 NanoMiraiBlocks.NANO_LAB,
+                NanoMiraiBlocks.SOLAR_PANEL,
                 NanoMiraiBlocks.REINFORCED_OBSIDIAN,
                 NanoMiraiBlocks.RAW_SCULMIUM_BLOCK,
                 NanoMiraiBlocks.SCULMIUM_BLOCK

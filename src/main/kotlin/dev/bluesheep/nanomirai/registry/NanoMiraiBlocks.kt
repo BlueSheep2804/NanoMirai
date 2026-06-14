@@ -7,6 +7,7 @@ import dev.bluesheep.nanomirai.block.AssemblerBlock
 import dev.bluesheep.nanomirai.block.LaserEngraverBlock
 import dev.bluesheep.nanomirai.block.MobCageBlock
 import dev.bluesheep.nanomirai.block.NanoLabBlock
+import dev.bluesheep.nanomirai.block.SolarPanelBlock
 import dev.bluesheep.nanomirai.block.SynthesizeDisplayBlock
 import net.minecraft.core.BlockPos
 import net.minecraft.world.level.BlockGetter
@@ -39,6 +40,7 @@ object NanoMiraiBlocks {
         ::MobCageBlock,
         BlockBehaviour.Properties.of().noCollission().noOcclusion()
     )
+    val SOLAR_PANEL: SolarPanelBlock by REGISTRY.registerBlock("solar_panel", ::SolarPanelBlock, machineProperties)
 
     val REINFORCED_OBSIDIAN: Block by REGISTRY.registerSimpleBlock(
         "reinforced_obsidian",

@@ -1,6 +1,7 @@
 package dev.bluesheep.nanomirai.data
 
 import dev.bluesheep.nanomirai.registry.NanoMiraiBlocks
+import dev.bluesheep.nanomirai.registry.NanoMiraiDataComponents
 import dev.bluesheep.nanomirai.registry.NanoMiraiItems
 import net.minecraft.core.HolderLookup
 import net.minecraft.core.component.DataComponents
@@ -43,6 +44,21 @@ class NanoMiraiBlockLootSubProvider(lookupProvider: HolderLookup.Provider) : Blo
                             .apply(
                                 CopyComponentsFunction.copyComponents(CopyComponentsFunction.Source.BLOCK_ENTITY)
                                     .include(DataComponents.ENTITY_DATA)
+                            )
+                    )
+                    .setRolls(ConstantValue(1.0f))
+                    .setBonusRolls(ConstantValue(0.0f))
+                )
+        )
+        add(
+            NanoMiraiBlocks.SOLAR_PANEL,
+            LootTable.lootTable()
+                .withPool(LootPool.lootPool()
+                    .add(
+                        LootItem.lootTableItem(NanoMiraiBlocks.SOLAR_PANEL)
+                            .apply(
+                                CopyComponentsFunction.copyComponents(CopyComponentsFunction.Source.BLOCK_ENTITY)
+                                    .include(NanoMiraiDataComponents.ENERGY)
                             )
                     )
                     .setRolls(ConstantValue(1.0f))

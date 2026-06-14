@@ -2,6 +2,7 @@ package dev.bluesheep.nanomirai
 
 import dev.bluesheep.nanomirai.block.entity.AssemblerBlockEntity
 import dev.bluesheep.nanomirai.block.entity.LaserEngraverBlockEntity
+import dev.bluesheep.nanomirai.block.entity.SolarPanelBlockEntity
 import dev.bluesheep.nanomirai.block.entity.SynthesizeDisplayBlockEntity
 import dev.bluesheep.nanomirai.capabilities.EnergyStorageItem
 import dev.bluesheep.nanomirai.data.*
@@ -75,6 +76,11 @@ object NanoMirai {
             Capabilities.ItemHandler.BLOCK,
             NanoMiraiBlockEntities.SYNTHESIZE_DISPLAY,
             SynthesizeDisplayBlockEntity::capabilityProvider
+        )
+        event.registerBlockEntity(
+            Capabilities.EnergyStorage.BLOCK,
+            NanoMiraiBlockEntities.SOLAR_PANEL,
+            SolarPanelBlockEntity::capabilityProvider
         )
 
         event.registerItem(

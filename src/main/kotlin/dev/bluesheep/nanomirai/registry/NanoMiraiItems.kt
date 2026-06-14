@@ -77,6 +77,7 @@ object NanoMiraiItems {
     val NANOMACHINE_ASSEMBLER: BlockItem by registerSimpleBlockItem(NanoMiraiBlocks::NANOMACHINE_ASSEMBLER)
     val LASER_ENGRAVER: BlockItem by registerSimpleBlockItem(NanoMiraiBlocks::LASER_ENGRAVER)
     val NANO_LAB: BlockItem by registerSimpleBlockItem(NanoMiraiBlocks::NANO_LAB)
+    val SOLAR_PANEL: BlockItem by registerSimpleBlockItem(NanoMiraiBlocks::SOLAR_PANEL)
 
     val REINFORCED_OBSIDIAN: BlockItem by registerSimpleBlockItem(NanoMiraiBlocks::REINFORCED_OBSIDIAN)
     val ALLAY_HEAD: BlockItem by REGISTRY.registerItem(
