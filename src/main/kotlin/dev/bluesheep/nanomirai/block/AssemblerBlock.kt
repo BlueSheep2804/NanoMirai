@@ -58,7 +58,7 @@ class AssemblerBlock(properties: Properties) : BaseEntityBlock(properties) {
         val blockEntity = level.getBlockEntity(pos)
         if (blockEntity !is AssemblerBlockEntity) return null
         return SimpleMenuProvider(
-            { id, inv, _ -> AssemblerMenu(id, inv, ContainerLevelAccess.create(level, pos), blockEntity, blockEntity.data) },
+            { id, inv, _ -> AssemblerMenu(id, inv, blockEntity, blockEntity.data) },
             Component.translatable("container.nanomirai.nanomachine_assembler")
         )
     }
