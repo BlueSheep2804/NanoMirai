@@ -2,7 +2,7 @@
   "itemGroup.nanomirai": "NanoMirai",
   "nanomirai.nano_tier.normal": "Normal",
   "nanomirai.nano_tier.improved": "Improved",
-  "nanomirai.tooltip.stored_energy": "%1$s / %2$s FE",
+  "nanomirai.tooltip.stored_energy": "%1$s / %2$s",
   "nanomirai.tooltip.remaining_uses": "Remaining Uses: %s",
   "nanomirai.tooltip.deprecated": "Deprecated: This item is planned to be removed in a future version.",
   "nanomirai.tooltip.deprecated.synthesize_nano": "Please craft it alone to migrate to the current item.",

@@ -2,7 +2,7 @@
   "itemGroup.nanomirai": "NanoMirai",
   "nanomirai.nano_tier.normal": "通常",
   "nanomirai.nano_tier.improved": "改良型",
-  "nanomirai.tooltip.stored_energy": "%1$s / %2$s FE",
+  "nanomirai.tooltip.stored_energy": "%1$s / %2$s",
   "nanomirai.tooltip.remaining_uses": "%s回使用可能",
   "nanomirai.tooltip.deprecated": "廃止予定: このアイテムは将来のバージョンで削除される予定です。",
   "nanomirai.tooltip.deprecated.synthesize_nano": "単体でクラフトすることで現行のアイテムに移行できます。",

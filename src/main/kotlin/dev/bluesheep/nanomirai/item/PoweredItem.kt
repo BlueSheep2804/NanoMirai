@@ -1,6 +1,7 @@
 package dev.bluesheep.nanomirai.item
 
 import dev.bluesheep.nanomirai.registry.NanoMiraiDataComponents
+import dev.bluesheep.nanomirai.util.EnergyFormat
 import net.minecraft.network.chat.Component
 import net.minecraft.util.FastColor
 import net.minecraft.util.Mth
@@ -62,8 +63,7 @@ open class PoweredItem(properties: Properties, capacity: Int, val cost: Int) : I
         val energyStorage = getEnergy(stack)
         if (energyStorage != null) {
             tooltipComponents.add(
-                Component.translatable(
-                    "nanomirai.tooltip.stored_energy",
+                EnergyFormat.tooltip(
                     energyStorage.energyStored,
                     energyStorage.maxEnergyStored
                 )
