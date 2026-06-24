@@ -30,6 +30,7 @@ class SolarPanelBlockEntity(pos: BlockPos, blockState: BlockState) : BlockEntity
     val itemHandler = ItemStackHandler()
     lateinit var energyStorage: EnergyStorageForBlockEntity
     var sunlightFactor = 0f
+    var remaining = 0f
     val data = object : ContainerData {
         override fun get(index: Int): Int {
             if (!this@SolarPanelBlockEntity::energyStorage.isInitialized) return 0
@@ -86,7 +87,13 @@ class SolarPanelBlockEntity(pos: BlockPos, blockState: BlockState) : BlockEntity
                     ) - 1f
                 )
                 val generate = sunlightFactor * 8
-                energyStorage.receiveEnergy(Mth.floor(generate), false)
+                remaining += generate % 1
+                var store = Mth.floor(generate)
+                if (remaining >= 1) {
+                    store += Mth.floor(remaining)
+                    remaining %= 1
+                }
+                energyStorage.receiveEnergy(store, false)
                 level.invalidateCapabilities(pos)
             } else {
                 sunlightFactor = -0.02f
