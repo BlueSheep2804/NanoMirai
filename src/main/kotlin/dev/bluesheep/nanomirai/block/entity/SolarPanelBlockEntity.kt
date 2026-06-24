@@ -14,6 +14,7 @@ import net.minecraft.world.inventory.ContainerData
 import net.minecraft.world.level.Level
 import net.minecraft.world.level.block.entity.BlockEntity
 import net.minecraft.world.level.block.state.BlockState
+import net.neoforged.neoforge.capabilities.Capabilities
 import net.neoforged.neoforge.energy.IEnergyStorage
 import net.neoforged.neoforge.items.ItemStackHandler
 
@@ -87,12 +88,21 @@ class SolarPanelBlockEntity(pos: BlockPos, blockState: BlockState) : BlockEntity
                 val generate = sunlightFactor * 8
                 energyStorage.receiveEnergy(Mth.floor(generate), false)
                 level.invalidateCapabilities(pos)
-                return
             } else {
                 sunlightFactor = -0.02f
             }
         } else {
             sunlightFactor = -0.01f
+        }
+
+        val itemEnergyStorage = itemHandler.getStackInSlot(0).getCapability(Capabilities.EnergyStorage.ITEM)
+        if (itemEnergyStorage != null) {
+            if (itemEnergyStorage.canReceive() && energyStorage.canExtract()) {
+                val extracted = energyStorage.extractEnergy(100000, false)
+                val remaining = extracted - itemEnergyStorage.receiveEnergy(extracted, false)
+                energyStorage.receiveEnergy(remaining, false)
+                level.invalidateCapabilities(pos)
+            }
         }
     }
 }
