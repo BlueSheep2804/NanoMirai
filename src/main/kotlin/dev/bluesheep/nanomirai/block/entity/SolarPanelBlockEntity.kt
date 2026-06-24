@@ -10,10 +10,12 @@ import net.minecraft.network.protocol.Packet
 import net.minecraft.network.protocol.game.ClientGamePacketListener
 import net.minecraft.network.protocol.game.ClientboundBlockEntityDataPacket
 import net.minecraft.util.Mth
+import net.minecraft.world.inventory.ContainerData
 import net.minecraft.world.level.Level
 import net.minecraft.world.level.block.entity.BlockEntity
 import net.minecraft.world.level.block.state.BlockState
 import net.neoforged.neoforge.energy.IEnergyStorage
+import net.neoforged.neoforge.items.ItemStackHandler
 
 class SolarPanelBlockEntity(pos: BlockPos, blockState: BlockState) : BlockEntity(NanoMiraiBlockEntities.SOLAR_PANEL, pos, blockState) {
     companion object {
@@ -24,7 +26,26 @@ class SolarPanelBlockEntity(pos: BlockPos, blockState: BlockState) : BlockEntity
         }
     }
 
+    val itemHandler = ItemStackHandler()
     lateinit var energyStorage: EnergyStorageForBlockEntity
+    var sunlightFactor = 0f
+    val data = object : ContainerData {
+        override fun get(index: Int): Int {
+            if (!this@SolarPanelBlockEntity::energyStorage.isInitialized) return 0
+            return when (index) {
+                0 -> energyStorage.energyStored
+                1 -> energyStorage.maxEnergyStored
+                2 -> Mth.floor(sunlightFactor * 100)
+                else -> 0
+            }
+        }
+
+        override fun set(index: Int, value: Int) {}
+
+        override fun getCount(): Int {
+            return 3
+        }
+    }
 
     override fun onLoad() {
         super.onLoad()
@@ -40,31 +61,38 @@ class SolarPanelBlockEntity(pos: BlockPos, blockState: BlockState) : BlockEntity
         return ClientboundBlockEntityDataPacket.create(this)
     }
 
-//    override fun loadAdditional(tag: CompoundTag, registries: HolderLookup.Provider) {
-//        super.loadAdditional(tag, registries)
-//
-//        energyStorage.receiveEnergy()
-//    }
-//
-//    override fun saveAdditional(tag: CompoundTag, registries: HolderLookup.Provider) {
-//        super.saveAdditional(tag, registries)
-//    }
+    override fun loadAdditional(tag: CompoundTag, registries: HolderLookup.Provider) {
+        super.loadAdditional(tag, registries)
+
+        itemHandler.deserializeNBT(registries, tag.getCompound("items"))
+    }
+
+    override fun saveAdditional(tag: CompoundTag, registries: HolderLookup.Provider) {
+        tag.put("items", itemHandler.serializeNBT(registries))
+
+        super.saveAdditional(tag, registries)
+    }
 
     fun tick(level: Level, pos: BlockPos, state: BlockState) {
-//        Mth.lerp((level.dayTime % 24000).toDouble(), 0.0, 12000.0)
-        if (!level.canSeeSky(pos.above())) return
-
-        val time = level.dimensionType().fixedTime.orElse(level.dayTime()) % 24000
-        if (time >= 12000) return
-
-        val generate = Mth.abs(
-            Mth.clampedLerp(
-                0f,
-                1f,
-                Mth.abs(6000 - time.toInt()) / 6000f
-            ) - 1f
-        ) * 8
-        energyStorage.receiveEnergy(Mth.floor(generate), false)
-        level.invalidateCapabilities(pos)
+        if (level.canSeeSky(pos.above())) {
+            val time = level.dimensionType().fixedTime.orElse(level.dayTime()) % 24000
+            if (time < 12000) {
+                sunlightFactor = Mth.abs(
+                    Mth.clampedLerp(
+                        0f,
+                        1f,
+                        Mth.abs(6000 - time.toInt()) / 6000f
+                    ) - 1f
+                )
+                val generate = sunlightFactor * 8
+                energyStorage.receiveEnergy(Mth.floor(generate), false)
+                level.invalidateCapabilities(pos)
+                return
+            } else {
+                sunlightFactor = -0.02f
+            }
+        } else {
+            sunlightFactor = -0.01f
+        }
     }
 }

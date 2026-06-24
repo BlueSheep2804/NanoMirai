@@ -2,13 +2,14 @@ package dev.bluesheep.nanomirai.block
 
 import com.mojang.serialization.MapCodec
 import dev.bluesheep.nanomirai.block.entity.SolarPanelBlockEntity
+import dev.bluesheep.nanomirai.menu.SolarPanelMenu
 import dev.bluesheep.nanomirai.registry.NanoMiraiBlockEntities
-import dev.bluesheep.nanomirai.registry.NanoMiraiDataComponents
 import net.minecraft.core.BlockPos
 import net.minecraft.network.chat.Component
 import net.minecraft.server.level.ServerPlayer
-import net.minecraft.util.Mth
 import net.minecraft.world.InteractionResult
+import net.minecraft.world.MenuProvider
+import net.minecraft.world.SimpleMenuProvider
 import net.minecraft.world.entity.player.Player
 import net.minecraft.world.level.Level
 import net.minecraft.world.level.block.BaseEntityBlock
@@ -35,6 +36,14 @@ class SolarPanelBlock(properties: Properties) : BaseEntityBlock(properties) {
         return SolarPanelBlockEntity(pos, blockState)
     }
 
+    override fun getMenuProvider(state: BlockState, level: Level, pos: BlockPos): MenuProvider? {
+        val blockEntity = level.getBlockEntity(pos) as? SolarPanelBlockEntity ?: return null
+        return SimpleMenuProvider(
+            { id, inv, _ -> SolarPanelMenu(id, inv, blockEntity, blockEntity.data) },
+            Component.translatable("container.nanomirai.solar_panel")
+        )
+    }
+
     override fun useWithoutItem(
         state: BlockState,
         level: Level,
@@ -43,23 +52,10 @@ class SolarPanelBlock(properties: Properties) : BaseEntityBlock(properties) {
         hitResult: BlockHitResult
     ): InteractionResult {
         if (!level.isClientSide && player is ServerPlayer) {
-//            player.sendSystemMessage(Component.literal(level.canSeeSky(pos.above()).toString()))
-//            player.sendSystemMessage(Component.literal((level.dayTime % 24000).toString()))
-//            player.sendSystemMessage(Component.literal(level.dimensionType().fixedTime.orElse(-1).toString()))
-//            player.sendSystemMessage(Component.literal(level.getMaxLocalRawBrightness(pos.above()).toString()))
-            player.sendSystemMessage(
-                Component.literal(
-                    Mth.abs(
-                        Mth.clampedLerp(
-                            0f,
-                            1f,
-                            Mth.abs(6000 - (level.dayTime % 24000).toInt()) / 6000f
-                        ) - 1f
-                    ).toString()
-                )
+            player.openMenu(
+                state.getMenuProvider(level, pos),
+                pos
             )
-            val be = level.getBlockEntity(pos, NanoMiraiBlockEntities.SOLAR_PANEL)
-            player.sendSystemMessage(Component.literal(be.get().components().getOrDefault(NanoMiraiDataComponents.ENERGY, 0).toString()))
         }
         return InteractionResult.sidedSuccess(level.isClientSide)
     }

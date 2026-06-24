@@ -8,6 +8,7 @@ import dev.bluesheep.nanomirai.client.renderer.SynthesizeDisplayBlockEntityRende
 import dev.bluesheep.nanomirai.client.screen.AssemblerScreen
 import dev.bluesheep.nanomirai.client.screen.LaserEngraverScreen
 import dev.bluesheep.nanomirai.client.screen.NanoLabScreen
+import dev.bluesheep.nanomirai.client.screen.SolarPanelScreen
 import dev.bluesheep.nanomirai.item.NanoSwarmBlasterItem
 import dev.bluesheep.nanomirai.registry.NanoMiraiBlockEntities
 import dev.bluesheep.nanomirai.registry.NanoMiraiItems
@@ -60,6 +61,7 @@ object NanoMiraiClient {
         event.register(NanoMiraiMenu.ASSEMBLER, ::AssemblerScreen)
         event.register(NanoMiraiMenu.LASER_ENGRAVER, ::LaserEngraverScreen)
         event.register(NanoMiraiMenu.NANO_LAB, ::NanoLabScreen)
+        event.register(NanoMiraiMenu.SOLAR_PANEL, ::SolarPanelScreen)
     }
 
     @SubscribeEvent
