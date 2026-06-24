@@ -56,7 +56,7 @@ class SolarPanelScreen(
         val left = leftPos + 125
         val top = topPos + 20
         guiGraphics.blit(
-            if (level > 0) WORKING_ICON else ERROR_ICON,
+            if (level >= 0) WORKING_ICON else ERROR_ICON,
             left,
             top,
             0F,
@@ -81,12 +81,6 @@ class SolarPanelScreen(
         this.renderTooltip(guiGraphics, mouseX, mouseY)
     }
 
-    override fun renderTooltip(guiGraphics: GuiGraphics, mouseX: Int, mouseY: Int) {
-        super.renderTooltip(guiGraphics, mouseX, mouseY)
-
-
-    }
-
     private fun renderStrings(guiGraphics: GuiGraphics, strings: List<Component>) {
         strings.forEachIndexed { index, component ->
             guiGraphics.drawScrollingString(
@@ -103,7 +97,7 @@ class SolarPanelScreen(
     private fun levelComponent(level: Int): Component {
         return containerComponent(
             "level",
-            if (level > 0) level else 0
+            if (level >= 0) level else 0
         )
     }
 
