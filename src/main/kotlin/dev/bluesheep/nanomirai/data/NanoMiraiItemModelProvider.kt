@@ -106,6 +106,7 @@ class NanoMiraiItemModelProvider(output: PackOutput, existingFileHelper: Existin
         simpleBlockItem(NanoMiraiBlocks.NANOMACHINE_ASSEMBLER)
         simpleBlockItem(NanoMiraiBlocks.LASER_ENGRAVER)
         simpleBlockItem(NanoMiraiBlocks.NANO_LAB)
+        simpleBlockItem(NanoMiraiBlocks.SOLAR_PANEL)
 
         simpleBlockItem(NanoMiraiBlocks.REINFORCED_OBSIDIAN)
         simpleBlockItem(NanoMiraiBlocks.ALLAY_HEAD)

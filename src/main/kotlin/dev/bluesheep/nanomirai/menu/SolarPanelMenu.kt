@@ -1,6 +1,6 @@
 package dev.bluesheep.nanomirai.menu
 
-import dev.bluesheep.nanomirai.block.entity.AssemblerBlockEntity
+import dev.bluesheep.nanomirai.block.entity.SolarPanelBlockEntity
 import dev.bluesheep.nanomirai.registry.NanoMiraiBlocks
 import dev.bluesheep.nanomirai.registry.NanoMiraiMenu
 import net.minecraft.network.FriendlyByteBuf
@@ -11,14 +11,14 @@ import net.minecraft.world.inventory.ContainerLevelAccess
 import net.minecraft.world.inventory.SimpleContainerData
 import net.neoforged.neoforge.items.SlotItemHandler
 
-class AssemblerMenu(
+class SolarPanelMenu(
     containerId: Int,
     playerInv: Inventory,
-    blockEntity: AssemblerBlockEntity,
+    blockEntity: SolarPanelBlockEntity,
     val data: ContainerData
-) : AbstractMenu<AssemblerBlockEntity>(
-    blockEntity.itemHandler.slots,
-    NanoMiraiMenu.ASSEMBLER,
+) : AbstractMenu<SolarPanelBlockEntity>(
+    1,
+    NanoMiraiMenu.SOLAR_PANEL,
     containerId,
     playerInv,
     blockEntity
@@ -26,8 +26,8 @@ class AssemblerMenu(
     constructor(containerId: Int, playerInv: Inventory, extraData: FriendlyByteBuf) : this(
         containerId,
         playerInv,
-        playerInv.player.level().getBlockEntity(extraData.readBlockPos()) as AssemblerBlockEntity,
-        SimpleContainerData(2)
+        playerInv.player.level().getBlockEntity(extraData.readBlockPos()) as SolarPanelBlockEntity,
+        SimpleContainerData(3)
     )
 
     init {
@@ -35,16 +35,10 @@ class AssemblerMenu(
     }
 
     override fun addContainerSlots() {
-        val container = blockEntity.itemHandler
-        this.addSlot(OutputSlotItemHandler(container, 0, 124, 35))
-        for (row in 0 until 3) {
-            for (col in 0 until 3) {
-                this.addSlot(SlotItemHandler(container,  1 + col + row * 3, 30 + col * 18, 17 + row * 18))
-            }
-        }
+        this.addSlot(SlotItemHandler(blockEntity.itemHandler, 0, 125, 57))
     }
 
     override fun stillValid(player: Player): Boolean {
-        return stillValid(ContainerLevelAccess.create(player.level(), blockEntity.blockPos), player, NanoMiraiBlocks.NANOMACHINE_ASSEMBLER)
+        return stillValid(ContainerLevelAccess.create(player.level(), blockEntity.blockPos), player, NanoMiraiBlocks.SOLAR_PANEL)
     }
 }

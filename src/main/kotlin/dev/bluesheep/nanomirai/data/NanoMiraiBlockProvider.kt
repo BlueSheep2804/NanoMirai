@@ -84,6 +84,16 @@ class NanoMiraiBlockProvider(output: PackOutput, exFileHelper: ExistingFileHelpe
             models().getExistingFile(modLoc("block/mob_cage"))
         )
 
+        simpleBlock(
+            NanoMiraiBlocks.SOLAR_PANEL,
+            models().cubeBottomTop(
+                "solar_panel",
+                modLoc("block/solar_panel_side"),
+                modLoc("block/solar_panel_bottom"),
+                modLoc("block/solar_panel_top")
+            )
+        )
+
         simpleBlock(NanoMiraiBlocks.REINFORCED_OBSIDIAN)
 
         horizontalBlock(
